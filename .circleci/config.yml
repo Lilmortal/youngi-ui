@@ -25,6 +25,9 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
+      - add_ssh_keys:
+          fingerprints:
+            - "fb:b5:2b:bb:fe:84:5e:fd:2b:bc:ea:a5:84:46:21:ea"
       - run: git config --global user.email "jacktan165@gmail.com"
       - run: git config --global user.name "Jack Tan"
       - run: yarn release
