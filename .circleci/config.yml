@@ -28,6 +28,7 @@ jobs:
       - run: git config --global user.email "jacktan165@gmail.com"
       - run: git config --global user.name "Jack Tan"
       - run: yarn release
+      - run: git push
 workflows:
   version: 2
   verify:

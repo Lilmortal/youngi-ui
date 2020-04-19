@@ -45,7 +45,7 @@
   "scripts": {
     "start": "webpack-dev-server  --open --config ./config/webpack.config.js",
     "build": "webpack --config ./config/webpack.config.js",
-    "release": "standard-version"
+    "release": "standard-version -m 'chore(release): [ci skip] publish'"
   },
   "husky": {
     "hooks": {
