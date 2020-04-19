@@ -1,0 +1,12 @@
+:root {
+  --pap: 2em;
+}
+
+.test {
+  color: red;
+
+  &__lala {
+    font-size: var(--pap);
+    animation-delay: 500ms;
+  }
+}
