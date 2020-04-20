@@ -15,7 +15,7 @@ const App: React.FC<{}> = () => (
   </div>
 );
 
-const AnotherApp: React.FunctionComponent<> = () => <div>yeah</div>;
+const AnotherApp: React.FunctionComponent<{}> = () => <div>yeah</div>;
 
 export { AnotherApp };
 export default App;

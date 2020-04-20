@@ -1,5 +1,5 @@
 const path = require("path");
-const merge = require("webpack-merge");
+const { createConfig } = require("./util");
 
 const {
   cleanDir,
@@ -16,12 +16,6 @@ const {
 
 const srcPath = "src";
 const outputPath = "build";
-
-const createConfig = (...configs) => (defaultConfig) =>
-  configs.reduce(
-    (mergedConfig, config) => merge(mergedConfig, config),
-    defaultConfig
-  );
 
 const title = "Youngi Blog";
 const description = "Showcasing Youngi's photographs";
@@ -53,4 +47,5 @@ const config = createConfig(
   },
 });
 
+console.log(`CONFIG ${config}`);
 module.exports = config;
