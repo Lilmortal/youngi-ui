@@ -1,6 +1,6 @@
 const { exclude } = require("../defaults");
 
-const fonts = () => ({
+const fonts = () => (config) => ({
   module: {
     rules: [
       {

@@ -2,8 +2,9 @@
   --pap: 2em;
 }
 
+$test: blue;
 .test {
-  color: red;
+  color: $test;
 
   &__lala {
     font-size: var(--pap);

@@ -1,6 +1,6 @@
 {
   "name": "youngi-ui",
-  "version": "0.0.6",
+  "version": "0.0.5",
   "description": "An application dedicated to Youngi's photographs taken over the course of his backpacking trips.",
   "main": "index.js",
   "repository": "https://github.com/Lilmortal/youngi-ui.git",
@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "standard-version": "^7.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -54,10 +55,10 @@
     "react-test-renderer": "^16.13.1",
     "sass": "^1.26.3",
     "sass-loader": "^8.0.2",
-    "standard-version": "^7.0.0",
     "style-loader": "^1.1.4",
     "svg-react-loader": "^0.4.6",
     "svg-url-loader": "^5.0.0",
+    "terser-webpack-plugin": "^2.3.5",
     "ts-jest": "^25.4.0",
     "typescript": "^3.8.3",
     "url-loader": "^4.1.0",
@@ -68,11 +69,12 @@
   },
   "scripts": {
     "start": "webpack-dev-server  --open --config ./config/webpack.config.js",
+    "start:prod": "NODE_ENV=production webpack-dev-server --open --config ./config/webpack.config.js",
     "sb": "start-storybook -p 9000",
     "sb:build": "build-storybook",
     "test": "jest --watch",
     "test:ci": "jest",
-    "build": "webpack --config ./config/webpack.config.js",
+    "build": "NODE_ENV=production webpack --config ./config/webpack.config.js",
     "release": "standard-version -m 'chore(release): [ci skip] publish'"
   },
   "husky": {

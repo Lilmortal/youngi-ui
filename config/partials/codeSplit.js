@@ -1,4 +1,4 @@
-const codeSplit = () => ({
+const codeSplit = () => (config) => ({
   optimization: {
     splitChunks: {
       // This is a way of telling webpack to put all node_modules files

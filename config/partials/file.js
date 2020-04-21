@@ -1,6 +1,6 @@
 const { exclude } = require("../defaults");
 
-const file = () => ({
+const file = () => (config) => ({
   module: {
     rules: [
       {

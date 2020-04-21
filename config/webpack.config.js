@@ -1,4 +1,7 @@
 const path = require("path");
+const webpack = require("webpack");
+const chalk = require("chalk");
+
 const { createConfig } = require("./util");
 
 const {
@@ -20,6 +23,11 @@ const outputPath = "build";
 const title = "Youngi Blog";
 const description = "Showcasing Youngi's photographs";
 
+const getDefaultMode = () =>
+  process.env.NODE_ENV === "production" ? "production" : "development";
+
+console.log(chalk.yellow(`You are currently in ${getDefaultMode()}.`));
+
 const config = createConfig(
   cleanDir(),
   codeSplit(),
@@ -28,12 +36,12 @@ const config = createConfig(
   fonts(),
   html({ title, description }),
   svg(),
-  typescript()
+  typescript(),
 )({
   context: path.resolve(srcPath),
   devtool:
-    process.env.NODE_ENV === "production" ? "source-map" : "inline-source-map",
-  mode: process.env.NODE_ENV === "production" ? "production" : "development",
+    getDefaultMode() === "production" ? "source-map" : "inline-source-map",
+  mode: getDefaultMode(),
   entry: {
     app: "./index.tsx",
   },
@@ -45,7 +53,13 @@ const config = createConfig(
     filename: "[name].[hash].bundle.js",
     path: path.resolve(outputPath),
   },
+  plugins: [
+    // This sets the global variables
+    new webpack.DefinePlugin({
+      __DEV__: getDefaultMode() === "development",
+    }),
+  ],
 });
 
-console.log(`CONFIG ${config}`);
+console.log(config);
 module.exports = config;

@@ -1,7 +1,12 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const chalk = require("chalk");
 
-const html = ({ title, description }) => {
+const html = ({
+  title,
+  description,
+  filename = "index.html",
+  template = "index.ejs",
+}) => (config) => {
   if (!title) {
     console.log(
       chalk.red("This application does not have a title, please provide one.")
@@ -25,8 +30,8 @@ const html = ({ title, description }) => {
         hash: true,
         title,
         description,
-        filename: "index.html",
-        template: "index.ejs",
+        filename,
+        template,
       }),
     ],
   };

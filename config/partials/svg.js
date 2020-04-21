@@ -1,6 +1,6 @@
 const { exclude } = require("../defaults");
 
-const svg = () => ({
+const svg = () => (config) => ({
   module: {
     rules: [
       {
