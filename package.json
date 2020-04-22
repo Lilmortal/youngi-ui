@@ -1,6 +1,6 @@
 {
   "name": "youngi-ui",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "An application dedicated to Youngi's photographs taken over the course of his backpacking trips.",
   "main": "index.js",
   "repository": "https://github.com/Lilmortal/youngi-ui.git",
