@@ -35,8 +35,9 @@ const config = createConfig(
   file(),
   fonts(),
   html({ title, description }),
+  polyfill(),
   svg(),
-  typescript(),
+  typescript()
 )({
   context: path.resolve(srcPath),
   devtool:
