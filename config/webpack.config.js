@@ -17,6 +17,7 @@ const {
 } = require("./partials");
 
 const publicPath = "public";
+const vendorPath = "vendor";
 const srcPath = "src";
 const outputPath = "build";
 
@@ -42,6 +43,7 @@ const config = createConfig(
     getDefaultMode() === "production" ? "source-map" : "inline-source-map",
   mode: getDefaultMode(),
   entry: {
+    polyfill: path.resolve(vendorPath, "polyfill/src/polyfill.ts"),
     app: path.resolve(srcPath, "index.tsx"),
   },
   // We can't use [chunkhash] in dev mode is because it is not compatible with webpack-dev-server,
