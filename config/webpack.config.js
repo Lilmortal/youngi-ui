@@ -12,7 +12,6 @@ const {
   fonts,
   html,
   i18n,
-  polyfill,
   svg,
   typescript,
 } = require("./partials");
@@ -35,7 +34,6 @@ const config = createConfig(
   file(),
   fonts(),
   html({ title, description }),
-  polyfill(),
   svg(),
   typescript()
 )({
@@ -62,5 +60,4 @@ const config = createConfig(
   ],
 });
 
-console.log(config);
 module.exports = config;
