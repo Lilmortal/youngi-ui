@@ -12,7 +12,27 @@ const typescript = () => (config) => ({
     rules: [
       {
         test: /\.(ts|tsx)$/,
-        use: ["awesome-typescript-loader"],
+        use: [
+          {
+            loader: "awesome-typescript-loader",
+            options: {
+              useBabel: true,
+              babelOptions: {
+                babelrc: false,
+                presets: [
+                  [
+                    "@babel/preset-env",
+                    {
+                      targets: "last 2 versions, ie 11",
+                      modules: false,
+                    },
+                  ],
+                ],
+              },
+              babelCore: "@babel/core",
+            },
+          },
+        ],
         exclude,
       },
     ],
