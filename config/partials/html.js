@@ -6,7 +6,7 @@ const html = ({
   description,
   filename = "index.html",
   template = "index.ejs",
-}) => (config) => {
+} = {}) => (config) => {
   if (!title) {
     console.log(
       chalk.red("This application does not have a title, please provide one.")
