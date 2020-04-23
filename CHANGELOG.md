@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/Lilmortal/youngi-ui/compare/v0.0.15...v0.0.16) (2020-04-23)
+
+
+### Bug Fixes
+
+* remove hash appended at end of files, we handle hashing ourselves ([8365f2c](https://github.com/Lilmortal/youngi-ui/commit/8365f2cebe7ba2897f6e973d24bdae50ba86fb0f))
+
 ### [0.0.15](https://github.com/Lilmortal/youngi-ui/compare/v0.0.14...v0.0.15) (2020-04-23)
 
 
