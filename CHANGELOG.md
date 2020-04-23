@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/Lilmortal/youngi-ui/compare/v0.0.13...v0.0.14) (2020-04-23)
+
+
+### Features
+
+* migrate polyfill to vendor and is added as second entry ([1d535fe](https://github.com/Lilmortal/youngi-ui/commit/1d535fead96206097418bf900e6881d048a7c2f8))
+
 ### [0.0.13](https://github.com/Lilmortal/youngi-ui/compare/v0.0.12...v0.0.13) (2020-04-23)
 
 ### 0.0.12 (2020-04-23)
