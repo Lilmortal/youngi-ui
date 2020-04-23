@@ -27,7 +27,6 @@ const html = ({
       // This is useful because we don't want the hassle of changing the <script> location when we rename/add/remove
       // our bundle names.
       new HtmlWebpackPlugin({
-        hash: true,
         title,
         description,
         filename,

@@ -46,12 +46,8 @@ const config = createConfig(
     polyfill: path.resolve(vendorPath, "polyfill/src/polyfill.ts"),
     app: path.resolve(srcPath, "index.tsx"),
   },
-  // We can't use [chunkhash] in dev mode is because it is not compatible with webpack-dev-server,
-  // as well as severely increases build time in dev.
-  // The differences between [hash] and [chunkhash] is [hash] is calculated for a build, whereas
-  // [chunkhash] is calculated for each chunks.
   output: {
-    filename: "[name].[hash].bundle.js",
+    filename: `[name].${getDefaultMode() === 'production' ? '[chunkhash]' : '[hash]'}.bundle.js`,
     path: path.resolve(outputPath),
   },
   plugins: [
