@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.15](https://github.com/Lilmortal/youngi-ui/compare/v0.0.14...v0.0.15) (2020-04-23)
+
+
+### Bug Fixes
+
+* fix CHANGELOG duplication ([05bbe2e](https://github.com/Lilmortal/youngi-ui/commit/05bbe2ec3d513d775eb00b98452ef97c8d059ce1))
+
 ### [0.0.14](https://github.com/Lilmortal/youngi-ui/compare/v0.0.13...v0.0.14) (2020-04-23)
 
 
