@@ -16,6 +16,7 @@ const {
   typescript,
 } = require("./partials");
 
+const publicPath = "public";
 const srcPath = "src";
 const outputPath = "build";
 
@@ -33,16 +34,15 @@ const config = createConfig(
   css(),
   file(),
   fonts(),
-  html({ title, description }),
+  html({ title, description, template: path.resolve(publicPath, "index.ejs") }),
   svg(),
   typescript()
 )({
-  context: path.resolve(srcPath),
   devtool:
     getDefaultMode() === "production" ? "source-map" : "inline-source-map",
   mode: getDefaultMode(),
   entry: {
-    app: "./index.tsx",
+    app: path.resolve(srcPath, "index.tsx"),
   },
   // We can't use [chunkhash] in dev mode is because it is not compatible with webpack-dev-server,
   // as well as severely increases build time in dev.
