@@ -2,7 +2,9 @@ const path = require("path");
 const webpack = require("webpack");
 const chalk = require("chalk");
 
-const { createConfig } = require("./util");
+const {
+  createConfig
+} = require("./util");
 
 const {
   cleanDir,
@@ -17,7 +19,6 @@ const {
 } = require("./partials");
 
 const publicPath = "public";
-const vendorPath = "vendor";
 const srcPath = "src";
 const outputPath = "build";
 
@@ -35,15 +36,17 @@ const config = createConfig(
   css(),
   file(),
   fonts(),
-  html({ title, description, template: path.resolve(publicPath, "index.ejs") }),
+  html({
+    title,
+    description,
+    template: path.resolve(publicPath, "index.ejs")
+  }),
   svg(),
   typescript()
 )({
-  devtool:
-    getDefaultMode() === "production" ? "source-map" : "inline-source-map",
+  devtool: getDefaultMode() === "production" ? "source-map" : "inline-source-map",
   mode: getDefaultMode(),
   entry: {
-    polyfill: path.resolve(vendorPath, "polyfill/src/polyfill.ts"),
     app: path.resolve(srcPath, "index.tsx"),
   },
   output: {
@@ -55,7 +58,7 @@ const config = createConfig(
     new webpack.DefinePlugin({
       __DEV__: getDefaultMode() === "development",
     }),
-  ],
+  ]
 });
 
 module.exports = config;
