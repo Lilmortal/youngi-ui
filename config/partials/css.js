@@ -13,9 +13,9 @@ const css = () => (config) => {
           test: /\.s?css$/,
           use: [
             // Extract css to a seperate file in production, in <script> tag on dev.
-            config.mode === "production"
-              ? MiniCssExtractPlugin.loader
-              : "style-loader",
+            // config.mode === "production"
+            // ? MiniCssExtractPlugin.loader
+            // : "style-loader",
             {
               loader: "css-loader",
               options: {

@@ -32,33 +32,42 @@ console.log(chalk.yellow(`You are currently in ${getDefaultMode()}.`));
 
 const config = createConfig(
   cleanDir(),
-  codeSplit(),
+  // codeSplit(),
   css(),
   file(),
   fonts(),
-  html({
-    title,
-    description,
-    template: path.resolve(publicPath, "index.ejs")
-  }),
+  // html({
+  //   title,
+  //   description,
+  //   template: path.resolve(publicPath, "index.ejs"),
+  // }),
   svg(),
   typescript()
 )({
-  devtool: getDefaultMode() === "production" ? "source-map" : "inline-source-map",
+  // devtool: getDefaultMode() === "production" ? "source-map" : "inline-source-map",
   mode: getDefaultMode(),
   entry: {
-    app: path.resolve(srcPath, "index.tsx"),
+    // app: path.resolve(srcPath, "index.tsx"),
+    app: path.resolve("server", "server.tsx"),
   },
   output: {
-    filename: `[name].${getDefaultMode() === 'production' ? '[chunkhash]' : '[hash]'}.bundle.js`,
+    // filename: `[name].${
+    //   getDefaultMode() === "production" ? "[chunkhash]" : "[hash]"
+    // }.bundle.js`,
+    filename: `[name].bundle.js`,
     path: path.resolve(outputPath),
   },
   plugins: [
     // This sets the global variables
-    new webpack.DefinePlugin({
-      __DEV__: getDefaultMode() === "development",
-    }),
-  ]
+    // new webpack.DefinePlugin({
+    //   __DEV__: getDefaultMode() === "development",
+    // }),
+  ],
+  node: {
+    fs: "empty",
+    net: "empty"
+  },
+  target: "node",
 });
 
 module.exports = config;

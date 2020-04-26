@@ -1,3 +1,1 @@
-import "whatwg-fetch";
-
-console.log("test");
+import "isomorphic-fetch";
