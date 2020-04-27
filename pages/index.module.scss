@@ -1,13 +1,13 @@
-:root {
-  --pap: 2em;
-}
+// :root {
+//   --pap: 2em;
+// }
 
 $test: blue;
 .test {
   color: $test;
 
   &__lala {
-    font-size: var(--pap);
+    // font-size: var(--pap);
     animation-delay: 500ms;
   }
 }

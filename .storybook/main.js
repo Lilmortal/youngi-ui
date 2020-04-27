@@ -11,7 +11,7 @@ const getStorybookSvgLoader = (config) =>
   );
 
 module.exports = {
-  stories: ["../src/**/*.stories.tsx"],
+  stories: ["../pages/**/*.stories.tsx"],
   webpackFinal: async (config) => {
     /**
      * Storybook sets all SVG loaders to be file-loaders, but in our case we cater
@@ -20,6 +20,7 @@ module.exports = {
     let rule = getStorybookSvgLoader(config);
     rule.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/;
 
-    return createConfig(css(), svg(), typescript(), config)();
+    console.log(config);
+    return createConfig(css(), svg(), typescript())(config);
   },
 };
