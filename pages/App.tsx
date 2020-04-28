@@ -1,8 +1,6 @@
 import React from "react";
 
-// import Svg from "./test.svg";
-// import SvgFile from "./test.inline.svg";
-// import download from "./download.jpg";
+import SvgFile from "./test.inline.svg";
 import Head from "next/head";
 
 import styles from "./index.module.scss";
@@ -16,13 +14,13 @@ const App: React.FC<{}> = () => (
     <div className={`${styles.test} ${styles.test__lala}`}>
       lala
       <img src="/download.jpg" />
-      {/* <SvgFile /> */}
+      <SvgFile />
       <img src="/test.svg" />
     </div>
   </>
 );
 
-const AnotherApp: React.FunctionComponent<{}> = () => <div>yeah</div>;
+const AnotherApp: React.FC<{}> = () => <div>yeah</div>;
 
 export { AnotherApp };
 export default App;

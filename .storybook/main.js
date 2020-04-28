@@ -20,7 +20,6 @@ module.exports = {
     let rule = getStorybookSvgLoader(config);
     rule.test = /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|cur|ani)(\?.*)?$/;
 
-    console.log(config);
     return createConfig(css(), svg(), typescript())(config);
   },
 };

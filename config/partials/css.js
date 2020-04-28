@@ -21,6 +21,9 @@ const css = () => (config) => {
             loader: "css-loader",
             options: {
               sourceMap: true,
+              modules: config.mode === 'production' ? true : {
+                localIdentName: "[name]__[local]",
+              }
             },
           },
           {
