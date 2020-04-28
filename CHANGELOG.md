@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/Lilmortal/youngi-ui/compare/v0.0.18...v0.1.0) (2020-04-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Moved all component related files to /components
+- Moved all high level components to /pages
+- Polyfill.js is removed
+- Removed all ReactDOM related codes
+- Removed index.ejs template
+- All global CSS variables are now in /styles
+- Rename CSS modules to *.module.scss
+- All assets are now in /public
+- Anything global that needs to be imported can be done so in pages/_app.tsx
+
+### Features
+
+* migrate over to Next.js ([3eb80ae](https://github.com/Lilmortal/youngi-ui/commit/3eb80ae75e1f186eff4501be49994e5e9ebdd80d))
+
+
+### Bug Fixes
+
+* removed unused and duplicated libraries, as well as updated docs ([65da954](https://github.com/Lilmortal/youngi-ui/commit/65da954058e390272d58b8d73f975b8f1b5bbd41))
+
 ### [0.0.18](https://github.com/Lilmortal/youngi-ui/compare/v0.0.17...v0.0.18) (2020-04-27)
 
 ### [0.0.17](https://github.com/Lilmortal/youngi-ui/compare/v0.0.16...v0.0.17) (2020-04-24)
