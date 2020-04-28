@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* Update version 0.1.0 to 1.0.0
+* Update version 0.1.0 to 2.0.0
 
 ### Features
 
