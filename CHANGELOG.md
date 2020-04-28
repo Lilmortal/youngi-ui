@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/Lilmortal/youngi-ui/compare/v0.1.0...v2.0.0) (2020-04-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* Update version 0.1.0 to 1.0.0
+
+### Features
+
+* fix an issue with package.json version ([27e7344](https://github.com/Lilmortal/youngi-ui/commit/27e734473b865e6f449678ba037895802f341cbd))
+
 ## [0.1.0](https://github.com/Lilmortal/youngi-ui/compare/v0.0.18...v0.1.0) (2020-04-28)
 
 
