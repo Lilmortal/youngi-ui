@@ -3,6 +3,7 @@ import React from "react";
 import SvgFile from "./test.inline.svg";
 import Head from "next/head";
 
+import Button from "../components/Button";
 import styles from "./index.module.scss";
 
 const App: React.FC<{}> = () => (
@@ -13,6 +14,7 @@ const App: React.FC<{}> = () => (
     </Head>
     <div className={`${styles.test} ${styles.test__lala}`}>
       lala
+      <Button />
       <img src="/download.jpg" />
       <SvgFile />
       <img src="/test.svg" />

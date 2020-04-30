@@ -10,6 +10,7 @@
     "node": ">=10.13.0"
   },
   "dependencies": {
+    "netlify-cli": "^2.48.0",
     "next": "^9.3.5"
   },
   "devDependencies": {
@@ -65,12 +66,15 @@
   "scripts": {
     "start": "next dev",
     "build": "next build",
+    "export": "next export",
     "build:start": "next start",
     "sb": "start-storybook -p 9000 -s ./public",
     "sb:build": "build-storybook",
     "test": "jest --watch",
     "test:ci": "jest",
-    "release": "standard-version -m 'chore(release): [ci skip] publish'"
+    "release": "standard-version -m 'chore(release): [ci skip] publish'",
+    "open": "netlify open",
+    "deploy": "netlify deploy"
   },
   "husky": {
     "hooks": {
