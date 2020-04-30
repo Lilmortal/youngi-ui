@@ -3,7 +3,7 @@ import React from "react";
 import SvgFile from "./test.inline.svg";
 import Head from "next/head";
 
-import Button from "../components/Button";
+import Button from "../../components/Button";
 import styles from "./index.module.scss";
 
 const App: React.FC<{}> = () => (
