@@ -5,7 +5,7 @@ over the course of his backpacking trips around South-east Asia, and more.
 
 ## Requirements
 
-- [Node](https://nodejs.org/en/) version 10.3+
+- [Node](https://nodejs.org/en/) version 10.13+
 - [Yarn](https://yarnpkg.com/en/)
 
 ## Documentation
