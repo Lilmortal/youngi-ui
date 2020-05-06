@@ -1,0 +1,44 @@
+.about {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-height: 100vh;
+}
+
+.mainItems {
+  display: flex;
+  margin-right: 2em;
+  width: 100%;
+  background-color: gray;
+}
+
+.content {
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-areas:
+    "."
+    "description"
+    "socialContact";
+  padding: 0 2em;
+  background-color: lightgray;
+}
+
+.description {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  grid-area: description;
+
+  & h2 {
+    align-self: flex-start;
+  }
+}
+
+.socialContact {
+  display: flex;
+  align-items: center;
+  grid-area: socialContact;
+
+  & div {
+    padding-right: 2em;
+  }
+}

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { cn } from "../utils";
 import styles from "./SideBar.module.scss";
 
@@ -19,8 +21,12 @@ const SideBar: React.FC<SideBarProps> = ({
 
     <div className={cn(styles.mainItems)}>{mainItems}</div>
     <div className={cn(styles.links)}>
-      <a href="#">{aboutLinkText}</a>
-      <a href="#">{worksLinkText}</a>
+      <Link href="/about">
+        <a>{aboutLinkText}</a>
+      </Link>
+      <Link href="/Works">
+        <a>{worksLinkText}</a>
+      </Link>
     </div>
   </aside>
 );
