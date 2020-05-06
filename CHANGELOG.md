@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/Lilmortal/youngi-ui/compare/v2.0.5...v2.1.0) (2020-05-06)
+
+
+### Features
+
+* added sidebar and home components ([598bbbf](https://github.com/Lilmortal/youngi-ui/commit/598bbbf354e9d080820fd3db146137ee26056a0a))
+
 ### [2.0.5](https://github.com/Lilmortal/youngi-ui/compare/v2.0.4...v2.0.5) (2020-05-02)
 
 ### [2.0.4](https://github.com/Lilmortal/youngi-ui/compare/v2.0.3...v2.0.4) (2020-04-30)
