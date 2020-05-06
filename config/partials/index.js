@@ -2,6 +2,7 @@ module.exports = {
   cleanDir: require("./cleanDir"),
   codeSplit: require("./codeSplit"),
   css: require("./css"),
+  env: require("./env"),
   file: require("./file"),
   fonts: require("./fonts"),
   html: require("./html"),

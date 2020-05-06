@@ -139,3 +139,11 @@ general overview over how this project is structured:
 - Scss files must end with `.module.scss`.
 - Inline SVGs must end with `.inline.svg`, otherwise `.svg` will do.
 - React storybook files must end with `.stories.tsx` and are only allowed inside `/src`.
+
+## Known issues
+
+### CSS Grid
+
+This project is currently using CSS Grid, hence we are making a conscious decision to not support IE11.
+As of now, there is an issue where the child grid does not inherit the parent template grid.
+This all changes with the introduction of `subgrid`, but it is not supported by all browsers yet.

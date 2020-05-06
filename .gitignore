@@ -4,5 +4,5 @@ yarn-error.log
 .DS_Store
 .next
 out
-# Local Netlify folder
 .netlify
+.env

@@ -1,0 +1,34 @@
+.sideBar {
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  padding-left: 2em;
+}
+
+.ownerName {
+  display: flex;
+  align-items: center;
+  font-size: 1.3em;
+}
+
+.mainItems {
+  display: flex;
+  // align-items: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & a {
+    font-size: 1.3em;
+    color: lightgray;
+    text-decoration: none;
+    display: block;
+  }
+
+  & a:first-child {
+    border-top: 2px solid lightgray;
+    align-self: flex-start;
+  }
+}
