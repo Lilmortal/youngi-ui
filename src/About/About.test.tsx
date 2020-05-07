@@ -5,7 +5,7 @@ import { mockSideBar } from "../../components/SideBar/mock-sideBar";
 
 describe("About", () => {
   it("should pass", () => {
-    render(<About aboutText="Biography" {...mockSideBar} />);
+    render(<About photoImage="" aboutText="Biography" {...mockSideBar} />);
     expect(1 + 1).toEqual(2);
   });
 });

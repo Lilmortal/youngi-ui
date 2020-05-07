@@ -1,25 +1,28 @@
 import { useState } from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
-import { serialize } from "react-serialize";
 
 import { cn } from "../../utils";
 import styles from "./Works.module.scss";
 import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
 import ImageBio from "./Images";
 
-interface CategoriesProps {
-  name: string;
+interface CategoryProp {
+  name: ImageBioType;
 }
+
+interface WorkProps {
+  categories: CategoryProp[];
+  imageBios: ImageBioProps[];
+}
+
+type ImageBioType = "Photography" | "Illustration" | "Architecture";
 
 interface ImageBioProps {
   id: number;
   image: string;
   name: string;
-}
-
-interface ImagesProps {
-  imagesBio: ImageBioProps[];
+  type: ImageBioType;
 }
 
 // TODO: share this with scss
@@ -32,12 +35,47 @@ const getNumString: { [key: number]: string } = {
   6: "Six",
 };
 
-const Works: React.FC<SideBarProps & ImagesProps> = ({
-  mainItems,
-  imagesBio,
+const getCategoryStyle: { [key in ImageBioType]: string } = {
+  Photography: styles.photography,
+  Illustration: styles.illustration,
+  Architecture: styles.architecture,
+};
+
+const sortedByImageType = (
+  imageBios: ImageBioProps[],
+  type: ImageBioType
+): ImageBioProps[] => imageBios.filter((imageBio) => imageBio.type === type);
+
+const Works: React.FC<SideBarProps & WorkProps> = ({
+  categories,
+  imageBios,
   ...sideBarProps
 }) => {
+  const [imageType, setImageType] = useState<ImageBioType>("Photography");
+
   const [imageBioId, setImageBioId] = useState("");
+
+  const imageBioSortedByType = sortedByImageType(imageBios, imageType);
+
+  console.log(imageBios, imageType, imageBioSortedByType);
+
+  const mainItems = (
+    <ul className={cn(styles.categories)}>
+      {categories.map((category) => (
+        <li
+          className={cn(
+            styles.category,
+            imageType === category.name ? styles["category--selected"] : ""
+          )}
+          onClick={(): void => setImageType(category.name)}
+          // TODO: UUID
+          key={category.name}
+        >
+          {category.name}
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
     <main className={styles.works}>
@@ -46,12 +84,12 @@ const Works: React.FC<SideBarProps & ImagesProps> = ({
         <meta name="description" content="Showcasing Youngi Kims works." />
       </Head>
       <SideBar {...sideBarProps} mainItems={mainItems} />
-      <div className={cn(styles.content)}>
+      <div className={cn(styles.content, getCategoryStyle[imageType])}>
         {imageBioId && (
           <ImageBio id={imageBioId} onClose={(): void => setImageBioId("")} />
         )}
         {!imageBioId &&
-          imagesBio.map((imageBio) => (
+          imageBioSortedByType.map((imageBio) => (
             <img
               className={cn(
                 styles.image,
@@ -69,58 +107,129 @@ const Works: React.FC<SideBarProps & ImagesProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const workProps = {};
+  const workProps: WorkProps = {
+    categories: [
+      {
+        name: "Photography",
+      },
+      { name: "Illustration" },
+      { name: "Architecture" },
+    ],
+    imageBios: [
+      {
+        id: 1,
+        image: "",
+        name: "Photography 1",
+        type: "Photography",
+      },
+      {
+        id: 2,
+        image: "",
+        name: "Photography 2",
+        type: "Photography",
+      },
+      {
+        id: 3,
+        image: "",
+        name: "Photography 3",
+        type: "Photography",
+      },
+      {
+        id: 4,
+        image: "",
+        name: "Photography 4",
+        type: "Photography",
+      },
+      {
+        id: 5,
+        image: "",
+        name: "Photography 5",
+        type: "Photography",
+      },
+      {
+        id: 6,
+        image: "",
+        name: "Photography 6",
+        type: "Photography",
+      },
+      {
+        id: 1,
+        image: "",
+        name: "Illustration 1",
+        type: "Illustration",
+      },
+      {
+        id: 2,
+        image: "",
+        name: "Illustration 2",
+        type: "Illustration",
+      },
+      {
+        id: 3,
+        image: "",
+        name: "Illustration 3",
+        type: "Illustration",
+      },
+      {
+        id: 4,
+        image: "",
+        name: "Illustration 4",
+        type: "Illustration",
+      },
+      {
+        id: 5,
+        image: "",
+        name: "Illustration 5",
+        type: "Illustration",
+      },
+      {
+        id: 6,
+        image: "",
+        name: "Illustration 6",
+        type: "Illustration",
+      },
+      {
+        id: 1,
+        image: "",
+        name: "Architecture 1",
+        type: "Architecture",
+      },
+      {
+        id: 2,
+        image: "",
+        name: "Architecture 2",
+        type: "Architecture",
+      },
+      {
+        id: 3,
+        image: "",
+        name: "Architecture 3",
+        type: "Architecture",
+      },
+      {
+        id: 4,
+        image: "",
+        name: "Architecture 4",
+        type: "Architecture",
+      },
+      {
+        id: 5,
+        image: "",
+        name: "Architecture 5",
+        type: "Architecture",
+      },
+      {
+        id: 6,
+        image: "",
+        name: "Architecture 6",
+        type: "Architecture",
+      },
+    ],
+  };
 
-  const categoriesProps: CategoriesProps[] = [
-    {
-      name: "Photography",
-    },
-    { name: "Illustration" },
-    { name: "Architecture" },
-  ];
-
-  const mainItems = serialize(
-    <ul className={cn(styles.categories)}>
-      {categoriesProps.map((category) => (
-        <li className={cn(styles.category)}>{category.name}</li>
-      ))}
-    </ul>
-  );
-
-  const imageBioProps: ImageBioProps[] = [
-    {
-      id: 1,
-      image: "",
-      name: "Image 1",
-    },
-    {
-      id: 2,
-      image: "",
-      name: "Image 2",
-    },
-    {
-      id: 3,
-      image: "",
-      name: "Image 3",
-    },
-    {
-      id: 4,
-      image: "",
-      name: "Image 4",
-    },
-    {
-      id: 5,
-      image: "",
-      name: "Image 5",
-    },
-    {
-      id: 6,
-      image: "",
-      name: "Image 6",
-    },
-  ];
-
-  return { props: { ...workProps, mainItems, imagesBio: imageBioProps } };
+  return {
+    props: { ...workProps },
+  };
 };
 
 export default withSideBar(Works);

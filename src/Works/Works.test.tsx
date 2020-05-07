@@ -7,7 +7,16 @@ describe("Works", () => {
   it("should pass", () => {
     render(
       <Works
-        imagesBio={[{ id: 1, image: "image", name: "name" }]}
+        categories={[
+          {
+            name: "Photography",
+          },
+          { name: "Illustration" },
+          { name: "Architecture" },
+        ]}
+        imageBios={[
+          { id: 1, image: "image", name: "name", type: "Architecture" },
+        ]}
         {...mockSideBar}
       />
     );

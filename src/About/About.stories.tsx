@@ -5,5 +5,5 @@ import About from "./About";
 import { mockSideBar } from "../../components/SideBar/mock-sideBar";
 
 storiesOf("About", module).add("default", () => (
-  <About aboutText="Biography" {...mockSideBar} />
+  <About photoImage="" aboutText="Biography" {...mockSideBar} />
 ));

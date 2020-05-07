@@ -6,7 +6,14 @@ import { mockSideBar } from "../../components/SideBar/mock-sideBar";
 
 storiesOf("Works", module).add("default", () => (
   <Works
-    imagesBio={[{ id: 1, image: "image", name: "name" }]}
+    categories={[
+      {
+        name: "Photography",
+      },
+      { name: "Illustration" },
+      { name: "Architecture" },
+    ]}
+    imageBios={[{ id: 1, image: "image", name: "name", type: "Architecture" }]}
     {...mockSideBar}
   />
 ));

@@ -11,8 +11,7 @@
   },
   "dependencies": {
     "netlify-cli": "^2.48.0",
-    "next": "^9.3.5",
-    "react-serialize": "^0.2.0"
+    "next": "^9.3.5"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",

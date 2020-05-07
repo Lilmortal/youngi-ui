@@ -1,18 +1,19 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
-import { serialize } from "react-serialize";
 
 import { cn } from "../../utils";
 import styles from "./Home.module.scss";
 import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
+import Link from "next/link";
 
 interface HomeProps {
+  description: string;
   homeImage: string;
 }
 
 const Home: React.FC<HomeProps & SideBarProps> = ({
   homeImage,
-  mainItems,
+  description,
   ...sideBarProps
 }) => (
   <main className={styles.home}>
@@ -23,27 +24,26 @@ const Home: React.FC<HomeProps & SideBarProps> = ({
         content="A portfolio website showcasing Youngi Kim's photography."
       />
     </Head>
-    <SideBar {...sideBarProps} mainItems={mainItems} />
+    <SideBar
+      {...sideBarProps}
+      mainItems={<h2 className={styles.mainItems}>{description}</h2>}
+    />
     <div className={cn(styles.content)}>
-      {/* homeImage will be in styles instead */}
-      {homeImage}
-      <div className={cn(styles.next)}></div>
+      <img src={homeImage} />
+      <Link href="/works">
+        <a className={cn(styles.next)}></a>
+      </Link>
     </div>
   </main>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
   const homeProps: HomeProps = {
+    description: "I am a designer with architectural background.",
     homeImage: "",
   };
 
-  const mainItems = serialize(
-    <h2 className={styles.mainItems}>
-      I am a designer with architectural background.
-    </h2>
-  );
-
-  return { props: { ...homeProps, mainItems } };
+  return { props: { ...homeProps } };
 };
 
 export default withSideBar(Home);

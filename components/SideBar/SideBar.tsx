@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { deserialize } from "react-serialize";
 
 import { cn } from "../../utils";
 import styles from "./SideBar.module.scss";
@@ -21,7 +20,7 @@ const SideBar: React.FC<SideBarProps> = ({
     <aside className={cn(styles.sideBar)}>
       <div className={cn(styles.ownerName)}>{ownerName}</div>
 
-      <div className={cn(styles.mainItems)}>{deserialize(mainItems)}</div>
+      <div className={cn(styles.mainItems)}>{mainItems}</div>
       <div className={cn(styles.links)}>
         <Link href="/about">
           <a>{aboutLinkText}</a>

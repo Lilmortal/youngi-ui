@@ -10,12 +10,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  cursor: pointer;
 }
 
 .category {
   color: var(--black);
   padding-bottom: 0.6em;
+  cursor: pointer;
 
   &:hover,
   &--selected {
@@ -28,6 +28,9 @@
   grid-template-columns: repeat(10, minmax(100px, 1fr));
   grid-template-rows: repeat(10, minmax(100px, 1fr));
   grid-gap: 1em;
+}
+
+.photography {
   grid-template-areas:
     ". . . b b . . . . ."
     "a a . b b . c c c c"
@@ -39,6 +42,34 @@
     "e e e . . . f f . ."
     "e e e . . . f f . ."
     "e e e . . . . . . .";
+}
+
+.illustration {
+  grid-template-areas:
+    ". . . c c . . . . ."
+    ". . . c c . . . . ."
+    ". . . . a a . . . ."
+    ". . . . a a . . . ."
+    "b b . . . . . . d d"
+    "b b . e e . . . d d"
+    ". . . e e . . . . ."
+    ". . . . . . . . . ."
+    ". . . . . . . . . ."
+    ". . . f f . . . . .";
+}
+
+.architecture {
+  grid-template-areas:
+    ". . . . . . . a a a"
+    ". c . . . . . a a a"
+    ". c . . . . . a a a"
+    ". c . . . . . . . ."
+    "e e e e . . d . . ."
+    ". . . . . . . . . ."
+    ". b . . . . . . . ."
+    ". b . . . . . f f ."
+    ". . . . . . . f f ."
+    ". . . . . . . . . .";
 }
 
 $nums: (
