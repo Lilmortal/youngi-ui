@@ -1,0 +1,63 @@
+.works {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  min-height: 100vh;
+}
+
+.categories {
+  font-size: 2.2em;
+  list-style-type: "-";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.category {
+  color: var(--black);
+  padding-bottom: 0.6em;
+
+  &:hover,
+  &--selected {
+    color: var(--gold);
+  }
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(100px, 1fr));
+  grid-template-rows: repeat(10, minmax(100px, 1fr));
+  grid-gap: 1em;
+  grid-template-areas:
+    ". . . b b . . . . ."
+    "a a . b b . c c c c"
+    "a a . . . . c c c c"
+    ". . . . . . c c c c"
+    ". . . . d d d . . ."
+    ". . . . d d d . . ."
+    ". . . . . . . . . ."
+    "e e e . . . f f . ."
+    "e e e . . . f f . ."
+    "e e e . . . . . . .";
+}
+
+$nums: (
+  "One": "a",
+  "Two": "b",
+  "Three": "c",
+  "Four": "d",
+  "Five": "e",
+  "Six": "f",
+);
+
+@each $num, $i in $nums {
+  .image#{$num} {
+    grid-area: #{$i};
+  }
+}
+
+.image {
+  width: 100%;
+  border: 1px solid black;
+  cursor: pointer;
+}

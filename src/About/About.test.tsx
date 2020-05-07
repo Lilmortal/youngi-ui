@@ -1,7 +1,7 @@
-// import React from "react";
+import React from "react";
 import About from "./About";
 import { render } from "@testing-library/react";
-import { mockSideBar } from "../SideBar/mock-sideBar";
+import { mockSideBar } from "../../components/SideBar/mock-sideBar";
 
 describe("About", () => {
   it("should pass", () => {

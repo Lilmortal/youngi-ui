@@ -1,9 +1,10 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
+import { serialize } from "react-serialize";
 
-import { cn } from "../utils";
+import { cn } from "../../utils";
 import styles from "./About.module.scss";
-import SideBar, { SideBarProps, withSideBar } from "../SideBar";
+import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
 import LoremIpsum from "../../components/LoremIpsum";
 
 interface AboutProps {
@@ -20,10 +21,7 @@ const About: React.FC<AboutProps & SideBarProps> = ({
       <title>About me</title>
       <meta name="description" content="About Youngi" />
     </Head>
-    <SideBar
-      {...sideBarProps}
-      mainItems={<div className={cn(styles.mainItems)} />}
-    />
+    <SideBar {...sideBarProps} mainItems={mainItems} />
     <div className={cn(styles.content)}>
       <div className={cn(styles.description)}>
         <h2>Hi there!</h2>
@@ -44,11 +42,9 @@ export const getStaticProps: GetStaticProps = async () => {
     aboutText: "",
   };
 
-  const sideBarProps: Pick<SideBarProps, "mainItems"> = {
-    mainItems: "",
-  };
+  const mainItems = serialize(<div className={cn(styles.mainItems)} />);
 
-  return { props: { ...aboutProps, ...sideBarProps } };
+  return { props: { ...aboutProps, mainItems } };
 };
 
 export default withSideBar(About);

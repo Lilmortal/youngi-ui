@@ -1,9 +1,10 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
+import { serialize } from "react-serialize";
 
-import { cn } from "../utils";
+import { cn } from "../../utils";
 import styles from "./Home.module.scss";
-import SideBar, { SideBarProps, withSideBar } from "../SideBar";
+import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
 
 interface HomeProps {
   homeImage: string;
@@ -22,10 +23,7 @@ const Home: React.FC<HomeProps & SideBarProps> = ({
         content="A portfolio website showcasing Youngi Kim's photography."
       />
     </Head>
-    <SideBar
-      {...sideBarProps}
-      mainItems={<h2 className={styles.mainItems}>{mainItems}</h2>}
-    />
+    <SideBar {...sideBarProps} mainItems={mainItems} />
     <div className={cn(styles.content)}>
       {/* homeImage will be in styles instead */}
       {homeImage}
@@ -39,11 +37,13 @@ export const getStaticProps: GetStaticProps = async () => {
     homeImage: "",
   };
 
-  const sideBarProps: Pick<SideBarProps, "mainItems"> = {
-    mainItems: "I am a designer with architectural background.",
-  };
+  const mainItems = serialize(
+    <h2 className={styles.mainItems}>
+      I am a designer with architectural background.
+    </h2>
+  );
 
-  return { props: { ...homeProps, ...sideBarProps } };
+  return { props: { ...homeProps, mainItems } };
 };
 
 export default withSideBar(Home);
