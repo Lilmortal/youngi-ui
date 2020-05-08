@@ -1,4 +1,15 @@
 .images {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  height: 100%;
+}
+
+.imageContainer {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.image {
+  object-fit: contain;
 }

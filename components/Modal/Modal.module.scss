@@ -1,0 +1,22 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+// TODO: Make this a clickable SVG icon and be adaptable to different colours
+.closeButton {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  //   color: white;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.main {
+  height: 100%;
+}
