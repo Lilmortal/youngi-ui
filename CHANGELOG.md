@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.5.0](https://github.com/Lilmortal/youngi-ui/compare/v2.4.0...v2.5.0) (2020-05-08)
+
+
+### Features
+
+* use social svg icons, use markdown in about page ([2bd657b](https://github.com/Lilmortal/youngi-ui/commit/2bd657b7cb1745233256d041eb9b89f33676f9aa))
+
 ## [2.4.0](https://github.com/Lilmortal/youngi-ui/compare/v2.3.0...v2.4.0) (2020-05-07)
 
 
