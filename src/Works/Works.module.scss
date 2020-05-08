@@ -5,7 +5,7 @@
 }
 
 .categories {
-  font-size: 2.2em;
+  font-size: 2.2rem;
   list-style-type: "-";
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@
 
 .category {
   color: var(--black);
-  padding-bottom: 0.6em;
+  padding-bottom: 0.6rem;
   cursor: pointer;
 
   &:hover,
@@ -27,7 +27,7 @@
   display: grid;
   grid-template-columns: repeat(10, minmax(100px, 1fr));
   grid-template-rows: repeat(10, minmax(100px, 1fr));
-  grid-gap: 1em;
+  grid-gap: 1rem;
 }
 
 .photography {

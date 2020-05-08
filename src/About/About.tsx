@@ -1,10 +1,11 @@
 import Head from "next/head";
 import { GetStaticProps } from "next";
+import ReactMarkdown from "react-markdown";
 
 import { cn } from "../../utils";
 import styles from "./About.module.scss";
 import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
-import LoremIpsum from "../../components/LoremIpsum";
+import SocialIcon from "./SocialIcon";
 
 interface AboutProps {
   photoImage: string;
@@ -27,14 +28,13 @@ const About: React.FC<AboutProps & SideBarProps> = ({
     />
     <div className={cn(styles.content)}>
       <div className={cn(styles.description)}>
-        <h2>Hi there!</h2>
-        <LoremIpsum />
+        <ReactMarkdown source={aboutText} />
       </div>
 
       <div className={cn(styles.socialContact)}>
-        <div>Twitter</div>
-        <div>Facebook</div>
-        <div>Youtube</div>
+        <SocialIcon icon="/twitter.svg" text="Twitter" />
+        <SocialIcon icon="/facebook.svg" text="Facebook" />
+        <SocialIcon icon="/youtube.svg" text="Youtube" />
       </div>
     </div>
   </main>
@@ -42,8 +42,9 @@ const About: React.FC<AboutProps & SideBarProps> = ({
 
 export const getStaticProps: GetStaticProps = async () => {
   const aboutProps: AboutProps = {
-    photoImage: "",
-    aboutText: "",
+    photoImage: "/download.jpg",
+    aboutText:
+      "# Hi there!\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   };
 
   return { props: { ...aboutProps } };

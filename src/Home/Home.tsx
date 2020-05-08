@@ -29,7 +29,6 @@ const Home: React.FC<HomeProps & SideBarProps> = ({
       mainItems={<h2 className={styles.mainItems}>{description}</h2>}
     />
     <div className={cn(styles.content)}>
-      <img src={homeImage} />
       <Link href="/works">
         <a className={cn(styles.next)}></a>
       </Link>
@@ -40,7 +39,7 @@ const Home: React.FC<HomeProps & SideBarProps> = ({
 export const getStaticProps: GetStaticProps = async () => {
   const homeProps: HomeProps = {
     description: "I am a designer with architectural background.",
-    homeImage: "",
+    homeImage: "/download.jpg",
   };
 
   return { props: { ...homeProps } };

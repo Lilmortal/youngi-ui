@@ -6,7 +6,7 @@
 
 .mainItems {
   display: flex;
-  margin-right: 2em;
+  margin-right: 2rem;
   width: 100%;
   background-color: gray;
 }
@@ -18,7 +18,7 @@
     "."
     "description"
     "socialContact";
-  padding: 0 2em;
+  padding: 0 2rem;
   background-color: lightgray;
   grid-column: 2;
 }
@@ -40,6 +40,6 @@
   grid-area: socialContact;
 
   & div {
-    padding-right: 2em;
+    padding-right: 2rem;
   }
 }
