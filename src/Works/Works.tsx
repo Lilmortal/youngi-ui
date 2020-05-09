@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 
@@ -11,7 +11,7 @@ interface CategoryProp {
   name: ImageBioType;
 }
 
-interface WorkProps {
+export interface WorkProps {
   categories: CategoryProp[];
   imageBios: ImageBioProps[];
 }
@@ -88,21 +88,20 @@ const Works: React.FC<SideBarProps & WorkProps> = ({
         <ImageBio
           id={imageBioId}
           onClose={(): void => setImageBioId("")}
-          isOpen={!!imageBioId}
+          open={!!imageBioId}
         />
-        {!imageBioId &&
-          imageBioSortedByType.map((imageBio) => (
-            <img
-              className={cn(
-                styles.image,
-                styles[`image${getNumString[imageBio.id]}`]
-              )}
-              src={imageBio.image}
-              alt={imageBio.name}
-              onClick={(): void => setImageBioId("" + imageBio.id)}
-              key={imageBio.id}
-            />
-          ))}
+        {imageBioSortedByType.map((imageBio) => (
+          <img
+            className={cn(
+              styles.image,
+              styles[`image${getNumString[imageBio.id]}`]
+            )}
+            src={imageBio.image}
+            alt={imageBio.name}
+            onClick={(): void => setImageBioId("" + imageBio.id)}
+            key={imageBio.id}
+          />
+        ))}
       </div>
     </main>
   );

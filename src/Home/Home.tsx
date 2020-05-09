@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 
@@ -6,7 +7,7 @@ import styles from "./Home.module.scss";
 import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
 import Link from "next/link";
 
-interface HomeProps {
+export interface HomeProps {
   description: string;
   homeImage: string;
 }
@@ -28,7 +29,10 @@ const Home: React.FC<HomeProps & SideBarProps> = ({
       {...sideBarProps}
       mainItems={<h2 className={styles.mainItems}>{description}</h2>}
     />
-    <div className={cn(styles.content)}>
+    <div
+      className={cn(styles.content)}
+      style={{ backgroundImage: `url('${homeImage}')` }}
+    >
       <Link href="/works">
         <a className={cn(styles.next)}></a>
       </Link>

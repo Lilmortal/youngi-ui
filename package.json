@@ -72,7 +72,7 @@
     "build": "next build",
     "export": "next export",
     "build:start": "next start",
-    "sb": "start-storybook -p 9000 -s ./public",
+    "sb": "start-storybook -s ./public -p 9000",
     "sb:build": "build-storybook",
     "test": "jest --watch",
     "test:ci": "jest",

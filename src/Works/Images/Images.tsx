@@ -1,18 +1,20 @@
+import React from "react";
+
 import { cn } from "../../../utils";
 import styles from "./Images.module.scss";
 import LoremIpsum from "../../../components/LoremIpsum";
 import Modal from "../../../components/Modal";
 
-interface ImageBioProps {
+export interface ImageBioProps {
   id: string;
-  isOpen?: boolean;
+  open?: boolean;
   onClose(): void;
   className?: string;
 }
 
 const ImageBio: React.FC<ImageBioProps> = ({
   id,
-  isOpen,
+  open,
   onClose,
   className,
 }) => {
@@ -27,7 +29,7 @@ const ImageBio: React.FC<ImageBioProps> = ({
   }
 
   return (
-    <Modal onClose={onClose} isOpen={isOpen}>
+    <Modal onClose={onClose} open={open}>
       <div className={cn(styles.images, className)}>
         <div className={cn(styles.imageContainer)}>
           <img src={image} className={cn(styles.image)} alt={name} />

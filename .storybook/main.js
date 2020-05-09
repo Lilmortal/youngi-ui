@@ -11,7 +11,7 @@ const getStorybookSvgLoader = (config) =>
   );
 
 module.exports = {
-  stories: ["../pages/**/*.stories.tsx"],
+  stories: ["../components/**/*.stories.tsx", "../src/**/*.stories.tsx"],
   webpackFinal: async (config) => {
     /**
      * Storybook sets all SVG loaders to be file-loaders, but in our case we cater

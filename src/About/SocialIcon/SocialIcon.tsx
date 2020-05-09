@@ -1,3 +1,4 @@
+import React from "react";
 import styles from "./SocialIcon.module.scss";
 
 export interface SocialIconProps {
