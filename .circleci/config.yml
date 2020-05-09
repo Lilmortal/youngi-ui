@@ -32,14 +32,14 @@ jobs:
       - run: git config --global user.name "Jack Tan"
       - run: yarn release
       - run: git push --follow-tags origin master
-    filters:
-      branches:
-        only: master
 workflows:
   version: 2
   verify:
     jobs:
       - build
       - release:
+          filters:
+            branches:
+              only: master
           requires:
             - build
