@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.7.0](https://github.com/Lilmortal/youngi-ui/compare/v2.6.0...v2.7.0) (2020-05-10)
+
+
+### Features
+
+* updated modal to handle outside click and esc. Fix all storybook ([076ec4d](https://github.com/Lilmortal/youngi-ui/commit/076ec4d1a6ba00eadc9ebef003e6e34e94db630d))
+
 ## [2.6.0](https://github.com/Lilmortal/youngi-ui/compare/v2.5.0...v2.6.0) (2020-05-10)
 
 
