@@ -1,9 +1,19 @@
 import { SideBarProps } from "../SideBar";
+import links from "../../../pages/links";
 
 const mockSideBar: SideBarProps = {
-  ownerName: "Youngi Kim",
-  aboutLinkText: "About",
-  worksLinkText: "Work",
+  homeLink: {
+    href: links.home,
+    name: "Youngi Kim",
+  },
+  aboutLink: {
+    href: links.about,
+    name: "About",
+  },
+  worksLink: {
+    href: links.works,
+    name: "Work",
+  },
 };
 
 export { mockSideBar };
