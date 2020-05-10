@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 import ReactMarkdown from "react-markdown";
@@ -7,7 +8,7 @@ import styles from "./About.module.scss";
 import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
 import SocialIcon from "./SocialIcon";
 
-interface AboutProps {
+export interface AboutProps {
   photoImage: string;
   aboutText: string;
 }

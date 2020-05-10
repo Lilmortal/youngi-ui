@@ -1,31 +1,52 @@
+import React from "react";
 import noScroll from "no-scroll";
 
 import styles from "./Modal.module.scss";
 import { cn } from "../../utils";
 import { useEffect } from "react";
 
-interface ModalProps {
-  isOpen?: boolean;
+export interface ModalProps {
+  open?: boolean;
+  fullScreen?: boolean;
   onClose(): void;
   children?: React.ReactNode;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+// TODO: Accessibility
+const Modal: React.FC<ModalProps> = ({
+  open = false,
+  fullScreen = false,
+  onClose,
+  children,
+}) => {
   useEffect(() => {
-    if (isOpen) {
+    if (open) {
       noScroll.on();
     } else {
       noScroll.off();
     }
-  }, [isOpen]);
+  }, [open]);
+
+  if (!open) {
+    return null;
+  }
+
+  window.addEventListener("keydown", (e) => {
+    if (e.which === 27) {
+      onClose();
+    }
+  });
 
   return (
-    <div className={cn(styles.modal)}>
-      <div className={cn(styles.closeButton)} onClick={onClose}>
-        X
+    <>
+      <div className={cn(styles.overlay)} onClick={(): void => onClose()}></div>
+      <div className={cn(styles.modal, fullScreen ? styles.fullScreen : "")}>
+        <div className={cn(styles.closeButton)} onClick={onClose}>
+          X
+        </div>
+        <div className={cn(styles.main)}>{children}</div>
       </div>
-      <div className={cn(styles.main)}>{children}</div>
-    </div>
+    </>
   );
 };
 

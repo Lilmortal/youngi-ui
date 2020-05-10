@@ -1,3 +1,4 @@
+import React from "react";
 import Link from "next/link";
 
 import { cn } from "../../utils";
@@ -18,7 +19,11 @@ const SideBar: React.FC<SideBarProps> = ({
 }) => (
   <div className={cn(styles.sideBarContainer)}>
     <aside className={cn(styles.sideBar)}>
-      <div className={cn(styles.ownerName)}>{ownerName}</div>
+      <div className={cn(styles.header)}>
+        <Link href="/">
+          <a className={cn(styles.ownerName)}>{ownerName}</a>
+        </Link>
+      </div>
 
       <div className={cn(styles.mainItems)}>{mainItems}</div>
       <div className={cn(styles.links)}>

@@ -1,3 +1,5 @@
+import React from "react";
+
 const LoremIpsum: React.FC<{}> = () => (
   <div>
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
