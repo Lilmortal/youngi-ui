@@ -57,8 +57,6 @@ const Works: React.FC<SideBarProps & WorkProps> = ({
 
   const imageBioSortedByType = sortedByImageType(imageBios, imageType);
 
-  console.log(imageBios, imageType, imageBioSortedByType);
-
   const mainItems = (
     <ul className={cn(styles.categories)}>
       {categories.map((category) => (
@@ -83,7 +81,7 @@ const Works: React.FC<SideBarProps & WorkProps> = ({
         <title>Youngi Works</title>
         <meta name="description" content="Showcasing Youngi Kims works." />
       </Head>
-      <SideBar {...sideBarProps} mainItems={mainItems} />
+      <SideBar {...sideBarProps}>{mainItems}</SideBar>
       <div className={cn(styles.content, getCategoryStyle[imageType])}>
         <ImageBio
           id={imageBioId}

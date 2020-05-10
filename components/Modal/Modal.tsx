@@ -31,6 +31,7 @@ const Modal: React.FC<ModalProps> = ({
     return null;
   }
 
+  // TODO: keydown or up?
   window.addEventListener("keydown", (e) => {
     if (e.which === 27) {
       onClose();
@@ -39,7 +40,11 @@ const Modal: React.FC<ModalProps> = ({
 
   return (
     <>
-      <div className={cn(styles.overlay)} onClick={(): void => onClose()}></div>
+      <div
+        data-testid="overlay"
+        className={cn(styles.overlay)}
+        onClick={(): void => onClose()}
+      />
       <div className={cn(styles.modal, fullScreen ? styles.fullScreen : "")}>
         <div className={cn(styles.closeButton)} onClick={onClose}>
           X

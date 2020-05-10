@@ -1,13 +1,23 @@
 import React from "react";
 import { SideBarProps } from "./SideBar";
+import links from "../../pages/links";
 
 const withSidebar = <P extends SideBarProps>(Component: React.FC<P>) => (
   props: P
 ): React.ReactElement<P> => {
   const sideBarProps: SideBarProps = {
-    ownerName: "Youngi Kim",
-    aboutLinkText: "About me",
-    worksLinkText: "Work",
+    homeLink: {
+      href: links.home,
+      name: "Youngi Kim",
+    },
+    aboutLink: {
+      href: links.about,
+      name: "About me",
+    },
+    worksLink: {
+      href: links.works,
+      name: "Work",
+    },
   };
 
   return <Component {...props} {...sideBarProps} />;

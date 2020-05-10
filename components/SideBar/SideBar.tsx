@@ -4,34 +4,39 @@ import Link from "next/link";
 import { cn } from "../../utils";
 import styles from "./SideBar.module.scss";
 
+interface SideBarLinkProps {
+  name: string;
+  href: string;
+}
+
 export interface SideBarProps {
-  ownerName: string;
-  aboutLinkText: string;
-  worksLinkText: string;
-  mainItems?: React.ReactNode;
+  homeLink: SideBarLinkProps;
+  aboutLink: SideBarLinkProps;
+  worksLink: SideBarLinkProps;
+  children?: React.ReactNode;
 }
 
 const SideBar: React.FC<SideBarProps> = ({
-  ownerName,
-  aboutLinkText,
-  worksLinkText,
-  mainItems,
+  homeLink,
+  aboutLink,
+  worksLink,
+  children,
 }) => (
   <div className={cn(styles.sideBarContainer)}>
     <aside className={cn(styles.sideBar)}>
       <div className={cn(styles.header)}>
-        <Link href="/">
-          <a className={cn(styles.ownerName)}>{ownerName}</a>
+        <Link href={homeLink.href}>
+          <a className={cn(styles.ownerName)}>{homeLink.name}</a>
         </Link>
       </div>
 
-      <div className={cn(styles.mainItems)}>{mainItems}</div>
+      <div className={cn(styles.mainItems)}>{children}</div>
       <div className={cn(styles.links)}>
-        <Link href="/about">
-          <a>{aboutLinkText}</a>
+        <Link href={aboutLink.href}>
+          <a>{aboutLink.name}</a>
         </Link>
-        <Link href="/works">
-          <a>{worksLinkText}</a>
+        <Link href={worksLink.href}>
+          <a>{worksLink.name}</a>
         </Link>
       </div>
     </aside>
