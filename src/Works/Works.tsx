@@ -85,9 +85,11 @@ const Works: React.FC<SideBarProps & WorkProps> = ({
       </Head>
       <SideBar {...sideBarProps} mainItems={mainItems} />
       <div className={cn(styles.content, getCategoryStyle[imageType])}>
-        {imageBioId && (
-          <ImageBio id={imageBioId} onClose={(): void => setImageBioId("")} />
-        )}
+        <ImageBio
+          id={imageBioId}
+          onClose={(): void => setImageBioId("")}
+          isOpen={!!imageBioId}
+        />
         {!imageBioId &&
           imageBioSortedByType.map((imageBio) => (
             <img
