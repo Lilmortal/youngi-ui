@@ -4,7 +4,7 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  border: 1px solid red;
+  border: 1px solid black;
   margin: 1em;
   background-color: white;
   width: inherit;
@@ -28,6 +28,7 @@
 
 .main {
   height: 100%;
+  padding: 1em;
 }
 
 .overlay {
