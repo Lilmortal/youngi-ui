@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.6.0](https://github.com/Lilmortal/youngi-ui/compare/v2.5.0...v2.6.0) (2020-05-10)
+
+
+### Features
+
+* added modal ([e8c8158](https://github.com/Lilmortal/youngi-ui/commit/e8c8158f137b02208c4b05666ada8aacc73ed1b1))
+
+
+### Bug Fixes
+
+* only run release on master ([ff72ad5](https://github.com/Lilmortal/youngi-ui/commit/ff72ad5b76e747873861f5ad81c394cc9a4fd23d))
+
 ## [2.5.0](https://github.com/Lilmortal/youngi-ui/compare/v2.4.0...v2.5.0) (2020-05-08)
 
 
