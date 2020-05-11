@@ -24,7 +24,7 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: yarn test
+      - run: yarn test:ci
   release:
     docker:
       - image: circleci/node:10
