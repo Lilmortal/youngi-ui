@@ -1,5 +1,5 @@
-import React from "./node_modules/react";
-import Link from "./node_modules/next/link";
+import React from "react";
+import Link from "next/link";
 
 import { cn } from "../../utils";
 import styles from "./Sidebar.module.scss";

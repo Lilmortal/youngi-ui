@@ -1,5 +1,5 @@
-import React from "./node_modules/react";
-import { render, RenderResult } from "./node_modules/@testing-library/react";
+import React from "react";
+import { render, RenderResult } from "@testing-library/react";
 import Sidebar, { SidebarProps } from "./Sidebar";
 import links from "../../src/links";
 
