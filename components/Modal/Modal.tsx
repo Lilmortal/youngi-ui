@@ -4,20 +4,29 @@ import noScroll from "no-scroll";
 import styles from "./Modal.module.scss";
 import { cn } from "../../utils";
 import { useEffect } from "react";
+import Overlay from "./Overlay";
+import CloseButton from "./CloseButton/CloseButton";
+import EscapePress from "./EscapePress";
 
-export interface ModalProps {
+export interface ModalProps extends Styleable {
   open?: boolean;
-  fullScreen?: boolean;
-  onClose(): void;
+  fullScreenOverlay?: boolean;
+  onOutsideAction?(): void;
+  onEscapePress?(): void;
+  onClose?(): void;
   children?: React.ReactNode;
 }
 
 // TODO: Accessibility
 const Modal: React.FC<ModalProps> = ({
   open = false,
-  fullScreen = false,
+  fullScreenOverlay = false,
   onClose,
+  onOutsideAction,
+  onEscapePress,
   children,
+  classNames,
+  style,
 }) => {
   useEffect(() => {
     if (open) {
@@ -31,27 +40,17 @@ const Modal: React.FC<ModalProps> = ({
     return null;
   }
 
-  // TODO: keydown or up?
-  window.addEventListener("keydown", (e) => {
-    if (e.which === 27) {
-      onClose();
-    }
-  });
-
   return (
-    <>
-      <div
-        data-testid="overlay"
-        className={cn(styles.overlay)}
-        onClick={(): void => onClose()}
-      />
-      <div className={cn(styles.modal, fullScreen ? styles.fullScreen : "")}>
-        <div className={cn(styles.closeButton)} onClick={onClose}>
-          X
-        </div>
-        <div className={cn(styles.main)}>{children}</div>
+    <Overlay
+      fullScreenOverlay={fullScreenOverlay}
+      onOutsideAction={onOutsideAction}
+    >
+      {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
+      {onClose && <CloseButton onClose={onClose} />}
+      <div className={cn(styles.bodyContent, classNames)} style={style}>
+        {children}
       </div>
-    </>
+    </Overlay>
   );
 };
 

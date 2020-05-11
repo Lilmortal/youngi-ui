@@ -4,25 +4,26 @@ import { GetStaticProps } from "next";
 
 import { cn } from "../../utils";
 import styles from "./Works.module.scss";
-import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
-import ImageBio from "./Images";
+import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
+import ImageBiography from "./ImageBiography";
 
 interface CategoryProp {
-  name: ImageBioType;
+  name: ImageType;
 }
 
 export interface WorkOwnProps {
   categories: CategoryProp[];
-  imageBios: ImageBioProps[];
+  images: ImageProps[];
 }
 
-type ImageBioType = "Photography" | "Illustration" | "Architecture";
+type ImageType = "Photography" | "Illustration" | "Architecture";
 
-interface ImageBioProps {
+interface ImageProps {
   id: number;
+  layoutId: number;
   image: string;
   name: string;
-  type: ImageBioType;
+  type: ImageType;
 }
 
 // TODO: share this with scss
@@ -35,39 +36,45 @@ const getNumString: { [key: number]: string } = {
   6: "Six",
 };
 
-export const getCategoryStyle: { [key in ImageBioType]: string } = {
+export const getImageCategoriesLayout: { [key in ImageType]: string } = {
   Photography: styles.photography,
   Illustration: styles.illustration,
   Architecture: styles.architecture,
 };
 
 const sortedByImageType = (
-  imageBios: ImageBioProps[],
-  type: ImageBioType
-): ImageBioProps[] => imageBios.filter((imageBio) => imageBio.type === type);
+  images: ImageProps[],
+  type: ImageType
+): ImageProps[] => images.filter((image) => image.type === type);
 
-export interface WorkProps extends WorkOwnProps, SideBarProps {}
+export interface WorkProps extends WorkOwnProps, SidebarProps, Styleable {}
 
 const Works: React.FC<WorkProps> = ({
   categories,
-  imageBios,
-  ...sideBarProps
+  images,
+  classNames,
+  style,
+  ...sidebarProps
 }) => {
-  const [imageType, setImageType] = useState<ImageBioType>("Photography");
+  const [selectedImageType, setSelectedImageType] = useState<ImageType>(
+    "Photography"
+  );
 
-  const [imageBioId, setImageBioId] = useState("");
+  const [selectedImageId, setSelectedImageId] = useState("");
 
-  const imageBioSortedByType = sortedByImageType(imageBios, imageType);
+  const imagesSortedByType = sortedByImageType(images, selectedImageType);
 
-  const mainItems = (
-    <ul className={cn(styles.categories)}>
+  const sidebarCategories = (
+    <ul className={cn(styles.sidebarCategories)}>
       {categories.map((category) => (
         <li
           className={cn(
-            styles.category,
-            imageType === category.name ? styles["category--selected"] : ""
+            styles.sidebarCategory,
+            selectedImageType === category.name
+              ? styles["category--selected"]
+              : ""
           )}
-          onClick={(): void => setImageType(category.name)}
+          onClick={(): void => setSelectedImageType(category.name)}
           // TODO: UUID
           key={category.name}
         >
@@ -78,36 +85,39 @@ const Works: React.FC<WorkProps> = ({
   );
 
   return (
-    <main className={styles.works}>
+    <div className={cn(styles.works, classNames)} style={style}>
       <Head>
         <title>Youngi Works</title>
         <meta name="description" content="Showcasing Youngi Kims works." />
       </Head>
-      <SideBar {...sideBarProps}>{mainItems}</SideBar>
+      <Sidebar {...sidebarProps}>{sidebarCategories}</Sidebar>
       <div
-        className={cn(styles.content, getCategoryStyle[imageType])}
+        className={cn(
+          styles.portfolio,
+          getImageCategoriesLayout[selectedImageType]
+        )}
         data-testid="images"
       >
-        <ImageBio
-          id={imageBioId}
-          onClose={(): void => setImageBioId("")}
-          open={!!imageBioId}
+        <ImageBiography
+          id={selectedImageId}
+          onClose={(): void => setSelectedImageId("")}
+          open={!!selectedImageId}
         />
-        {imageBioSortedByType.map((imageBio) => (
+        {imagesSortedByType.map((image) => (
           <img
             className={cn(
-              styles.image,
-              styles[`image${getNumString[imageBio.id]}`]
+              styles.portfolioImage,
+              styles[`portfolioImage${getNumString[image.layoutId]}`]
             )}
-            src={imageBio.image}
-            alt={imageBio.name}
-            onClick={(): void => setImageBioId("" + imageBio.id)}
-            key={imageBio.id}
-            data-testid={imageBio.id}
+            src={image.image}
+            alt={image.name}
+            onClick={(): void => setSelectedImageId("" + image.id)}
+            key={image.id}
+            data-testid={image.id}
           />
         ))}
       </div>
-    </main>
+    </div>
   );
 };
 
@@ -120,111 +130,129 @@ export const getStaticProps: GetStaticProps = async () => {
       { name: "Illustration" },
       { name: "Architecture" },
     ],
-    imageBios: [
+    images: [
       {
         id: 1,
+        layoutId: 1,
         image: "/download.jpg",
         name: "Photography 1",
         type: "Photography",
       },
       {
         id: 2,
+        layoutId: 2,
         image: "/download.jpg",
         name: "Photography 2",
         type: "Photography",
       },
       {
         id: 3,
+        layoutId: 3,
         image: "/download.jpg",
         name: "Photography 3",
         type: "Photography",
       },
       {
         id: 4,
+        layoutId: 4,
         image: "/download.jpg",
         name: "Photography 4",
         type: "Photography",
       },
       {
         id: 5,
+        layoutId: 5,
         image: "/download.jpg",
         name: "Photography 5",
         type: "Photography",
       },
       {
         id: 6,
+        layoutId: 6,
         image: "/download.jpg",
         name: "Photography 6",
         type: "Photography",
       },
       {
         id: 7,
+        layoutId: 1,
         image: "/download.jpg",
         name: "Illustration 1",
         type: "Illustration",
       },
       {
         id: 8,
+        layoutId: 2,
         image: "/download.jpg",
         name: "Illustration 2",
         type: "Illustration",
       },
       {
         id: 9,
+        layoutId: 3,
         image: "/download.jpg",
         name: "Illustration 3",
         type: "Illustration",
       },
       {
         id: 10,
+        layoutId: 4,
         image: "/download.jpg",
         name: "Illustration 4",
         type: "Illustration",
       },
       {
         id: 11,
+        layoutId: 5,
         image: "/download.jpg",
         name: "Illustration 5",
         type: "Illustration",
       },
       {
         id: 12,
+        layoutId: 6,
         image: "/download.jpg",
         name: "Illustration 6",
         type: "Illustration",
       },
       {
         id: 13,
+        layoutId: 1,
         image: "/download.jpg",
         name: "Architecture 1",
         type: "Architecture",
       },
       {
         id: 14,
+        layoutId: 2,
         image: "/download.jpg",
         name: "Architecture 2",
         type: "Architecture",
       },
       {
         id: 15,
+        layoutId: 3,
         image: "/download.jpg",
         name: "Architecture 3",
         type: "Architecture",
       },
       {
         id: 16,
+        layoutId: 4,
         image: "/download.jpg",
         name: "Architecture 4",
         type: "Architecture",
       },
       {
         id: 17,
+        layoutId: 5,
         image: "/download.jpg",
         name: "Architecture 5",
         type: "Architecture",
       },
       {
         id: 18,
+        layoutId: 6,
         image: "/download.jpg",
         name: "Architecture 6",
         type: "Architecture",
@@ -237,4 +265,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default withSideBar(Works);
+export default withSidebar(Works);

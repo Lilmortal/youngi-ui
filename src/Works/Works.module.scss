@@ -4,7 +4,7 @@
   min-height: 100vh;
 }
 
-.categories {
+.sidebarCategories {
   font-size: 2.2rem;
   list-style-type: "-";
   display: flex;
@@ -12,7 +12,7 @@
   justify-content: center;
 }
 
-.category {
+.sidebarCategory {
   color: var(--black);
   padding-bottom: 0.6rem;
   cursor: pointer;
@@ -23,7 +23,7 @@
   }
 }
 
-.content {
+.portfolio {
   display: grid;
   grid-template-columns: repeat(10, minmax(100px, 1fr));
   grid-template-rows: repeat(10, minmax(100px, 1fr));
@@ -82,12 +82,12 @@ $nums: (
 );
 
 @each $num, $i in $nums {
-  .image#{$num} {
+  .portfolioImage#{$num} {
     grid-area: #{$i};
   }
 }
 
-.image {
+.portfolioImage {
   width: 100%;
   border: 1px solid black;
   cursor: pointer;

@@ -1,19 +1,19 @@
-import { SideBarProps } from "../SideBar";
+import { SidebarProps } from "../Sidebar";
 import links from "../../../src/links";
 
-const mockSideBar: SideBarProps = {
+const mockSidebar: SidebarProps = {
   homeLink: {
     href: links.home,
-    name: "Youngi Kim",
+    content: "Youngi Kim",
   },
   aboutLink: {
     href: links.about,
-    name: "About",
+    content: "About",
   },
   worksLink: {
     href: links.works,
-    name: "Work",
+    content: "Work",
   },
 };
 
-export { mockSideBar };
+export { mockSidebar };

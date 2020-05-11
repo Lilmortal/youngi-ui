@@ -1,24 +1,26 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import SideBar, { SideBarProps } from "./SideBar";
+import Sidebar, { SidebarProps } from "./Sidebar";
 import links from "../../src/links";
 
-const defaultProps: SideBarProps = {
+const defaultProps: SidebarProps = {
   homeLink: {
     href: links.home,
-    name: "Youngi Kim",
+    content: "Youngi Kim",
   },
   aboutLink: {
     href: links.about,
-    name: "About me",
+    content: "About me",
   },
   worksLink: {
     href: links.works,
-    name: "Work",
+    content: "Work",
   },
 };
 
-storiesOf("SideBar", module).add("default", () => (
-  <SideBar {...defaultProps} />
-));
+storiesOf("Sidebar", module)
+  .add("without content", () => <Sidebar {...defaultProps} />)
+  .add("with content", () => (
+    <Sidebar {...defaultProps}>This is a body content</Sidebar>
+  ));

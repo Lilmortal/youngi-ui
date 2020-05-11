@@ -1,69 +1,57 @@
 import React from "react";
 import { render, RenderResult } from "@testing-library/react";
-import SideBar, { SideBarProps } from "./SideBar";
+import Sidebar, { SidebarProps } from "./Sidebar";
 import links from "../../src/links";
 
 const homeLink = {
   href: links.home,
-  name: "Youngi Kim",
+  content: "Youngi Kim",
 };
 const aboutLink = {
   href: links.about,
-  name: "About me",
+  content: "About me",
 };
 
 const worksLink = {
   href: links.works,
-  name: "Work",
+  content: "Work",
 };
 
-const defaultProps: SideBarProps = {
+const defaultProps: SidebarProps = {
   homeLink,
   aboutLink,
   worksLink,
 };
 
-const renderSidebar = (props?: Partial<SideBarProps>): RenderResult =>
-  render(<SideBar {...defaultProps} {...props} />);
+const renderSidebar = (props?: Partial<SidebarProps>): RenderResult =>
+  render(<Sidebar {...defaultProps} {...props} />);
 
 describe("sidebar", () => {
   it("should display the home link", () => {
     const { getByText } = renderSidebar();
 
-    const homePageLink = getByText(homeLink.name);
+    const homePageLink = getByText(homeLink.content);
     expect(homePageLink).toBeInTheDocument();
   });
 
   it("should display the work link", () => {
     const { getByText } = renderSidebar();
 
-    const workPageLink = getByText(worksLink.name);
+    const workPageLink = getByText(worksLink.content);
     expect(workPageLink).toBeInTheDocument();
   });
 
   it("should display the about link", () => {
     const { getByText } = renderSidebar();
 
-    const aboutPageLink = getByText(aboutLink.name);
+    const aboutPageLink = getByText(aboutLink.content);
+    expect(aboutPageLink).toBeInTheDocument();
+  });
+
+  it("should display the main content", () => {
+    const { getByText } = renderSidebar({ children: <div>Content</div> });
+
+    const aboutPageLink = getByText("Content");
     expect(aboutPageLink).toBeInTheDocument();
   });
 });
-
-// interface LinkMock<T> {
-//   children: T;
-// }
-
-// jest.mock("next/link", () => {
-//   return <T extends object>({ children }: LinkMock<T>): T => {
-//     return children;
-//   };
-// });
-// it("should redirect to home page on owner link clicked", () => {
-//   const { container, getByText } = renderSidebar();
-
-//   const homePageLink = getByText(homeLink.name);
-//   fireEvent.click(homePageLink);
-
-//   expect(container.innerHTML).toEqual("");
-//   // expect(window.location.href).toEqual("http://localhost/");
-// });

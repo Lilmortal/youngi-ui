@@ -1,3 +1,3 @@
-export { default } from "./SideBar";
-export type { SideBarProps } from "./SideBar";
-export { default as withSideBar } from "./withSideBar";
+export { default } from "./Sidebar";
+export type { SidebarProps } from "./Sidebar";
+export { default as withSidebar } from "./withSidebar";

@@ -1,1 +1,1 @@
-export * from "./mock-sideBar";
+export * from "./mock-sidebar";

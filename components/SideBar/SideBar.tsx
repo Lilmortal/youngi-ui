@@ -2,45 +2,45 @@ import React from "react";
 import Link from "next/link";
 
 import { cn } from "../../utils";
-import styles from "./SideBar.module.scss";
+import styles from "./Sidebar.module.scss";
 
-interface SideBarLinkProps {
-  name: string;
+interface SidebarLinkProps {
   href: string;
+  content: string;
 }
 
-export interface SideBarProps {
-  homeLink: SideBarLinkProps;
-  aboutLink: SideBarLinkProps;
-  worksLink: SideBarLinkProps;
+export interface SidebarProps extends Styleable {
+  homeLink: SidebarLinkProps;
+  aboutLink: SidebarLinkProps;
+  worksLink: SidebarLinkProps;
   children?: React.ReactNode;
 }
 
-const SideBar: React.FC<SideBarProps> = ({
+const Sidebar: React.FC<SidebarProps> = ({
   homeLink,
   aboutLink,
   worksLink,
   children,
+  classNames,
+  style,
 }) => (
-  <div className={cn(styles.sideBarContainer)}>
-    <aside className={cn(styles.sideBar)}>
-      <div className={cn(styles.header)}>
-        <Link href={homeLink.href}>
-          <a className={cn(styles.ownerName)}>{homeLink.name}</a>
-        </Link>
-      </div>
+  <div className={cn(styles.sidebar, classNames)} style={style}>
+    <div className={cn(styles.home)}>
+      <Link href={homeLink.href}>
+        <a className={cn(styles.homeLinkContent)}>{homeLink.content}</a>
+      </Link>
+    </div>
 
-      <div className={cn(styles.mainItems)}>{children}</div>
-      <div className={cn(styles.links)}>
-        <Link href={aboutLink.href}>
-          <a>{aboutLink.name}</a>
-        </Link>
-        <Link href={worksLink.href}>
-          <a>{worksLink.name}</a>
-        </Link>
-      </div>
-    </aside>
+    <div className={cn(styles.bodyContent)}>{children}</div>
+    <nav className={cn(styles.navigation)}>
+      <Link href={aboutLink.href}>
+        <a className={cn(styles.navigationContent)}>{aboutLink.content}</a>
+      </Link>
+      <Link href={worksLink.href}>
+        <a className={cn(styles.navigationContent)}>{worksLink.content}</a>
+      </Link>
+    </nav>
   </div>
 );
 
-export default SideBar;
+export default Sidebar;
