@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.8.0](https://github.com/Lilmortal/youngi-ui/compare/v2.7.0...v2.8.0) (2020-05-11)
+
+
+### Features
+
+* added tests for components and renamed few interfaces ([ac9b144](https://github.com/Lilmortal/youngi-ui/commit/ac9b1448c91414be9c5ac15ca5515a1575116f5b))
+* added tests for works page, and run test in circleCI ([4c16872](https://github.com/Lilmortal/youngi-ui/commit/4c16872c1a51bf14fe700998bad225114e8ac541))
+
+
+### Bug Fixes
+
+* fix sidebar stories with incorrect props ([7bc07f2](https://github.com/Lilmortal/youngi-ui/commit/7bc07f20d383f9bdc0c52a0864093a6d42aeef40))
+* move links.ts from /pages to /src ([1cb8299](https://github.com/Lilmortal/youngi-ui/commit/1cb82992fa03fc3f0913842877e114faf9a3703d))
+* release should require test on circleCI ([c7cf433](https://github.com/Lilmortal/youngi-ui/commit/c7cf433aee6445eeebe2f6602955bdedc857794d))
+* removed css partial from next config ([9e5f2da](https://github.com/Lilmortal/youngi-ui/commit/9e5f2da7a67609b3bf22e3518281dedb786d1b7e))
+* replace test with test:ci in circleCI ([ed02e91](https://github.com/Lilmortal/youngi-ui/commit/ed02e910832bb6a3c5c07c9f5a9dcee85b19c265))
+
 ## [2.7.0](https://github.com/Lilmortal/youngi-ui/compare/v2.6.0...v2.7.0) (2020-05-10)
 
 
