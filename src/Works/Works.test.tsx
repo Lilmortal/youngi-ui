@@ -83,6 +83,7 @@ describe("works", () => {
     expect(getByTestId("images")).toHaveClass(styles.architecture);
   });
 
+  // TODO: Flaky to rely on class names
   it("should not highlight architecture navigation if not selected", () => {
     const { getByText } = renderWorksPage();
 
@@ -92,7 +93,7 @@ describe("works", () => {
     fireEvent.click(illustrationNavigation);
 
     expect(architectureNavigation).not.toHaveClass(
-      styles["category--selected"]
+      styles["sidebarCategory--selected"]
     );
   });
 
@@ -103,7 +104,9 @@ describe("works", () => {
 
     fireEvent.click(architectureNavigation);
 
-    expect(architectureNavigation).toHaveClass(styles["category--selected"]);
+    expect(architectureNavigation).toHaveClass(
+      styles["sidebarCategory--selected"]
+    );
   });
 
   it("should display an architecture modal when an architecture image is selected", () => {
