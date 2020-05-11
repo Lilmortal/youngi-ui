@@ -50,80 +50,79 @@ const defaultProps: WorkProps = {
       type: "Photography",
     },
     {
-      id: 1,
+      id: 7,
       image: "/download.jpg",
       name: "Illustration 1",
       type: "Illustration",
     },
     {
-      id: 2,
+      id: 8,
       image: "/download.jpg",
       name: "Illustration 2",
       type: "Illustration",
     },
     {
-      id: 3,
+      id: 9,
       image: "/download.jpg",
       name: "Illustration 3",
       type: "Illustration",
     },
     {
-      id: 4,
+      id: 10,
       image: "/download.jpg",
       name: "Illustration 4",
       type: "Illustration",
     },
     {
-      id: 5,
+      id: 11,
       image: "/download.jpg",
       name: "Illustration 5",
       type: "Illustration",
     },
     {
-      id: 6,
+      id: 12,
       image: "/download.jpg",
       name: "Illustration 6",
       type: "Illustration",
     },
     {
-      id: 1,
+      id: 13,
       image: "/download.jpg",
       name: "Architecture 1",
       type: "Architecture",
     },
     {
-      id: 2,
+      id: 14,
       image: "/download.jpg",
       name: "Architecture 2",
       type: "Architecture",
     },
     {
-      id: 3,
+      id: 15,
       image: "/download.jpg",
       name: "Architecture 3",
       type: "Architecture",
     },
     {
-      id: 4,
+      id: 16,
       image: "/download.jpg",
       name: "Architecture 4",
       type: "Architecture",
     },
     {
-      id: 5,
+      id: 17,
       image: "/download.jpg",
       name: "Architecture 5",
       type: "Architecture",
     },
     {
-      id: 6,
+      id: 18,
       image: "/download.jpg",
       name: "Architecture 6",
       type: "Architecture",
     },
   ],
+  ...mockSideBar,
 };
 
-storiesOf("Works", module).add("default", () => (
-  <Works {...defaultProps} {...mockSideBar} />
-));
+storiesOf("Works", module).add("default", () => <Works {...defaultProps} />);

@@ -7,8 +7,7 @@ import { mockSideBar } from "../../components/SideBar/mock-sideBar";
 const defaultProps: HomeProps = {
   description: "I am a designer with architectural background.",
   homeImage: "/download.jpg",
+  ...mockSideBar,
 };
 
-storiesOf("Home", module).add("default", () => (
-  <Home {...defaultProps} {...mockSideBar} />
-));
+storiesOf("Home", module).add("default", () => <Home {...defaultProps} />);

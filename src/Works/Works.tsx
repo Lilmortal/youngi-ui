@@ -11,7 +11,7 @@ interface CategoryProp {
   name: ImageBioType;
 }
 
-export interface WorkProps {
+export interface WorkOwnProps {
   categories: CategoryProp[];
   imageBios: ImageBioProps[];
 }
@@ -35,7 +35,7 @@ const getNumString: { [key: number]: string } = {
   6: "Six",
 };
 
-const getCategoryStyle: { [key in ImageBioType]: string } = {
+export const getCategoryStyle: { [key in ImageBioType]: string } = {
   Photography: styles.photography,
   Illustration: styles.illustration,
   Architecture: styles.architecture,
@@ -46,7 +46,9 @@ const sortedByImageType = (
   type: ImageBioType
 ): ImageBioProps[] => imageBios.filter((imageBio) => imageBio.type === type);
 
-const Works: React.FC<SideBarProps & WorkProps> = ({
+export interface WorkProps extends WorkOwnProps, SideBarProps {}
+
+const Works: React.FC<WorkProps> = ({
   categories,
   imageBios,
   ...sideBarProps
@@ -56,8 +58,6 @@ const Works: React.FC<SideBarProps & WorkProps> = ({
   const [imageBioId, setImageBioId] = useState("");
 
   const imageBioSortedByType = sortedByImageType(imageBios, imageType);
-
-  console.log(imageBios, imageType, imageBioSortedByType);
 
   const mainItems = (
     <ul className={cn(styles.categories)}>
@@ -83,8 +83,11 @@ const Works: React.FC<SideBarProps & WorkProps> = ({
         <title>Youngi Works</title>
         <meta name="description" content="Showcasing Youngi Kims works." />
       </Head>
-      <SideBar {...sideBarProps} mainItems={mainItems} />
-      <div className={cn(styles.content, getCategoryStyle[imageType])}>
+      <SideBar {...sideBarProps}>{mainItems}</SideBar>
+      <div
+        className={cn(styles.content, getCategoryStyle[imageType])}
+        data-testid="images"
+      >
         <ImageBio
           id={imageBioId}
           onClose={(): void => setImageBioId("")}
@@ -100,6 +103,7 @@ const Works: React.FC<SideBarProps & WorkProps> = ({
             alt={imageBio.name}
             onClick={(): void => setImageBioId("" + imageBio.id)}
             key={imageBio.id}
+            data-testid={imageBio.id}
           />
         ))}
       </div>
@@ -108,7 +112,7 @@ const Works: React.FC<SideBarProps & WorkProps> = ({
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const workProps: WorkProps = {
+  const workProps: WorkOwnProps = {
     categories: [
       {
         name: "Photography",
@@ -154,73 +158,73 @@ export const getStaticProps: GetStaticProps = async () => {
         type: "Photography",
       },
       {
-        id: 1,
+        id: 7,
         image: "/download.jpg",
         name: "Illustration 1",
         type: "Illustration",
       },
       {
-        id: 2,
+        id: 8,
         image: "/download.jpg",
         name: "Illustration 2",
         type: "Illustration",
       },
       {
-        id: 3,
+        id: 9,
         image: "/download.jpg",
         name: "Illustration 3",
         type: "Illustration",
       },
       {
-        id: 4,
+        id: 10,
         image: "/download.jpg",
         name: "Illustration 4",
         type: "Illustration",
       },
       {
-        id: 5,
+        id: 11,
         image: "/download.jpg",
         name: "Illustration 5",
         type: "Illustration",
       },
       {
-        id: 6,
+        id: 12,
         image: "/download.jpg",
         name: "Illustration 6",
         type: "Illustration",
       },
       {
-        id: 1,
+        id: 13,
         image: "/download.jpg",
         name: "Architecture 1",
         type: "Architecture",
       },
       {
-        id: 2,
+        id: 14,
         image: "/download.jpg",
         name: "Architecture 2",
         type: "Architecture",
       },
       {
-        id: 3,
+        id: 15,
         image: "/download.jpg",
         name: "Architecture 3",
         type: "Architecture",
       },
       {
-        id: 4,
+        id: 16,
         image: "/download.jpg",
         name: "Architecture 4",
         type: "Architecture",
       },
       {
-        id: 5,
+        id: 17,
         image: "/download.jpg",
         name: "Architecture 5",
         type: "Architecture",
       },
       {
-        id: 6,
+        id: 18,
         image: "/download.jpg",
         name: "Architecture 6",
         type: "Architecture",

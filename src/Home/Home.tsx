@@ -6,13 +6,16 @@ import { cn } from "../../utils";
 import styles from "./Home.module.scss";
 import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
 import Link from "next/link";
+import links from "../links";
 
-export interface HomeProps {
+interface HomeOwnProps {
   description: string;
   homeImage: string;
 }
 
-const Home: React.FC<HomeProps & SideBarProps> = ({
+export interface HomeProps extends HomeOwnProps, SideBarProps {}
+
+const Home: React.FC<HomeProps> = ({
   homeImage,
   description,
   ...sideBarProps
@@ -25,15 +28,14 @@ const Home: React.FC<HomeProps & SideBarProps> = ({
         content="A portfolio website showcasing Youngi Kim's photography."
       />
     </Head>
-    <SideBar
-      {...sideBarProps}
-      mainItems={<h2 className={styles.mainItems}>{description}</h2>}
-    />
+    <SideBar {...sideBarProps}>
+      <h2 className={styles.mainItems}>{description}</h2>
+    </SideBar>
     <div
       className={cn(styles.content)}
       style={{ backgroundImage: `url('${homeImage}')` }}
     >
-      <Link href="/works">
+      <Link href={links.works}>
         <a className={cn(styles.next)}></a>
       </Link>
     </div>
@@ -41,7 +43,7 @@ const Home: React.FC<HomeProps & SideBarProps> = ({
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const homeProps: HomeProps = {
+  const homeProps: HomeOwnProps = {
     description: "I am a designer with architectural background.",
     homeImage: "/download.jpg",
   };
