@@ -7,4 +7,5 @@ module.exports = {
   webpack(config) {
     return createConfig(env(), svg())(config);
   },
+  distDir: "build",
 };

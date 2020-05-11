@@ -71,7 +71,7 @@ const Works: React.FC<WorkProps> = ({
           className={cn(
             styles.sidebarCategory,
             selectedImageType === category.name
-              ? styles["category--selected"]
+              ? styles["sidebarCategory--selected"]
               : ""
           )}
           onClick={(): void => setSelectedImageType(category.name)}

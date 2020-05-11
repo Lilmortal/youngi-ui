@@ -14,6 +14,7 @@ module.exports = {
   addons: [
     "@storybook/addon-actions/register",
     "@storybook/addon-a11y/register",
+    "@storybook/addon-viewport/register",
   ],
   stories: ["../components/**/*.stories.tsx", "../src/**/*.stories.tsx"],
   webpackFinal: async (config) => {
