@@ -1,5 +1,5 @@
 import { SideBarProps } from "../SideBar";
-import links from "../../../pages/links";
+import links from "../../../src/links";
 
 const mockSideBar: SideBarProps = {
   homeLink: {

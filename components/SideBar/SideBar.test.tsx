@@ -1,7 +1,7 @@
 import React from "react";
 import { render, RenderResult } from "@testing-library/react";
 import SideBar, { SideBarProps } from "./SideBar";
-import links from "../../pages/links";
+import links from "../../src/links";
 
 const homeLink = {
   href: links.home,

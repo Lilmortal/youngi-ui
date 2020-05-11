@@ -6,7 +6,7 @@ import { cn } from "../../utils";
 import styles from "./Home.module.scss";
 import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
 import Link from "next/link";
-import links from "../../pages/links";
+import links from "../links";
 
 interface HomeOwnProps {
   description: string;

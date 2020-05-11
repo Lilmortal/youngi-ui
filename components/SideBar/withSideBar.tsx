@@ -1,6 +1,6 @@
 import React from "react";
 import { SideBarProps } from "./SideBar";
-import links from "../../pages/links";
+import links from "../../src/links";
 
 const withSidebar = <P extends SideBarProps>(Component: React.FC<P>) => (
   props: P
