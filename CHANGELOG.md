@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.9.0](https://github.com/Lilmortal/youngi-ui/compare/v2.8.0...v2.9.0) (2020-05-11)
+
+
+### Features
+
+* renamed components to a more suitable name, added modal stories ([e1cb88e](https://github.com/Lilmortal/youngi-ui/commit/e1cb88e9abe7655d0275d5c5645772d650c38089))
+
+
+### Bug Fixes
+
+* added tsconfig for test ([6c1fa56](https://github.com/Lilmortal/youngi-ui/commit/6c1fa56a20357fa87525c7fd7784f1567d1b3b90))
+* fix node modules showing up on imports ([0805d1e](https://github.com/Lilmortal/youngi-ui/commit/0805d1e851d4fa8a0924508c3f805741fd37ca78))
+* removed extra space in imports ([99bb1df](https://github.com/Lilmortal/youngi-ui/commit/99bb1dfdd61a09452ac0faae6a7b2ab39afe9184))
+* rename sidebar case sensitive folder names ([3c8adde](https://github.com/Lilmortal/youngi-ui/commit/3c8adde05a9f2ef0793a0d93f28ed53f9517ea86))
+* rename SideBar to sidebar for all imports ([6f9d885](https://github.com/Lilmortal/youngi-ui/commit/6f9d8855a3fe9b8264ea86236a4846f2942752a7))
+* storybook and next build goes to /build, added viewport addons ([6cd6c91](https://github.com/Lilmortal/youngi-ui/commit/6cd6c9119a01ba41f147e70015455d88efc919a3))
+
 ## [2.8.0](https://github.com/Lilmortal/youngi-ui/compare/v2.7.0...v2.8.0) (2020-05-11)
 
 
