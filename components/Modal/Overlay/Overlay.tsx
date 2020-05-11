@@ -1,7 +1,9 @@
 import React from "react";
-import { cn } from "../../../utils";
+import { cn, createBem } from "../../../utils";
 
 import styles from "./Overlay.module.scss";
+
+const bem = createBem(styles);
 
 export interface OverlayProps extends Styleable {
   onOutsideAction?(): void;
@@ -19,13 +21,12 @@ const Overlay: React.FC<OverlayProps> = ({
   <>
     <div
       data-testid="overlay"
-      className={cn(styles.overlay)}
+      className={cn(bem())}
       onClick={(): void => onOutsideAction && onOutsideAction()}
     />
     <div
       className={cn(
-        styles.bodyContent,
-        fullScreenOverlay ? styles.fullScreenOverlay : "",
+        bem("content", { fullScreen: fullScreenOverlay }),
         classNames
       )}
       style={style}

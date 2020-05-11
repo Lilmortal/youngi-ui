@@ -5,37 +5,37 @@
   position: sticky;
   top: 0;
   height: 100vh;
-}
 
-.home {
-  display: flex;
-  align-items: center;
-}
+  &__home {
+    display: flex;
+    align-items: center;
+  }
 
-.homeLinkContent {
-  font-size: 1.3rem;
-  text-decoration: none;
-  color: black;
-}
+  &__homeLinkContent {
+    font-size: 1.3rem;
+    text-decoration: none;
+    color: black;
+  }
 
-.bodyContent {
-  display: flex;
-}
+  &__bodyContent {
+    display: flex;
+  }
 
-.navigation {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-.navigationContent {
-  font-size: 1.3rem;
-  color: lightgray;
-  text-decoration: none;
-  display: block;
+  &__navigationContent {
+    font-size: 1.3rem;
+    color: lightgray;
+    text-decoration: none;
+    display: block;
 
-  &:first-child {
-    border-top: 2px solid lightgray;
-    align-self: flex-start;
+    &:first-child {
+      border-top: 2px solid lightgray;
+      align-self: flex-start;
+    }
   }
 }

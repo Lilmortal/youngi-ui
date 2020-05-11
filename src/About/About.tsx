@@ -3,10 +3,12 @@ import Head from "next/head";
 import { GetStaticProps } from "next";
 import ReactMarkdown from "react-markdown";
 
-import { cn } from "../../utils";
+import { cn, createBem } from "../../utils";
 import styles from "./About.module.scss";
 import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
 import SocialIcon from "./SocialIcon";
+
+const bem = createBem(styles);
 
 interface AboutOwnProps {
   profileImageLink: string;
@@ -22,20 +24,20 @@ const About: React.FC<AboutProps> = ({
   style,
   ...sidebarProps
 }) => (
-  <div className={cn(styles.about, classNames)} style={style}>
+  <div className={cn(bem(), classNames)} style={style}>
     <Head>
       <title>About me</title>
       <meta name="description" content="About Youngi" />
     </Head>
     <Sidebar {...sidebarProps}>
-      <img src={profileImageLink} className={cn(styles.sideBarContents)} />
+      <img src={profileImageLink} className={cn(bem("sideBarContents"))} />
     </Sidebar>
-    <div className={cn(styles.contents)}>
-      <div className={cn(styles.biography)}>
+    <div className={cn(bem("contents"))}>
+      <div className={cn(bem("biography"))}>
         <ReactMarkdown source={biographyContents} />
       </div>
 
-      <div className={cn(styles.socialIconsBar)}>
+      <div className={cn(bem("socialIconsBar"))}>
         <SocialIcon icon="/twitter.svg">Twitter</SocialIcon>
         <SocialIcon icon="/facebook.svg">Facebook</SocialIcon>
         <SocialIcon icon="/youtube.svg">Youtube</SocialIcon>

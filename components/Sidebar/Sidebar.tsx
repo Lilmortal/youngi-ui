@@ -1,8 +1,10 @@
 import React from "react";
 import Link from "next/link";
 
-import { cn } from "../../utils";
+import { cn, createBem } from "../../utils";
 import styles from "./Sidebar.module.scss";
+
+const bem = createBem(styles);
 
 interface SidebarLinkProps {
   href: string;
@@ -24,20 +26,20 @@ const Sidebar: React.FC<SidebarProps> = ({
   classNames,
   style,
 }) => (
-  <div className={cn(styles.sidebar, classNames)} style={style}>
-    <div className={cn(styles.home)}>
+  <div className={cn(bem(), classNames)} style={style}>
+    <div className={cn(bem("home"))}>
       <Link href={homeLink.href}>
-        <a className={cn(styles.homeLinkContent)}>{homeLink.content}</a>
+        <a className={cn(bem("homeLinkContent"))}>{homeLink.content}</a>
       </Link>
     </div>
 
-    <div className={cn(styles.bodyContent)}>{children}</div>
-    <nav className={cn(styles.navigation)}>
+    <div className={cn(bem("bodyContent"))}>{children}</div>
+    <nav className={cn(bem("navigation"))}>
       <Link href={aboutLink.href}>
-        <a className={cn(styles.navigationContent)}>{aboutLink.content}</a>
+        <a className={cn(bem("navigationContent"))}>{aboutLink.content}</a>
       </Link>
       <Link href={worksLink.href}>
-        <a className={cn(styles.navigationContent)}>{worksLink.content}</a>
+        <a className={cn(bem("navigationContent"))}>{worksLink.content}</a>
       </Link>
     </nav>
   </div>

@@ -2,37 +2,37 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   min-height: 100vh;
-}
 
-.sideBarContents {
-  display: flex;
-  margin-right: 2rem;
-  width: 100%;
-  background-color: gray;
-}
+  &__sideBarContents {
+    display: flex;
+    margin-right: 2rem;
+    width: 100%;
+    background-color: gray;
+  }
 
-.contents {
-  display: grid;
-  grid-template-rows: 1fr 2fr 1fr;
-  grid-template-areas:
-    "."
-    "description"
-    "socialIconsBar";
-  padding: 0 2rem;
-  background-color: lightgray;
-  grid-column: 2;
-}
+  &__contents {
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas:
+      "."
+      "description"
+      "socialIconsBar";
+    padding: 0 2rem;
+    background-color: lightgray;
+    grid-column: 2;
+  }
 
-.biography {
-  grid-area: description;
-}
+  &__biography {
+    grid-area: description;
+  }
 
-.socialIconsBar {
-  display: flex;
-  align-items: center;
-  grid-area: socialIconsBar;
+  &__socialIconsBar {
+    display: flex;
+    align-items: center;
+    grid-area: socialIconsBar;
 
-  & div {
-    padding-right: 2rem;
+    & div {
+      padding-right: 2rem;
+    }
   }
 }
