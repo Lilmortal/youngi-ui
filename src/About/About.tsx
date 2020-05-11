@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 
 import { cn } from "../../utils";
 import styles from "./About.module.scss";
-import Sidebar, { SidebarProps, withSidebar } from "../../components/SideBar";
+import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
 import SocialIcon from "./SocialIcon";
 
 interface AboutOwnProps {

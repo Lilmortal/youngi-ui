@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import About, { AboutProps } from "./About";
-import { mockSidebar } from "../../components/SideBar/mock-sidebar";
+import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
 
 const defaultProps: AboutProps = {
   profileImageLink: "/download.jpg",

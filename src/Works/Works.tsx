@@ -4,7 +4,7 @@ import { GetStaticProps } from "next";
 
 import { cn } from "../../utils";
 import styles from "./Works.module.scss";
-import Sidebar, { SidebarProps, withSidebar } from "../../components/SideBar";
+import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
 import ImageBiography from "./ImageBiography";
 
 interface CategoryProp {

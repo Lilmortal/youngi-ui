@@ -4,7 +4,7 @@ import { GetStaticProps } from "next";
 
 import { cn } from "../../utils";
 import styles from "./Home.module.scss";
-import Sidebar, { SidebarProps, withSidebar } from "../../components/SideBar";
+import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
 import Link from "next/link";
 import links from "../links";
 
