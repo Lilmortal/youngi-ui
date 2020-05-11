@@ -1,4 +1,4 @@
-import React from "react";
+import React from "./node_modules/react";
 import { SidebarProps } from "./Sidebar";
 import links from "../../src/links";
 

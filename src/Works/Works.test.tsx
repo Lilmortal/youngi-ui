@@ -1,7 +1,7 @@
 import React from "react";
 import Works, { WorkProps } from "./Works";
 import { render, RenderResult, fireEvent } from "@testing-library/react";
-import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
+import { mockSidebar } from "../../components/SideBar/mock-sidebar";
 
 import styles from "./Work.module.scss";
 
