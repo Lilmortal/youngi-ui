@@ -1,8 +1,4 @@
-.sideBarContainer {
-  position: relative;
-}
-
-.sideBar {
+.sidebar {
   display: grid;
   grid-template-rows: 1fr 2fr 1fr;
   padding-left: 2rem;
@@ -11,34 +7,34 @@
   height: 100vh;
 }
 
-.header {
+.home {
   display: flex;
   align-items: center;
 }
-.ownerName {
+
+.homeLinkContent {
   font-size: 1.3rem;
   text-decoration: none;
   color: black;
 }
 
-.mainItems {
+.bodyContent {
   display: flex;
-  // align-items: center;
 }
 
-.links {
+.navigation {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
 
-  & a {
-    font-size: 1.3rem;
-    color: lightgray;
-    text-decoration: none;
-    display: block;
-  }
+.navigationContent {
+  font-size: 1.3rem;
+  color: lightgray;
+  text-decoration: none;
+  display: block;
 
-  & a:first-child {
+  &:first-child {
     border-top: 2px solid lightgray;
     align-self: flex-start;
   }

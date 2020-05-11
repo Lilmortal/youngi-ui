@@ -1,7 +1,7 @@
 import React from "react";
 import Works, { WorkProps } from "./Works";
 import { render, RenderResult, fireEvent } from "@testing-library/react";
-import { mockSideBar } from "../../components/SideBar/mock-sideBar";
+import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
 
 import styles from "./Work.module.scss";
 
@@ -13,27 +13,30 @@ const defaultProps: WorkProps = {
     { name: "Illustration" },
     { name: "Architecture" },
   ],
-  imageBios: [
+  images: [
     {
       id: 1,
+      layoutId: 1,
       image: "/download.jpg",
       name: "Photography 1",
       type: "Photography",
     },
     {
       id: 2,
+      layoutId: 1,
       image: "/download.jpg",
       name: "Illustration 1",
       type: "Illustration",
     },
     {
       id: 3,
+      layoutId: 1,
       image: "/download.jpg",
       name: "Architecture 1",
       type: "Architecture",
     },
   ],
-  ...mockSideBar,
+  ...mockSidebar,
 };
 
 const renderWorksPage = (props?: Partial<WorkProps>): RenderResult =>
@@ -80,6 +83,7 @@ describe("works", () => {
     expect(getByTestId("images")).toHaveClass(styles.architecture);
   });
 
+  // TODO: Flaky to rely on class names
   it("should not highlight architecture navigation if not selected", () => {
     const { getByText } = renderWorksPage();
 
@@ -89,7 +93,7 @@ describe("works", () => {
     fireEvent.click(illustrationNavigation);
 
     expect(architectureNavigation).not.toHaveClass(
-      styles["category--selected"]
+      styles["sidebarCategory--selected"]
     );
   });
 
@@ -100,7 +104,9 @@ describe("works", () => {
 
     fireEvent.click(architectureNavigation);
 
-    expect(architectureNavigation).toHaveClass(styles["category--selected"]);
+    expect(architectureNavigation).toHaveClass(
+      styles["sidebarCategory--selected"]
+    );
   });
 
   it("should display an architecture modal when an architecture image is selected", () => {

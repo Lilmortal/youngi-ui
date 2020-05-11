@@ -1,22 +1,23 @@
 import React from "react";
 
-import { cn } from "../../../utils";
-import styles from "./Images.module.scss";
 import LoremIpsum from "../../../components/LoremIpsum";
 import Modal from "../../../components/Modal";
+import { cn } from "../../../utils";
 
-export interface ImageBioProps {
+import styles from "./ImageBiography.module.scss";
+
+export interface ImageBiographyProps extends Styleable {
   id: string;
   open?: boolean;
   onClose(): void;
-  className?: string;
 }
 
-const ImageBio: React.FC<ImageBioProps> = ({
+const ImageBiography: React.FC<ImageBiographyProps> = ({
   id,
   open,
   onClose,
-  className,
+  classNames,
+  style,
 }) => {
   let image = "";
   let name = "";
@@ -29,16 +30,21 @@ const ImageBio: React.FC<ImageBioProps> = ({
   }
 
   return (
-    <Modal onClose={onClose} open={open}>
-      <div className={cn(styles.images, className)}>
+    <Modal
+      onClose={onClose}
+      onOutsideAction={onClose}
+      onEscapePress={onClose}
+      open={open}
+    >
+      <div className={cn(styles.imageBiography, classNames)} style={style}>
         <div className={cn(styles.imageContainer)}>
           <img src={image} className={cn(styles.image)} alt={name} />
         </div>
 
-        <div className={cn(styles.descriptionContainer)}>
+        <div className={cn(styles.imageDescriptionContainer)}>
           <h2>{name}</h2>
           {description && (
-            <div className={cn(styles.description)}>{description}</div>
+            <div className={cn(styles.imageDescription)}>{description}</div>
           )}
         </div>
       </div>
@@ -47,7 +53,7 @@ const ImageBio: React.FC<ImageBioProps> = ({
 };
 
 // export const getServerSideProps: GetServerSideProps = async () => {
-//   const imageProps: Pick<ImageBioProps, "description"> = {
+//   const imageProps: Pick<ImageBiographyProps, "description"> = {
 //     description: serialize(
 //       <p>
 //         <LoremIpsum />
@@ -58,4 +64,4 @@ const ImageBio: React.FC<ImageBioProps> = ({
 //   return { props: { ...imageProps } };
 // };
 
-export default ImageBio;
+export default ImageBiography;

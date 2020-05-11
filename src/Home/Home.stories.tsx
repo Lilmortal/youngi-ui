@@ -2,12 +2,12 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import Home, { HomeProps } from "./Home";
-import { mockSideBar } from "../../components/SideBar/mock-sideBar";
+import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
 
 const defaultProps: HomeProps = {
-  description: "I am a designer with architectural background.",
-  homeImage: "/download.jpg",
-  ...mockSideBar,
+  sidebarBiography: "I am a designer with architectural background.",
+  mainImage: "/download.jpg",
+  ...mockSidebar,
 };
 
 storiesOf("Home", module).add("default", () => <Home {...defaultProps} />);

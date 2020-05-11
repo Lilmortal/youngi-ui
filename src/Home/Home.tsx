@@ -4,23 +4,25 @@ import { GetStaticProps } from "next";
 
 import { cn } from "../../utils";
 import styles from "./Home.module.scss";
-import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
+import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
 import Link from "next/link";
 import links from "../links";
 
 interface HomeOwnProps {
-  description: string;
-  homeImage: string;
+  sidebarBiography: string;
+  mainImage: string;
 }
 
-export interface HomeProps extends HomeOwnProps, SideBarProps {}
+export interface HomeProps extends HomeOwnProps, SidebarProps, Styleable {}
 
 const Home: React.FC<HomeProps> = ({
-  homeImage,
-  description,
-  ...sideBarProps
+  mainImage,
+  sidebarBiography,
+  classNames,
+  style,
+  ...sidebarProps
 }) => (
-  <main className={styles.home}>
+  <div className={cn(styles.home, classNames)} style={style}>
     <Head>
       <title>Youngi Blog</title>
       <meta
@@ -28,27 +30,27 @@ const Home: React.FC<HomeProps> = ({
         content="A portfolio website showcasing Youngi Kim's photography."
       />
     </Head>
-    <SideBar {...sideBarProps}>
-      <h2 className={styles.mainItems}>{description}</h2>
-    </SideBar>
+    <Sidebar {...sidebarProps}>
+      <h2 className={cn(styles.sidebarBiography)}>{sidebarBiography}</h2>
+    </Sidebar>
     <div
-      className={cn(styles.content)}
-      style={{ backgroundImage: `url('${homeImage}')` }}
+      className={cn(styles.mainImage)}
+      style={{ backgroundImage: `url('${mainImage}')` }}
     >
       <Link href={links.works}>
-        <a className={cn(styles.next)}></a>
+        <a className={cn(styles.worksLink)}></a>
       </Link>
     </div>
-  </main>
+  </div>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
   const homeProps: HomeOwnProps = {
-    description: "I am a designer with architectural background.",
-    homeImage: "/download.jpg",
+    sidebarBiography: "I am a designer with architectural background.",
+    mainImage: "/download.jpg",
   };
 
   return { props: { ...homeProps } };
 };
 
-export default withSideBar(Home);
+export default withSidebar(Home);

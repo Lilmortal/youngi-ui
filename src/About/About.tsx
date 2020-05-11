@@ -5,51 +5,53 @@ import ReactMarkdown from "react-markdown";
 
 import { cn } from "../../utils";
 import styles from "./About.module.scss";
-import SideBar, { SideBarProps, withSideBar } from "../../components/SideBar";
+import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
 import SocialIcon from "./SocialIcon";
 
 interface AboutOwnProps {
   profileImageLink: string;
-  description: string;
+  biographyContents: string;
 }
 
-export interface AboutProps extends AboutOwnProps, SideBarProps {}
+export interface AboutProps extends AboutOwnProps, SidebarProps, Styleable {}
 
 const About: React.FC<AboutProps> = ({
-  description,
+  biographyContents,
   profileImageLink,
-  ...sideBarProps
+  classNames,
+  style,
+  ...sidebarProps
 }) => (
-  <main className={styles.about}>
+  <div className={cn(styles.about, classNames)} style={style}>
     <Head>
       <title>About me</title>
       <meta name="description" content="About Youngi" />
     </Head>
-    <SideBar {...sideBarProps}>
-      <img src={profileImageLink} className={cn(styles.mainItems)} />
-    </SideBar>
-    <div className={cn(styles.content)}>
-      <div className={cn(styles.description)}>
-        <ReactMarkdown source={description} />
+    <Sidebar {...sidebarProps}>
+      <img src={profileImageLink} className={cn(styles.sideBarContents)} />
+    </Sidebar>
+    <div className={cn(styles.contents)}>
+      <div className={cn(styles.biography)}>
+        <ReactMarkdown source={biographyContents} />
       </div>
 
-      <div className={cn(styles.socialContact)}>
-        <SocialIcon icon="/twitter.svg" text="Twitter" />
-        <SocialIcon icon="/facebook.svg" text="Facebook" />
-        <SocialIcon icon="/youtube.svg" text="Youtube" />
+      <div className={cn(styles.socialIconsBar)}>
+        <SocialIcon icon="/twitter.svg">Twitter</SocialIcon>
+        <SocialIcon icon="/facebook.svg">Facebook</SocialIcon>
+        <SocialIcon icon="/youtube.svg">Youtube</SocialIcon>
       </div>
     </div>
-  </main>
+  </div>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
   const aboutProps: AboutOwnProps = {
     profileImageLink: "/download.jpg",
-    description:
+    biographyContents:
       "# Hi there!\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
   };
 
   return { props: { ...aboutProps } };
 };
 
-export default withSideBar(About);
+export default withSidebar(About);

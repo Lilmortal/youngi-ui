@@ -11,4 +11,10 @@ module.exports = {
     "\\.(png|jpg|jpeg|svg)$": "<rootDir>/config/__mocks__/fileMock",
   },
   setupFilesAfterEnv: ["./config/setupTests.js"],
+  globals: {
+    "ts-jest": {
+      // Next.js needs "jsx" to be preserve, thus we are overriding it to "React" only in test
+      tsConfig: "tsconfig.test.json",
+    },
+  },
 };
