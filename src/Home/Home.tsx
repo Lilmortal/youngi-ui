@@ -2,11 +2,13 @@ import React from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 
-import { cn } from "../../utils";
+import { cn, createBem } from "../../utils";
 import styles from "./Home.module.scss";
 import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
 import Link from "next/link";
 import links from "../links";
+
+const bem = createBem(styles);
 
 interface HomeOwnProps {
   sidebarBiography: string;
@@ -22,7 +24,7 @@ const Home: React.FC<HomeProps> = ({
   style,
   ...sidebarProps
 }) => (
-  <div className={cn(styles.home, classNames)} style={style}>
+  <div className={cn(bem(), classNames)} style={style}>
     <Head>
       <title>Youngi Blog</title>
       <meta
@@ -31,14 +33,14 @@ const Home: React.FC<HomeProps> = ({
       />
     </Head>
     <Sidebar {...sidebarProps}>
-      <h2 className={cn(styles.sidebarBiography)}>{sidebarBiography}</h2>
+      <h2 className={cn(bem("sidebarBiography"))}>{sidebarBiography}</h2>
     </Sidebar>
     <div
-      className={cn(styles.mainImage)}
+      className={cn(bem("mainImage"))}
       style={{ backgroundImage: `url('${mainImage}')` }}
     >
       <Link href={links.works}>
-        <a className={cn(styles.worksLink)}></a>
+        <a className={cn(bem("worksLink"))}></a>
       </Link>
     </div>
   </div>

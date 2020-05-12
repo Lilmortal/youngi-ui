@@ -2,9 +2,11 @@ import React from "react";
 
 import LoremIpsum from "../../../components/LoremIpsum";
 import Modal from "../../../components/Modal";
-import { cn } from "../../../utils";
+import { cn, createBem } from "../../../utils";
 
 import styles from "./ImageBiography.module.scss";
+
+const bem = createBem(styles);
 
 export interface ImageBiographyProps extends Styleable {
   id: string;
@@ -26,6 +28,7 @@ const ImageBiography: React.FC<ImageBiographyProps> = ({
   if (id) {
     image = "/download.jpg";
     name = "Image";
+    // TODO: Comment this out and you realized we need width: 100%;
     description = <LoremIpsum />;
   }
 
@@ -36,16 +39,14 @@ const ImageBiography: React.FC<ImageBiographyProps> = ({
       onEscapePress={onClose}
       open={open}
     >
-      <div className={cn(styles.imageBiography, classNames)} style={style}>
-        <div className={cn(styles.imageContainer)}>
-          <img src={image} className={cn(styles.image)} alt={name} />
+      <div className={cn(bem(), classNames)} style={style}>
+        <div className={cn(bem("imageContainer"))}>
+          <img src={image} className={cn(bem("image"))} alt={name} />
         </div>
 
-        <div className={cn(styles.imageDescriptionContainer)}>
+        <div className={cn(bem("imageDescriptionContainer"))}>
           <h2>{name}</h2>
-          {description && (
-            <div className={cn(styles.imageDescription)}>{description}</div>
-          )}
+          {description}
         </div>
       </div>
     </Modal>

@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 
-import { cn } from "../../utils";
+import { cn, createBem } from "../../utils";
 import styles from "./Works.module.scss";
 import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
 import ImageBiography from "./ImageBiography";
+
+const bem = createBem(styles);
 
 interface CategoryProp {
   name: ImageType;
@@ -26,6 +28,8 @@ interface ImageProps {
   type: ImageType;
 }
 
+export interface WorkProps extends WorkOwnProps, SidebarProps, Styleable {}
+
 // TODO: share this with scss
 const getNumString: { [key: number]: string } = {
   1: "One",
@@ -37,17 +41,15 @@ const getNumString: { [key: number]: string } = {
 };
 
 export const getImageCategoriesLayout: { [key in ImageType]: string } = {
-  Photography: styles.photography,
-  Illustration: styles.illustration,
-  Architecture: styles.architecture,
+  Photography: bem("photography"),
+  Illustration: bem("illustration"),
+  Architecture: bem("architecture"),
 };
 
 const sortedByImageType = (
   images: ImageProps[],
   type: ImageType
 ): ImageProps[] => images.filter((image) => image.type === type);
-
-export interface WorkProps extends WorkOwnProps, SidebarProps, Styleable {}
 
 const Works: React.FC<WorkProps> = ({
   categories,
@@ -65,14 +67,13 @@ const Works: React.FC<WorkProps> = ({
   const imagesSortedByType = sortedByImageType(images, selectedImageType);
 
   const sidebarCategories = (
-    <ul className={cn(styles.sidebarCategories)}>
+    <ul className={cn(bem("sidebarCategories"))}>
       {categories.map((category) => (
         <li
           className={cn(
-            styles.sidebarCategory,
-            selectedImageType === category.name
-              ? styles["sidebarCategory--selected"]
-              : ""
+            bem("sidebarCategory", {
+              selected: selectedImageType === category.name,
+            })
           )}
           onClick={(): void => setSelectedImageType(category.name)}
           // TODO: UUID
@@ -85,7 +86,7 @@ const Works: React.FC<WorkProps> = ({
   );
 
   return (
-    <div className={cn(styles.works, classNames)} style={style}>
+    <div className={cn(bem(), classNames)} style={style}>
       <Head>
         <title>Youngi Works</title>
         <meta name="description" content="Showcasing Youngi Kims works." />
@@ -93,7 +94,7 @@ const Works: React.FC<WorkProps> = ({
       <Sidebar {...sidebarProps}>{sidebarCategories}</Sidebar>
       <div
         className={cn(
-          styles.portfolio,
+          bem("portfolio"),
           getImageCategoriesLayout[selectedImageType]
         )}
         data-testid="images"
@@ -105,10 +106,7 @@ const Works: React.FC<WorkProps> = ({
         />
         {imagesSortedByType.map((image) => (
           <img
-            className={cn(
-              styles.portfolioImage,
-              styles[`portfolioImage${getNumString[image.layoutId]}`]
-            )}
+            className={cn(bem("portfolioImage", getNumString[image.layoutId]))}
             src={image.image}
             alt={image.name}
             onClick={(): void => setSelectedImageId("" + image.id)}

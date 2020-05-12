@@ -5,7 +5,7 @@ import links from "../../src/links";
 const withSidebar = <P extends SidebarProps>(Component: React.FC<P>) => (
   props: P
 ): React.ReactElement<P> => {
-  const sideBarProps: SidebarProps = {
+  const sidebarProps: SidebarProps = {
     homeLink: {
       href: links.home,
       content: "Youngi Kim",
@@ -20,7 +20,7 @@ const withSidebar = <P extends SidebarProps>(Component: React.FC<P>) => (
     },
   };
 
-  return <Component {...props} {...sideBarProps} />;
+  return <Component {...props} {...sidebarProps} />;
 };
 
 export default withSidebar;

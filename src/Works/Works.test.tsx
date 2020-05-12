@@ -53,6 +53,10 @@ describe("works", () => {
     expect(getByTestId("images")).not.toHaveClass(styles.photography);
   });
 
+  /* TODO: This is a really flaky test relying on class names...
+       Identity-obj-proxy unfortunately, returns `undefined` as the BEM "Block"
+       because it only calculates this classname on the fly when this test runs.
+    */
   it("should render photography works", () => {
     const { getByText, getByTestId } = renderWorksPage();
 
@@ -60,7 +64,7 @@ describe("works", () => {
 
     fireEvent.click(photographyNavigation);
 
-    expect(getByTestId("images")).toHaveClass(styles.photography);
+    expect(getByTestId("images")).toHaveClass("undefined__photography");
   });
 
   it("should render illustration works", () => {
@@ -70,7 +74,7 @@ describe("works", () => {
 
     fireEvent.click(illustrationNavigation);
 
-    expect(getByTestId("images")).toHaveClass(styles.illustration);
+    expect(getByTestId("images")).toHaveClass("undefined__illustration");
   });
 
   it("should render architecture works", () => {
@@ -80,10 +84,9 @@ describe("works", () => {
 
     fireEvent.click(architectureNavigation);
 
-    expect(getByTestId("images")).toHaveClass(styles.architecture);
+    expect(getByTestId("images")).toHaveClass("undefined__architecture");
   });
 
-  // TODO: Flaky to rely on class names
   it("should not highlight architecture navigation if not selected", () => {
     const { getByText } = renderWorksPage();
 
@@ -93,7 +96,7 @@ describe("works", () => {
     fireEvent.click(illustrationNavigation);
 
     expect(architectureNavigation).not.toHaveClass(
-      styles["sidebarCategory--selected"]
+      styles["undefined__sidebarCategory--selected"]
     );
   });
 
@@ -105,7 +108,7 @@ describe("works", () => {
     fireEvent.click(architectureNavigation);
 
     expect(architectureNavigation).toHaveClass(
-      styles["sidebarCategory--selected"]
+      styles["undefined__sidebarCategory--selected"]
     );
   });
 

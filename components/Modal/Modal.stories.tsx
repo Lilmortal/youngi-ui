@@ -30,7 +30,7 @@ const MockedModal: React.FC<Partial<ModalProps>> = ({ ...props }) => (
 );
 
 storiesOf("Modal", module)
-  .add("overlay is not full screen", () => <MockedModal />)
+  .add("overlay inheriting parent width by default", () => <MockedModal />)
   .add("overlay is full screen", () => <MockedModal fullScreenOverlay />)
   .add("enable outside action", () => {
     const onOutsideAction = action("onOutsideAction");

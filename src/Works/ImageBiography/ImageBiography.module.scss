@@ -2,14 +2,18 @@
   display: grid;
   grid-template-rows: 2fr 1fr;
   height: 100%;
-}
 
-.imageContainer {
-  display: flex;
-  justify-content: center;
-  margin-top: 2em;
-}
+  &__imageContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+  }
 
-.image {
-  object-fit: contain;
+  &__image {
+    object-fit: contain;
+  }
+
+  &__imageDescriptionContainer {
+    padding-top: 1em;
+  }
 }

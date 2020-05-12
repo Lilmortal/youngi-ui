@@ -1,4 +1,6 @@
-.bodyContent {
-  height: 100%;
-  padding: 1em;
+.modal {
+  &__bodyContent {
+    height: 100%;
+    padding: 1em;
+  }
 }
