@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.10.0](https://github.com/Lilmortal/youngi-ui/compare/v2.9.0...v2.10.0) (2020-05-12)
+
+
+### Features
+
+* made createBem function, all components now use BEM ([5de269a](https://github.com/Lilmortal/youngi-ui/commit/5de269a4ddb14d061d97463a1d90ff34daf7bc34))
+* rewrite createBem logic, and fix sidebar css layout ([58be8a8](https://github.com/Lilmortal/youngi-ui/commit/58be8a80861b800b9f4d11334dc8638c308675c2))
+
 ## [2.9.0](https://github.com/Lilmortal/youngi-ui/compare/v2.8.0...v2.9.0) (2020-05-11)
 
 
