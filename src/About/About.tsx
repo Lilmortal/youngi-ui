@@ -30,7 +30,12 @@ const About: React.FC<AboutProps> = ({
       <meta name="description" content="About Youngi" />
     </Head>
     <Sidebar {...sidebarProps}>
-      <img src={profileImageLink} className={cn(bem("sideBarContents"))} />
+      <div className={cn(bem("sidebarContents"))}>
+        <img
+          src={profileImageLink}
+          className={cn(bem("sidebarProfileImage"))}
+        />
+      </div>
     </Sidebar>
     <div className={cn(bem("contents"))}>
       <div className={cn(bem("biography"))}>
