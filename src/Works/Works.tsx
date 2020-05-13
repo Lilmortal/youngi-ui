@@ -9,6 +9,8 @@ import ImageBiography from "./ImageBiography";
 
 const bem = createBem(styles);
 
+type ImageType = "Photography" | "Illustration" | "Architecture";
+
 interface CategoryProp {
   name: ImageType;
 }
@@ -18,11 +20,8 @@ export interface WorkOwnProps {
   images: ImageProps[];
 }
 
-type ImageType = "Photography" | "Illustration" | "Architecture";
-
 interface ImageProps {
   id: number;
-  layoutId: number;
   image: string;
   name: string;
   type: ImageType;
@@ -30,14 +29,14 @@ interface ImageProps {
 
 export interface WorkProps extends WorkOwnProps, SidebarProps, Styleable {}
 
-// TODO: share this with scss
-const getNumString: { [key: number]: string } = {
-  1: "One",
-  2: "Two",
-  3: "Three",
-  4: "Four",
-  5: "Five",
-  6: "Six",
+if (!styles["global-numstrings"]) {
+  throw new Error(
+    `failed to export CSS variable [ numstrings ], did you named it correctly?`
+  );
+}
+
+const NUM_STRINGS = {
+  ...styles["global-numstrings"]?.split(" "),
 };
 
 export const getImageCategoriesLayout: { [key in ImageType]: string } = {
@@ -104,9 +103,9 @@ const Works: React.FC<WorkProps> = ({
           onClose={(): void => setSelectedImageId("")}
           open={!!selectedImageId}
         />
-        {imagesSortedByType.map((image) => (
+        {imagesSortedByType.map((image, index) => (
           <img
-            className={cn(bem("portfolioImage", getNumString[image.layoutId]))}
+            className={cn(bem("portfolioImage", NUM_STRINGS[index]))}
             src={image.image}
             alt={image.name}
             onClick={(): void => setSelectedImageId("" + image.id)}
@@ -131,126 +130,108 @@ export const getStaticProps: GetStaticProps = async () => {
     images: [
       {
         id: 1,
-        layoutId: 1,
         image: "/download.jpg",
         name: "Photography 1",
         type: "Photography",
       },
       {
         id: 2,
-        layoutId: 2,
         image: "/download.jpg",
         name: "Photography 2",
         type: "Photography",
       },
       {
         id: 3,
-        layoutId: 3,
         image: "/download.jpg",
         name: "Photography 3",
         type: "Photography",
       },
       {
         id: 4,
-        layoutId: 4,
         image: "/download.jpg",
         name: "Photography 4",
         type: "Photography",
       },
       {
         id: 5,
-        layoutId: 5,
         image: "/download.jpg",
         name: "Photography 5",
         type: "Photography",
       },
       {
         id: 6,
-        layoutId: 6,
         image: "/download.jpg",
         name: "Photography 6",
         type: "Photography",
       },
       {
         id: 7,
-        layoutId: 1,
         image: "/download.jpg",
         name: "Illustration 1",
         type: "Illustration",
       },
       {
         id: 8,
-        layoutId: 2,
         image: "/download.jpg",
         name: "Illustration 2",
         type: "Illustration",
       },
       {
         id: 9,
-        layoutId: 3,
         image: "/download.jpg",
         name: "Illustration 3",
         type: "Illustration",
       },
       {
         id: 10,
-        layoutId: 4,
         image: "/download.jpg",
         name: "Illustration 4",
         type: "Illustration",
       },
       {
         id: 11,
-        layoutId: 5,
         image: "/download.jpg",
         name: "Illustration 5",
         type: "Illustration",
       },
       {
         id: 12,
-        layoutId: 6,
         image: "/download.jpg",
         name: "Illustration 6",
         type: "Illustration",
       },
       {
         id: 13,
-        layoutId: 1,
         image: "/download.jpg",
         name: "Architecture 1",
         type: "Architecture",
       },
       {
         id: 14,
-        layoutId: 2,
         image: "/download.jpg",
         name: "Architecture 2",
         type: "Architecture",
       },
       {
         id: 15,
-        layoutId: 3,
         image: "/download.jpg",
         name: "Architecture 3",
         type: "Architecture",
       },
       {
         id: 16,
-        layoutId: 4,
         image: "/download.jpg",
         name: "Architecture 4",
         type: "Architecture",
       },
       {
         id: 17,
-        layoutId: 5,
         image: "/download.jpg",
         name: "Architecture 5",
         type: "Architecture",
       },
       {
         id: 18,
-        layoutId: 6,
         image: "/download.jpg",
         name: "Architecture 6",
         type: "Architecture",

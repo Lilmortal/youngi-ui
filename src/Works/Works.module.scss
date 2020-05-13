@@ -1,3 +1,23 @@
+$NUMS_CODE: (
+  "One": "a",
+  "Two": "b",
+  "Three": "c",
+  "Four": "d",
+  "Five": "e",
+  "Six": "f",
+);
+
+$numStrings: "";
+@each $key, $value in $NUMS_CODE {
+  $numStrings: unquote($numStrings + " " + $key);
+}
+
+:export {
+  global: {
+    numstrings: $numStrings;
+  }
+}
+
 .works {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -71,23 +91,14 @@
       ". . . . . . . . . .";
   }
 
-  $nums: (
-    "One": "a",
-    "Two": "b",
-    "Three": "c",
-    "Four": "d",
-    "Five": "e",
-    "Six": "f",
-  );
-
   &__portfolioImage {
     width: 100%;
     border: 1px solid black;
     cursor: pointer;
 
-    @each $num, $i in $nums {
-      &--#{$num} {
-        grid-area: #{$i};
+    @each $key, $value in $NUMS_CODE {
+      &--#{$key} {
+        grid-area: #{$value};
       }
     }
   }

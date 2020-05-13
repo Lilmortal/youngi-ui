@@ -2,7 +2,7 @@ interface BemModifierMap {
   [key: string]: boolean | undefined;
 }
 
-const getBlock = <T extends object>(styles: T): string => {
+const getBlock = <T extends { [key: string]: string }>(styles: T): string => {
   const uniqueBlocks = new Set<string>();
 
   Object.keys(styles).forEach((key) => {
@@ -13,15 +13,21 @@ const getBlock = <T extends object>(styles: T): string => {
 
     const block = key.substring(0, endBlock);
 
-    uniqueBlocks.add(block);
+    if (!block.startsWith("global-")) {
+      uniqueBlocks.add(block);
+    }
   });
 
   const blocks = Array.from(uniqueBlocks);
 
   if (blocks.length > 1) {
-    throw `Please have a re-look at your CSS files and make sure only one block exist. All but one of these blocks [${blocks.join(
-      ", "
-    )}] must be removed.`;
+    throw new Error(
+      `Please have a re-look at your CSS files and make sure only one block exist. 
+      All but one of these blocks [${blocks.join(
+        ", "
+      )}] must be removed. If you are 
+      attempting to export CSS variables, they must be inside "global" object. e.g. { global: { variable: 4; }}`
+    );
   }
 
   return blocks[0];
@@ -38,7 +44,9 @@ const bem = <T extends { [key: string]: string }>(styles: T) => (
     if (styles[`${block}__${element}`]) {
       classes.push(`${block}__${element}`);
     } else {
-      throw `Attempting to create a classname failed, because [ ${block}__${element} ] does not exist.`;
+      throw new Error(
+        `Attempting to create a classname failed, because [ ${block}__${element} ] does not exist.`
+      );
     }
   } else {
     classes.push(block);
@@ -49,7 +57,9 @@ const bem = <T extends { [key: string]: string }>(styles: T) => (
     if (styles[`${className}--${modifier}`]) {
       classes.push(`${className}--${modifier}`);
     } else {
-      throw `Attempting to create a classname failed, because [ ${className}--${modifier} ] does not exist.`;
+      throw new Error(
+        `Attempting to create a classname failed, because [ ${className}--${modifier} ] does not exist.`
+      );
     }
   } else if (typeof modifier === "object") {
     Object.entries(modifier).forEach(([key, value]) => {
@@ -57,7 +67,9 @@ const bem = <T extends { [key: string]: string }>(styles: T) => (
         if (styles[`${className}--${key}`]) {
           classes.push(`${className}--${key}`);
         } else {
-          throw `Attempting to create a classname failed, because [ ${className}--${key} ] does not exist.`;
+          throw new Error(
+            `Attempting to create a classname failed, because [ ${className}--${key} ] does not exist.`
+          );
         }
       }
     });
