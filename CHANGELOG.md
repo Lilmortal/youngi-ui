@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.10.1](https://github.com/Lilmortal/youngi-ui/compare/v2.10.0...v2.10.1) (2020-05-13)
+
+
+### Bug Fixes
+
+* export numCodes, removed layoutId at works ([b7df473](https://github.com/Lilmortal/youngi-ui/commit/b7df473d388f6ca459d4c51adf3fbfbdb66e1454))
+
 ## [2.10.0](https://github.com/Lilmortal/youngi-ui/compare/v2.9.0...v2.10.0) (2020-05-12)
 
 
