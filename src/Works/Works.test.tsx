@@ -16,21 +16,18 @@ const defaultProps: WorkProps = {
   images: [
     {
       id: 1,
-      layoutId: 1,
       image: "/download.jpg",
       name: "Photography 1",
       type: "Photography",
     },
     {
       id: 2,
-      layoutId: 1,
       image: "/download.jpg",
       name: "Illustration 1",
       type: "Illustration",
     },
     {
       id: 3,
-      layoutId: 1,
       image: "/download.jpg",
       name: "Architecture 1",
       type: "Architecture",
