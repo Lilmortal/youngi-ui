@@ -23,10 +23,10 @@ const Sidebar: React.FC<SidebarProps> = ({
   aboutLink,
   worksLink,
   children,
-  classNames,
+  className,
   style,
 }) => (
-  <div className={cn(bem(), classNames)} style={style}>
+  <div className={cn(bem(), className)} style={style}>
     <div className={cn(bem("home"))}>
       <Link href={homeLink.href}>
         <a className={cn(bem("homeLinkContent"))}>{homeLink.content}</a>

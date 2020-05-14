@@ -15,7 +15,7 @@ const Overlay: React.FC<OverlayProps> = ({
   children,
   onOutsideAction,
   fullScreenOverlay,
-  classNames,
+  className,
   style,
 }) => (
   <>
@@ -27,7 +27,7 @@ const Overlay: React.FC<OverlayProps> = ({
     <div
       className={cn(
         bem("content", { fullScreen: fullScreenOverlay }),
-        classNames
+        className
       )}
       style={style}
     >

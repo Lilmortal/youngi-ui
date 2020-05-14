@@ -10,14 +10,17 @@ import links from "../links";
 import { mockHomeCmsResponse } from "./mock-data/data";
 import apiClient from "../../utils/apiClient";
 import env from "../config/env";
-import { Image, appendBaseUrl } from "../../utils/image";
 import ReactMarkdown from "react-markdown";
+import {
+  AdvancedImageProps,
+  appendImageBaseUrl,
+} from "../../components/AdvancedImage";
 
 const bem = createBem(styles);
 
 export interface HomeOwnProps {
   sidebarBiography?: string;
-  backgroundImage?: Image;
+  backgroundImage?: AdvancedImageProps;
 }
 
 export interface HomeProps extends HomeOwnProps, SidebarProps, Styleable {}
@@ -25,11 +28,11 @@ export interface HomeProps extends HomeOwnProps, SidebarProps, Styleable {}
 const Home: React.FC<HomeProps> = ({
   backgroundImage,
   sidebarBiography,
-  classNames,
+  className,
   style,
   ...sidebarProps
 }) => (
-  <div className={cn(bem(), classNames)} style={style}>
+  <div className={cn(bem(), className)} style={style}>
     <Head>
       <title>Youngi Blog</title>
       <meta
@@ -64,7 +67,7 @@ export const getStaticProps: GetStaticProps = async () => {
       ...homeProps,
       backgroundImage:
         homeProps?.backgroundImage &&
-        appendBaseUrl(env.cmsBaseUrl)(homeProps.backgroundImage),
+        appendImageBaseUrl(env.cmsBaseUrl)(homeProps.backgroundImage),
     },
   };
 };

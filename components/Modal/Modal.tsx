@@ -27,7 +27,7 @@ const Modal: React.FC<ModalProps> = ({
   onOutsideAction,
   onEscapePress,
   children,
-  classNames,
+  className,
   style,
 }) => {
   useEffect(() => {
@@ -49,7 +49,7 @@ const Modal: React.FC<ModalProps> = ({
     >
       {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
       {onClose && <CloseButton onClose={onClose} />}
-      <div className={cn(bem("bodyContent"), classNames)} style={style}>
+      <div className={cn(bem("bodyContent"), className)} style={style}>
         {children}
       </div>
     </Overlay>

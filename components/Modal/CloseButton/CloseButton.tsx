@@ -10,10 +10,10 @@ export interface CloseButtonProps extends Styleable {
 
 const CloseButton: React.FC<CloseButtonProps> = ({
   onClose,
-  classNames,
+  className,
   style,
 }) => (
-  <div className={cn(bem(), classNames)} onClick={onClose} style={style}>
+  <div className={cn(bem(), className)} onClick={onClose} style={style}>
     X
   </div>
 );

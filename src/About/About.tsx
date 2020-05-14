@@ -10,12 +10,15 @@ import SocialIcon from "./SocialIcon";
 import { mockAboutCmsResponse } from "./mock-data/data";
 import apiClient from "../../utils/apiClient";
 import env from "../config/env";
-import { Image, appendBaseUrl } from "../../utils/image";
+import {
+  AdvancedImageProps,
+  appendImageBaseUrl,
+} from "../../components/AdvancedImage";
 
 const bem = createBem(styles);
 
 export interface AboutOwnProps {
-  profileImage?: Image;
+  profileImage?: AdvancedImageProps;
   biographyContents?: string;
 }
 
@@ -24,11 +27,11 @@ export interface AboutProps extends AboutOwnProps, SidebarProps, Styleable {}
 const About: React.FC<AboutProps> = ({
   biographyContents,
   profileImage,
-  classNames,
+  className,
   style,
   ...sidebarProps
 }) => (
-  <div className={cn(bem(), classNames)} style={style}>
+  <div className={cn(bem(), className)} style={style}>
     <Head>
       <title>About me</title>
       <meta name="description" content="About Youngi" />
@@ -50,9 +53,30 @@ const About: React.FC<AboutProps> = ({
       </div>
 
       <div className={cn(bem("socialIconsBar"))}>
-        <SocialIcon icon="/twitter.svg">Twitter</SocialIcon>
-        <SocialIcon icon="/facebook.svg">Facebook</SocialIcon>
-        <SocialIcon icon="/youtube.svg">Youtube</SocialIcon>
+        <SocialIcon
+          icon={{
+            url: "/twitter.svg",
+            name: "twitter icon",
+          }}
+        >
+          Twitter
+        </SocialIcon>
+        <SocialIcon
+          icon={{
+            url: "/facebook.svg",
+            name: "facebook icon",
+          }}
+        >
+          Facebook
+        </SocialIcon>
+        <SocialIcon
+          icon={{
+            url: "/youtube.svg",
+            name: "youtube icon",
+          }}
+        >
+          Youtube
+        </SocialIcon>
       </div>
     </div>
   </div>
@@ -69,7 +93,7 @@ export const getStaticProps: GetStaticProps = async () => {
       ...aboutProps,
       profileImage:
         aboutProps?.profileImage &&
-        appendBaseUrl(env.cmsBaseUrl)(aboutProps.profileImage),
+        appendImageBaseUrl(env.cmsBaseUrl)(aboutProps.profileImage),
     },
   };
 };

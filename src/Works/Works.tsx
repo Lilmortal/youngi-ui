@@ -5,14 +5,17 @@ import { GetStaticProps } from "next";
 import { cn, createBem } from "../../utils";
 import styles from "./Works.module.scss";
 import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
-import ImageBiography from "./ImageBiography";
+import ImageModal from "./ImageModal";
 import {
   mockPortfolioCategoryProps,
   mockPortfolioImageProps,
 } from "./mock-data/data";
 import apiClient from "../../utils/apiClient";
 import env from "../config/env";
-import { Image, appendBaseUrl } from "../../utils/image";
+import AdvancedImage, {
+  AdvancedImageProps,
+  appendImageBaseUrl,
+} from "../../components/AdvancedImage";
 
 const bem = createBem(styles);
 
@@ -24,7 +27,7 @@ export interface PortfolioCategoryProps {
 
 export interface PortfolioImageProps {
   id: number;
-  images: Image[];
+  images: AdvancedImageProps[];
   category: PortfolioCategoryProps;
 }
 
@@ -56,7 +59,7 @@ const getPortfolioImagesBySelectedType = (
 const Works: React.FC<WorkProps> = ({
   portfolioCategories,
   portfolioImages,
-  classNames,
+  className,
   style,
   ...sidebarProps
 }) => {
@@ -93,7 +96,7 @@ const Works: React.FC<WorkProps> = ({
   );
 
   return (
-    <div className={cn(bem(), classNames)} style={style}>
+    <div className={cn(bem(), className)} style={style}>
       <Head>
         <title>Youngi Works</title>
         <meta name="description" content="Showcasing Youngi Kims works." />
@@ -106,21 +109,20 @@ const Works: React.FC<WorkProps> = ({
         )}
         data-testid="portfolioImages"
       >
-        <ImageBiography
+        <ImageModal
           id={selectedPortfolioImageId}
           onClose={(): void => setSelectedPortfolioImageId("")}
           open={!!selectedPortfolioImageId}
         />
         {selectedTypePortfolioImages?.map((portfolioImage, index) => (
-          <img
+          <AdvancedImage
             className={cn(bem("portfolioImage", NUMBER_TEXT_LOOKUP[index]))}
-            src={portfolioImage.url}
-            alt={portfolioImage.name}
+            {...portfolioImage}
+            data-testid={portfolioImage.id}
             onClick={(): void =>
-              setSelectedPortfolioImageId("" + portfolioImage.id)
+              setSelectedPortfolioImageId(portfolioImage.id || "")
             }
             key={portfolioImage.id}
-            data-testid={portfolioImage.id}
           />
         ))}
       </div>
@@ -135,7 +137,7 @@ const appendCmsBaseUrlToImages = (
     ...profileImage,
     images: [
       ...profileImage.images.map((image) => ({
-        ...appendBaseUrl(env.cmsBaseUrl)(image),
+        ...appendImageBaseUrl(env.cmsBaseUrl)(image),
       })),
     ],
   }));
