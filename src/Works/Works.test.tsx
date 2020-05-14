@@ -2,37 +2,12 @@ import React from "react";
 import Works, { WorkProps } from "./Works";
 import { render, RenderResult, fireEvent } from "@testing-library/react";
 import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
+import { mockWorksCmsResponse } from "./mock-data/data";
 
 import styles from "./Work.module.scss";
 
 const defaultProps: WorkProps = {
-  categories: [
-    {
-      name: "Photography",
-    },
-    { name: "Illustration" },
-    { name: "Architecture" },
-  ],
-  images: [
-    {
-      id: 1,
-      image: "/download.jpg",
-      name: "Photography 1",
-      type: "Photography",
-    },
-    {
-      id: 2,
-      image: "/download.jpg",
-      name: "Illustration 1",
-      type: "Illustration",
-    },
-    {
-      id: 3,
-      image: "/download.jpg",
-      name: "Architecture 1",
-      type: "Architecture",
-    },
-  ],
+  ...mockWorksCmsResponse,
   ...mockSidebar,
 };
 
@@ -47,7 +22,7 @@ describe("works", () => {
 
     fireEvent.click(illustrationNavigation);
 
-    expect(getByTestId("images")).not.toHaveClass(styles.photography);
+    expect(getByTestId("portfolioImages")).not.toHaveClass(styles.photography);
   });
 
   /* TODO: This is a really flaky test relying on class names...
@@ -61,7 +36,9 @@ describe("works", () => {
 
     fireEvent.click(photographyNavigation);
 
-    expect(getByTestId("images")).toHaveClass("undefined__photography");
+    expect(getByTestId("portfolioImages")).toHaveClass(
+      "undefined__photography"
+    );
   });
 
   it("should render illustration works", () => {
@@ -71,7 +48,9 @@ describe("works", () => {
 
     fireEvent.click(illustrationNavigation);
 
-    expect(getByTestId("images")).toHaveClass("undefined__illustration");
+    expect(getByTestId("portfolioImages")).toHaveClass(
+      "undefined__illustration"
+    );
   });
 
   it("should render architecture works", () => {
@@ -81,7 +60,9 @@ describe("works", () => {
 
     fireEvent.click(architectureNavigation);
 
-    expect(getByTestId("images")).toHaveClass("undefined__architecture");
+    expect(getByTestId("portfolioImages")).toHaveClass(
+      "undefined__architecture"
+    );
   });
 
   it("should not highlight architecture navigation if not selected", () => {

@@ -7,14 +7,14 @@ $NUMS_CODE: (
   "Six": "f",
 );
 
-$numStrings: "";
+$numbersText: "";
 @each $key, $value in $NUMS_CODE {
-  $numStrings: unquote($numStrings + " " + $key);
+  $numbersText: unquote($numbersText + " " + $key);
 }
 
 :export {
   global: {
-    numstrings: $numStrings;
+    numberstext: $numbersText;
   }
 }
 

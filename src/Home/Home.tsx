@@ -7,18 +7,23 @@ import styles from "./Home.module.scss";
 import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
 import Link from "next/link";
 import links from "../links";
+import { mockHomeCmsResponse } from "./mock-data/data";
+import apiClient from "../../utils/apiClient";
+import env from "../config/env";
+import { Image, appendBaseUrl } from "../../utils/image";
+import ReactMarkdown from "react-markdown";
 
 const bem = createBem(styles);
 
-interface HomeOwnProps {
-  sidebarBiography: string;
-  mainImage: string;
+export interface HomeOwnProps {
+  sidebarBiography?: string;
+  backgroundImage?: Image;
 }
 
 export interface HomeProps extends HomeOwnProps, SidebarProps, Styleable {}
 
 const Home: React.FC<HomeProps> = ({
-  mainImage,
+  backgroundImage,
   sidebarBiography,
   classNames,
   style,
@@ -33,11 +38,13 @@ const Home: React.FC<HomeProps> = ({
       />
     </Head>
     <Sidebar {...sidebarProps}>
-      <h2 className={cn(bem("sidebarBiography"))}>{sidebarBiography}</h2>
+      <h2 className={cn(bem("sidebarBiography"))}>
+        {sidebarBiography && <ReactMarkdown source={sidebarBiography} />}
+      </h2>
     </Sidebar>
     <div
-      className={cn(bem("mainImage"))}
-      style={{ backgroundImage: `url('${mainImage}')` }}
+      className={cn(bem("backgroundImage"))}
+      style={{ backgroundImage: `url('${backgroundImage?.url}')` }}
     >
       <Link href={links.works}>
         <a className={cn(bem("worksLink"))}></a>
@@ -47,12 +54,19 @@ const Home: React.FC<HomeProps> = ({
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const homeProps: HomeOwnProps = {
-    sidebarBiography: "I am a designer with architectural background.",
-    mainImage: "/download.jpg",
-  };
+  const client = apiClient(env.cmsBaseUrl);
+  const homeProps: HomeOwnProps = env.useMockData
+    ? mockHomeCmsResponse
+    : await client.request<HomeOwnProps>({ url: "home", method: "GET" });
 
-  return { props: { ...homeProps } };
+  return {
+    props: {
+      ...homeProps,
+      backgroundImage:
+        homeProps?.backgroundImage &&
+        appendBaseUrl(env.cmsBaseUrl)(homeProps.backgroundImage),
+    },
+  };
 };
 
 export default withSidebar(Home);

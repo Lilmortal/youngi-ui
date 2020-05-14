@@ -48,7 +48,7 @@ describe("modal", () => {
   it("should close the modal when esc button is pressed", () => {
     const { container } = renderModal({ open: true });
 
-    fireEvent.keyDown(container, { key: "Escape", code: "Escape" });
+    fireEvent.keyUp(container, { key: "Escape", code: "Escape" });
 
     expect(onClose).toHaveBeenCalled();
   });

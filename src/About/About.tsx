@@ -7,19 +7,23 @@ import { cn, createBem } from "../../utils";
 import styles from "./About.module.scss";
 import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
 import SocialIcon from "./SocialIcon";
+import { mockAboutCmsResponse } from "./mock-data/data";
+import apiClient from "../../utils/apiClient";
+import env from "../config/env";
+import { Image, appendBaseUrl } from "../../utils/image";
 
 const bem = createBem(styles);
 
-interface AboutOwnProps {
-  profileImageLink: string;
-  biographyContents: string;
+export interface AboutOwnProps {
+  profileImage?: Image;
+  biographyContents?: string;
 }
 
 export interface AboutProps extends AboutOwnProps, SidebarProps, Styleable {}
 
 const About: React.FC<AboutProps> = ({
   biographyContents,
-  profileImageLink,
+  profileImage,
   classNames,
   style,
   ...sidebarProps
@@ -31,15 +35,18 @@ const About: React.FC<AboutProps> = ({
     </Head>
     <Sidebar {...sidebarProps}>
       <div className={cn(bem("sidebarContents"))}>
-        <img
-          src={profileImageLink}
-          className={cn(bem("sidebarProfileImage"))}
-        />
+        {profileImage && (
+          <img
+            src={profileImage.url}
+            alt={profileImage.name}
+            className={cn(bem("sidebarProfileImage"))}
+          />
+        )}
       </div>
     </Sidebar>
     <div className={cn(bem("contents"))}>
       <div className={cn(bem("biography"))}>
-        <ReactMarkdown source={biographyContents} />
+        {biographyContents && <ReactMarkdown source={biographyContents} />}
       </div>
 
       <div className={cn(bem("socialIconsBar"))}>
@@ -52,13 +59,20 @@ const About: React.FC<AboutProps> = ({
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const aboutProps: AboutOwnProps = {
-    profileImageLink: "/download.jpg",
-    biographyContents:
-      "# Hi there!\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  };
+  const client = apiClient(env.cmsBaseUrl);
+  const aboutProps: AboutOwnProps = env.useMockData
+    ? mockAboutCmsResponse
+    : await client.request<AboutOwnProps>({ url: "about", method: "GET" });
 
-  return { props: { ...aboutProps } };
+  return {
+    props: {
+      ...aboutProps,
+      profileImage:
+        aboutProps?.profileImage &&
+        appendBaseUrl(env.cmsBaseUrl)(aboutProps.profileImage),
+    },
+  };
 };
 
+// TODO: withSidebar return sidebar component
 export default withSidebar(About);

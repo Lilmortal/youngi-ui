@@ -10,10 +10,10 @@
 - `yarn` to install the project dependencies
 - `yarn start` to run the project on `localhost:3000`
 - `yarn build` to build the project into `.next` dir
-- `yarn build:start` to run the project inside `.next` dir
+- `yarn start:build` to run the project inside `.next` dir
 - `yarn export` to build the project as a static site into `out` dir
 - `yarn sb` to run [React Storybook](https://storybooks.js.org/docs) on `localhost:9000`
-- `yarn sb:build` to build [React Storybook](https://storybooks.js.org/docs)
+- `yarn build:sb` to build [React Storybook](https://storybooks.js.org/docs)
 - `yarn test` run [Jest](https://facebook.github.io/jest/) tests on watch
 - `yarn test:ci` run [Jest](https://facebook.github.io/jest/) tests but not on watch
 
@@ -83,20 +83,19 @@ import styles from "./index.module.scss";
 <div className={`${styles.test}`}>test</div>;
 ```
 
-`Next.js` generates class names in production. To support debugging or testing automation, only in development will the
-class names be in this format `[the name of the module]__[class name]`. This is done so via the following the code in css partials in
-`/config/partials/css.js`.
+### Exporting SCSS variables
 
-```ts
-{
-  loader: "css-loader",
-  options: {
-    modules: config.mode === 'production' ? true : {
-      localIdentName: "[name]__[local]",
-    }
-  },
-},
+To export scss variables, you can do so via:
+
+```scss
+:export {
+  global: {
+    variable: 5;
+  }
+}
 ```
+
+Note that all variables being exported must be under `global`.
 
 ### Inline SVG
 
@@ -142,8 +141,6 @@ general overview over how this project is structured:
 
 ## Known issues
 
-### CSS Grid
+### IE11
 
-This project is currently using CSS Grid, hence we are making a conscious decision to not support IE11.
-As of now, there is an issue where the child grid does not inherit the parent template grid.
-This all changes with the introduction of `subgrid`, but it is not supported by all browsers yet.
+This project currently does not support IE11 and (https://death-to-ie11.com/)[have no intention of doing so].
