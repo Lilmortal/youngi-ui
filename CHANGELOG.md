@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.11.0](https://github.com/Lilmortal/youngi-ui/compare/v2.10.1...v2.11.0) (2020-05-15)
+
+
+### Features
+
+* add AdvancedImage component and rename ImageModal ([7a122f6](https://github.com/Lilmortal/youngi-ui/commit/7a122f6a15b64e0a27f26525f052ec730ac76560))
+* home/works/about page now get its data from cms ([c6a5b7e](https://github.com/Lilmortal/youngi-ui/commit/c6a5b7e700fbc47e53fb6802e1e59723a447f2b6))
+* image modal get its data from api ([91e56f7](https://github.com/Lilmortal/youngi-ui/commit/91e56f734ffe888d8d0d633672b9ec511eaf39c9))
+* withSidebar HOC returns a single sidebarProp object ([179d730](https://github.com/Lilmortal/youngi-ui/commit/179d73012116d25b467c114133cdba63652f5c18))
+
+
+### Bug Fixes
+
+* fix outdated props in stories ([7fc540c](https://github.com/Lilmortal/youngi-ui/commit/7fc540cb9bc6549bfc337b508121589aa8425f62))
+* polyfill fetch if does not exist ([84eeb7b](https://github.com/Lilmortal/youngi-ui/commit/84eeb7b212fadd9b42291418ec4b3798853270e5))
+* updated CONTRIBUTING.md and import node-fetch for now ([54e269d](https://github.com/Lilmortal/youngi-ui/commit/54e269d94400b92746489e91e4714069dbff70f6))
+
 ### [2.10.1](https://github.com/Lilmortal/youngi-ui/compare/v2.10.0...v2.10.1) (2020-05-13)
 
 
