@@ -6,41 +6,25 @@ import { cn, createBem } from "../../utils";
 import styles from "./Works.module.scss";
 import Sidebar, { withSidebar } from "../../components/Sidebar";
 import ImageModal from "./ImageModal";
-import {
-  mockPortfolioCategoryProps,
-  mockPortfolioImageProps,
-} from "./mock-data/data";
-import apiClient from "../../utils/apiClient";
+
 import env from "../config/env";
 import AdvancedImage, {
   AdvancedImageProps,
-  appendImageBaseUrl,
 } from "../../components/AdvancedImage";
-import { InjectedSidebarProps } from "../../components/Sidebar/withSidebar";
+import { getPortfolioCategories, getPortfolioImages } from "./api-client";
+import {
+  appendBaseUrlToPortfolioImages,
+  getPortfolioImagesBySelectedType,
+} from "./Works.util";
+import {
+  PortfolioImageType,
+  PortfolioImageProps,
+  WorkProps,
+  WorkOwnProps,
+  PortfolioCategoryProps,
+} from "./Works.types";
 
 const bem = createBem(styles);
-
-type PortfolioImageType = "Photography" | "Illustration" | "Architecture";
-
-export interface PortfolioCategoryProps {
-  type: PortfolioImageType;
-}
-
-export interface PortfolioImageProps {
-  id: number;
-  images: AdvancedImageProps[];
-  category: PortfolioCategoryProps;
-}
-
-export interface WorkOwnProps {
-  portfolioCategories: PortfolioCategoryProps[];
-  portfolioImages: PortfolioImageProps[];
-}
-
-export interface WorkProps
-  extends WorkOwnProps,
-    InjectedSidebarProps,
-    Styleable {}
 
 const NUMBER_TEXT_LOOKUP = {
   ...styles["global-numberstext"]?.split(" "),
@@ -53,12 +37,6 @@ export const getPortfolioImageCategoriesLayout: {
   Illustration: bem("illustration"),
   Architecture: bem("architecture"),
 };
-
-const getPortfolioImagesBySelectedType = (
-  portfolioImages: PortfolioImageProps[],
-  type: PortfolioImageType
-): PortfolioImageProps | undefined =>
-  portfolioImages.find((image) => image.category.type === type);
 
 const Works: React.FC<WorkProps> = ({
   portfolioCategories,
@@ -76,9 +54,8 @@ const Works: React.FC<WorkProps> = ({
   >(undefined);
 
   const selectedTypePortfolioImages = getPortfolioImagesBySelectedType(
-    portfolioImages,
-    selectedPortfolioImageType
-  )?.images;
+    portfolioImages
+  )(selectedPortfolioImageType)?.images;
 
   const sidebarCategories = (
     <ul className={cn(bem("sidebarCategories"))}>
@@ -137,40 +114,25 @@ const Works: React.FC<WorkProps> = ({
   );
 };
 
-const appendCmsBaseUrlToImages = (
-  profileImages: PortfolioImageProps[]
-): PortfolioImageProps[] =>
-  profileImages.map((profileImage) => ({
-    ...profileImage,
-    images: [
-      ...profileImage.images.map((image) => ({
-        ...appendImageBaseUrl(env.cmsBaseUrl)(image),
-      })),
-    ],
-  }));
-
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: WorkOwnProps;
 }> => {
-  const client = apiClient(env.cmsBaseUrl);
-  const portfolioCategoriesProps: PortfolioCategoryProps[] = env.useMockData
-    ? mockPortfolioCategoryProps
-    : await client.request<PortfolioCategoryProps[]>({
-        url: "portfolio/categories",
-        method: "GET",
-      });
-
-  const portfolioImagesProps: PortfolioImageProps[] = env.useMockData
-    ? mockPortfolioImageProps
-    : await client.request<PortfolioImageProps[]>({
-        url: "portfolio/images",
-        method: "GET",
-      });
+  let portfolioCategories: PortfolioCategoryProps[];
+  let portfolioImages: PortfolioImageProps[];
+  try {
+    portfolioCategories = await getPortfolioCategories();
+    portfolioImages = appendBaseUrlToPortfolioImages(env.cmsBaseUrl)(
+      await getPortfolioImages()
+    );
+  } catch {
+    // TODO: Create an error component
+    throw new Error("Failed to load portfolios.");
+  }
 
   return {
     props: {
-      portfolioCategories: portfolioCategoriesProps,
-      portfolioImages: appendCmsBaseUrlToImages(portfolioImagesProps),
+      portfolioCategories,
+      portfolioImages,
     },
   };
 };

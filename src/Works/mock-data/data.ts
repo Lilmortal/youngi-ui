@@ -2,7 +2,7 @@ import {
   PortfolioCategoryProps,
   PortfolioImageProps,
   WorkOwnProps,
-} from "../Works";
+} from "../Works.types";
 import { ImageModalData } from "../ImageModal";
 
 export const mockPortfolioCategoryProps: PortfolioCategoryProps[] = [

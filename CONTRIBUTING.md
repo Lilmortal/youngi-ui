@@ -2,6 +2,8 @@
 
 ## Quick Start
 
+- You will need to clone this (https://github.com/Lilmortal/youngi-cms)[CMS project] to get it's data.
+- On that project, run `yarn develop`
 - `yarn` to install the project dependencies
 - `yarn start` to run the project on `localhost:3000`
 

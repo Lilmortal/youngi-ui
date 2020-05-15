@@ -7,14 +7,13 @@ import { cn, createBem } from "../../utils";
 import styles from "./About.module.scss";
 import Sidebar, { withSidebar } from "../../components/Sidebar";
 import SocialIcon from "./SocialIcon";
-import { mockAboutCmsResponse } from "./mock-data/data";
-import apiClient from "../../utils/apiClient";
 import env from "../config/env";
 import {
   AdvancedImageProps,
   appendImageBaseUrl,
 } from "../../components/AdvancedImage";
 import { InjectedSidebarProps } from "../../components/Sidebar/withSidebar";
+import { getAboutProps } from "./api-client";
 
 const bem = createBem(styles);
 
@@ -87,10 +86,13 @@ const About: React.FC<AboutProps> = ({
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const client = apiClient(env.cmsBaseUrl);
-  const aboutProps: AboutOwnProps = env.useMockData
-    ? mockAboutCmsResponse
-    : await client.request<AboutOwnProps>({ url: "about", method: "GET" });
+  let aboutProps: AboutOwnProps;
+  try {
+    aboutProps = await getAboutProps();
+  } catch {
+    // TODO: Create error component
+    throw new Error("Failed to load about props.");
+  }
 
   return {
     props: {
@@ -102,5 +104,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-// TODO: withSidebar return sidebar component
 export default withSidebar(About);

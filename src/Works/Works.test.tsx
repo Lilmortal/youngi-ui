@@ -1,10 +1,11 @@
 import React from "react";
-import Works, { WorkProps } from "./Works";
+import Works from "./Works";
 import { render, RenderResult, fireEvent } from "@testing-library/react";
 import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
 import { mockWorksCmsResponse } from "./mock-data/data";
 
 import styles from "./Work.module.scss";
+import { WorkProps } from "./Works.types";
 
 const defaultProps: WorkProps = {
   ...mockWorksCmsResponse,

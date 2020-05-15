@@ -7,8 +7,6 @@ import styles from "./Home.module.scss";
 import Sidebar, { withSidebar } from "../../components/Sidebar";
 import Link from "next/link";
 import links from "../links";
-import { mockHomeCmsResponse } from "./mock-data/data";
-import apiClient from "../../utils/apiClient";
 import env from "../config/env";
 import ReactMarkdown from "react-markdown";
 import {
@@ -16,6 +14,7 @@ import {
   appendImageBaseUrl,
 } from "../../components/AdvancedImage";
 import { InjectedSidebarProps } from "../../components/Sidebar/withSidebar";
+import { getHomeData } from "./api-client";
 
 const bem = createBem(styles);
 
@@ -64,10 +63,13 @@ const Home: React.FC<HomeProps> = ({
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const client = apiClient(env.cmsBaseUrl);
-  const homeProps: HomeOwnProps = env.useMockData
-    ? mockHomeCmsResponse
-    : await client.request<HomeOwnProps>({ url: "home", method: "GET" });
+  let homeProps: HomeOwnProps;
+  try {
+    homeProps = await getHomeData();
+  } catch {
+    // TODO: Create error component
+    throw new Error("Failed to load home props.");
+  }
 
   return {
     props: {
