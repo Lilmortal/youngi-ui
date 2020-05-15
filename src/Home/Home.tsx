@@ -63,13 +63,13 @@ const Home: React.FC<HomeProps> = ({
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  // let homeProps: HomeOwnProps;
-  // try {
-  const homeProps = await getHomeData();
-  // } catch (e) {
-  //   // TODO: Create error component
-  //   throw new Error(`Failed to load home props. - ${e}`);
-  // }
+  let homeProps: HomeOwnProps;
+  try {
+    homeProps = await getHomeData();
+  } catch (e) {
+    // TODO: Create error component
+    throw new Error(`Failed to load home props. - ${e}`);
+  }
 
   return {
     props: {
