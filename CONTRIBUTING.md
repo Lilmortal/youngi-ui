@@ -170,3 +170,8 @@ general overview over how this project is structured:
 ### IE11
 
 This project currently does not support IE11 and [https://death-to-ie11.com/](have no intention of doing so).
+
+## CMS update should automatically deploy this project
+
+Will need to look into it. As of now, here is a (https://github.com/zeit/next.js/discussions/12473#discussioncomment-8690)[suggestion] on how
+to achieve this.
