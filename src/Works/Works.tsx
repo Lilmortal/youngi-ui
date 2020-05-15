@@ -4,7 +4,7 @@ import { GetStaticProps } from "next";
 
 import { cn, createBem } from "../../utils";
 import styles from "./Works.module.scss";
-import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
+import Sidebar, { withSidebar } from "../../components/Sidebar";
 import ImageModal from "./ImageModal";
 import {
   mockPortfolioCategoryProps,
@@ -16,6 +16,7 @@ import AdvancedImage, {
   AdvancedImageProps,
   appendImageBaseUrl,
 } from "../../components/AdvancedImage";
+import { InjectedSidebarProps } from "../../components/Sidebar/withSidebar";
 
 const bem = createBem(styles);
 
@@ -36,7 +37,10 @@ export interface WorkOwnProps {
   portfolioImages: PortfolioImageProps[];
 }
 
-export interface WorkProps extends WorkOwnProps, SidebarProps, Styleable {}
+export interface WorkProps
+  extends WorkOwnProps,
+    InjectedSidebarProps,
+    Styleable {}
 
 const NUMBER_TEXT_LOOKUP = {
   ...styles["global-numberstext"]?.split(" "),
@@ -61,7 +65,7 @@ const Works: React.FC<WorkProps> = ({
   portfolioImages,
   className,
   style,
-  ...sidebarProps
+  sidebarProps,
 }) => {
   const [selectedPortfolioImageType, setSelectedPortfolioImageType] = useState<
     PortfolioImageType

@@ -4,7 +4,7 @@ import { GetStaticProps } from "next";
 
 import { cn, createBem } from "../../utils";
 import styles from "./Home.module.scss";
-import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
+import Sidebar, { withSidebar } from "../../components/Sidebar";
 import Link from "next/link";
 import links from "../links";
 import { mockHomeCmsResponse } from "./mock-data/data";
@@ -15,6 +15,7 @@ import {
   AdvancedImageProps,
   appendImageBaseUrl,
 } from "../../components/AdvancedImage";
+import { InjectedSidebarProps } from "../../components/Sidebar/withSidebar";
 
 const bem = createBem(styles);
 
@@ -23,14 +24,17 @@ export interface HomeOwnProps {
   backgroundImage?: AdvancedImageProps;
 }
 
-export interface HomeProps extends HomeOwnProps, SidebarProps, Styleable {}
+export interface HomeProps
+  extends HomeOwnProps,
+    InjectedSidebarProps,
+    Styleable {}
 
 const Home: React.FC<HomeProps> = ({
   backgroundImage,
   sidebarBiography,
   className,
+  sidebarProps,
   style,
-  ...sidebarProps
 }) => (
   <div className={cn(bem(), className)} style={style}>
     <Head>
@@ -41,9 +45,12 @@ const Home: React.FC<HomeProps> = ({
       />
     </Head>
     <Sidebar {...sidebarProps}>
-      <h2 className={cn(bem("sidebarBiography"))}>
-        {sidebarBiography && <ReactMarkdown source={sidebarBiography} />}
-      </h2>
+      {sidebarBiography && (
+        <ReactMarkdown
+          source={sidebarBiography}
+          className={cn(bem("sidebarBiography"))}
+        />
+      )}
     </Sidebar>
     <div
       className={cn(bem("backgroundImage"))}

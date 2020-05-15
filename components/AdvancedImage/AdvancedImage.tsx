@@ -11,6 +11,7 @@ export interface AdvancedImageProps extends Styleable {
   width?: number;
   height?: number;
   onClick?(): void;
+  "data-testid"?: string;
 }
 
 const AdvancedImage: React.FC<AdvancedImageProps> = ({
@@ -21,7 +22,7 @@ const AdvancedImage: React.FC<AdvancedImageProps> = ({
   height,
   onClick,
   style,
-  ...props
+  "data-testid": dataTestId,
 }) => (
   <img
     src={url}
@@ -31,7 +32,7 @@ const AdvancedImage: React.FC<AdvancedImageProps> = ({
     width={width}
     height={height}
     onClick={onClick}
-    {...props}
+    data-testid={dataTestId}
   />
 );
 

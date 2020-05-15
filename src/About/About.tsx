@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown";
 
 import { cn, createBem } from "../../utils";
 import styles from "./About.module.scss";
-import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
+import Sidebar, { withSidebar } from "../../components/Sidebar";
 import SocialIcon from "./SocialIcon";
 import { mockAboutCmsResponse } from "./mock-data/data";
 import apiClient from "../../utils/apiClient";
@@ -14,6 +14,7 @@ import {
   AdvancedImageProps,
   appendImageBaseUrl,
 } from "../../components/AdvancedImage";
+import { InjectedSidebarProps } from "../../components/Sidebar/withSidebar";
 
 const bem = createBem(styles);
 
@@ -22,14 +23,17 @@ export interface AboutOwnProps {
   biographyContents?: string;
 }
 
-export interface AboutProps extends AboutOwnProps, SidebarProps, Styleable {}
+export interface AboutProps
+  extends AboutOwnProps,
+    InjectedSidebarProps,
+    Styleable {}
 
 const About: React.FC<AboutProps> = ({
   biographyContents,
   profileImage,
   className,
+  sidebarProps,
   style,
-  ...sidebarProps
 }) => (
   <div className={cn(bem(), className)} style={style}>
     <Head>
