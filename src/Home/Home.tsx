@@ -18,6 +18,7 @@ import { getHomeData } from "./api-client";
 
 const bem = createBem(styles);
 
+console.log("ENVIRONMENT ", env);
 export interface HomeOwnProps {
   sidebarBiography?: string;
   backgroundImage?: AdvancedImageProps;
