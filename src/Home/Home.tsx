@@ -18,7 +18,6 @@ import { getHomeData } from "./api-client";
 
 const bem = createBem(styles);
 
-console.log("ENVIRONMENT ", env);
 export interface HomeOwnProps {
   sidebarBiography?: string;
   backgroundImage?: AdvancedImageProps;
@@ -66,6 +65,7 @@ const Home: React.FC<HomeProps> = ({
 export const getStaticProps: GetStaticProps = async () => {
   let homeProps: HomeOwnProps;
   try {
+    console.log("ENVIRONMENT ", env);
     homeProps = await getHomeData();
   } catch {
     // TODO: Create error component
