@@ -65,7 +65,6 @@ const Home: React.FC<HomeProps> = ({
 export const getStaticProps: GetStaticProps = async () => {
   let homeProps: HomeOwnProps;
   try {
-    console.log("ENVIRONMENT ", env);
     homeProps = await getHomeData();
   } catch {
     // TODO: Create error component
