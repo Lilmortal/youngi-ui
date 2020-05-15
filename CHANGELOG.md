@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.12.0](https://github.com/Lilmortal/youngi-ui/compare/v2.11.1...v2.12.0) (2020-05-15)
+
+
+### Features
+
+* migrated all API codes to api-client; removed env.useMockData ([f13dcfa](https://github.com/Lilmortal/youngi-ui/commit/f13dcfa130437bdbaf420d683870746f8cd4a124))
+
 ### [2.11.1](https://github.com/Lilmortal/youngi-ui/compare/v2.11.0...v2.11.1) (2020-05-15)
 
 ## [2.11.0](https://github.com/Lilmortal/youngi-ui/compare/v2.10.1...v2.11.0) (2020-05-15)
