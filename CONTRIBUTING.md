@@ -72,8 +72,14 @@ const bem = createBem(styles);
 
 BEM elements and modifiers can be passed as an argument. If you wish to pass multiple modifiers, pass in an object.
 
-````tsx
-<div className={bem('element', {modifier1: true, modifier2: false, modifier3: true})} />
+```tsx
+<div
+  className={bem("element", {
+    modifier1: true,
+    modifier2: false,
+    modifier3: true,
+  })}
+/>
 ```
 
 ## Next.js
@@ -93,7 +99,7 @@ imported in Javascript.
     color: var(--title-primary);
   }
 }
-````
+```
 
 ```tsx
 import styles from "./index.module.scss";
@@ -163,4 +169,16 @@ general overview over how this project is structured:
 
 ### IE11
 
-This project currently does not support IE11 and (https://death-to-ie11.com/)[have no intention of doing so].
+This project currently does not support IE11 and [https://death-to-ie11.com/](have no intention of doing so).
+
+## CMS update should automatically deploy this project
+
+Will need to look into it. As of now, here is a (https://github.com/zeit/next.js/discussions/12473#discussioncomment-8690)[suggestion] on how
+to achieve this.
+
+## Potential issue
+
+## Heroku idle time
+
+Strapi CMS is currently hosted on a free Heroku account. By default, it will go on hibernation after 30 minutes of idle activities.
+This project might timed out when it calls Strapi API, will need to look into retries/exponential-backup solutions.
