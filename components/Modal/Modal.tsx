@@ -36,6 +36,7 @@ const Modal: React.FC<ModalProps> = ({
     } else {
       noScroll.off();
     }
+    return (): void => noScroll.off();
   }, [open]);
 
   if (!open) {
