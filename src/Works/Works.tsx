@@ -152,7 +152,6 @@ const appendCmsBaseUrlToImages = (
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: WorkOwnProps;
 }> => {
-  console.log("server", env);
   const client = apiClient(env.cmsBaseUrl);
   const portfolioCategoriesProps: PortfolioCategoryProps[] = env.useMockData
     ? mockPortfolioCategoryProps
