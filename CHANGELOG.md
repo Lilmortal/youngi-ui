@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.12.1](https://github.com/Lilmortal/youngi-ui/compare/v2.12.0...v2.12.1) (2020-05-15)
+
+
+### Bug Fixes
+
+* enable scrolling when modal is closed ([8852086](https://github.com/Lilmortal/youngi-ui/commit/88520869b8e95c4df9fe179a474546f71653f22c))
+* fix width overriding parent for about images ([26dec7c](https://github.com/Lilmortal/youngi-ui/commit/26dec7cdfa2101efbbc8d8bcefeec9fc3224b41f))
+
 ## [2.12.0](https://github.com/Lilmortal/youngi-ui/compare/v2.11.1...v2.12.0) (2020-05-15)
 
 
