@@ -124,9 +124,9 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
     portfolioImages = appendBaseUrlToPortfolioImages(env.cmsBaseUrl)(
       await getPortfolioImages()
     );
-  } catch {
+  } catch (e) {
     // TODO: Create an error component
-    throw new Error("Failed to load portfolios.");
+    throw new Error(`Failed to load portfolios. - ${e}`);
   }
 
   return {

@@ -36,9 +36,9 @@ const ImageModal: React.FC<ImageModalProps> = ({
       try {
         const imageModalResponse = await getImageModalData(image.name);
         setImageModalData(imageModalResponse);
-      } catch {
+      } catch (e) {
         // TODO: Create an error component
-        throw new Error("Failed to load image modal data.");
+        throw new Error(`Failed to load image modal data. - ${e}`);
       }
     })();
   }, [image]);

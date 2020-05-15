@@ -89,9 +89,9 @@ export const getStaticProps: GetStaticProps = async () => {
   let aboutProps: AboutOwnProps;
   try {
     aboutProps = await getAboutProps();
-  } catch {
+  } catch (e) {
     // TODO: Create error component
-    throw new Error("Failed to load about props.");
+    throw new Error(`Failed to load about props. - ${e}`);
   }
 
   return {
