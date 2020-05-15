@@ -7,7 +7,7 @@ import { mockWorksCmsResponse } from "./mock-data/data";
 
 const defaultProps: WorkProps = {
   ...mockWorksCmsResponse,
-  ...mockSidebar,
+  sidebarProps: { ...mockSidebar },
 };
 
 storiesOf("Works", module).add("default", () => <Works {...defaultProps} />);

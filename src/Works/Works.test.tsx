@@ -8,7 +8,7 @@ import styles from "./Work.module.scss";
 
 const defaultProps: WorkProps = {
   ...mockWorksCmsResponse,
-  ...mockSidebar,
+  sidebarProps: { ...mockSidebar },
 };
 
 const renderWorksPage = (props?: Partial<WorkProps>): RenderResult =>

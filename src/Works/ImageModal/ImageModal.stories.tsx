@@ -5,7 +5,10 @@ import { actions } from "@storybook/addon-actions";
 import ImageModal, { ImageModalProps } from "./ImageModal";
 
 const defaultProps: ImageModalProps = {
-  id: "1",
+  image: {
+    url: "/download.jpg",
+    name: "image",
+  },
   onClose: () => actions("onClose"),
 };
 
