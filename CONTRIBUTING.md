@@ -60,6 +60,22 @@ fix: timer component now shows the correct time
 BREAKING CHANGE: renamed timer prop `X` to `Y` because...
 ```
 
+## BEM
+
+This project uses BEM. All components must create a BEM object by passing in it's CSS module file.
+
+```tsx
+import styles from "./index.module.scss";
+
+const bem = createBem(styles);
+```
+
+BEM elements and modifiers can be passed as an argument. If you wish to pass multiple modifiers, pass in an object.
+
+````tsx
+<div className={bem('element', {modifier1: true, modifier2: false, modifier3: true})} />
+```
+
 ## Next.js
 
 ### Global imports/variables.
@@ -72,15 +88,19 @@ BREAKING CHANGE: renamed timer prop `X` to `Y` because...
 imported in Javascript.
 
 ```scss
-.test {
-  color: var(--title-primary);
+.root {
+  &__test {
+    color: var(--title-primary);
+  }
 }
-```
+````
 
 ```tsx
 import styles from "./index.module.scss";
 
-<div className={`${styles.test}`}>test</div>;
+const bem = createBem(styles);
+
+<div className={bem("test")}>test</div>;
 ```
 
 ### Exporting SCSS variables
@@ -95,7 +115,7 @@ To export scss variables, you can do so via:
 }
 ```
 
-Note that all variables being exported must be under `global`.
+Note that all CSS variables being exported must be under `global`.
 
 ### Inline SVG
 
