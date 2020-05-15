@@ -1,3 +1,7 @@
+/**
+ * @deprecated Next.js code split our code by default.
+ * Will be removed in v3.0.0
+ */
 const codeSplit = () => (config) => ({
   optimization: {
     splitChunks: {

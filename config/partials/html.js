@@ -1,6 +1,10 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const chalk = require("chalk");
 
+/**
+ * @deprecated Next.js favours SSG or SSR over SPA.
+ * Will be removed in v3.0.0
+ */
 const html = ({
   title,
   description,
