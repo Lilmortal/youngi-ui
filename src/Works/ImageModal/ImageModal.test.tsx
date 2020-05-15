@@ -1,8 +1,12 @@
 import React from "react";
 import ImageModal, { ImageModalProps } from "./ImageModal";
 import { render, RenderResult } from "@testing-library/react";
+import { mockImage } from "../../../components/AdvancedImage/mock-data/data";
 
-const defaultProps: ImageModalProps = { id: "1", onClose: jest.fn() };
+const defaultProps: ImageModalProps = {
+  image: { ...mockImage },
+  onClose: jest.fn(),
+};
 
 const renderImageModal = (props?: Partial<ImageModalProps>): RenderResult =>
   render(<ImageModal {...defaultProps} {...props} />);

@@ -36,7 +36,9 @@ const apiClient = (baseUrl: string): ApiClientOptions => ({
     });
 
     if (!response.ok) {
-      throw new Error(`${response.status}: ${response.statusText}`);
+      throw new Error(
+        `${baseUrl}/${url} - ${response.status}: ${response.statusText}`
+      );
     }
 
     return response.json();

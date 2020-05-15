@@ -4,7 +4,6 @@ import {
   WorkOwnProps,
 } from "../Works";
 import { ImageModalData } from "../ImageModal";
-import { mockImage } from "../../../components/AdvancedImage/mock-data/data";
 
 export const mockPortfolioCategoryProps: PortfolioCategoryProps[] = [
   { type: "Photography" },
@@ -155,7 +154,6 @@ export const mockWorksCmsResponse: WorkOwnProps = {
 };
 
 export const mockImageModalData: ImageModalData = {
-  id: "1",
-  image: mockImage,
+  name: "name",
   description: "Image description",
 };

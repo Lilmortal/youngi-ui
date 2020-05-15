@@ -71,7 +71,9 @@ const Works: React.FC<WorkProps> = ({
     PortfolioImageType
   >("Photography");
 
-  const [selectedPortfolioImageId, setSelectedPortfolioImageId] = useState("");
+  const [selectedPortfolioImage, setSelectedPortfolioImage] = useState<
+    AdvancedImageProps | undefined
+  >(undefined);
 
   const selectedTypePortfolioImages = getPortfolioImagesBySelectedType(
     portfolioImages,
@@ -101,6 +103,7 @@ const Works: React.FC<WorkProps> = ({
 
   return (
     <div className={cn(bem(), className)} style={style}>
+      {/* TODO: Get it from CMS */}
       <Head>
         <title>Youngi Works</title>
         <meta name="description" content="Showcasing Youngi Kims works." />
@@ -113,19 +116,19 @@ const Works: React.FC<WorkProps> = ({
         )}
         data-testid="portfolioImages"
       >
-        <ImageModal
-          id={selectedPortfolioImageId}
-          onClose={(): void => setSelectedPortfolioImageId("")}
-          open={!!selectedPortfolioImageId}
-        />
+        {selectedPortfolioImage && (
+          <ImageModal
+            image={selectedPortfolioImage}
+            onClose={(): void => setSelectedPortfolioImage(undefined)}
+            open={!!selectedPortfolioImage}
+          />
+        )}
         {selectedTypePortfolioImages?.map((portfolioImage, index) => (
           <AdvancedImage
             className={cn(bem("portfolioImage", NUMBER_TEXT_LOOKUP[index]))}
             {...portfolioImage}
             data-testid={portfolioImage.id}
-            onClick={(): void =>
-              setSelectedPortfolioImageId(portfolioImage.id || "")
-            }
+            onClick={(): void => setSelectedPortfolioImage(portfolioImage)}
             key={portfolioImage.id}
           />
         ))}
@@ -149,18 +152,19 @@ const appendCmsBaseUrlToImages = (
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: WorkOwnProps;
 }> => {
+  console.log("server", env);
   const client = apiClient(env.cmsBaseUrl);
   const portfolioCategoriesProps: PortfolioCategoryProps[] = env.useMockData
     ? mockPortfolioCategoryProps
     : await client.request<PortfolioCategoryProps[]>({
-        url: "portfolio-categories",
+        url: "portfolio/categories",
         method: "GET",
       });
 
   const portfolioImagesProps: PortfolioImageProps[] = env.useMockData
     ? mockPortfolioImageProps
     : await client.request<PortfolioImageProps[]>({
-        url: "portfolio-images",
+        url: "portfolio/images",
         method: "GET",
       });
 

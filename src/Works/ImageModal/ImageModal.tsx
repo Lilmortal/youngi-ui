@@ -5,7 +5,6 @@ import { cn, createBem } from "../../../utils";
 
 import styles from "./ImageModal.module.scss";
 import env from "../../config/env";
-import { mockImageModalData } from "../mock-data/data";
 import apiClient from "../../../utils/apiClient";
 import AdvancedImage, {
   AdvancedImageProps,
@@ -14,14 +13,13 @@ import AdvancedImage, {
 const bem = createBem(styles);
 
 export interface ImageModalProps extends Styleable {
-  id: string;
+  image: AdvancedImageProps;
   open?: boolean;
   onClose(): void;
 }
 
 export interface ImageModalData {
-  id?: string;
-  image?: AdvancedImageProps;
+  name?: string;
   description?: string;
 }
 
@@ -29,21 +27,21 @@ const isImageModalData = (
   imageModalData: unknown
 ): imageModalData is ImageModalData => {
   const response: ImageModalData = imageModalData as ImageModalData;
-  return !!response?.image && !!response?.description;
+  return !!response?.name && !!response?.description;
 };
 
 const client = apiClient(env.cmsBaseUrl);
 
-const getImageModal = async (id: string): Promise<unknown> =>
-  env.useMockData
-    ? mockImageModalData
-    : await client.request<ImageModalData>({
-        url: `portfolio-image/${id}`,
-        method: "GET",
-      });
+// TODO: Environment variables gets injected at build time, hence we can't use
+// env.useMockData. Think about alternatives...
+const getImageModal = async (name: string): Promise<unknown> =>
+  await client.request<ImageModalData>({
+    url: `portfolio/image/descriptions/${name}`,
+    method: "GET",
+  });
 
 const ImageModal: React.FC<ImageModalProps> = ({
-  id,
+  image,
   open,
   onClose,
   className,
@@ -52,11 +50,13 @@ const ImageModal: React.FC<ImageModalProps> = ({
   const [imageModalData, setImageModalData] = useState<ImageModalData>();
 
   useEffect(() => {
-    const imageModalResponse = getImageModal(id);
-    if (isImageModalData(imageModalResponse)) {
-      setImageModalData(imageModalResponse);
-    }
-  }, [id]);
+    (async (): Promise<void> => {
+      const imageModalResponse = await getImageModal(image.name);
+      if (isImageModalData(imageModalResponse)) {
+        setImageModalData(imageModalResponse);
+      }
+    })();
+  }, [image]);
 
   return (
     <Modal
@@ -67,18 +67,11 @@ const ImageModal: React.FC<ImageModalProps> = ({
     >
       <div className={cn(bem(), className)} style={style}>
         <div className={cn(bem("imageContainer"))}>
-          {imageModalData?.image && (
-            <AdvancedImage
-              className={cn(bem("image"))}
-              {...imageModalData.image}
-            />
-          )}
+          <AdvancedImage className={cn(bem("image"))} {...image} />
         </div>
 
         <div className={cn(bem("imageDescriptionContainer"))}>
-          {imageModalData?.image?.name && (
-            <h2>{imageModalData?.image?.name}</h2>
-          )}
+          <h2>{image.name}</h2>
           {imageModalData?.description}
         </div>
       </div>

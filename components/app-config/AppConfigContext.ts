@@ -2,11 +2,11 @@ import React from "react";
 
 // TODO: Keep this for localization in the future
 export interface AppConfigContextData {
-  useMockData: boolean;
+  readonly useMockData: boolean;
 }
 
 const appConfig: AppConfigContextData = {
-  useMockData: process.env.USE_MOCKDATA === "true",
+  useMockData: !!process.env.USE_MOCKDATA,
 };
 
 const AppConfigContext = React.createContext<AppConfigContextData>(appConfig);
