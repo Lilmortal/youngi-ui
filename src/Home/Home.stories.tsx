@@ -3,11 +3,11 @@ import { storiesOf } from "@storybook/react";
 
 import Home, { HomeProps } from "./Home";
 import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
+import { mockHomeCmsResponse } from "./mock-data/data";
 
 const defaultProps: HomeProps = {
-  sidebarBiography: "I am a designer with architectural background.",
-  mainImage: "/download.jpg",
-  ...mockSidebar,
+  ...mockHomeCmsResponse,
+  sidebarProps: { ...mockSidebar },
 };
 
 storiesOf("Home", module).add("default", () => <Home {...defaultProps} />);

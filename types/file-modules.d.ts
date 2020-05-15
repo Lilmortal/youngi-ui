@@ -7,6 +7,6 @@ declare module "*.svg" {
 }
 
 interface Styleable {
-  classNames?: string;
+  className?: string;
   style?: React.CSSProperties;
 }

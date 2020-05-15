@@ -17,8 +17,8 @@ const regexEqual = (x, y) => {
 /**
  * Copied this from https://github.com/zeit/next.js/issues/11629.
  * Convert CSS Modules mode from pure to local to allow exporting CSS variables.
- * 
- * @param {object} config 
+ *
+ * @param {object} config
  */
 const convertCssModulesModeToLocal = (config) => {
   const oneOf = config.module.rules.find(
@@ -48,7 +48,7 @@ module.exports = {
   webpack(config) {
     config = convertCssModulesModeToLocal(config);
 
-    return createConfig(env(), svg())(config);
+    return createConfig(svg())(config);
   },
   distDir: "build",
 };

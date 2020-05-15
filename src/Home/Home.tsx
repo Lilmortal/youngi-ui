@@ -4,27 +4,39 @@ import { GetStaticProps } from "next";
 
 import { cn, createBem } from "../../utils";
 import styles from "./Home.module.scss";
-import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
+import Sidebar, { withSidebar } from "../../components/Sidebar";
 import Link from "next/link";
 import links from "../links";
+import { mockHomeCmsResponse } from "./mock-data/data";
+import apiClient from "../../utils/apiClient";
+import env from "../config/env";
+import ReactMarkdown from "react-markdown";
+import {
+  AdvancedImageProps,
+  appendImageBaseUrl,
+} from "../../components/AdvancedImage";
+import { InjectedSidebarProps } from "../../components/Sidebar/withSidebar";
 
 const bem = createBem(styles);
 
-interface HomeOwnProps {
-  sidebarBiography: string;
-  mainImage: string;
+export interface HomeOwnProps {
+  sidebarBiography?: string;
+  backgroundImage?: AdvancedImageProps;
 }
 
-export interface HomeProps extends HomeOwnProps, SidebarProps, Styleable {}
+export interface HomeProps
+  extends HomeOwnProps,
+    InjectedSidebarProps,
+    Styleable {}
 
 const Home: React.FC<HomeProps> = ({
-  mainImage,
+  backgroundImage,
   sidebarBiography,
-  classNames,
+  className,
+  sidebarProps,
   style,
-  ...sidebarProps
 }) => (
-  <div className={cn(bem(), classNames)} style={style}>
+  <div className={cn(bem(), className)} style={style}>
     <Head>
       <title>Youngi Blog</title>
       <meta
@@ -33,11 +45,16 @@ const Home: React.FC<HomeProps> = ({
       />
     </Head>
     <Sidebar {...sidebarProps}>
-      <h2 className={cn(bem("sidebarBiography"))}>{sidebarBiography}</h2>
+      {sidebarBiography && (
+        <ReactMarkdown
+          source={sidebarBiography}
+          className={cn(bem("sidebarBiography"))}
+        />
+      )}
     </Sidebar>
     <div
-      className={cn(bem("mainImage"))}
-      style={{ backgroundImage: `url('${mainImage}')` }}
+      className={cn(bem("backgroundImage"))}
+      style={{ backgroundImage: `url('${backgroundImage?.url}')` }}
     >
       <Link href={links.works}>
         <a className={cn(bem("worksLink"))}></a>
@@ -47,12 +64,19 @@ const Home: React.FC<HomeProps> = ({
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const homeProps: HomeOwnProps = {
-    sidebarBiography: "I am a designer with architectural background.",
-    mainImage: "/download.jpg",
-  };
+  const client = apiClient(env.cmsBaseUrl);
+  const homeProps: HomeOwnProps = env.useMockData
+    ? mockHomeCmsResponse
+    : await client.request<HomeOwnProps>({ url: "home", method: "GET" });
 
-  return { props: { ...homeProps } };
+  return {
+    props: {
+      ...homeProps,
+      backgroundImage:
+        homeProps?.backgroundImage &&
+        appendImageBaseUrl(env.cmsBaseUrl)(homeProps.backgroundImage),
+    },
+  };
 };
 
 export default withSidebar(Home);

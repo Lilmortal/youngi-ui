@@ -1,12 +1,12 @@
 .socialIcon {
   display: flex;
-}
 
-.icon {
-  padding-right: 1rem;
-}
+  &__icon {
+    padding-right: 1rem;
+  }
 
-.content {
-  display: inline-flex;
-  align-items: center;
+  &__name {
+    display: inline-flex;
+    align-items: center;
+  }
 }

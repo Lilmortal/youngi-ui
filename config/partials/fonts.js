@@ -1,5 +1,9 @@
 const { exclude } = require("../defaults");
 
+/**
+ * @deprecated Next.js and Storybook handles fonts.
+ * Will be removed in v3.0.0
+ */
 const fonts = () => (config) => ({
   module: {
     rules: [

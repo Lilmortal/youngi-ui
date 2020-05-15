@@ -13,7 +13,16 @@ const getBlock = <T extends { [key: string]: string }>(styles: T): string => {
 
     const block = key.substring(0, endBlock);
 
-    if (!block.startsWith("global-")) {
+    if (block.startsWith("global-")) {
+      if (!styles[block]) {
+        throw new Error(
+          `failed to export CSS variable [ ${block.substring(
+            7,
+            block.length
+          )} ], did you named it correctly?`
+        );
+      }
+    } else {
       uniqueBlocks.add(block);
     }
   });

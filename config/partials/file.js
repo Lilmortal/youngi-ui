@@ -1,5 +1,10 @@
 const { exclude } = require("../defaults");
 
+/**
+ * @deprecated Storybook handles image files by default. Next.js handles it via finding
+ * the files on /public.
+ * Will be removed in v3.0.0
+ */
 const file = () => (config) => ({
   module: {
     rules: [

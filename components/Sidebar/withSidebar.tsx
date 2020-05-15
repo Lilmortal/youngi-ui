@@ -2,9 +2,13 @@ import React from "react";
 import { SidebarProps } from "./Sidebar";
 import links from "../../src/links";
 
-const withSidebar = <P extends SidebarProps>(Component: React.FC<P>) => (
-  props: P
-): React.ReactElement<P> => {
+export interface InjectedSidebarProps {
+  sidebarProps: SidebarProps;
+}
+
+const withSidebar = <P extends InjectedSidebarProps>(
+  Component: React.FC<P>
+) => (props: P): React.ReactElement<P> => {
   const sidebarProps: SidebarProps = {
     homeLink: {
       href: links.home,
@@ -20,7 +24,7 @@ const withSidebar = <P extends SidebarProps>(Component: React.FC<P>) => (
     },
   };
 
-  return <Component {...props} {...sidebarProps} />;
+  return <Component {...props} sidebarProps={sidebarProps} />;
 };
 
 export default withSidebar;

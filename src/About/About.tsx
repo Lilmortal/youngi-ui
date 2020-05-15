@@ -5,60 +5,102 @@ import ReactMarkdown from "react-markdown";
 
 import { cn, createBem } from "../../utils";
 import styles from "./About.module.scss";
-import Sidebar, { SidebarProps, withSidebar } from "../../components/Sidebar";
+import Sidebar, { withSidebar } from "../../components/Sidebar";
 import SocialIcon from "./SocialIcon";
+import { mockAboutCmsResponse } from "./mock-data/data";
+import apiClient from "../../utils/apiClient";
+import env from "../config/env";
+import {
+  AdvancedImageProps,
+  appendImageBaseUrl,
+} from "../../components/AdvancedImage";
+import { InjectedSidebarProps } from "../../components/Sidebar/withSidebar";
 
 const bem = createBem(styles);
 
-interface AboutOwnProps {
-  profileImageLink: string;
-  biographyContents: string;
+export interface AboutOwnProps {
+  profileImage?: AdvancedImageProps;
+  biographyContents?: string;
 }
 
-export interface AboutProps extends AboutOwnProps, SidebarProps, Styleable {}
+export interface AboutProps
+  extends AboutOwnProps,
+    InjectedSidebarProps,
+    Styleable {}
 
 const About: React.FC<AboutProps> = ({
   biographyContents,
-  profileImageLink,
-  classNames,
+  profileImage,
+  className,
+  sidebarProps,
   style,
-  ...sidebarProps
 }) => (
-  <div className={cn(bem(), classNames)} style={style}>
+  <div className={cn(bem(), className)} style={style}>
     <Head>
       <title>About me</title>
       <meta name="description" content="About Youngi" />
     </Head>
     <Sidebar {...sidebarProps}>
       <div className={cn(bem("sidebarContents"))}>
-        <img
-          src={profileImageLink}
-          className={cn(bem("sidebarProfileImage"))}
-        />
+        {profileImage && (
+          <img
+            src={profileImage.url}
+            alt={profileImage.name}
+            className={cn(bem("sidebarProfileImage"))}
+          />
+        )}
       </div>
     </Sidebar>
     <div className={cn(bem("contents"))}>
       <div className={cn(bem("biography"))}>
-        <ReactMarkdown source={biographyContents} />
+        {biographyContents && <ReactMarkdown source={biographyContents} />}
       </div>
 
       <div className={cn(bem("socialIconsBar"))}>
-        <SocialIcon icon="/twitter.svg">Twitter</SocialIcon>
-        <SocialIcon icon="/facebook.svg">Facebook</SocialIcon>
-        <SocialIcon icon="/youtube.svg">Youtube</SocialIcon>
+        <SocialIcon
+          icon={{
+            url: "/twitter.svg",
+            name: "twitter icon",
+          }}
+        >
+          Twitter
+        </SocialIcon>
+        <SocialIcon
+          icon={{
+            url: "/facebook.svg",
+            name: "facebook icon",
+          }}
+        >
+          Facebook
+        </SocialIcon>
+        <SocialIcon
+          icon={{
+            url: "/youtube.svg",
+            name: "youtube icon",
+          }}
+        >
+          Youtube
+        </SocialIcon>
       </div>
     </div>
   </div>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const aboutProps: AboutOwnProps = {
-    profileImageLink: "/download.jpg",
-    biographyContents:
-      "# Hi there!\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  };
+  const client = apiClient(env.cmsBaseUrl);
+  const aboutProps: AboutOwnProps = env.useMockData
+    ? mockAboutCmsResponse
+    : await client.request<AboutOwnProps>({ url: "about", method: "GET" });
 
-  return { props: { ...aboutProps } };
+  return {
+    props: {
+      ...aboutProps,
+      profileImage:
+        aboutProps?.profileImage &&
+        appendImageBaseUrl(env.cmsBaseUrl)(aboutProps.profileImage),
+    },
+  };
 };
 
+// TODO: withSidebar return sidebar component
 export default withSidebar(About);
