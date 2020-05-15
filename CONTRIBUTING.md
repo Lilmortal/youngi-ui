@@ -72,8 +72,14 @@ const bem = createBem(styles);
 
 BEM elements and modifiers can be passed as an argument. If you wish to pass multiple modifiers, pass in an object.
 
-````tsx
-<div className={bem('element', {modifier1: true, modifier2: false, modifier3: true})} />
+```tsx
+<div
+  className={bem("element", {
+    modifier1: true,
+    modifier2: false,
+    modifier3: true,
+  })}
+/>
 ```
 
 ## Next.js
@@ -93,7 +99,7 @@ imported in Javascript.
     color: var(--title-primary);
   }
 }
-````
+```
 
 ```tsx
 import styles from "./index.module.scss";
@@ -163,4 +169,4 @@ general overview over how this project is structured:
 
 ### IE11
 
-This project currently does not support IE11 and (https://death-to-ie11.com/)[have no intention of doing so].
+This project currently does not support IE11 and [https://death-to-ie11.com/](have no intention of doing so).
