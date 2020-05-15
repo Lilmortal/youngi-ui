@@ -175,3 +175,10 @@ This project currently does not support IE11 and [https://death-to-ie11.com/](ha
 
 Will need to look into it. As of now, here is a (https://github.com/zeit/next.js/discussions/12473#discussioncomment-8690)[suggestion] on how
 to achieve this.
+
+## Potential issue
+
+## Heroku idle time
+
+Strapi CMS is currently hosted on a free Heroku account. By default, it will go on hibernation after 30 minutes of idle activities.
+This project might timed out when it calls Strapi API, will need to look into retries/exponential-backup solutions.
