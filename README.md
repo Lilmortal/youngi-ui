@@ -13,7 +13,7 @@ over the course of his backpacking trips around South-east Asia, and more.
 If you want to contribute this project, please read [CONTRIBUTING.md](CONTRIBUTING.md)
 before doing so, as it has some guidelines around how this project is structured.
 
-Components demos can be seen in [https://youngi-storybook.netlify.app/](Storybook). Feel free to raise a pull
+Components demos can be seen in [Storybook](https://youngi-storybook.netlify.app/). Feel free to raise a pull
 request for suggestions or bug fixes.
 
 ## Versioning
@@ -36,7 +36,7 @@ All breaking changes documentations can be found in [docs](docs).
 
 ## Links
 
-- [https://youngikim.com/](Production website)
-- [https://youngi-cms.herokuapp.com/admin](Strapi Headless CMS). If you wish to have access, please contact
-  <jacktan165@gmail.com>(Jack Tan).
-- [https://youngi-storybook.netlify.app/](Storybook)
+- [Production website](https://youngikim.com/)
+- [Strapi Headless CMS](https://youngi-cms.herokuapp.com/admin). If you wish to have access, please contact
+  <jacktan165@gmail.com>.
+- [Storybook](https://youngi-storybook.netlify.app/)
