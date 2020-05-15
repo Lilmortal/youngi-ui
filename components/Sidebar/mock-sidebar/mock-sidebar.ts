@@ -1,17 +1,17 @@
 import { SidebarProps } from "../Sidebar";
-import links from "../../../src/links";
+import routes from "../../../src/routes";
 
 const mockSidebar: SidebarProps = {
   homeLink: {
-    href: links.home,
+    href: routes.home,
     content: "Youngi Kim",
   },
   aboutLink: {
-    href: links.about,
+    href: routes.about,
     content: "About",
   },
   worksLink: {
-    href: links.works,
+    href: routes.works,
     content: "Work",
   },
 };

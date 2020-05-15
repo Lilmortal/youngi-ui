@@ -3,7 +3,7 @@ module.exports = {
     "^.+\\.(ts|tsx)$": "ts-jest",
   },
   moduleFileExtensions: ["ts", "tsx", "js", "json"],
-  modulePathIgnorePatterns: ["dist"],
+  modulePathIgnorePatterns: ["build"],
   // Because Jest only knows how to read Javascript, we need to mock non Javascript files
   // to a Javascript file.
   moduleNameMapper: {

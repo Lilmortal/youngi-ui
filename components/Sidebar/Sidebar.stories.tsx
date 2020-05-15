@@ -2,19 +2,19 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import Sidebar, { SidebarProps } from "./Sidebar";
-import links from "../../src/links";
+import routes from "../../src/routes";
 
 const defaultProps: SidebarProps = {
   homeLink: {
-    href: links.home,
+    href: routes.home,
     content: "Youngi Kim",
   },
   aboutLink: {
-    href: links.about,
+    href: routes.about,
     content: "About me",
   },
   worksLink: {
-    href: links.works,
+    href: routes.works,
     content: "Work",
   },
 };

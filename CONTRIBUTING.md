@@ -2,7 +2,7 @@
 
 ## Quick Start
 
-- You will need to clone this (https://github.com/Lilmortal/youngi-cms)[CMS project] to get it's data.
+- You will need to clone this (CMS project)[https://github.com/Lilmortal/youngi-cms] to get it's data.
 - On that project, run `yarn develop`
 - `yarn` to install the project dependencies
 - `yarn start` to run the project on `localhost:3000`
@@ -128,8 +128,8 @@ Note that all CSS variables being exported must be under `global`.
 ### Inline SVG
 
 `Next.js` do not support inline SVG by default. This project is able to get around it by adding its own custom loader to handle it.
-The problem however, is that it does not follow `Next.js` assets pattern. All assets are normally placed under `/public` are
-referenced via `tsx<img src="/path/to/asset" />`. Inline SVGs are imported via Javascript like so `import Svg from './file.inline.svg'`.
+The problem however, is that it does not follow `Next.js` assets pattern. All assets are normally placed under `/public` and are
+referenced via `<img src="/path/to/asset" />`. Inline SVGs are imported via Javascript like so `import Svg from './file.inline.svg'`.
 
 ### File Structures
 
@@ -165,18 +165,18 @@ general overview over how this project is structured:
 - Test files must end with `.test.ts` or `.test.tsx`.
 - Scss files must end with `.module.scss`.
 - Inline SVGs must end with `.inline.svg`, otherwise `.svg` will do.
-- React storybook files must end with `.stories.tsx` and are only allowed inside `/src`.
+- React storybook files must end with `.stories.tsx`.
 
 ## Known issues
 
 ### IE11
 
-This project currently does not support IE11 and [https://death-to-ie11.com/](have no intention of doing so).
+This project currently does not support IE11 and [have no intention of doing so](https://death-to-ie11.com/).
 
 ## CMS update should automatically deploy this project
 
-Will need to look into it. As of now, here is a (https://github.com/zeit/next.js/discussions/12473#discussioncomment-8690)[suggestion] on how
-to achieve this.
+Will need to look into it. As of now, here is a (suggestion)[https://github.com/zeit/next.js/discussions/12473#discussioncomment-8690] on how
+to achieve this, but it is currently in an unreleased state and are subject to change...
 
 ## Potential issue
 

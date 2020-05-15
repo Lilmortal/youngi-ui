@@ -6,7 +6,7 @@ import { cn, createBem } from "../../utils";
 import styles from "./Home.module.scss";
 import Sidebar, { withSidebar } from "../../components/Sidebar";
 import Link from "next/link";
-import links from "../links";
+import routes from "../routes";
 import env from "../config/env";
 import ReactMarkdown from "react-markdown";
 import {
@@ -55,7 +55,7 @@ const Home: React.FC<HomeProps> = ({
       className={cn(bem("backgroundImage"))}
       style={{ backgroundImage: `url('${backgroundImage?.url}')` }}
     >
-      <Link href={links.works}>
+      <Link href={routes.works}>
         <a className={cn(bem("worksLink"))}></a>
       </Link>
     </div>

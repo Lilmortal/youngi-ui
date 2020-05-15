@@ -1,19 +1,19 @@
 import React from "react";
 import { render, RenderResult } from "@testing-library/react";
 import Sidebar, { SidebarProps } from "./Sidebar";
-import links from "../../src/links";
+import routes from "../../src/routes";
 
 const homeLink = {
-  href: links.home,
+  href: routes.home,
   content: "Youngi Kim",
 };
 const aboutLink = {
-  href: links.about,
+  href: routes.about,
   content: "About me",
 };
 
 const worksLink = {
-  href: links.works,
+  href: routes.works,
   content: "Work",
 };
 
