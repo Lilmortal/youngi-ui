@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.12.2](https://github.com/Lilmortal/youngi-ui/compare/v2.12.1...v2.12.2) (2020-05-16)
+
+
+### Bug Fixes
+
+* removed tsconfig.test.json and add fetch polyfills to jest ([13d1737](https://github.com/Lilmortal/youngi-ui/commit/13d1737edae8f4f112a3871d8419aa2ac0d1b76f))
+
 ### [2.12.1](https://github.com/Lilmortal/youngi-ui/compare/v2.12.0...v2.12.1) (2020-05-15)
 
 
