@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.13.0](https://github.com/Lilmortal/youngi-ui/compare/v2.12.2...v2.13.0) (2020-05-16)
+
+
+### Features
+
+* moved image description AIP logic from image modal to works ([947119c](https://github.com/Lilmortal/youngi-ui/commit/947119c37fbea8b634903b9fe16ddf216c783cc0))
+
 ### [2.12.2](https://github.com/Lilmortal/youngi-ui/compare/v2.12.1...v2.12.2) (2020-05-16)
 
 
