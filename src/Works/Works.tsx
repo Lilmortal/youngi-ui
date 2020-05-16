@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 
@@ -23,6 +23,7 @@ import {
   WorkOwnProps,
   PortfolioCategoryProps,
 } from "./Works.types";
+import { getImageModalData } from "./ImageModal/api-client";
 
 const bem = createBem(styles);
 
@@ -53,6 +54,9 @@ const Works: React.FC<WorkProps> = ({
     AdvancedImageProps | undefined
   >(undefined);
 
+  const [imageModalDescription, setImageModalDescription] = useState("");
+  const [imageModalErrorMessage, setImageModalErrorMessage] = useState("");
+
   const selectedTypePortfolioImages = getPortfolioImagesBySelectedType(
     portfolioImages
   )(selectedPortfolioImageType)?.images;
@@ -78,6 +82,26 @@ const Works: React.FC<WorkProps> = ({
     </ul>
   );
 
+  useEffect(() => {
+    (async (): Promise<void> => {
+      if (selectedPortfolioImage) {
+        const imageModalResponse = await getImageModalData(
+          selectedPortfolioImage.name
+        );
+        if (imageModalResponse.description) {
+          setImageModalDescription(`${imageModalResponse.description}`);
+          setImageModalErrorMessage("");
+        } else {
+          setImageModalErrorMessage(
+            `No description found for ${selectedPortfolioImage.name}`
+          );
+        }
+      }
+    })().catch((e) => {
+      setImageModalErrorMessage(`Failed to load image modal data. - ${e}`);
+    });
+  }, [selectedPortfolioImage]);
+
   return (
     <div className={cn(bem(), className)} style={style}>
       {/* TODO: Get it from CMS */}
@@ -93,13 +117,13 @@ const Works: React.FC<WorkProps> = ({
         )}
         data-testid="portfolioImages"
       >
-        {selectedPortfolioImage && (
-          <ImageModal
-            image={selectedPortfolioImage}
-            onClose={(): void => setSelectedPortfolioImage(undefined)}
-            open={!!selectedPortfolioImage}
-          />
-        )}
+        <ImageModal
+          errorMessage={imageModalErrorMessage}
+          image={selectedPortfolioImage}
+          description={imageModalDescription}
+          onClose={(): void => setSelectedPortfolioImage(undefined)}
+          open={!!selectedPortfolioImage}
+        />
         {selectedTypePortfolioImages?.map((portfolioImage, index) => (
           <AdvancedImage
             className={cn(bem("portfolioImage", NUMBER_TEXT_LOOKUP[index]))}
