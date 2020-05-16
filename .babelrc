@@ -1,0 +1,4 @@
+{
+  "plugins": ["babel-plugin-react-require"],
+  "presets": ["next/babel"]
+}

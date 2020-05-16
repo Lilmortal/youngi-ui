@@ -1,6 +1,6 @@
 module.exports = {
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
+    "^.+\\.(ts|tsx)$": "babel-jest",
   },
   moduleFileExtensions: ["ts", "tsx", "js", "json"],
   modulePathIgnorePatterns: ["build"],
@@ -11,13 +11,4 @@ module.exports = {
     "\\.(png|jpg|jpeg|svg)$": "<rootDir>/config/__mocks__/fileMock",
   },
   setupFilesAfterEnv: ["./config/setupTests.js"],
-  globals: {
-    "ts-jest": {
-      /**
-       * - Next.js needs "jsx" to be preserve, thus we are overriding it to "React" only in test
-       * - "target" needs to be es2019 to support optional chaining for Jest
-       */
-      tsConfig: "tsconfig.test.json",
-    },
-  },
 };

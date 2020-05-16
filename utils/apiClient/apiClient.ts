@@ -1,7 +1,3 @@
-// TODO: You shouldn't have to import this in Next.js v9.4, however CircleCI will complain that
-// fetch is not defined... look into it...
-import fetch from "node-fetch";
-
 interface Headers {
   [key: string]: string | undefined;
 }
