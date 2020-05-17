@@ -11,16 +11,11 @@ import AdvancedImage, {
 const bem = createBem(styles);
 
 export interface ImageModalProps extends Styleable {
-  loading?: boolean;
   errorMessage?: string;
   image?: AdvancedImageProps;
   description?: string;
   open?: boolean;
   onClose(): void;
-}
-
-export interface ImageModalResponse {
-  description?: string;
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({

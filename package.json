@@ -52,6 +52,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^25.4.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-loader": "^3.0.0",
     "prettier": "^2.0.4",
@@ -60,6 +61,10 @@
     "sass-loader": "^8.0.2",
     "standard-version": "^7.1.0",
     "style-loader": "^1.1.4",
+    "stylelint": "^13.3.3",
+    "stylelint-config-css-modules": "^2.2.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-scss": "^3.17.2",
     "svg-react-loader": "^0.4.6",
     "svg-url-loader": "^5.0.0",
     "terser-webpack-plugin": "^2.3.5",
@@ -81,11 +86,15 @@
     "test:ci": "jest",
     "release": "standard-version -m 'chore(release): [ci skip] publish'",
     "open": "netlify open",
-    "deploy": "netlify deploy"
+    "deploy": "netlify deploy",
+    "lint:ts": "eslint src/**/*.ts{,x} components/**/*.ts{,x}",
+    "lint:scss": "stylelint src/**/*.scss components/**/*.scss styles/**/*.scss",
+    "lint": "run-p -c 'lint:* --fix'"
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "yarn lint && yarn test:ci"
     }
   },
   "commitlint": {

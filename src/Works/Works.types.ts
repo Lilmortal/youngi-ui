@@ -25,3 +25,7 @@ export interface WorkProps
   extends WorkOwnProps,
     InjectedSidebarProps,
     Styleable {}
+
+export interface ImageModalResponse {
+  description?: string;
+}

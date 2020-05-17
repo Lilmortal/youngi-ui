@@ -8,6 +8,7 @@ $NUMS_CODE: (
 );
 
 $numbersText: "";
+
 @each $key, $value in $NUMS_CODE {
   $numbersText: unquote($numbersText + " " + $key);
 }
