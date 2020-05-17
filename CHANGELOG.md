@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.13.1](https://github.com/Lilmortal/youngi-ui/compare/v2.13.0...v2.13.1) (2020-05-17)
+
+
+### Bug Fixes
+
+* imageModalData becomes Response and moved to works; fix lint ([357eca8](https://github.com/Lilmortal/youngi-ui/commit/357eca88510bb04e045aa22f01962e14abfbde4d))
+
 ## [2.13.0](https://github.com/Lilmortal/youngi-ui/compare/v2.12.2...v2.13.0) (2020-05-16)
 
 
