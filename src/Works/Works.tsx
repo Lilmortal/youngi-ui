@@ -23,7 +23,7 @@ import {
   WorkOwnProps,
   PortfolioCategoryProps,
 } from "./Works.types";
-import { getImageModalData } from "./ImageModal/api-client";
+import { getImageModalResponse } from "./ImageModal/api-client";
 
 const bem = createBem(styles);
 
@@ -85,7 +85,7 @@ const Works: React.FC<WorkProps> = ({
   useEffect(() => {
     (async (): Promise<void> => {
       if (selectedPortfolioImage) {
-        const imageModalResponse = await getImageModalData(
+        const imageModalResponse = await getImageModalResponse(
           selectedPortfolioImage.name
         );
         if (imageModalResponse.description) {

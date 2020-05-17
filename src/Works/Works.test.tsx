@@ -14,8 +14,7 @@ import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
 import { mockWorksCmsResponse } from "./mock-data/data";
 
 import styles from "./Work.module.scss";
-import { WorkProps } from "./Works.types";
-import { ImageModalProps } from "./ImageModal/ImageModal";
+import { WorkProps, ImageModalResponse } from "./Works.types";
 
 interface FakeApiResponse<T = object> {
   json?(): Promise<T>;
@@ -31,7 +30,7 @@ const renderWorksPage = (props?: Partial<WorkProps>): RenderResult =>
   render(<Works {...defaultProps} {...props} />);
 
 const setupMockedImageModalApiCalls = <T extends FakeApiResponse>(
-  mockImageModalProps: ImageModalProps,
+  mockImageModalResponse: ImageModalResponse,
   mockOverrides?: T
 ): jest.SpyInstance<
   Promise<Response>,
@@ -40,7 +39,7 @@ const setupMockedImageModalApiCalls = <T extends FakeApiResponse>(
   jest.spyOn(window, "fetch").mockImplementationOnce(
     () =>
       Promise.resolve({
-        json: () => Promise.resolve(mockImageModalProps),
+        json: () => Promise.resolve(mockImageModalResponse),
         ok: true,
         ...mockOverrides,
       }) as Promise<Response>
@@ -148,9 +147,7 @@ describe("works", () => {
   });
 
   it("should display an architecture modal when an architecture image is selected", async () => {
-    setupMockedImageModalApiCalls({
-      onClose: jest.fn(),
-    });
+    setupMockedImageModalApiCalls({});
     const { getByText, getByTestId } = renderWorksPage();
 
     clickOnArchitectureNavigation(getByText, getByTestId);
@@ -163,7 +160,6 @@ describe("works", () => {
 
   it("should render modal with image description after API response returned", async () => {
     const mockedFetch = setupMockedImageModalApiCalls({
-      onClose: jest.fn(),
       description: "description",
     });
     const { getByText, getByTestId, queryByText } = renderWorksPage();
@@ -183,12 +179,7 @@ describe("works", () => {
   });
 
   it("should display an error message if API failed", async () => {
-    const mockedFetch = setupMockedImageModalApiCalls(
-      {
-        onClose: jest.fn(),
-      },
-      { ok: false }
-    );
+    const mockedFetch = setupMockedImageModalApiCalls({}, { ok: false });
     const { getByText, getByTestId, queryByText } = renderWorksPage();
 
     expect(queryByText("description")).not.toBeInTheDocument();
@@ -209,9 +200,7 @@ describe("works", () => {
   });
 
   it("should display an error message if API does not return a description", async () => {
-    const mockedFetch = setupMockedImageModalApiCalls({
-      onClose: jest.fn(),
-    });
+    const mockedFetch = setupMockedImageModalApiCalls({});
     const { getByText, getByTestId, queryByText } = renderWorksPage();
 
     expect(queryByText("description")).not.toBeInTheDocument();

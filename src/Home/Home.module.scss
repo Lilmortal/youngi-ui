@@ -19,12 +19,6 @@
     position: absolute;
     right: 0;
 
-    &:hover {
-      &:after {
-        opacity: 1;
-      }
-    }
-
     &::after {
       content: "\21E8";
       display: flex;
@@ -39,6 +33,12 @@
       background-color: gray;
       font-size: 4rem;
       transition: opacity 0.5s;
+    }
+
+    &:hover {
+      &::after {
+        opacity: 1;
+      }
     }
   }
 }

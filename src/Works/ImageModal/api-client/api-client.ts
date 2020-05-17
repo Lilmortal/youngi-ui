@@ -1,10 +1,10 @@
-import { ImageModalResponse } from "../ImageModal";
 import apiClient from "../../../../utils/apiClient";
 import env from "../../../config/env";
+import { ImageModalResponse } from "../../Works.types";
 
 const client = apiClient(env.cmsBaseUrl);
 
-export const getImageModalData = async (
+export const getImageModalResponse = async (
   name: string
 ): Promise<ImageModalResponse> =>
   await client.request<ImageModalResponse>({
