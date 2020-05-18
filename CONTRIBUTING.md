@@ -173,8 +173,15 @@ general overview over how this project is structured:
 - Scss files must end with `.module.scss`.
 - Inline SVGs must end with `.inline.svg`, otherwise `.svg` will do.
 - React storybook files must end with `.stories.tsx`.
+- Cypress tests must end with `.cy.ts`
 
 ## Cypress
+
+### Usage
+
+All Cypress test files must begin with `/// <reference types="cypress" />` or you will have type errors.
+It is a known [Github issue](https://github.com/cypress-io/cypress/issues/1319) where Jest and Cypress (which uses Chai underneath)
+have global type conflicts.
 
 ### Run locally before you make a deployment
 

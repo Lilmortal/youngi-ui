@@ -103,7 +103,7 @@ const Works: React.FC<WorkProps> = ({
   }, [selectedPortfolioImage]);
 
   return (
-    <div className={cn(bem(), className)} style={style}>
+    <div className={cn(bem(), className)} style={style} data-testid="works">
       {/* TODO: Get it from CMS */}
       <Head>
         <title>Youngi Works</title>
