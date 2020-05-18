@@ -91,7 +91,8 @@
     "lint:ts": "eslint src/**/*.ts{,x} components/**/*.ts{,x}",
     "lint:scss": "stylelint src/**/*.scss components/**/*.scss styles/**/*.scss",
     "lint": "run-p -c 'lint:* --fix'",
-    "cy:run": "yarn start && cypress run"
+    "start:cy": "cypress open",
+    "run:cy": "cypress run"
   },
   "husky": {
     "hooks": {
