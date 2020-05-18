@@ -90,7 +90,8 @@
     "deploy": "netlify deploy",
     "lint:ts": "eslint src/**/*.ts{,x} components/**/*.ts{,x}",
     "lint:scss": "stylelint src/**/*.scss components/**/*.scss styles/**/*.scss",
-    "lint": "run-p -c 'lint:* --fix'"
+    "lint": "run-p -c 'lint:* --fix'",
+    "cy:run": "yarn start && cypress run"
   },
   "husky": {
     "hooks": {
