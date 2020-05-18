@@ -1,0 +1,10 @@
+{
+  "fixturesFolder": false,
+  "ignoreTestFiles": "**/node_modules/**/*",
+  "integrationFolder": "./",
+  "screenshotsFolder": "build/cypress/screenshots",
+  "testFiles": "**/**.cy.ts",
+  "videosFolder": "build/cypress/videos",
+  "supportFile": false,
+  "pluginsFile": false
+}
