@@ -19,6 +19,11 @@
 - `yarn build:sb` to build [React Storybook](https://storybooks.js.org/docs)
 - `yarn test` run [Jest](https://facebook.github.io/jest/) tests on watch
 - `yarn test:ci` run [Jest](https://facebook.github.io/jest/) tests but not on watch
+- `yarn lint:ts` runs [eslint](https://eslint.org/)
+- `yarn lint:scss` runs [Stylelint](https://stylelint.io/)
+- `yarn lint` runs both `yarn lint:ts` and `yarn lint:scss`
+- `yarn start:cy` runs Cypress with an iframe
+- `yarn run:cy` runs Cypress in terminal
 
 ## Project Conventions
 
@@ -30,6 +35,7 @@ This project uses the following tools:
 - [Jest](https://jestjs.io/docs/en/getting-started)
 - [React Storybook](https://storybook.js.org/docs/basics/introduction/)
 - [React testing library](https://testing-library.com/docs/react-testing-library/intro)
+- [Cypress](https://www.cypress.io/)
 
 These are a list of linting tools this project uses:
 
@@ -167,6 +173,21 @@ general overview over how this project is structured:
 - Scss files must end with `.module.scss`.
 - Inline SVGs must end with `.inline.svg`, otherwise `.svg` will do.
 - React storybook files must end with `.stories.tsx`.
+- Cypress tests must end with `.cy.ts`
+
+## Cypress
+
+### Usage
+
+All Cypress test files must begin with `/// <reference types="cypress" />` or you will have type errors.
+It is a known [Github issue](https://github.com/cypress-io/cypress/issues/1319) where Jest and Cypress (which uses Chai underneath)
+have global type conflicts.
+
+### Run locally before you make a deployment
+
+We used the free tier for all our products, thus we are very limited on resources, and I'm on poverty mode at the moment.
+Thus, Cypress is not going to be run on our CI server. Cypress will not be run on commit as it takes some time to start up the server,
+as well as the CMS. Hence, it is best practice to run Cypress locally and manually to see if anything breaks.
 
 ## Known issues
 

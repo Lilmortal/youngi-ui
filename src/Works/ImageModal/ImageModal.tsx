@@ -43,7 +43,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
 
           <div className={cn(bem("imageDescriptionContainer"))}>
             {image && <h2>{image.name}</h2>}
-            {description}
+            <div data-testid="imageDescription">{description}</div>
           </div>
         </div>
       )}

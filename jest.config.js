@@ -10,5 +10,5 @@ module.exports = {
     "\\.(css|scss)$": "identity-obj-proxy",
     "\\.(png|jpg|jpeg|svg)$": "<rootDir>/config/__mocks__/fileMock",
   },
-  setupFilesAfterEnv: ["./config/setupTests.js"],
+  setupFilesAfterEnv: ["./config/jest/setupTests.js"],
 };
