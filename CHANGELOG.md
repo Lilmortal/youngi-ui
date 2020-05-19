@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.14.0](https://github.com/Lilmortal/youngi-ui/compare/v2.13.1...v2.14.0) (2020-05-19)
+
+
+### Features
+
+* added cypress and add e2e test to works ([3f8b1af](https://github.com/Lilmortal/youngi-ui/commit/3f8b1af639d2ed6b2d040d399a6d3afbadcda2fd))
+* added cypress VR tests ([23c9c1f](https://github.com/Lilmortal/youngi-ui/commit/23c9c1f712a496be4bfa00583ce72fa57864d871))
+
+
+### Bug Fixes
+
+* exclude cypress in tsconfig ([287b6fe](https://github.com/Lilmortal/youngi-ui/commit/287b6fe762b7c16f4d5f8b6781d003e6fbb9aa10))
+
 ### [2.13.1](https://github.com/Lilmortal/youngi-ui/compare/v2.13.0...v2.13.1) (2020-05-17)
 
 
