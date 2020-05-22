@@ -1,14 +1,11 @@
 {
   "fixturesFolder": false,
-  "ignoreTestFiles": [
-    "**/node_modules/**/*",
-    "**/__snapshots__/*",
-    "**/__image_snapshots__/*"
-  ],
+  "ignoreTestFiles": ["**/node_modules/**/*"],
   "integrationFolder": "./",
   "screenshotsFolder": "build/cypress/screenshots",
   "testFiles": "**/**.cy.ts",
   "videosFolder": "build/cypress/videos",
   "supportFile": "config/cypress/support",
-  "pluginsFile": "config/cypress/plugins"
+  "pluginsFile": "config/cypress/plugins",
+  "video": false
 }
