@@ -16,8 +16,8 @@ export const IntlProviderContext = React.createContext<IntlProviderProps>({
 export interface IntlProviderProps<
   T extends Record<string, string> = Record<string, string>
 > {
-  locale: SupportedLocale;
-  setLocale: React.Dispatch<React.SetStateAction<SupportedLocale>>;
+  locale: SupportedLocale | undefined;
+  setLocale: React.Dispatch<React.SetStateAction<SupportedLocale | undefined>>;
   messages: T;
   setMessages: React.Dispatch<React.SetStateAction<T>>;
   children?: React.ReactNode;
@@ -48,19 +48,21 @@ const IntlProvider: React.FC<IntlProviderProps> = ({
   const context = useContext(IntlProviderContext);
 
   useEffect(() => {
-    if (locale !== prevLocale) {
+    if (locale !== prevLocale || locale === undefined) {
       if (isRouterLangLocaleSupported(router.query.lang)) {
         setLocale(router.query.lang);
       } else {
         setLocale(getInitialLocale());
 
-        console.log(locale, getInitialLocale());
         // Add locale in front of URL and remove leading slash
         const pathnameWithLocaleAppended = `/${
           context.locale
         }${router.asPath.replace(/\/+$/, "")}`;
 
-        if (isPathnameValid(pathnameWithLocaleAppended, context.locale)) {
+        if (
+          context.locale &&
+          isPathnameValid(pathnameWithLocaleAppended, context.locale)
+        ) {
           router.replace({
             pathname: pathnameWithLocaleAppended,
           });
@@ -68,7 +70,7 @@ const IntlProvider: React.FC<IntlProviderProps> = ({
       }
 
       // We support en locale by default via defaultMessage in react-intl.
-      if (locale !== enLocale) {
+      if (locale && locale !== enLocale) {
         // TODO: VSCode can't detect if this import is valid
         import(`../../locales/translations/${locale}.json`).then(
           (translations) => {
@@ -78,6 +80,10 @@ const IntlProvider: React.FC<IntlProviderProps> = ({
       }
     }
   }, [locale, router, setLocale, prevLocale, setMessages, context]);
+
+  if (!locale) {
+    return null;
+  }
 
   return (
     <IntlProviderContext.Provider
