@@ -16,7 +16,7 @@ module.exports = {
     "@storybook/addon-a11y/register",
     "@storybook/addon-viewport/register",
   ],
-  stories: ["../components/**/*.stories.tsx", "../src/**/*.stories.tsx"],
+  stories: ["../src/**/*.stories.tsx"],
   webpackFinal: async (config) => {
     /**
      * Storybook sets all SVG loaders to be file-loaders, but in our case we cater

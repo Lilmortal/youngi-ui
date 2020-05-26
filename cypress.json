@@ -10,5 +10,6 @@
   "testFiles": "**/**.cy.ts",
   "videosFolder": "build/cypress/videos",
   "supportFile": "config/cypress/support",
-  "pluginsFile": "config/cypress/plugins"
+  "pluginsFile": "config/cypress/plugins",
+  "video": false
 }
