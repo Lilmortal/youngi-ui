@@ -4,15 +4,24 @@ import getRoutes from "../../../routes";
 const routes = getRoutes();
 const mockSidebar: SidebarProps = {
   homeLink: {
-    href: routes.home,
+    link: {
+      href: "/[lang]",
+      as: routes.home,
+    },
     content: "Youngi Kim",
   },
   aboutLink: {
-    href: routes.about,
+    link: {
+      href: "/[lang]/about",
+      as: routes.about,
+    },
     content: "About",
   },
   worksLink: {
-    href: routes.works,
+    link: {
+      href: "/[lang]/works",
+      as: routes.works,
+    },
     content: "Work",
   },
 };

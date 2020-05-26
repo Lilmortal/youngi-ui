@@ -1,23 +1,30 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import messages from "./Sidebar.messages";
 import Sidebar, { SidebarProps } from "./Sidebar";
 import getRoutes from "../../routes";
-import { FormattedMessage } from "react-intl";
 
 const routes = getRoutes();
 const defaultProps: SidebarProps = {
   homeLink: {
-    href: routes.home,
-    content: <FormattedMessage {...messages} />,
+    link: {
+      href: "",
+      as: routes.home,
+    },
+    content: "Home",
   },
   aboutLink: {
-    href: routes.about,
+    link: {
+      href: "",
+      as: routes.about,
+    },
     content: "About me",
   },
   worksLink: {
-    href: routes.works,
+    link: {
+      href: "",
+      as: routes.works,
+    },
     content: "Work",
   },
 };
