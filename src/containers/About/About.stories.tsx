@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import About, { AboutProps } from "./About";
-import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
+import { mockSidebar } from "../../commons/Sidebar/mock-sidebar";
 import { mockAboutCmsResponse } from "./mock-data/data";
 
 const defaultProps: AboutProps = {

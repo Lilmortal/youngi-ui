@@ -1,7 +1,9 @@
 import React from "react";
 import { render, RenderResult } from "@testing-library/react";
 import Sidebar, { SidebarProps } from "./Sidebar";
-import routes from "../../routes";
+import getRoutes from "../../routes";
+
+const routes = getRoutes();
 
 const homeLink = {
   href: routes.home,

@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import Works from "./Works";
-import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
+import { mockSidebar } from "../../commons/Sidebar/mock-sidebar";
 import { mockWorksCmsResponse } from "./mock-data/data";
 import { WorkProps } from "./Works.types";
 

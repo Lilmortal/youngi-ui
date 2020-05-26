@@ -4,13 +4,11 @@ import { GetStaticProps } from "next";
 
 import { cn, createBem } from "../../../utils";
 import styles from "./Works.module.scss";
-import Sidebar, { withSidebar } from "../../components/Sidebar";
+import Sidebar, { withSidebar } from "../../commons/Sidebar";
 import ImageModal from "./ImageModal";
 
 import env from "../../config/env";
-import AdvancedImage, {
-  AdvancedImageProps,
-} from "../../components/AdvancedImage";
+import AdvancedImage, { AdvancedImageProps } from "../../commons/AdvancedImage";
 import { getPortfolioCategories, getPortfolioImages } from "./api-client";
 import {
   appendBaseUrlToPortfolioImages,

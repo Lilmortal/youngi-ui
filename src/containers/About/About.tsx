@@ -5,14 +5,14 @@ import ReactMarkdown from "react-markdown";
 
 import { cn, createBem } from "../../../utils";
 import styles from "./About.module.scss";
-import Sidebar, { withSidebar } from "../../components/Sidebar";
+import Sidebar, { withSidebar } from "../../commons/Sidebar";
 import SocialIcon from "./SocialIcon";
 import env from "../../config/env";
 import {
   AdvancedImageProps,
   appendImageBaseUrl,
-} from "../../components/AdvancedImage";
-import { InjectedSidebarProps } from "../../components/Sidebar/withSidebar";
+} from "../../commons/AdvancedImage";
+import { InjectedSidebarProps } from "../../commons/Sidebar/withSidebar";
 import { getAboutProps } from "./api-client";
 
 const bem = createBem(styles);

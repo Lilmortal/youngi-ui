@@ -1,5 +1,5 @@
-import { AdvancedImageProps } from "../../components/AdvancedImage";
-import { InjectedSidebarProps } from "../../components/Sidebar/withSidebar";
+import { AdvancedImageProps } from "../../commons/AdvancedImage";
+import { InjectedSidebarProps } from "../../commons/Sidebar/withSidebar";
 
 export type PortfolioImageType =
   | "Photography"

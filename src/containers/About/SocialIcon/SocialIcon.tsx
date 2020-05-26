@@ -3,7 +3,7 @@ import styles from "./SocialIcon.module.scss";
 import { cn, createBem } from "../../../../utils";
 import AdvancedImage, {
   AdvancedImageProps,
-} from "../../../components/AdvancedImage";
+} from "../../../commons/AdvancedImage";
 
 const bem = createBem(styles);
 export interface SocialIconProps extends Styleable {

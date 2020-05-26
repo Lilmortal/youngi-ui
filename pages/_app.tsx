@@ -2,30 +2,36 @@ import React, { useState, useEffect } from "react";
 import { AppProps } from "next/app";
 
 import "../styles/index.scss";
-import { IntlProvider } from "react-intl";
-import {
-  getInitialLocale,
-  defaultLocale,
-  SupportedLocale,
-} from "../src/locales";
+import { enLocale, SupportedLocale } from "../src/locales";
+import IntlProvider from "../src/commons/intl/IntlProvider";
+import { useRouter } from "next/dist/client/router";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
-  const [locale, setLocale] = useState<SupportedLocale>(defaultLocale);
-  const [messages, setMessages] = useState<object>({});
+  const router = useRouter();
 
-  console.log(process.cwd());
-  import(
-    "../src/components/Sidebar/Sidebar.messages.i18n.json"
-  ).then((module) => console.log(module));
+  const [locale, setLocale] = useState<SupportedLocale>(enLocale);
+  const [messages, setMessages] = useState<Record<string, string>>({});
+  const [isAppReady, setIsAppReady] = useState(router.query.lang === enLocale);
 
-  // setMessages();
   useEffect(() => {
-    setLocale(getInitialLocale());
-  }, []);
+    // Wait until messages are loaded when not "en" locale.
+    if (router.query.lang === enLocale || Object.keys(messages).length > 0) {
+      setIsAppReady(true);
+    }
+  }, [router, messages, locale]);
 
   return (
-    <IntlProvider locale={locale} messages={messages}>
-      <Component {...pageProps} />
+    <IntlProvider
+      locale={locale}
+      messages={messages}
+      setLocale={setLocale}
+      setMessages={setMessages}
+    >
+      {isAppReady ? (
+        <Component {...pageProps} />
+      ) : (
+        <div>Loading translations...</div>
+      )}
     </IntlProvider>
   );
 };

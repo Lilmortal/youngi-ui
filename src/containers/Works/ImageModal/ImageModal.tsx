@@ -1,12 +1,12 @@
 import React from "react";
 
-import Modal from "../../../components/Modal";
+import Modal from "../../../commons/Modal";
 import { cn, createBem } from "../../../../utils";
 
 import styles from "./ImageModal.module.scss";
 import AdvancedImage, {
   AdvancedImageProps,
-} from "../../../components/AdvancedImage";
+} from "../../../commons/AdvancedImage";
 
 const bem = createBem(styles);
 

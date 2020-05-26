@@ -10,7 +10,7 @@ import {
   MatcherOptions,
   act,
 } from "@testing-library/react";
-import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
+import { mockSidebar } from "../../commons/Sidebar/mock-sidebar";
 import { mockWorksCmsResponse } from "./mock-data/data";
 
 import styles from "./Work.module.scss";

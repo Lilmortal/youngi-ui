@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { SidebarProps } from "./Sidebar";
-import routes from "../../routes";
+import getRoutes from "../../routes";
 
 import messages from "./Sidebar.messages";
 import { FormattedMessage } from "react-intl";
+import { IntlProviderContext } from "../intl/IntlProvider";
 export interface InjectedSidebarProps {
   sidebarProps?: SidebarProps;
 }
@@ -11,18 +12,22 @@ export interface InjectedSidebarProps {
 const withSidebar = <P extends InjectedSidebarProps>(
   Component: React.FC<P>
 ) => (props: P): React.ReactElement<P> => {
+  const context = useContext(IntlProviderContext);
+
+  const routes = getRoutes(context.locale);
+
   const sidebarProps: SidebarProps = {
     homeLink: {
       href: routes.home,
-      content: <FormattedMessage {...messages} />,
+      content: <FormattedMessage {...messages.homeMessage} />,
     },
     aboutLink: {
       href: routes.about,
-      content: "About me",
+      content: <FormattedMessage {...messages.aboutLink} />,
     },
     worksLink: {
       href: routes.works,
-      content: "Work",
+      content: <FormattedMessage {...messages.worksLink} />,
     },
   };
 

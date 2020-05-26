@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import Home, { HomeProps } from "./Home";
-import { mockSidebar } from "../../components/Sidebar/mock-sidebar";
+import { mockSidebar } from "../../commons/Sidebar/mock-sidebar";
 import { mockHomeCmsResponse } from "./mock-data/data";
 
 const defaultProps: HomeProps = {

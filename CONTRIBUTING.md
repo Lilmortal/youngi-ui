@@ -145,7 +145,7 @@ general overview over how this project is structured:
 
 - `/config` stores custom webpack and Jest configs. Generally this directory is rarely modified. The custom webpack
   config is only used for React storybook, pre v2.0.0 to run/build client side app, and to append Next.js default webpack config.
-- `/components` stores all common React components that are being used multiple times across the application.
+- `/commons` stores all common components or hooks that are being used multiple times across the application.
 - `/pages` is how `Next.js` handles routing. The routing is based on files and directories names.
   (e.g. `localhost:3000/page1/app` is located in `/pages/page1/app.tsx`). For more information, have a look at their
   [routing guide](https://nextjs.org/docs/routing/introduction). All files here MUST only export files from `/src`.

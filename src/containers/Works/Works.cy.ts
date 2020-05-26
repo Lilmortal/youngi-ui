@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+/// <reference types="cypress-plugin-snapshots" />
 
 it("should select architecture category and display a modal when an image is selected", () => {
   cy.visit("http://localhost:3000/works");
@@ -9,7 +10,7 @@ it("should select architecture category and display a modal when an image is sel
     "have.text",
     "test ttest test"
   );
-  cy.get("[data-testid=works").matchImageSnapshot();
+  cy.get("[data-testid=works").toMatchImageSnapshot();
 });
 
 it("should select architecture category and display a modal when an image is selected on iphone 6", () => {
@@ -22,6 +23,6 @@ it("should select architecture category and display a modal when an image is sel
     "have.text",
     "test ttest test"
   );
-  cy.get("[data-testid=works").matchImageSnapshot();
+  cy.get("[data-testid=works").toMatchImageSnapshot();
 });
 export default undefined;

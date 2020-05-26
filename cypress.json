@@ -1,6 +1,10 @@
 {
   "fixturesFolder": false,
-  "ignoreTestFiles": ["**/node_modules/**/*"],
+  "ignoreTestFiles": [
+    "**/node_modules/**/*",
+    "**/__snapshots__/*",
+    "**/__image_snapshots__/*"
+  ],
   "integrationFolder": "./",
   "screenshotsFolder": "build/cypress/screenshots",
   "testFiles": "**/**.cy.ts",

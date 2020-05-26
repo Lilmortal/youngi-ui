@@ -1,5 +1,5 @@
 import { isLocale, SupportedLocale } from "./locale.types";
-import { defaultLocale } from "./config";
+import { enLocale } from "./config";
 
 export const getInitialLocale = (): SupportedLocale => {
   const userLocale = localStorage.getItem("locale");
@@ -13,5 +13,5 @@ export const getInitialLocale = (): SupportedLocale => {
     return browserLocale;
   }
 
-  return defaultLocale;
+  return enLocale;
 };

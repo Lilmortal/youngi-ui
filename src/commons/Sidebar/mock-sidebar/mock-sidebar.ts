@@ -1,6 +1,7 @@
 import { SidebarProps } from "../Sidebar";
-import routes from "../../../routes";
+import getRoutes from "../../../routes";
 
+const routes = getRoutes();
 const mockSidebar: SidebarProps = {
   homeLink: {
     href: routes.home,

@@ -1,9 +1,7 @@
 import { GetStaticPaths } from "next";
 import { defaultPaths } from "../../src/locales";
 
-export { default } from "../../src/containers/Home";
-
-export { getStaticProps } from "../../src/containers/Home";
+export { default, getStaticProps } from "../../src/containers/About";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {

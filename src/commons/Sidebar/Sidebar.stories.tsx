@@ -3,9 +3,10 @@ import { storiesOf } from "@storybook/react";
 
 import messages from "./Sidebar.messages";
 import Sidebar, { SidebarProps } from "./Sidebar";
-import routes from "../../routes";
+import getRoutes from "../../routes";
 import { FormattedMessage } from "react-intl";
 
+const routes = getRoutes();
 const defaultProps: SidebarProps = {
   homeLink: {
     href: routes.home,

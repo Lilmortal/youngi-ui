@@ -29,7 +29,6 @@
     "@testing-library/jest-dom": "^5.5.0",
     "@testing-library/react": "^10.0.2",
     "@testing-library/react-hooks": "^3.2.1",
-    "@types/cypress-image-snapshot": "^3.1.2",
     "@types/jest": "^25.2.1",
     "@types/no-scroll": "^2.1.0",
     "@types/react-intl": "^3.0.0",
@@ -46,7 +45,6 @@
     "commitlint": "^8.3.5",
     "css-loader": "^3.5.2",
     "cypress": "^4.5.0",
-    "cypress-image-snapshot": "^3.1.1",
     "cypress-plugin-snapshots": "^1.4.3",
     "dart-sass": "^1.25.0",
     "dotenv-webpack": "^1.8.0",
@@ -85,7 +83,7 @@
     "webpack-merge": "^4.2.2"
   },
   "scripts": {
-    "start": "next dev",
+    "start": "yarn transformMessages && next dev",
     "build": "next build",
     "export": "next export",
     "start:build": "next start",
