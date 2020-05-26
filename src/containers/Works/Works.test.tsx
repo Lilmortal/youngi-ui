@@ -15,6 +15,7 @@ import { mockWorksCmsResponse } from "./mock-data/data";
 
 import styles from "./Work.module.scss";
 import { WorkProps, ImageModalResponse } from "./Works.types";
+import IntlProvider from "../../commons/intl/IntlProvider";
 
 interface FakeApiResponse<T = object> {
   json?(): Promise<T>;
@@ -27,7 +28,16 @@ const defaultProps: WorkProps = {
 };
 
 const renderWorksPage = (props?: Partial<WorkProps>): RenderResult =>
-  render(<Works {...defaultProps} {...props} />);
+  render(
+    <IntlProvider
+      locale="en"
+      setLocale={jest.fn()}
+      messages={{}}
+      setMessages={jest.fn()}
+    >
+      <Works {...defaultProps} {...props} />
+    </IntlProvider>
+  );
 
 const setupMockedImageModalApiCalls = <T extends FakeApiResponse>(
   mockImageModalResponse: ImageModalResponse,
@@ -65,6 +75,16 @@ const clickOnArchitectureNavigation = (
 
   fireEvent.click(architectureImage);
 };
+
+jest.mock("next/dist/client/router", () => ({
+  useRouter(): object {
+    return {
+      asPath: "",
+      replace: (): void => undefined,
+      query: "",
+    };
+  },
+}));
 
 describe("works", () => {
   afterEach(() => {

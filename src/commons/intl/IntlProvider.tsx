@@ -36,6 +36,7 @@ const isPathnameValid = (
   return !!Object.values(routes).find((route) => route === pathname);
 };
 
+// TODO: add tests
 const IntlProvider: React.FC<IntlProviderProps> = ({
   children,
   locale,
