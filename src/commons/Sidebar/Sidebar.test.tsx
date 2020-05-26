@@ -6,16 +6,25 @@ import getRoutes from "../../routes";
 const routes = getRoutes();
 
 const homeLink = {
-  href: routes.home,
+  link: {
+    href: "",
+    as: routes.home,
+  },
   content: "Youngi Kim",
 };
 const aboutLink = {
-  href: routes.about,
+  link: {
+    href: "",
+    as: routes.about,
+  },
   content: "About me",
 };
 
 const worksLink = {
-  href: routes.works,
+  link: {
+    href: "",
+    as: routes.works,
+  },
   content: "Work",
 };
 

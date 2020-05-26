@@ -6,8 +6,13 @@ import styles from "./Sidebar.module.scss";
 
 const bem = createBem(styles);
 
-interface SidebarLinkProps {
+interface SidebarHrefProps {
   href: string;
+  as: string;
+}
+
+interface SidebarLinkProps {
+  link: SidebarHrefProps;
   content: React.ReactNode;
 }
 
@@ -28,17 +33,17 @@ const Sidebar: React.FC<SidebarProps> = ({
 }) => (
   <div className={cn(bem(), className)} style={style}>
     <div className={cn(bem("home"))}>
-      <Link href={homeLink.href}>
+      <Link {...homeLink.link}>
         <a className={cn(bem("homeLinkContent"))}>{homeLink.content}</a>
       </Link>
     </div>
 
     <div className={cn(bem("bodyContent"))}>{children}</div>
     <nav className={cn(bem("navigation"))}>
-      <Link href={aboutLink.href}>
+      <Link {...aboutLink.link}>
         <a className={cn(bem("navigationContent"))}>{aboutLink.content}</a>
       </Link>
-      <Link href={worksLink.href}>
+      <Link {...worksLink.link}>
         <a className={cn(bem("navigationContent"))}>{worksLink.content}</a>
       </Link>
     </nav>
