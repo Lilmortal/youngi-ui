@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.15.0](https://github.com/Lilmortal/youngi-ui/compare/v2.14.0...v2.15.0) (2020-05-26)
+
+
+### Features
+
+* clicking on sidebar links does not do hard refresh ([2bbacdc](https://github.com/Lilmortal/youngi-ui/commit/2bbacdc44092686c5b62ae9e18ed912adaba4b70))
+* migrate all pages to src/containers and WIP on react-intl ([d21d589](https://github.com/Lilmortal/youngi-ui/commit/d21d589933ac9fd0b60cda90def5cab6f7113bc1))
+* rename components to components; added i18n draft ([5788fa1](https://github.com/Lilmortal/youngi-ui/commit/5788fa1a5b17f3c7c8fe3a5622121c644c2606e4))
+
+
+### Bug Fixes
+
+* fix intlprovider test warnings ([e85acb6](https://github.com/Lilmortal/youngi-ui/commit/e85acb60cbb7c37a6e22d5d3b0bec4e67afce3e8))
+* fix tslint issues ([bc15dc8](https://github.com/Lilmortal/youngi-ui/commit/bc15dc876e76e73e7cc3ff3b81ca12bd596624ea))
+* handle locale when it is undefined ([711c6cf](https://github.com/Lilmortal/youngi-ui/commit/711c6cf469726cca40487bd21b753d76b4e8c2b2))
+
 ## [2.14.0](https://github.com/Lilmortal/youngi-ui/compare/v2.13.1...v2.14.0) (2020-05-19)
 
 
