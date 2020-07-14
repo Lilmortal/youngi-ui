@@ -32,10 +32,10 @@
     color: lightgray;
     text-decoration: none;
     display: block;
+    align-self: flex-start;
 
     &:first-child {
       border-top: 2px solid lightgray;
-      align-self: flex-start;
     }
   }
 }
