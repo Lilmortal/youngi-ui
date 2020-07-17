@@ -4,7 +4,7 @@ import React from "react";
 // 404
 // Srcset
 // Slow download
-export interface AdvancedImageProps extends Styleable {
+export interface ImgProps extends Styleable {
   id?: string;
   url: string;
   name: string;
@@ -14,7 +14,7 @@ export interface AdvancedImageProps extends Styleable {
   "data-testid"?: string;
 }
 
-const AdvancedImage: React.FC<AdvancedImageProps> = ({
+const Img: React.FC<ImgProps> = ({
   url,
   name,
   className,
@@ -36,4 +36,4 @@ const AdvancedImage: React.FC<AdvancedImageProps> = ({
   />
 );
 
-export default AdvancedImage;
+export default Img;

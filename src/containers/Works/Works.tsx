@@ -8,7 +8,7 @@ import Sidebar, { withSidebar } from "../../commons/Sidebar";
 import ImageModal from "./ImageModal";
 
 import env from "../../config/env";
-import AdvancedImage, { AdvancedImageProps } from "../../commons/AdvancedImage";
+import { ImgProps } from "../../commons/Img";
 import { getPortfolioCategories, getPortfolioImages } from "./api-client";
 import {
   appendBaseUrlToPortfolioImages,
@@ -22,12 +22,9 @@ import {
   PortfolioCategoryProps,
 } from "./Works.types";
 import { getImageModalResponse } from "./ImageModal/api-client";
+import ImagesGrid from "./ImagesGridList";
 
 const bem = createBem(styles);
-
-const NUMBER_TEXT_LOOKUP = {
-  ...styles["global-numberstext"]?.split(" "),
-};
 
 export const getPortfolioImageCategoriesLayout: {
   [key in PortfolioImageType]: string;
@@ -49,7 +46,7 @@ const Works: React.FC<WorkProps> = ({
   >("Photography");
 
   const [selectedPortfolioImage, setSelectedPortfolioImage] = useState<
-    AdvancedImageProps | undefined
+    ImgProps | undefined
   >(undefined);
 
   const [imageModalDescription, setImageModalDescription] = useState("");
@@ -115,6 +112,13 @@ const Works: React.FC<WorkProps> = ({
         )}
         data-testid="portfolioImages"
       >
+        {selectedTypePortfolioImages && (
+          <ImagesGrid
+            images={selectedTypePortfolioImages}
+            onImageClick={setSelectedPortfolioImage}
+          />
+        )}
+
         <ImageModal
           errorMessage={imageModalErrorMessage}
           image={selectedPortfolioImage}
@@ -122,15 +126,6 @@ const Works: React.FC<WorkProps> = ({
           onClose={(): void => setSelectedPortfolioImage(undefined)}
           open={!!selectedPortfolioImage}
         />
-        {selectedTypePortfolioImages?.map((portfolioImage, index) => (
-          <AdvancedImage
-            className={cn(bem("portfolioImage", NUMBER_TEXT_LOOKUP[index]))}
-            {...portfolioImage}
-            data-testid={portfolioImage.id}
-            onClick={(): void => setSelectedPortfolioImage(portfolioImage)}
-            key={portfolioImage.id}
-          />
-        ))}
       </div>
     </div>
   );

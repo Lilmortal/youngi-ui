@@ -4,15 +4,13 @@ import Modal from "../../../commons/Modal";
 import { cn, createBem } from "../../../../utils";
 
 import styles from "./ImageModal.module.scss";
-import AdvancedImage, {
-  AdvancedImageProps,
-} from "../../../commons/AdvancedImage";
+import Img, { ImgProps } from "../../../commons/Img";
 
 const bem = createBem(styles);
 
 export interface ImageModalProps extends Styleable {
   errorMessage?: string;
-  image?: AdvancedImageProps;
+  image?: ImgProps;
   description?: string;
   open?: boolean;
   onClose(): void;
@@ -38,7 +36,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
       {!errorMessage && (
         <div className={cn(bem(), className)} style={style}>
           <div className={cn(bem("imageContainer"))}>
-            {image && <AdvancedImage className={cn(bem("image"))} {...image} />}
+            {image && <Img className={cn(bem("image"))} {...image} />}
           </div>
 
           <div className={cn(bem("imageDescriptionContainer"))}>

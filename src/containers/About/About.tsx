@@ -8,17 +8,14 @@ import styles from "./About.module.scss";
 import Sidebar, { withSidebar } from "../../commons/Sidebar";
 import SocialIcon from "./SocialIcon";
 import env from "../../config/env";
-import {
-  AdvancedImageProps,
-  appendImageBaseUrl,
-} from "../../commons/AdvancedImage";
+import { ImgProps, appendImageBaseUrl } from "../../commons/Img";
 import { InjectedSidebarProps } from "../../commons/Sidebar/withSidebar";
 import { getAboutProps } from "./api-client";
 
 const bem = createBem(styles);
 
 export interface AboutOwnProps {
-  profileImage?: AdvancedImageProps;
+  profileImage?: ImgProps;
   biographyContents?: string;
 }
 

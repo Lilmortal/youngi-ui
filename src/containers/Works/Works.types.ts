@@ -1,4 +1,4 @@
-import { AdvancedImageProps } from "../../commons/AdvancedImage";
+import { ImgProps } from "../../commons/Img";
 import { InjectedSidebarProps } from "../../commons/Sidebar/withSidebar";
 
 export type PortfolioImageType =
@@ -12,7 +12,7 @@ export interface PortfolioCategoryProps {
 
 export interface PortfolioImageProps {
   id: number;
-  images: AdvancedImageProps[];
+  images: ImgProps[];
   category: PortfolioCategoryProps;
 }
 

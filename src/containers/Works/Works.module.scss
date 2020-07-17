@@ -44,10 +44,8 @@ $numbersText: "";
   }
 
   &__portfolio {
-    display: grid;
-    grid-template-columns: repeat(10, minmax(100px, 1fr));
-    grid-template-rows: repeat(10, minmax(100px, 1fr));
-    grid-gap: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 
   &__photography {

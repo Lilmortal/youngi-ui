@@ -9,10 +9,7 @@ import Link from "next/link";
 import getRoutes from "../../routes";
 import env from "../../config/env";
 import ReactMarkdown from "react-markdown";
-import {
-  AdvancedImageProps,
-  appendImageBaseUrl,
-} from "../../commons/AdvancedImage";
+import { ImgProps, appendImageBaseUrl } from "../../commons/Img";
 import { InjectedSidebarProps } from "../../commons/Sidebar/withSidebar";
 import { getHomeData } from "./api-client";
 import { IntlProviderContext } from "../../commons/intl/IntlProvider";
@@ -21,7 +18,7 @@ const bem = createBem(styles);
 
 export interface HomeOwnProps {
   sidebarBiography?: string;
-  backgroundImage?: AdvancedImageProps;
+  backgroundImage?: ImgProps;
 }
 
 export interface HomeProps

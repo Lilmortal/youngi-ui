@@ -13,6 +13,7 @@
     "transformMessages": "bin/transformMessages.js"
   },
   "dependencies": {
+    "lodash.chunk": "^4.2.0",
     "netlify-cli": "^2.48.0",
     "next": "^9.4.0",
     "no-scroll": "^2.1.1",
@@ -30,6 +31,7 @@
     "@testing-library/react": "^10.0.2",
     "@testing-library/react-hooks": "^3.2.1",
     "@types/jest": "^25.2.1",
+    "@types/lodash.chunk": "^4.2.6",
     "@types/no-scroll": "^2.1.0",
     "@types/react-intl": "^3.0.0",
     "@types/testing-library__react": "^10.0.1",
