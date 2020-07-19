@@ -1,7 +1,7 @@
 import React from "react";
 import ImageModal, { ImageModalProps } from "./ImageModal";
 import { render, RenderResult } from "@testing-library/react";
-import { mockImage } from "../../../commons/AdvancedImage/mock-data/data";
+import { mockImage } from "../../../commons/Img/mock-data/data";
 
 const defaultProps: ImageModalProps = {
   onClose: jest.fn(),

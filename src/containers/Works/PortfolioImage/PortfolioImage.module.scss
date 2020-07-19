@@ -1,0 +1,22 @@
+.portfolioImage {
+  // max-width: 100%;
+  border: 1px solid black;
+  cursor: pointer;
+  color: white;
+  opacity: 1;
+  position: relative;
+
+  &:hover {
+    opacity: 0.5;
+
+    &::after {
+      display: inline-block;
+      position: absolute;
+      top: 45%;
+      font-size: 1.5em;
+      transform: translate(-50%, 0);
+      left: 50%;
+      content: attr(data-image-name);
+    }
+  }
+}

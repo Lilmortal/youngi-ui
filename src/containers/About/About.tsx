@@ -8,17 +8,14 @@ import styles from "./About.module.scss";
 import Sidebar, { withSidebar } from "../../commons/Sidebar";
 import SocialIcon from "./SocialIcon";
 import env from "../../config/env";
-import {
-  AdvancedImageProps,
-  appendImageBaseUrl,
-} from "../../commons/AdvancedImage";
+import { ImgProps, appendImageBaseUrl } from "../../commons/Img";
 import { InjectedSidebarProps } from "../../commons/Sidebar/withSidebar";
 import { getAboutProps } from "./api-client";
 
 const bem = createBem(styles);
 
 export interface AboutOwnProps {
-  profileImage?: AdvancedImageProps;
+  profileImage?: ImgProps;
   biographyContents?: string;
 }
 
@@ -44,8 +41,8 @@ const About: React.FC<AboutProps> = ({
         <div className={cn(bem("sidebarContents"))}>
           {profileImage && (
             <img
-              src={profileImage.url}
-              alt={profileImage.name}
+              src={profileImage.src}
+              alt={profileImage.alt}
               className={cn(bem("sidebarProfileImage"))}
             />
           )}
@@ -60,24 +57,24 @@ const About: React.FC<AboutProps> = ({
       <div className={cn(bem("socialIconsBar"))}>
         <SocialIcon
           icon={{
-            url: "/twitter.svg",
-            name: "twitter icon",
+            src: "/twitter.svg",
+            alt: "twitter icon",
           }}
         >
           Twitter
         </SocialIcon>
         <SocialIcon
           icon={{
-            url: "/facebook.svg",
-            name: "facebook icon",
+            src: "/facebook.svg",
+            alt: "facebook icon",
           }}
         >
           Facebook
         </SocialIcon>
         <SocialIcon
           icon={{
-            url: "/youtube.svg",
-            name: "youtube icon",
+            src: "/youtube.svg",
+            alt: "youtube icon",
           }}
         >
           Youtube

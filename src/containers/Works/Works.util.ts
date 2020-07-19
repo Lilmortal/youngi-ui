@@ -1,4 +1,4 @@
-import { appendImagesBaseUrl } from "../../commons/AdvancedImage";
+import { appendImagesBaseUrl } from "../../commons/Img";
 import { PortfolioImageProps, PortfolioImageType } from "./Works.types";
 
 export const appendBaseUrlToPortfolioImages = (baseUrl: string) => (

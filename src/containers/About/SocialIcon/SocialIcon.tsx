@@ -1,13 +1,11 @@
 import React from "react";
 import styles from "./SocialIcon.module.scss";
 import { cn, createBem } from "../../../../utils";
-import AdvancedImage, {
-  AdvancedImageProps,
-} from "../../../commons/AdvancedImage";
+import Img, { ImgProps } from "../../../commons/Img";
 
 const bem = createBem(styles);
 export interface SocialIconProps extends Styleable {
-  icon: AdvancedImageProps;
+  icon: ImgProps;
   children?: React.ReactNode;
 }
 
@@ -18,7 +16,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({
   style,
 }) => (
   <div className={cn(bem(), className)} style={style}>
-    <AdvancedImage className={bem("icon")} {...icon} width={50} height={50} />
+    <Img className={bem("icon")} {...icon} width={50} height={50} />
     <span className={bem("name")}>{children}</span>
   </div>
 );

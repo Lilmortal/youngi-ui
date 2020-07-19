@@ -2,8 +2,8 @@ import { AboutOwnProps } from "../About";
 
 const mockAboutCmsResponse: AboutOwnProps = {
   profileImage: {
-    url: "/download.jpg",
-    name: "Profile Image",
+    src: "/download.jpg",
+    alt: "Profile Image",
     width: 250,
     height: 250,
   },

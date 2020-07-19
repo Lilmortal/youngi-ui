@@ -10,3 +10,5 @@ interface Styleable {
   className?: string;
   style?: React.CSSProperties;
 }
+
+declare module "react-uuid";
