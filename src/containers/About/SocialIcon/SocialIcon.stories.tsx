@@ -4,7 +4,7 @@ import { storiesOf } from "@storybook/react";
 import SocialIcon, { SocialIconProps } from "./SocialIcon";
 
 const defaultProps: SocialIconProps = {
-  icon: { url: "/facebook.svg", name: "facebook" },
+  icon: { src: "/facebook.svg", alt: "facebook" },
   children: "Facebook",
 };
 

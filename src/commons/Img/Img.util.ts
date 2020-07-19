@@ -4,7 +4,7 @@ export const appendImageBaseUrl = <T extends ImgProps>(baseUrl: string) => (
   image: T
 ): T => ({
   ...image,
-  url: `${baseUrl}${image?.url}`,
+  src: `${baseUrl}${image?.url}`,
 });
 
 export const appendImagesBaseUrl = <T extends ImgProps>(baseUrl: string) => (

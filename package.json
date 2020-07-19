@@ -18,7 +18,8 @@
     "next": "^9.4.0",
     "no-scroll": "^2.1.1",
     "react-intl": "^4.5.5",
-    "react-markdown": "^4.3.1"
+    "react-markdown": "^4.3.1",
+    "react-uuid": "^1.0.2"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",

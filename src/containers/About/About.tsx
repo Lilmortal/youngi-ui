@@ -41,8 +41,8 @@ const About: React.FC<AboutProps> = ({
         <div className={cn(bem("sidebarContents"))}>
           {profileImage && (
             <img
-              src={profileImage.url}
-              alt={profileImage.name}
+              src={profileImage.src}
+              alt={profileImage.alt}
               className={cn(bem("sidebarProfileImage"))}
             />
           )}
@@ -57,24 +57,24 @@ const About: React.FC<AboutProps> = ({
       <div className={cn(bem("socialIconsBar"))}>
         <SocialIcon
           icon={{
-            url: "/twitter.svg",
-            name: "twitter icon",
+            src: "/twitter.svg",
+            alt: "twitter icon",
           }}
         >
           Twitter
         </SocialIcon>
         <SocialIcon
           icon={{
-            url: "/facebook.svg",
-            name: "facebook icon",
+            src: "/facebook.svg",
+            alt: "facebook icon",
           }}
         >
           Facebook
         </SocialIcon>
         <SocialIcon
           icon={{
-            url: "/youtube.svg",
-            name: "youtube icon",
+            src: "/youtube.svg",
+            alt: "youtube icon",
           }}
         >
           Youtube

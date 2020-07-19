@@ -57,7 +57,7 @@ const Home: React.FC<HomeProps> = ({
       )}
       <div
         className={cn(bem("backgroundImage"))}
-        style={{ backgroundImage: `url('${backgroundImage?.url}')` }}
+        style={{ backgroundImage: `url('${backgroundImage?.src}')` }}
       >
         <Link href={routes.works}>
           <a className={cn(bem("worksLink"))}></a>

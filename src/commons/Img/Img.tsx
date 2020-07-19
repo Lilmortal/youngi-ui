@@ -6,32 +6,38 @@ import React from "react";
 // Slow download
 export interface ImgProps extends Styleable {
   id?: string;
-  url: string;
   name: string;
-  width?: number;
-  height?: number;
+  src: string;
+  width: number | string;
+  height: number | string;
   onClick?(): void;
+  onHover?(): void;
+  onHoverOut?(): void;
   "data-testid"?: string;
 }
 
 const Img: React.FC<ImgProps> = ({
-  url,
   name,
-  className,
+  src,
   width,
   height,
-  onClick,
+  className,
   style,
+  onClick,
+  onHover,
+  onHoverOut,
   "data-testid": dataTestId,
 }) => (
   <img
-    src={url}
+    src={src}
     alt={name}
-    className={className}
-    style={style}
     width={width}
     height={height}
+    className={className}
+    style={style}
     onClick={onClick}
+    onMouseEnter={onHover}
+    onMouseOut={onHoverOut}
     data-testid={dataTestId}
   />
 );

@@ -23,6 +23,7 @@ import {
 } from "./Works.types";
 import { getImageModalResponse } from "./ImageModal/api-client";
 import ImagesGrid from "./ImagesGridList";
+import uuid from "react-uuid";
 
 const bem = createBem(styles);
 
@@ -68,8 +69,7 @@ const Works: React.FC<WorkProps> = ({
           onClick={(): void =>
             setSelectedPortfolioImageType(portfolioCategory.type)
           }
-          // TODO: UUID
-          key={portfolioCategory.type}
+          key={uuid()}
         >
           {portfolioCategory.type}
         </li>
