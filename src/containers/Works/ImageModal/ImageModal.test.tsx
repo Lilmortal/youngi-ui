@@ -13,51 +13,25 @@ const renderImageModal = (props?: Partial<ImageModalProps>): RenderResult =>
 
 describe("ImageModal", () => {
   it("should not display the modal if not opened", () => {
-    const { queryByText } = renderImageModal({
+    const { queryAllByAltText } = renderImageModal({
       open: false,
-      description: "Description",
+      images: [{ ...mockImage }],
     });
 
-    expect(queryByText("Description")).not.toBeInTheDocument();
+    expect(queryAllByAltText("image").length).toEqual(0);
   });
 
-  it("should not render the image name", () => {
-    const { queryByText } = renderImageModal({});
+  it("should not render any images", () => {
+    const { queryAllByAltText } = renderImageModal({});
 
-    expect(queryByText(mockImage.name)).not.toBeInTheDocument();
+    expect(queryAllByAltText("image").length).toEqual(0);
   });
 
-  it("should render the image", () => {
-    const { queryByText } = renderImageModal({
-      image: { ...mockImage },
+  it("should render the images", () => {
+    const { queryAllByAltText } = renderImageModal({
+      images: [{ ...mockImage }],
     });
 
-    expect(queryByText(mockImage.name)).toBeInTheDocument();
-  });
-
-  it("should not render the description", () => {
-    const { queryByText } = renderImageModal({});
-
-    expect(queryByText("Description")).not.toBeInTheDocument();
-  });
-
-  it("should render the description", () => {
-    const { queryByText } = renderImageModal({
-      description: "Description",
-    });
-
-    expect(queryByText("Description")).toBeInTheDocument();
-  });
-
-  it("should not render the error message", () => {
-    const { queryByText } = renderImageModal({});
-
-    expect(queryByText("Error message")).not.toBeInTheDocument();
-  });
-
-  it("should render the error message", () => {
-    const { queryByText } = renderImageModal({ errorMessage: "Error message" });
-
-    expect(queryByText("Error message")).toBeInTheDocument();
+    expect(queryAllByAltText("image").length).toBeGreaterThanOrEqual(1);
   });
 });

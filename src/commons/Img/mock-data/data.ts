@@ -1,7 +1,7 @@
 import { ImgProps } from "../Img";
 
 const mockImage: ImgProps = {
-  src: "/image.jpg",
+  url: "/image.jpg",
   name: "image",
   width: 250,
   height: 250,

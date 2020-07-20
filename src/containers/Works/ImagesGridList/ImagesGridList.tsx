@@ -1,11 +1,11 @@
 import React, { useMemo } from "react";
-import { ImgProps } from "../../../commons/Img";
 import { cn, createBem } from "../../../../utils";
 import chunk from "lodash.chunk";
 import uuid from "react-uuid";
 
 import styles from "./ImagesGridList.module.scss";
 import PortfolioImage from "../PortfolioImage";
+import { ImgProps } from "../../../commons/Img";
 
 export const MAX_IMAGES_GRID_SIZE = 20;
 
@@ -48,6 +48,7 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({ images, onImageClick }) => (
       >
         <PortfolioImage
           {...image}
+          src={image.url}
           data-testid={image.id}
           onClick={(): void => onImageClick(image)}
         />
