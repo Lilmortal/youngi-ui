@@ -5,9 +5,9 @@ import React from "react";
 // Srcset
 // Slow download
 export interface ImgProps extends Styleable {
-  id?: string;
+  id?: string | number;
   name: string;
-  src: string;
+  url: string;
   width: number | string;
   height: number | string;
   onClick?(): void;
@@ -18,7 +18,7 @@ export interface ImgProps extends Styleable {
 
 const Img: React.FC<ImgProps> = ({
   name,
-  src,
+  url,
   width,
   height,
   className,
@@ -29,13 +29,14 @@ const Img: React.FC<ImgProps> = ({
   "data-testid": dataTestId,
 }) => (
   <img
-    src={src}
+    src={url}
     alt={name}
     width={width}
     height={height}
     className={className}
     style={style}
     onClick={onClick}
+    role={onClick ? "button" : undefined}
     onMouseEnter={onHover}
     onMouseOut={onHoverOut}
     data-testid={dataTestId}

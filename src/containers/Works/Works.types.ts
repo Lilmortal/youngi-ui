@@ -1,31 +1,28 @@
-import { ImgProps } from "../../commons/Img";
 import { InjectedSidebarProps } from "../../commons/Sidebar/withSidebar";
+import { ImgProps } from "../../commons/Img";
 
 export type PortfolioImageType =
   | "Photography"
   | "Illustration"
   | "Architecture";
 
-export interface PortfolioCategoryProps {
+export interface PortfolioCategoryResponse {
   type: PortfolioImageType;
 }
 
-export interface PortfolioImageProps {
+export interface PortfolioImageResponse {
   id: number;
-  images: ImgProps[];
-  category: PortfolioCategoryProps;
+  image: ImgProps;
+  subImages?: ImgProps[];
+  category: PortfolioCategoryResponse;
 }
 
 export interface WorkOwnProps {
-  portfolioCategories: PortfolioCategoryProps[];
-  portfolioImages: PortfolioImageProps[];
+  portfolioCategoriesResponse: PortfolioCategoryResponse[];
+  portfolioImagesResponse: PortfolioImageResponse[];
 }
 
 export interface WorkProps
   extends WorkOwnProps,
     InjectedSidebarProps,
     Styleable {}
-
-export interface ImageModalResponse {
-  description?: string;
-}

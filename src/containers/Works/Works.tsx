@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import Head from "next/head";
 import { GetStaticProps } from "next";
 
@@ -8,7 +8,6 @@ import Sidebar, { withSidebar } from "../../commons/Sidebar";
 import ImageModal from "./ImageModal";
 
 import env from "../../config/env";
-import { ImgProps } from "../../commons/Img";
 import { getPortfolioCategories, getPortfolioImages } from "./api-client";
 import {
   appendBaseUrlToPortfolioImages,
@@ -16,14 +15,14 @@ import {
 } from "./Works.util";
 import {
   PortfolioImageType,
-  PortfolioImageProps,
   WorkProps,
   WorkOwnProps,
-  PortfolioCategoryProps,
+  PortfolioCategoryResponse,
+  PortfolioImageResponse,
 } from "./Works.types";
-import { getImageModalResponse } from "./ImageModal/api-client";
 import ImagesGrid from "./ImagesGridList";
 import uuid from "react-uuid";
+import { ImgProps } from "../../commons/Img";
 
 const bem = createBem(styles);
 
@@ -36,8 +35,8 @@ export const getPortfolioImageCategoriesLayout: {
 };
 
 const Works: React.FC<WorkProps> = ({
-  portfolioCategories,
-  portfolioImages,
+  portfolioCategoriesResponse,
+  portfolioImagesResponse,
   className,
   style,
   sidebarProps,
@@ -50,16 +49,21 @@ const Works: React.FC<WorkProps> = ({
     ImgProps | undefined
   >(undefined);
 
-  const [imageModalDescription, setImageModalDescription] = useState("");
-  const [imageModalErrorMessage, setImageModalErrorMessage] = useState("");
-
   const selectedTypePortfolioImages = getPortfolioImagesBySelectedType(
-    portfolioImages
-  )(selectedPortfolioImageType)?.images;
+    portfolioImagesResponse
+  )(selectedPortfolioImageType);
+
+  const getSubImages = useCallback(
+    () =>
+      portfolioImagesResponse.find(
+        (portfolioImages) => portfolioImages.image === selectedPortfolioImage
+      )?.subImages,
+    [portfolioImagesResponse, selectedPortfolioImage]
+  );
 
   const sidebarCategories = (
     <ul className={cn(bem("sidebarCategories"))}>
-      {portfolioCategories.map((portfolioCategory) => (
+      {portfolioCategoriesResponse.map((portfolioCategory) => (
         <li
           className={cn(
             bem("sidebarCategory", {
@@ -76,26 +80,6 @@ const Works: React.FC<WorkProps> = ({
       ))}
     </ul>
   );
-
-  useEffect(() => {
-    (async (): Promise<void> => {
-      if (selectedPortfolioImage) {
-        const imageModalResponse = await getImageModalResponse(
-          selectedPortfolioImage.name
-        );
-        if (imageModalResponse.description) {
-          setImageModalDescription(`${imageModalResponse.description}`);
-          setImageModalErrorMessage("");
-        } else {
-          setImageModalErrorMessage(
-            `No description found for ${selectedPortfolioImage.name}`
-          );
-        }
-      }
-    })().catch((e) => {
-      setImageModalErrorMessage(`Failed to load image modal data. - ${e}`);
-    });
-  }, [selectedPortfolioImage]);
 
   return (
     <div className={cn(bem(), className)} style={style} data-testid="works">
@@ -119,13 +103,13 @@ const Works: React.FC<WorkProps> = ({
           />
         )}
 
-        <ImageModal
-          errorMessage={imageModalErrorMessage}
-          image={selectedPortfolioImage}
-          description={imageModalDescription}
-          onClose={(): void => setSelectedPortfolioImage(undefined)}
-          open={!!selectedPortfolioImage}
-        />
+        {selectedPortfolioImage && (
+          <ImageModal
+            images={getSubImages()}
+            onClose={(): void => setSelectedPortfolioImage(undefined)}
+            open={!!selectedPortfolioImage}
+          />
+        )}
       </div>
     </div>
   );
@@ -134,11 +118,11 @@ const Works: React.FC<WorkProps> = ({
 export const getStaticProps: GetStaticProps = async (): Promise<{
   props: WorkOwnProps;
 }> => {
-  let portfolioCategories: PortfolioCategoryProps[];
-  let portfolioImages: PortfolioImageProps[];
+  let portfolioCategoriesResponse: PortfolioCategoryResponse[];
+  let portfolioImagesResponse: PortfolioImageResponse[];
   try {
-    portfolioCategories = await getPortfolioCategories();
-    portfolioImages = appendBaseUrlToPortfolioImages(env.cmsBaseUrl)(
+    portfolioCategoriesResponse = await getPortfolioCategories();
+    portfolioImagesResponse = appendBaseUrlToPortfolioImages(env.cmsBaseUrl)(
       await getPortfolioImages()
     );
   } catch (e) {
@@ -148,8 +132,8 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
 
   return {
     props: {
-      portfolioCategories,
-      portfolioImages,
+      portfolioCategoriesResponse,
+      portfolioImagesResponse,
     },
   };
 };

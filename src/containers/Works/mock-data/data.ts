@@ -1,62 +1,68 @@
 import {
-  PortfolioCategoryProps,
-  PortfolioImageProps,
+  PortfolioCategoryResponse,
   WorkOwnProps,
-  ImageModalResponse,
+  PortfolioImageResponse,
 } from "../Works.types";
 
-export const mockPortfolioCategoryProps: PortfolioCategoryProps[] = [
+export const mockPortfolioCategoryProps: PortfolioCategoryResponse[] = [
   { type: "Photography" },
   { type: "Illustration" },
   { type: "Architecture" },
 ];
 
-export const mockPortfolioImageProps: PortfolioImageProps[] = [
+export const mockPortfolioImageProps: PortfolioImageResponse[] = [
   {
     id: 1,
     category: {
       type: "Architecture",
     },
-    images: [
+    image: {
+      id: "1",
+      url: "/download.jpg",
+      name: "Image",
+      width: 250,
+      height: 250,
+    },
+    subImages: [
       {
         id: "1",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "2",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "3",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "4",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "5",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "6",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
@@ -67,46 +73,53 @@ export const mockPortfolioImageProps: PortfolioImageProps[] = [
     category: {
       type: "Photography",
     },
-    images: [
+    image: {
+      id: "1",
+      url: "/download.jpg",
+      name: "Image",
+      width: 250,
+      height: 250,
+    },
+    subImages: [
       {
         id: "1",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "2",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "3",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "4",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "5",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "6",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
@@ -117,46 +130,53 @@ export const mockPortfolioImageProps: PortfolioImageProps[] = [
     category: {
       type: "Illustration",
     },
-    images: [
+    image: {
+      id: "1",
+      url: "/download.jpg",
+      name: "Image",
+      width: 250,
+      height: 250,
+    },
+    subImages: [
       {
         id: "1",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "2",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "3",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "4",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "5",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
       {
         id: "6",
-        src: "/download.jpg",
-        alt: "Image",
+        url: "/download.jpg",
+        name: "Image",
         width: 250,
         height: 250,
       },
@@ -165,10 +185,6 @@ export const mockPortfolioImageProps: PortfolioImageProps[] = [
 ];
 
 export const mockWorksCmsResponse: WorkOwnProps = {
-  portfolioCategories: [...mockPortfolioCategoryProps],
-  portfolioImages: [...mockPortfolioImageProps],
-};
-
-export const mockImageModalResponse: ImageModalResponse = {
-  description: "Image description",
+  portfolioCategoriesResponse: [...mockPortfolioCategoryProps],
+  portfolioImagesResponse: [...mockPortfolioImageProps],
 };

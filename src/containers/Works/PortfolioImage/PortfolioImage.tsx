@@ -7,7 +7,7 @@ export interface PortfolioImageProps extends Styleable {
   name: string;
   width: number | string;
   height: number | string;
-  "data-testid"?: string;
+  "data-testid"?: number | string;
   onClick(): void;
 }
 

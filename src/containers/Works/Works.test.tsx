@@ -4,7 +4,6 @@ import {
   render,
   RenderResult,
   fireEvent,
-  waitFor,
   Matcher,
   SelectorMatcherOptions,
   MatcherOptions,
@@ -14,7 +13,7 @@ import { mockSidebar } from "../../commons/Sidebar/mock-sidebar";
 import { mockWorksCmsResponse } from "./mock-data/data";
 
 import styles from "./Work.module.scss";
-import { WorkProps, ImageModalResponse } from "./Works.types";
+import { WorkProps } from "./Works.types";
 import IntlProvider from "../../commons/intl/IntlProvider";
 
 interface FakeApiResponse<T = object> {
@@ -39,22 +38,6 @@ const renderWorksPage = (props?: Partial<WorkProps>): RenderResult =>
     </IntlProvider>
   );
 
-const setupMockedImageModalApiCalls = <T extends FakeApiResponse>(
-  mockImageModalResponse: ImageModalResponse,
-  mockOverrides?: T
-): jest.SpyInstance<
-  Promise<Response>,
-  [RequestInfo, (RequestInit | undefined)?]
-> =>
-  jest.spyOn(window, "fetch").mockImplementationOnce(
-    () =>
-      Promise.resolve({
-        json: () => Promise.resolve(mockImageModalResponse),
-        ok: true,
-        ...mockOverrides,
-      }) as Promise<Response>
-  );
-
 const clickOnArchitectureNavigation = (
   getByText: (
     text: Matcher,
@@ -71,7 +54,7 @@ const clickOnArchitectureNavigation = (
 
   fireEvent.click(architectureNavigation);
 
-  const architectureImage = getByTestId("3");
+  const architectureImage = getByTestId("1");
 
   fireEvent.click(architectureImage);
 };
@@ -167,7 +150,6 @@ describe("works", () => {
   // });
 
   it("should display an architecture modal when an architecture image is selected", async () => {
-    setupMockedImageModalApiCalls({});
     const { getByText, getByTestId } = renderWorksPage();
 
     clickOnArchitectureNavigation(getByText, getByTestId);
@@ -176,67 +158,5 @@ describe("works", () => {
 
     // We are going to test image modal descriptions further down...
     await act(() => Promise.resolve());
-  });
-
-  it("should render modal with image description after API response returned", async () => {
-    const mockedFetch = setupMockedImageModalApiCalls({
-      description: "description",
-    });
-    const { getByText, getByTestId, queryByText } = renderWorksPage();
-
-    expect(queryByText("description")).not.toBeInTheDocument();
-
-    await waitFor(() => expect(mockedFetch).toHaveBeenCalledTimes(0));
-
-    clickOnArchitectureNavigation(getByText, getByTestId);
-
-    await waitFor(() => expect(mockedFetch).toHaveBeenCalledTimes(1));
-
-    expect(queryByText("description")).toBeInTheDocument();
-    expect(
-      queryByText("Failed to load image modal data. -", { exact: false })
-    ).not.toBeInTheDocument();
-  });
-
-  it("should display an error message if API failed", async () => {
-    const mockedFetch = setupMockedImageModalApiCalls({}, { ok: false });
-    const { getByText, getByTestId, queryByText } = renderWorksPage();
-
-    expect(queryByText("description")).not.toBeInTheDocument();
-
-    await waitFor(() => expect(mockedFetch).toHaveBeenCalledTimes(0));
-
-    clickOnArchitectureNavigation(getByText, getByTestId);
-
-    expect(
-      queryByText("Failed to load image modal data. -", { exact: false })
-    ).not.toBeInTheDocument();
-
-    await waitFor(() => expect(mockedFetch).toHaveBeenCalledTimes(1));
-
-    expect(
-      queryByText("Failed to load image modal data. -", { exact: false })
-    ).toBeInTheDocument();
-  });
-
-  it("should display an error message if API does not return a description", async () => {
-    const mockedFetch = setupMockedImageModalApiCalls({});
-    const { getByText, getByTestId, queryByText } = renderWorksPage();
-
-    expect(queryByText("description")).not.toBeInTheDocument();
-
-    await waitFor(() => expect(mockedFetch).toHaveBeenCalledTimes(0));
-
-    expect(
-      queryByText("Failed to load image modal data. -", { exact: false })
-    ).not.toBeInTheDocument();
-
-    clickOnArchitectureNavigation(getByText, getByTestId);
-
-    await waitFor(() => expect(mockedFetch).toHaveBeenCalledTimes(1));
-
-    expect(
-      queryByText("No description found for ", { exact: false })
-    ).toBeInTheDocument();
   });
 });
