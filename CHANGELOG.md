@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.17.0](https://github.com/Lilmortal/youngi-ui/compare/v2.16.0...v2.17.0) (2020-07-20)
+
+
+### Features
+
+* added navigation v2 replacing the old nav ([9526f5b](https://github.com/Lilmortal/youngi-ui/commit/9526f5b5a1cb403fa0a53c6d00a42729abdcbd18))
+* modal now shows subimages ([f61ee2c](https://github.com/Lilmortal/youngi-ui/commit/f61ee2c5806b21d1a421d8231631a630e6d17888))
+
 ## [2.16.0](https://github.com/Lilmortal/youngi-ui/compare/v2.15.1...v2.16.0) (2020-07-19)
 
 
