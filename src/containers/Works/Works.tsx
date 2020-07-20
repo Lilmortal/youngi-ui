@@ -1,37 +1,37 @@
 import React, { useState, useCallback } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 import { GetStaticProps } from "next";
 
 import { cn, createBem } from "../../../utils";
 import styles from "./Works.module.scss";
-import Sidebar, { withSidebar } from "../../commons/Sidebar";
 import ImageModal from "./ImageModal";
 
 import env from "../../config/env";
 import { getPortfolioCategories, getPortfolioImages } from "./api-client";
 import {
   appendBaseUrlToPortfolioImages,
-  getPortfolioImagesBySelectedType,
+  getPortfolioImagesBySelectedType as getPortfolioImagesByType,
 } from "./Works.util";
 import {
-  PortfolioImageType,
   WorkProps,
   WorkOwnProps,
   PortfolioCategoryResponse,
   PortfolioImageResponse,
 } from "./Works.types";
 import ImagesGrid from "./ImagesGridList";
-import uuid from "react-uuid";
 import { ImgProps } from "../../commons/Img";
+import { usePortfolioNav } from "../../commons/PortfolioNav";
 
 const bem = createBem(styles);
 
-export const getPortfolioImageCategoriesLayout: {
-  [key in PortfolioImageType]: string;
-} = {
-  Photography: bem("photography"),
-  Illustration: bem("illustration"),
-  Architecture: bem("architecture"),
+const getImagesType = (
+  query: string | string[] | undefined
+): string | undefined => {
+  if (Array.isArray(query)) {
+    return query[0];
+  }
+  return query;
 };
 
 const Works: React.FC<WorkProps> = ({
@@ -39,47 +39,32 @@ const Works: React.FC<WorkProps> = ({
   portfolioImagesResponse,
   className,
   style,
-  sidebarProps,
 }) => {
-  const [selectedPortfolioImageType, setSelectedPortfolioImageType] = useState<
-    PortfolioImageType
-  >("Photography");
+  const {
+    query: { works },
+  } = useRouter();
 
-  const [selectedPortfolioImage, setSelectedPortfolioImage] = useState<
-    ImgProps | undefined
-  >(undefined);
+  const imagesType = getImagesType(works);
 
-  const selectedTypePortfolioImages = getPortfolioImagesBySelectedType(
-    portfolioImagesResponse
-  )(selectedPortfolioImageType);
+  const [selectedImage, setSelectedImage] = useState<ImgProps | undefined>(
+    undefined
+  );
+
+  const portfolioImages = getPortfolioImagesByType(portfolioImagesResponse)(
+    imagesType
+  );
 
   const getSubImages = useCallback(
     () =>
       portfolioImagesResponse.find(
-        (portfolioImages) => portfolioImages.image === selectedPortfolioImage
+        (response) => response.image === selectedImage
       )?.subImages,
-    [portfolioImagesResponse, selectedPortfolioImage]
+    [portfolioImagesResponse, selectedImage]
   );
 
-  const sidebarCategories = (
-    <ul className={cn(bem("sidebarCategories"))}>
-      {portfolioCategoriesResponse.map((portfolioCategory) => (
-        <li
-          className={cn(
-            bem("sidebarCategory", {
-              selected: selectedPortfolioImageType === portfolioCategory.type,
-            })
-          )}
-          onClick={(): void =>
-            setSelectedPortfolioImageType(portfolioCategory.type)
-          }
-          key={uuid()}
-        >
-          {portfolioCategory.type}
-        </li>
-      ))}
-    </ul>
-  );
+  const PortfolioNav = usePortfolioNav({
+    categories: portfolioCategoriesResponse,
+  });
 
   return (
     <div className={cn(bem(), className)} style={style} data-testid="works">
@@ -88,26 +73,20 @@ const Works: React.FC<WorkProps> = ({
         <title>Youngi Works</title>
         <meta name="description" content="Showcasing Youngi Kims works." />
       </Head>
-      {sidebarProps && <Sidebar {...sidebarProps}>{sidebarCategories}</Sidebar>}
-      <div
-        className={cn(
-          bem("portfolio"),
-          getPortfolioImageCategoriesLayout[selectedPortfolioImageType]
-        )}
-        data-testid="portfolioImages"
-      >
-        {selectedTypePortfolioImages && (
+      {PortfolioNav}
+      <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
+        {portfolioImages && (
           <ImagesGrid
-            images={selectedTypePortfolioImages}
-            onImageClick={setSelectedPortfolioImage}
+            images={portfolioImages}
+            onImageClick={setSelectedImage}
           />
         )}
 
-        {selectedPortfolioImage && (
+        {selectedImage && (
           <ImageModal
             images={getSubImages()}
-            onClose={(): void => setSelectedPortfolioImage(undefined)}
-            open={!!selectedPortfolioImage}
+            onClose={(): void => setSelectedImage(undefined)}
+            open={!!selectedImage}
           />
         )}
       </div>
@@ -138,4 +117,4 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
   };
 };
 
-export default withSidebar(Works);
+export default Works;

@@ -8,8 +8,8 @@ export interface ImgProps extends Styleable {
   id?: string | number;
   name: string;
   url: string;
-  width: number | string;
-  height: number | string;
+  width?: number | string;
+  height?: number | string;
   onClick?(): void;
   onHover?(): void;
   onHoverOut?(): void;

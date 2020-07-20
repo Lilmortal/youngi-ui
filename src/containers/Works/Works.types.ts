@@ -1,13 +1,7 @@
-import { InjectedSidebarProps } from "../../commons/Sidebar/withSidebar";
 import { ImgProps } from "../../commons/Img";
 
-export type PortfolioImageType =
-  | "Photography"
-  | "Illustration"
-  | "Architecture";
-
 export interface PortfolioCategoryResponse {
-  type: PortfolioImageType;
+  type: string;
 }
 
 export interface PortfolioImageResponse {
@@ -22,7 +16,4 @@ export interface WorkOwnProps {
   portfolioImagesResponse: PortfolioImageResponse[];
 }
 
-export interface WorkProps
-  extends WorkOwnProps,
-    InjectedSidebarProps,
-    Styleable {}
+export interface WorkProps extends WorkOwnProps, Styleable {}

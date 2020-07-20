@@ -5,11 +5,9 @@ import ReactMarkdown from "react-markdown";
 
 import { cn, createBem } from "../../../utils";
 import styles from "./About.module.scss";
-import Sidebar, { withSidebar } from "../../commons/Sidebar";
 import SocialIcon from "./SocialIcon";
 import env from "../../config/env";
 import { ImgProps, appendImageBaseUrl } from "../../commons/Img";
-import { InjectedSidebarProps } from "../../commons/Sidebar/withSidebar";
 import { getAboutProps } from "./api-client";
 
 const bem = createBem(styles);
@@ -19,16 +17,11 @@ export interface AboutOwnProps {
   biographyContents?: string;
 }
 
-export interface AboutProps
-  extends AboutOwnProps,
-    InjectedSidebarProps,
-    Styleable {}
+export interface AboutProps extends AboutOwnProps, Styleable {}
 
 const About: React.FC<AboutProps> = ({
   biographyContents,
-  profileImage,
   className,
-  sidebarProps,
   style,
 }) => (
   <div className={cn(bem(), className)} style={style}>
@@ -36,19 +29,7 @@ const About: React.FC<AboutProps> = ({
       <title>About me</title>
       <meta name="description" content="About Youngi" />
     </Head>
-    {sidebarProps && (
-      <Sidebar {...sidebarProps}>
-        <div className={cn(bem("sidebarContents"))}>
-          {profileImage && (
-            <img
-              src={profileImage.src}
-              alt={profileImage.alt}
-              className={cn(bem("sidebarProfileImage"))}
-            />
-          )}
-        </div>
-      </Sidebar>
-    )}
+
     <div className={cn(bem("contents"))}>
       <div className={cn(bem("biography"))}>
         {biographyContents && <ReactMarkdown source={biographyContents} />}
@@ -57,24 +38,24 @@ const About: React.FC<AboutProps> = ({
       <div className={cn(bem("socialIconsBar"))}>
         <SocialIcon
           icon={{
-            src: "/twitter.svg",
-            alt: "twitter icon",
+            url: "/twitter.svg",
+            name: "twitter icon",
           }}
         >
           Twitter
         </SocialIcon>
         <SocialIcon
           icon={{
-            src: "/facebook.svg",
-            alt: "facebook icon",
+            url: "/facebook.svg",
+            name: "facebook icon",
           }}
         >
           Facebook
         </SocialIcon>
         <SocialIcon
           icon={{
-            src: "/youtube.svg",
-            alt: "youtube icon",
+            url: "/youtube.svg",
+            name: "youtube icon",
           }}
         >
           Youtube
@@ -103,4 +84,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default withSidebar(About);
+export default About;

@@ -14,12 +14,12 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
   {
     id: 1,
     category: {
-      type: "Architecture",
+      type: "architecture",
     },
     image: {
       id: "1",
       url: "/download.jpg",
-      name: "Image",
+      name: "architecture image",
       width: 250,
       height: 250,
     },
@@ -71,12 +71,12 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
   {
     id: 1,
     category: {
-      type: "Photography",
+      type: "photography",
     },
     image: {
       id: "1",
       url: "/download.jpg",
-      name: "Image",
+      name: "photography image",
       width: 250,
       height: 250,
     },
@@ -128,12 +128,12 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
   {
     id: 1,
     category: {
-      type: "Illustration",
+      type: "illustration",
     },
     image: {
       id: "1",
       url: "/download.jpg",
-      name: "Image",
+      name: "illustration image",
       width: 250,
       height: 250,
     },

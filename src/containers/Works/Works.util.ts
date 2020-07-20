@@ -1,4 +1,4 @@
-import { PortfolioImageResponse, PortfolioImageType } from "./Works.types";
+import { PortfolioImageResponse } from "./Works.types";
 import { appendImageBaseUrl, ImgProps } from "../../commons/Img";
 
 export const appendBaseUrlToPortfolioImages = (baseUrl: string) => (
@@ -14,7 +14,11 @@ export const appendBaseUrlToPortfolioImages = (baseUrl: string) => (
 
 export const getPortfolioImagesBySelectedType = (
   portfolioImages: PortfolioImageResponse[]
-) => (type: PortfolioImageType): ImgProps[] | undefined =>
-  portfolioImages
-    .filter((image) => image.category.type === type)
-    .map((portfolio) => portfolio.image);
+) => (type: string | undefined): ImgProps[] | undefined => {
+  if (type) {
+    return portfolioImages
+      .filter((image) => image.category.type === type)
+      .map((portfolio) => portfolio.image);
+  }
+  return portfolioImages.map((portfolio) => portfolio.image);
+};
