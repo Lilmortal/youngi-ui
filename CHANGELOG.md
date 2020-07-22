@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.18.0](https://github.com/Lilmortal/youngi-ui/compare/v2.17.0...v2.18.0) (2020-07-22)
+
+
+### Features
+
+* added withNav and withNavProps ([f725308](https://github.com/Lilmortal/youngi-ui/commit/f725308a51f3233594ce44e147341c319c95b4a4))
+
 ## [2.17.0](https://github.com/Lilmortal/youngi-ui/compare/v2.16.0...v2.17.0) (2020-07-20)
 
 
