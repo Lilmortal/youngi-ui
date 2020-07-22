@@ -13,7 +13,9 @@
     "transformMessages": "bin/transformMessages.js"
   },
   "dependencies": {
+    "@types/lodash.merge": "^4.6.6",
     "lodash.chunk": "^4.2.0",
+    "lodash.merge": "^4.6.2",
     "netlify-cli": "^2.48.0",
     "next": "^9.4.0",
     "no-scroll": "^2.1.1",

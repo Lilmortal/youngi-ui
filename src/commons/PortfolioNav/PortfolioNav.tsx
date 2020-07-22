@@ -1,16 +1,11 @@
 import React from "react";
-import Link, { LinkProps } from "next/link";
 import { cn, createBem } from "../../../utils";
 import styles from "./PortfolioNav.module.scss";
 import uuid from "react-uuid";
-
-export interface PortfolioCategoriesLinks {
-  href: LinkProps;
-  name: string;
-}
+import { Link, LinkProps } from "../Link";
 
 export interface PortfolioNavProps {
-  links: PortfolioCategoriesLinks[];
+  links: LinkProps[];
 }
 
 const bem = createBem(styles);
@@ -18,9 +13,7 @@ const bem = createBem(styles);
 const PortfolioNav: React.FC<PortfolioNavProps> = ({ links }) => (
   <div className={cn(bem())}>
     {links.map((link) => (
-      <Link {...link.href} key={uuid()}>
-        <a className={cn(bem("link"))}>{link.name}</a>
-      </Link>
+      <Link {...link} key={uuid()} />
     ))}
   </div>
 );

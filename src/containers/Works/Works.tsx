@@ -8,20 +8,15 @@ import styles from "./Works.module.scss";
 import ImageModal from "./ImageModal";
 
 import env from "../../config/env";
-import { getPortfolioCategories, getPortfolioImages } from "./api-client";
+import { getPortfolioImages } from "./api-client";
 import {
   appendBaseUrlToPortfolioImages,
   getPortfolioImagesBySelectedType as getPortfolioImagesByType,
 } from "./Works.util";
-import {
-  WorkProps,
-  WorkOwnProps,
-  PortfolioCategoryResponse,
-  PortfolioImageResponse,
-} from "./Works.types";
+import { WorkProps, WorkOwnProps, PortfolioImageResponse } from "./Works.types";
 import ImagesGrid from "./ImagesGridList";
 import { ImgProps } from "../../commons/Img";
-import { usePortfolioNav } from "../../commons/PortfolioNav";
+import { withNav, withNavProps } from "../../templates/withNav";
 
 const bem = createBem(styles);
 
@@ -35,7 +30,6 @@ const getImagesType = (
 };
 
 const Works: React.FC<WorkProps> = ({
-  portfolioCategoriesResponse,
   portfolioImagesResponse,
   className,
   style,
@@ -62,10 +56,6 @@ const Works: React.FC<WorkProps> = ({
     [portfolioImagesResponse, selectedImage]
   );
 
-  const PortfolioNav = usePortfolioNav({
-    categories: portfolioCategoriesResponse,
-  });
-
   return (
     <div className={cn(bem(), className)} style={style} data-testid="works">
       {/* TODO: Get it from CMS */}
@@ -73,7 +63,6 @@ const Works: React.FC<WorkProps> = ({
         <title>Youngi Works</title>
         <meta name="description" content="Showcasing Youngi Kims works." />
       </Head>
-      {PortfolioNav}
       <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
         {portfolioImages && (
           <ImagesGrid
@@ -94,13 +83,11 @@ const Works: React.FC<WorkProps> = ({
   );
 };
 
-export const getStaticProps: GetStaticProps = async (): Promise<{
+const getStaticWorkProps: GetStaticProps = async (): Promise<{
   props: WorkOwnProps;
 }> => {
-  let portfolioCategoriesResponse: PortfolioCategoryResponse[];
   let portfolioImagesResponse: PortfolioImageResponse[];
   try {
-    portfolioCategoriesResponse = await getPortfolioCategories();
     portfolioImagesResponse = appendBaseUrlToPortfolioImages(env.cmsBaseUrl)(
       await getPortfolioImages()
     );
@@ -111,10 +98,11 @@ export const getStaticProps: GetStaticProps = async (): Promise<{
 
   return {
     props: {
-      portfolioCategoriesResponse,
       portfolioImagesResponse,
     },
   };
 };
 
-export default Works;
+export const getStaticProps = withNavProps(getStaticWorkProps);
+
+export default withNav(Works);
