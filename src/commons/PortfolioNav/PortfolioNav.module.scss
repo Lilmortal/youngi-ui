@@ -1,5 +1,7 @@
 .portfolioNav {
   display: flex;
+  position: fixed;
+  transform: rotate(-90deg);
 
   &__link {
     display: flex;

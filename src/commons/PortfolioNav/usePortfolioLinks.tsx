@@ -1,20 +1,22 @@
-import React, { useContext } from "react";
-import { PortfolioCategoryResponse } from "../../containers/Works";
-import PortfolioNav, { PortfolioCategoriesLinks } from "./PortfolioNav";
+import { useContext } from "react";
 import { IntlProviderContext } from "../intl/IntlProvider";
+import { LinkProps } from "../Link";
+import { PortfolioCategoryResponse } from "../../templates/withNav";
 
-interface PortfolioNavHooks {
+interface PortfolioLinksHooks {
   categories: PortfolioCategoryResponse[];
 }
 
-const usePortfolioNav: React.FC<PortfolioNavHooks> = ({ categories }) => {
+const usePortfolioLinks = ({
+  categories,
+}: PortfolioLinksHooks): LinkProps[] => {
   const context = useContext(IntlProviderContext);
 
-  const links: PortfolioCategoriesLinks[] = [];
+  const links: LinkProps[] = [];
 
   categories?.map((category) =>
     links.push({
-      href: {
+      link: {
         href: `/[lang]/[works]`,
         as: `/${context.locale}/${category.type}`,
       },
@@ -23,14 +25,14 @@ const usePortfolioNav: React.FC<PortfolioNavHooks> = ({ categories }) => {
   );
 
   links.push({
-    href: {
+    link: {
       href: `/[lang]`,
       as: `/${context.locale}`,
     },
     name: "all",
   });
 
-  return <PortfolioNav links={links} />;
+  return links;
 };
 
-export default usePortfolioNav;
+export default usePortfolioLinks;

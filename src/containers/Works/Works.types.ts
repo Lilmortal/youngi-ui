@@ -1,8 +1,5 @@
 import { ImgProps } from "../../commons/Img";
-
-export interface PortfolioCategoryResponse {
-  type: string;
-}
+import { PortfolioCategoryResponse } from "../../templates/withNav/withNavProps";
 
 export interface PortfolioImageResponse {
   id: number;
@@ -12,7 +9,6 @@ export interface PortfolioImageResponse {
 }
 
 export interface WorkOwnProps {
-  portfolioCategoriesResponse: PortfolioCategoryResponse[];
   portfolioImagesResponse: PortfolioImageResponse[];
 }
 
