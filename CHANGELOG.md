@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.19.0](https://github.com/Lilmortal/youngi-ui/compare/v2.18.0...v2.19.0) (2020-07-23)
+
+
+### Features
+
+* added loader animation ([c909623](https://github.com/Lilmortal/youngi-ui/commit/c909623a9916c8dbfc739e4abeca79e8462541e5))
+
 ## [2.18.0](https://github.com/Lilmortal/youngi-ui/compare/v2.17.0...v2.18.0) (2020-07-22)
 
 
