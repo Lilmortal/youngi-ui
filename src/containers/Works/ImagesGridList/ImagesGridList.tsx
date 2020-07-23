@@ -58,6 +58,7 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({ images, onImageClick }) => (
 );
 
 const ImageGridList: React.FC<ImagesGridProps> = ({ images, onImageClick }) => {
+  // TODO: need to memoize?
   const imagesGridChunks = useMemo(() => chunk(images, MAX_IMAGES_GRID_SIZE), [
     images,
   ]);

@@ -17,6 +17,8 @@ import { WorkProps, WorkOwnProps, PortfolioImageResponse } from "./Works.types";
 import ImagesGrid from "./ImagesGridList";
 import { ImgProps } from "../../commons/Img";
 import { withNav, withNavProps } from "../../templates/withNav";
+import Loader from "../../commons/Loader";
+import useLoader from "../../commons/Loader/useLoader";
 
 const bem = createBem(styles);
 
@@ -55,6 +57,12 @@ const Works: React.FC<WorkProps> = ({
       )?.subImages,
     [portfolioImagesResponse, selectedImage]
   );
+
+  const [isLoaderAnimating, onAnimationEnd] = useLoader();
+
+  if (isLoaderAnimating) {
+    return <Loader onAnimationEnd={onAnimationEnd} />;
+  }
 
   return (
     <div className={cn(bem(), className)} style={style} data-testid="works">
@@ -105,4 +113,5 @@ const getStaticWorkProps: GetStaticProps = async (): Promise<{
 
 export const getStaticProps = withNavProps(getStaticWorkProps);
 
+export const WorksWithoutNav = Works;
 export default withNav(Works);

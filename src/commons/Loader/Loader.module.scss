@@ -1,0 +1,14 @@
+.loader {
+  animation-name: animation-load;
+  animation-duration: 4s;
+}
+
+@keyframes animation-load {
+  from {
+    color: red;
+  }
+
+  to {
+    color: yellow;
+  }
+}
