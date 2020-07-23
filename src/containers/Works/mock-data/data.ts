@@ -1,14 +1,4 @@
-import {
-  PortfolioCategoryResponse,
-  WorkOwnProps,
-  PortfolioImageResponse,
-} from "../Works.types";
-
-export const mockPortfolioCategoryProps: PortfolioCategoryResponse[] = [
-  { type: "Photography" },
-  { type: "Illustration" },
-  { type: "Architecture" },
-];
+import { WorkOwnProps, PortfolioImageResponse } from "../Works.types";
 
 export const mockPortfolioImageProps: PortfolioImageResponse[] = [
   {
@@ -185,6 +175,5 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
 ];
 
 export const mockWorksCmsResponse: WorkOwnProps = {
-  portfolioCategoriesResponse: [...mockPortfolioCategoryProps],
   portfolioImagesResponse: [...mockPortfolioImageProps],
 };

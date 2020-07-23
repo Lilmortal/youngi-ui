@@ -1,5 +1,5 @@
 import React from "react";
-import Works from "./Works";
+import { WorksWithoutNav } from "./Works";
 import {
   render,
   RenderResult,
@@ -31,7 +31,7 @@ const renderWorksPage = (props?: Partial<WorkProps>): RenderResult =>
       messages={{}}
       setMessages={jest.fn()}
     >
-      <Works {...defaultProps} {...props} />
+      <WorksWithoutNav {...defaultProps} {...props} />
     </IntlProvider>
   );
 
@@ -44,6 +44,9 @@ jest.mock("next/dist/client/router", () => ({
     };
   },
 }));
+
+// TODO: Fix
+jest.mock("../../commons/Loader/useLoader", () => () => [false, jest.fn()]);
 
 describe("works", () => {
   afterEach(() => {

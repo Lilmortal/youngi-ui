@@ -22,7 +22,7 @@ const getBlock = <T extends { [key: string]: string }>(styles: T): string => {
           )} ], did you named it correctly?`
         );
       }
-    } else {
+    } else if (!block.startsWith("animation-")) {
       uniqueBlocks.add(block);
     }
   });
@@ -35,7 +35,9 @@ const getBlock = <T extends { [key: string]: string }>(styles: T): string => {
       All but one of these blocks [${blocks.join(
         ", "
       )}] must be removed. If you are 
-      attempting to export CSS variables, they must be inside "global" object. e.g. { global: { variable: 4; }}`
+      attempting to export CSS variables, they must start with "global-". e.g. { global-variable: 4; }.
+      
+      If you want to add a keyframe, it must start with "animation-". e.g. @keyframes animation-variable.`
     );
   }
 
