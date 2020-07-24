@@ -1,3 +1,7 @@
 .nav {
   display: flex;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  text-transform: capitalize;
 }
