@@ -1,3 +1,10 @@
 .link {
-  display: flex;
+  text-decoration: none;
+  color: var(--black);
+  border-bottom: 0;
+  transition: border-bottom 200ms;
+
+  &:hover {
+    border-bottom: 2px solid var(--black);
+  }
 }

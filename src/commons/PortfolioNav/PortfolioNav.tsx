@@ -13,7 +13,7 @@ const bem = createBem(styles);
 const PortfolioNav: React.FC<PortfolioNavProps> = ({ links }) => (
   <div className={cn(bem())}>
     {links.map((link) => (
-      <Link {...link} key={uuid()} />
+      <Link {...link} key={uuid()} className={cn(bem("link"))} />
     ))}
   </div>
 );

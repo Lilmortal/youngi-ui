@@ -1,9 +1,13 @@
 .portfolioNav {
   display: flex;
   position: fixed;
-  transform: rotate(-90deg);
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: top left;
+  text-transform: capitalize;
+  top: 2rem;
+  left: 1rem;
 
   &__link {
-    display: flex;
+    margin-left: var(--md-spacing);
   }
 }
