@@ -1,22 +1,26 @@
 .portfolioImage {
-  // max-width: 100%;
-  border: 1px solid black;
   cursor: pointer;
-  color: white;
-  opacity: 1;
+  color: var(--black);
   position: relative;
-
+  background-color: rgba(0, 0, 0, 0.5);
   &:hover {
-    opacity: 0.5;
+    // background: linear-gradient(
+    //     rgba(255, 255, 255, 0.5),
+    //     rgba(255, 255, 255, 0.5)
+    //   ),
+    //   url("http://localhost:1337/uploads/youtube_ed1aff3b70.svg");
 
     &::after {
       display: inline-block;
       position: absolute;
       top: 45%;
-      font-size: 1.5em;
+      font-size: var(--xl-font);
       transform: translate(-50%, 0);
       left: 50%;
       content: attr(data-image-name);
+      font-family: "Inter", sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
     }
   }
 }

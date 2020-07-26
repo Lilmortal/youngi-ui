@@ -35,6 +35,7 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
       }}
       aria-label={name}
       onClick={onClick}
+      data-image-src={src}
       data-image-name={name}
       data-testid={dataTestId}
       role="button"

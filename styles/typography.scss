@@ -1,5 +1,5 @@
 :root {
-  --blue: blue;
+  --xl-font: 2.25rem;
 }
 
 h2 {
@@ -9,6 +9,12 @@ h2 {
 @font-face {
   font-family: "Montserrat", sans-serif;
   src: url("fonts/Montserrat/Montserrat-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter", sans-serif;
+  src: url("fonts/Inter/Inter-Bold.woff2") format("woff2");
+  font-weight: bold;
 }
 
 body {
