@@ -1,6 +1,4 @@
 .modal {
-  &__bodyContent {
-    height: 100%;
-    padding: 1em;
-  }
+  overflow-y: scroll;
+  padding: 1em;
 }

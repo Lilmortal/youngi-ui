@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import Modal from "../../../commons/Modal";
 import { cn, createBem } from "../../../../utils";
@@ -21,17 +21,24 @@ const ImageModal: React.FC<ImageModalProps> = ({
   onClose,
   className,
   style,
-}) => (
-  <Modal
-    onClose={onClose}
-    onOutsideAction={onClose}
-    onEscapePress={onClose}
-    open={open}
-  >
-    <div className={cn(bem(), className)} style={style}>
-      {images && images.map((image) => <Img {...image} key={uuid()} />)}
-    </div>
-  </Modal>
-);
+}) => {
+  const imgParentRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <Modal
+      onClose={onClose}
+      onOutsideAction={onClose}
+      onEscapePress={onClose}
+      open={open}
+    >
+      <div className={cn(bem(), className)} style={style} ref={imgParentRef}>
+        {images &&
+          images.map((image) => (
+            <Img {...image} key={uuid()} className={cn(bem("image"))} />
+          ))}
+      </div>
+    </Modal>
+  );
+};
 
 export default ImageModal;

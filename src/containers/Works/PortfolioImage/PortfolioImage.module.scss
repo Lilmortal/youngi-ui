@@ -1,22 +1,23 @@
 .portfolioImage {
-  // max-width: 100%;
-  border: 1px solid black;
   cursor: pointer;
-  color: white;
-  opacity: 1;
   position: relative;
 
   &:hover {
-    opacity: 0.5;
-
-    &::after {
-      display: inline-block;
+    &::before {
+      background-color: rgba(255, 255, 255, 0.5);
       position: absolute;
-      top: 45%;
-      font-size: 1.5em;
-      transform: translate(-50%, 0);
-      left: 50%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      font-size: var(--xl-font);
       content: attr(data-image-name);
+      font-family: "Inter", sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

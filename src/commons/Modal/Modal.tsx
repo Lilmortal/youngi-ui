@@ -50,7 +50,7 @@ const Modal: React.FC<ModalProps> = ({
     >
       {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
       {onClose && <CloseButton onClose={onClose} />}
-      <div className={cn(bem("bodyContent"), className)} style={style}>
+      <div className={cn(bem(), className)} style={style}>
         {children}
       </div>
     </Overlay>

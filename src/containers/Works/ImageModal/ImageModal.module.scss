@@ -1,23 +1,8 @@
 .imageModal {
-  display: grid;
-  grid-template-rows: 2fr 1fr;
-  height: 100%;
-
-  &__imageContainer {
-    display: flex;
-    justify-content: center;
-    margin-top: 2em;
-  }
+  padding: 2rem;
 
   &__image {
-    object-fit: contain;
-  }
-
-  &__imageDescriptionContainer {
-    padding-top: 1em;
-  }
-
-  &__error {
-    display: flex;
+    width: 100%;
+    height: auto;
   }
 }

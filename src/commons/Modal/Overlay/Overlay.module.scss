@@ -16,10 +16,11 @@
     position: fixed;
     top: 0;
     bottom: 0;
+    left: 10%;
+    right: 10%;
     border: 1px solid black;
     margin: 1em;
     background-color: white;
-    width: inherit;
     z-index: 2;
 
     &--fullScreen {
