@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.21.0](https://github.com/Lilmortal/youngi-ui/compare/v2.20.1...v2.21.0) (2020-07-27)
+
+
+### Features
+
+* rename about to info and update info CSS to specification ([0e9458b](https://github.com/Lilmortal/youngi-ui/commit/0e9458b58e07bb40448190e6fd1ae0a5a8cc4bb4))
+
 ### [2.20.1](https://github.com/Lilmortal/youngi-ui/compare/v2.20.0...v2.20.1) (2020-07-27)
 
 ## [2.20.0](https://github.com/Lilmortal/youngi-ui/compare/v2.19.0...v2.20.0) (2020-07-24)
