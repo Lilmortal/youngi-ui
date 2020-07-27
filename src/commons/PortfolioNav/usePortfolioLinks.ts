@@ -18,7 +18,7 @@ const usePortfolioLinks = ({
     links.push({
       link: {
         href: `/[lang]/[works]`,
-        as: `/${context.locale}/${category.type}`,
+        as: `/${context.locale}/${category.type.toLowerCase()}`,
       },
       name: category.type,
     })
