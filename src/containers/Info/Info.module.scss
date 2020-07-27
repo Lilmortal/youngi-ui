@@ -1,0 +1,29 @@
+.info {
+  display: grid;
+  padding: 0 3rem;
+  min-height: 100vh;
+
+  &__contents {
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas:
+      "."
+      "biography"
+      "socialIcons";
+  }
+
+  &__biography {
+    grid-area: biography;
+  }
+
+  &__socialIcons {
+    display: flex;
+    align-items: center;
+    grid-area: socialIcons;
+    justify-content: flex-end;
+
+    & div {
+      padding-right: 2rem;
+    }
+  }
+}

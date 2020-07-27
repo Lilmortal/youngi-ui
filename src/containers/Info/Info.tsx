@@ -4,26 +4,20 @@ import { GetStaticProps } from "next";
 import ReactMarkdown from "react-markdown";
 
 import { cn, createBem } from "../../../utils";
-import styles from "./About.module.scss";
+import styles from "./Info.module.scss";
 import SocialIcon from "./SocialIcon";
-import env from "../../config/env";
-import { ImgProps, appendImageBaseUrl } from "../../commons/Img";
-import { getAboutProps } from "./api-client";
+import { getInfoProps } from "./api-client";
+import { withNavProps, withNav } from "../../templates/withNav";
 
 const bem = createBem(styles);
 
-export interface AboutOwnProps {
-  profileImage?: ImgProps;
-  biographyContents?: string;
+export interface InfoOwnProps {
+  biography: string;
 }
 
-export interface AboutProps extends AboutOwnProps, Styleable {}
+export interface InfoProps extends InfoOwnProps, Styleable {}
 
-const About: React.FC<AboutProps> = ({
-  biographyContents,
-  className,
-  style,
-}) => (
+const Info: React.FC<InfoProps> = ({ biography, className, style }) => (
   <div className={cn(bem(), className)} style={style}>
     <Head>
       <title>About me</title>
@@ -32,10 +26,10 @@ const About: React.FC<AboutProps> = ({
 
     <div className={cn(bem("contents"))}>
       <div className={cn(bem("biography"))}>
-        {biographyContents && <ReactMarkdown source={biographyContents} />}
+        {biography && <ReactMarkdown source={biography} />}
       </div>
 
-      <div className={cn(bem("socialIconsBar"))}>
+      <div className={cn(bem("socialIcons"))}>
         <SocialIcon
           icon={{
             url: "/twitter.svg",
@@ -65,23 +59,24 @@ const About: React.FC<AboutProps> = ({
   </div>
 );
 
-export const getStaticProps: GetStaticProps = async () => {
-  let aboutProps: AboutOwnProps;
+const getInfoStaticProps: GetStaticProps = async () => {
+  let infoProps: InfoOwnProps;
   try {
-    aboutProps = await getAboutProps();
+    infoProps = await getInfoProps();
   } catch (e) {
     // TODO: Create error component
-    throw new Error(`Failed to load about props. - ${e}`);
+    throw new Error(`Failed to load info props. - ${e}`);
   }
 
   return {
     props: {
-      ...aboutProps,
-      profileImage:
-        aboutProps?.profileImage &&
-        appendImageBaseUrl(env.cmsBaseUrl)(aboutProps.profileImage),
+      ...infoProps,
     },
   };
 };
 
-export default About;
+export const getStaticProps = withNavProps(getInfoStaticProps);
+
+export const InfoWithoutNav = Info;
+
+export default withNav(Info);
