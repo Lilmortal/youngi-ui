@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.21.4](https://github.com/Lilmortal/youngi-ui/compare/v2.21.3...v2.21.4) (2020-07-27)
+
+
+### Bug Fixes
+
+* **categories:** categories in links should be in lower case ([34e7ea3](https://github.com/Lilmortal/youngi-ui/commit/34e7ea3858a7edb4dbc5511cd8f70a3a78789a38))
+
 ### [2.21.3](https://github.com/Lilmortal/youngi-ui/compare/v2.21.2...v2.21.3) (2020-07-27)
 
 ### [2.21.2](https://github.com/Lilmortal/youngi-ui/compare/v2.21.1...v2.21.2) (2020-07-27)
