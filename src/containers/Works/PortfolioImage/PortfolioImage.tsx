@@ -22,25 +22,22 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
   height,
   "data-testid": dataTestId,
   onClick,
-}) => {
-  return (
-    <div
-      className={cn(bem(), className)}
-      tabIndex={0}
-      style={{
-        ...style,
-        backgroundImage: `url(${src})`,
-        width: width ? `${width}px` : undefined,
-        height: height ? `${height}px` : undefined,
-      }}
-      aria-label={name}
-      onClick={onClick}
-      data-image-src={src}
-      data-image-name={name}
-      data-testid={dataTestId}
-      role="button"
-    />
-  );
-};
+}) => (
+  <div
+    className={cn(bem(), className)}
+    tabIndex={0}
+    style={{
+      ...style,
+      backgroundImage: `url(${src})`,
+      width: width ? `${width}px` : undefined,
+      height: height ? `${height}px` : undefined,
+    }}
+    aria-label={name}
+    onClick={onClick}
+    data-image-name={name}
+    data-testid={dataTestId}
+    role="button"
+  ></div>
+);
 
 export default PortfolioImage;
