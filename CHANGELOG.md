@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.21.1](https://github.com/Lilmortal/youngi-ui/compare/v2.21.0...v2.21.1) (2020-07-27)
+
+
+### Bug Fixes
+
+* fix social icon props not being renamed ([f8d0236](https://github.com/Lilmortal/youngi-ui/commit/f8d02361f0b492871b701df255fd7cb374cb024d))
+
 ## [2.21.0](https://github.com/Lilmortal/youngi-ui/compare/v2.20.1...v2.21.0) (2020-07-27)
 
 
