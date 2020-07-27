@@ -1,5 +1,5 @@
 import { ImgProps } from "../../commons/Img";
-import { PortfolioCategoryResponse } from "../../templates/withNav/withNavProps";
+import { PortfolioCategoryResponse } from "../../templates/withNav";
 
 export interface PortfolioImageResponse {
   id: number;
