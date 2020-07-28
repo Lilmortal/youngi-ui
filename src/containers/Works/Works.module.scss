@@ -1,4 +1,18 @@
 .works {
+  &__title {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Josefin_Sans", sans-serif;
+    font-weight: bold;
+    font-size: var(--xl-font);
+    line-height: 64px;
+    z-index: var(--neg-xs-zIndex);
+  }
+
   &__portfolio {
     display: flex;
     flex-direction: column;

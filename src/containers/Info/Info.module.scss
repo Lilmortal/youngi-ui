@@ -1,25 +1,17 @@
 .info {
-  display: grid;
-  padding: 0 3rem;
+  display: flex;
+  flex-direction: column;
+  padding: 5rem 0;
   min-height: 100vh;
-
-  &__contents {
-    display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
-    grid-template-areas:
-      "."
-      "biography"
-      "socialIcons";
-  }
+  justify-content: space-between;
 
   &__biography {
-    grid-area: biography;
+    padding: 0 5rem;
   }
 
   &__socialIcons {
     display: flex;
     align-items: center;
-    grid-area: socialIcons;
     justify-content: flex-end;
 
     & div {

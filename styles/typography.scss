@@ -1,5 +1,6 @@
 :root {
-  --xl-font: 2.25rem;
+  --lg-font: 2.25rem; // 36px
+  --xl-font: 4rem;
 }
 
 h2 {
@@ -7,13 +8,18 @@ h2 {
 }
 
 @font-face {
+  font-family: "Josefin_Sans", sans-serif;
+  src: url("./fonts/Josefin_Sans/JosefinSans.woff2") format("woff2");
+}
+
+@font-face {
   font-family: "Montserrat", sans-serif;
-  src: url("fonts/Montserrat/Montserrat-Regular.woff2") format("woff2");
+  src: url("./fonts/Montserrat/Montserrat-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "Inter", sans-serif;
-  src: url("fonts/Inter/Inter-Bold.woff2") format("woff2");
+  src: url("./fonts/Inter/Inter-Bold.woff2") format("woff2");
   font-weight: bold;
 }
 

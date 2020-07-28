@@ -24,37 +24,35 @@ const Info: React.FC<InfoProps> = ({ biography, className, style }) => (
       <meta name="description" content="About Youngi" />
     </Head>
 
-    <div className={cn(bem("contents"))}>
-      <div className={cn(bem("biography"))}>
-        {biography && <ReactMarkdown source={biography} />}
-      </div>
+    <div className={cn(bem("biography"))}>
+      {biography && <ReactMarkdown source={biography} />}
+    </div>
 
-      <div className={cn(bem("socialIcons"))}>
-        <SocialIcon
-          icon={{
-            url: "/twitter.svg",
-            name: "twitter icon",
-          }}
-        >
-          Twitter
-        </SocialIcon>
-        <SocialIcon
-          icon={{
-            url: "/facebook.svg",
-            name: "facebook icon",
-          }}
-        >
-          Facebook
-        </SocialIcon>
-        <SocialIcon
-          icon={{
-            url: "/youtube.svg",
-            name: "youtube icon",
-          }}
-        >
-          Youtube
-        </SocialIcon>
-      </div>
+    <div className={cn(bem("socialIcons"))}>
+      <SocialIcon
+        icon={{
+          url: "/twitter.svg",
+          name: "twitter icon",
+        }}
+      >
+        Twitter
+      </SocialIcon>
+      <SocialIcon
+        icon={{
+          url: "/facebook.svg",
+          name: "facebook icon",
+        }}
+      >
+        Facebook
+      </SocialIcon>
+      <SocialIcon
+        icon={{
+          url: "/youtube.svg",
+          name: "youtube icon",
+        }}
+      >
+        Youtube
+      </SocialIcon>
     </div>
   </div>
 );

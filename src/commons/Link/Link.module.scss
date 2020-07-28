@@ -3,6 +3,7 @@
   color: var(--black);
   border-bottom: 0;
   transition: border-bottom 200ms;
+  padding-bottom: 3px;
 
   &:hover {
     border-bottom: 2px solid var(--black);
