@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import styles from "./CloseButton.module.scss";
 import { cn, createBem } from "../../../../utils";
@@ -12,10 +12,25 @@ const CloseButton: React.FC<CloseButtonProps> = ({
   onClose,
   className,
   style,
-}) => (
-  <div className={cn(bem(), className)} onClick={onClose} style={style}>
-    X
-  </div>
-);
+}) => {
+  const handleKeyPress = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) =>
+      event.key === "Enter" && onClose(),
+    [onClose]
+  );
+
+  return (
+    <div
+      className={cn(bem(), className)}
+      onClick={onClose}
+      onKeyUp={handleKeyPress}
+      tabIndex={0}
+      aria-label="Close modal"
+      style={style}
+    >
+      X
+    </div>
+  );
+};
 
 export default CloseButton;
