@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.23.1](https://github.com/Lilmortal/youngi-ui/compare/v2.23.0...v2.23.1) (2020-07-28)
+
+
+### Bug Fixes
+
+* **grid:** fix extra spaces being added on works if no images ([7aef73d](https://github.com/Lilmortal/youngi-ui/commit/7aef73d7c4e4275da3fc055ccbfc689fbf666b2f))
+* **grid:** fix merge conflict ([4a33686](https://github.com/Lilmortal/youngi-ui/commit/4a336868cc04aa3130f3b9e5d0029f9d3196e0e4))
+
 ## [2.23.0](https://github.com/Lilmortal/youngi-ui/compare/v2.22.1...v2.23.0) (2020-07-28)
 
 
