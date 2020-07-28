@@ -19,7 +19,6 @@ export interface ModalProps extends Styleable {
   children?: React.ReactNode;
 }
 
-// TODO: Accessibility
 const Modal: React.FC<ModalProps> = ({
   open = false,
   fullScreenOverlay = false,
