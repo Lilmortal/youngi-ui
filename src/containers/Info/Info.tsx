@@ -12,16 +12,24 @@ import { withNavProps, withNav } from "../../templates/withNav";
 const bem = createBem(styles);
 
 export interface InfoOwnProps {
+  metaTitle: string;
+  metaDescription: string;
   biography: string;
 }
 
 export interface InfoProps extends InfoOwnProps, Styleable {}
 
-const Info: React.FC<InfoProps> = ({ biography, className, style }) => (
+const Info: React.FC<InfoProps> = ({
+  metaTitle,
+  metaDescription,
+  biography,
+  className,
+  style,
+}) => (
   <div className={cn(bem(), className)} style={style}>
     <Head>
-      <title>About me</title>
-      <meta name="description" content="About Youngi" />
+      <title>{metaTitle}</title>
+      <meta name="description" content={metaDescription} />
     </Head>
 
     <div className={cn(bem("biography"))}>
