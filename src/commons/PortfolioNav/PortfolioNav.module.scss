@@ -6,6 +6,7 @@
   text-transform: capitalize;
   top: 2rem;
   left: 1rem;
+  z-index: var(--xs-zIndex);
 
   &__link {
     margin-left: var(--md-spacing);

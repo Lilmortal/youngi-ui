@@ -71,6 +71,7 @@ const Works: React.FC<WorkProps> = ({
         <title>Youngi Works</title>
         <meta name="description" content="Showcasing Youngi Kims works." />
       </Head>
+      <div className={cn(bem("title"))}>YOUNGI KIM</div>
       <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
         {portfolioImages && (
           <ImagesGrid
