@@ -177,5 +177,6 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
 export const mockWorksCmsResponse: WorkOwnProps = {
   metaTitle: "title",
   metaDescription: "description",
+  backgroundText: "Youngi Kim",
   portfolioImagesResponse: [...mockPortfolioImageProps],
 };
