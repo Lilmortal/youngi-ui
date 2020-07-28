@@ -4,8 +4,7 @@
   &__imagesGrid {
     display: grid;
     grid-template-columns: repeat(10, minmax(100px, 1fr));
-    grid-template-rows: repeat(10, minmax(100px, 1fr));
-    // grid-gap: 1rem;
+    grid-auto-rows: 1fr;
   }
 
   &__positionOne {
@@ -54,8 +53,8 @@
   }
 
   &__positionTen {
-    grid-column: 2/4;
-    grid-row: 2/3;
+    grid-column: 7/8;
+    grid-row: 10/13;
   }
 
   &__positionEleven {
