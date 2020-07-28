@@ -11,6 +11,7 @@ export interface PortfolioImageResponse {
 export interface WorksResponse {
   metaTitle: string;
   metaDescription: string;
+  backgroundText: string;
 }
 
 export interface WorkOwnProps extends WorksResponse {
