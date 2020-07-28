@@ -5,7 +5,21 @@
     display: grid;
     grid-template-columns: repeat(10, minmax(100px, 1fr));
     grid-template-rows: repeat(10, minmax(100px, 1fr));
-    // grid-gap: 1rem;
+  }
+
+  &__image {
+    opacity: 0;
+    animation: animation-imageLoad 1.2s forwards;
+  }
+
+  @keyframes animation-imageLoad {
+    from {
+      opacity: 0.01;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
   &__positionOne {

@@ -39,6 +39,7 @@ const getImagesType = (
 const Works: React.FC<WorkProps> = ({
   metaTitle,
   metaDescription,
+  backgroundText,
   portfolioImagesResponse,
   className,
   style,
@@ -77,7 +78,11 @@ const Works: React.FC<WorkProps> = ({
         <title>{metaTitle}</title>
         <meta name="description" content={metaDescription} />
       </Head>
-      <div className={cn(bem("backgroundText"))}>YOUNGI KIM</div>
+      {backgroundText && (
+        <div className={cn(bem("backgroundText"))}>
+          {backgroundText.toUpperCase()}
+        </div>
+      )}
       <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
         {portfolioImages && (
           <ImagesGrid
