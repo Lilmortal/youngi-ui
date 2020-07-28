@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.22.0](https://github.com/Lilmortal/youngi-ui/compare/v2.21.4...v2.22.0) (2020-07-28)
+
+
+### Features
+
+* added youngi title, fix fonts not working and fix series of CSS ([61f02bf](https://github.com/Lilmortal/youngi-ui/commit/61f02bffea12f9e194366410dc207f77e6656005))
+
 ### [2.21.4](https://github.com/Lilmortal/youngi-ui/compare/v2.21.3...v2.21.4) (2020-07-27)
 
 
