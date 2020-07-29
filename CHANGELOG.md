@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.23.0](https://github.com/Lilmortal/youngi-ui/compare/v2.22.1...v2.23.0) (2020-07-28)
+
+
+### Features
+
+* added opacity animation to images and added backgroundText ([f20abe0](https://github.com/Lilmortal/youngi-ui/commit/f20abe0360b794c51731a283ee5fdd59d92cfbd2))
+
+### [2.22.1](https://github.com/Lilmortal/youngi-ui/compare/v2.22.0...v2.22.1) (2020-07-28)
+
 ## [2.22.0](https://github.com/Lilmortal/youngi-ui/compare/v2.21.4...v2.22.0) (2020-07-28)
 
 

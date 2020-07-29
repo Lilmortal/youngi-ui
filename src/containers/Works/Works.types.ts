@@ -8,7 +8,13 @@ export interface PortfolioImageResponse {
   category: PortfolioCategoryResponse;
 }
 
-export interface WorkOwnProps {
+export interface WorksResponse {
+  metaTitle: string;
+  metaDescription: string;
+  backgroundText: string;
+}
+
+export interface WorkOwnProps extends WorksResponse {
   portfolioImagesResponse: PortfolioImageResponse[];
 }
 

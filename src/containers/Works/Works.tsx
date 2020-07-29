@@ -8,12 +8,17 @@ import styles from "./Works.module.scss";
 import ImageModal from "./ImageModal";
 
 import env from "../../config/env";
-import { getPortfolioImages } from "./api-client";
+import { getPortfolioImages, getWorksResponse } from "./api-client";
 import {
   appendBaseUrlToPortfolioImages,
   getPortfolioImagesBySelectedType as getPortfolioImagesByType,
 } from "./Works.util";
-import { WorkProps, WorkOwnProps, PortfolioImageResponse } from "./Works.types";
+import {
+  WorkProps,
+  WorkOwnProps,
+  PortfolioImageResponse,
+  WorksResponse,
+} from "./Works.types";
 import ImagesGrid from "./ImagesGridList";
 import { ImgProps } from "../../commons/Img";
 import { withNav, withNavProps } from "../../templates/withNav";
@@ -32,6 +37,9 @@ const getImagesType = (
 };
 
 const Works: React.FC<WorkProps> = ({
+  metaTitle,
+  metaDescription,
+  backgroundText,
   portfolioImagesResponse,
   className,
   style,
@@ -66,12 +74,15 @@ const Works: React.FC<WorkProps> = ({
 
   return (
     <div className={cn(bem(), className)} style={style} data-testid="works">
-      {/* TODO: Get it from CMS */}
       <Head>
-        <title>Youngi Works</title>
-        <meta name="description" content="Showcasing Youngi Kims works." />
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
       </Head>
-      <div className={cn(bem("title"))}>YOUNGI KIM</div>
+      {backgroundText && (
+        <div className={cn(bem("backgroundText"))}>
+          {backgroundText.toUpperCase()}
+        </div>
+      )}
       <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
         {portfolioImages && (
           <ImagesGrid
@@ -95,8 +106,11 @@ const Works: React.FC<WorkProps> = ({
 const getStaticWorkProps: GetStaticProps = async (): Promise<{
   props: WorkOwnProps;
 }> => {
+  let worksResponse: WorksResponse;
   let portfolioImagesResponse: PortfolioImageResponse[];
   try {
+    worksResponse = await getWorksResponse();
+
     portfolioImagesResponse = appendBaseUrlToPortfolioImages(env.cmsBaseUrl)(
       await getPortfolioImages()
     );
@@ -107,6 +121,7 @@ const getStaticWorkProps: GetStaticProps = async (): Promise<{
 
   return {
     props: {
+      ...worksResponse,
       portfolioImagesResponse,
     },
   };
