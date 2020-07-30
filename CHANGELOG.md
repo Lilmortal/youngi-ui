@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.24.0](https://github.com/Lilmortal/youngi-ui/compare/v2.23.1...v2.24.0) (2020-07-30)
+
+
+### Features
+
+* added focusTrap and favicons ([2d5ecd8](https://github.com/Lilmortal/youngi-ui/commit/2d5ecd815c9c96a6f3796173186c013d12dd668e))
+* removed console.log and added focusTrap component ([af6f991](https://github.com/Lilmortal/youngi-ui/commit/af6f99147a4c9e59c65979f6b28c4aea75381c53))
+
+
+### Bug Fixes
+
+* **ci:** upgrade circleCI Node version to 11 to support flatMap ([e5395b5](https://github.com/Lilmortal/youngi-ui/commit/e5395b5fd399e2f0f27f26e441fd070dc4ad3b3b))
+* **ci:** upgrade circleCI Node version to 12.14.1 for tests ([7a8d0c4](https://github.com/Lilmortal/youngi-ui/commit/7a8d0c4c1cf55787a275c7ee8a76528f7593a527))
+* **ci:** upgrade circleCI Node version to 12.14.1 to support flatMap ([2485a23](https://github.com/Lilmortal/youngi-ui/commit/2485a230ac33cebab9a6a02ce6a8e37eb903fd81))
+* **modal:** handle enter keypress on close button in modal ([118fe11](https://github.com/Lilmortal/youngi-ui/commit/118fe11dad596b35fe37f1f4216fa67012750024))
+* **paths:** fix getStaticPaths not returning correct value ([be139ce](https://github.com/Lilmortal/youngi-ui/commit/be139ce05c111bac0a07d8e397a4701d7f94af87))
+* portfolio image can be triggered via enter button ([7e56bab](https://github.com/Lilmortal/youngi-ui/commit/7e56babf8f29b29209a3baeb8d93be77de5de4fe))
+
 ### [2.23.1](https://github.com/Lilmortal/youngi-ui/compare/v2.23.0...v2.23.1) (2020-07-28)
 
 
