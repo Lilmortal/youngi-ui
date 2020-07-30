@@ -6,7 +6,6 @@ export const defaultPaths = (
   pathParams?: object[]
 ): { params: { lang: string } }[] => {
   if (pathParams) {
-    console.log(supportedLocales);
     return supportedLocales.flatMap((locale) => {
       return pathParams.flatMap((pathParam) => ({
         params: { lang: locale, ...pathParam },
