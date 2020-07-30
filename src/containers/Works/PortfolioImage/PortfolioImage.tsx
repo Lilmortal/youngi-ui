@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { cn, createBem } from "../../../../utils";
 import styles from "./PortfolioImage.module.scss";
 
@@ -22,22 +22,31 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
   height,
   "data-testid": dataTestId,
   onClick,
-}) => (
-  <div
-    className={cn(bem(), className)}
-    tabIndex={0}
-    style={{
-      ...style,
-      backgroundImage: `url(${src})`,
-      width: width ? `${width}px` : undefined,
-      height: height ? `${height}px` : undefined,
-    }}
-    aria-label={name}
-    onClick={onClick}
-    data-image-name={name}
-    data-testid={dataTestId}
-    role="button"
-  ></div>
-);
+}) => {
+  const handleKeyPress = useCallback(
+    (event: React.KeyboardEvent<HTMLDivElement>) =>
+      event.key === "Enter" && onClick(),
+    [onClick]
+  );
+
+  return (
+    <div
+      className={cn(bem(), className)}
+      tabIndex={0}
+      style={{
+        ...style,
+        backgroundImage: `url(${src})`,
+        width: width ? `${width}px` : undefined,
+        height: height ? `${height}px` : undefined,
+      }}
+      aria-label={`${name} modal opener`}
+      onClick={onClick}
+      onKeyUp={handleKeyPress}
+      data-image-name={name}
+      data-testid={dataTestId}
+      role="button"
+    />
+  );
+};
 
 export default PortfolioImage;

@@ -5,7 +5,7 @@ export { default, getStaticProps } from "../../src/containers/Works";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: defaultPaths,
+    paths: defaultPaths(),
     fallback: false,
   };
 };
