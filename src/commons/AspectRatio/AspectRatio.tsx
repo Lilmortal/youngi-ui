@@ -55,7 +55,6 @@ const AspectRatio: React.FC<AspectRatioProps> = ({ parentRef, children }) => {
       parentWidth = parentRef.current.offsetWidth;
     }
 
-    // console.log(parentWidth, parentHeight, srcWidth, srcHeight);
     setAspectRatioFit(
       calculateAspectRatioFit({
         parentWidth,
