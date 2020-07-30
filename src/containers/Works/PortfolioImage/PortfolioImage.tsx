@@ -39,7 +39,7 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
         width: width ? `${width}px` : undefined,
         height: height ? `${height}px` : undefined,
       }}
-      aria-label={`${name} modal`}
+      aria-label={`${name} modal opener`}
       onClick={onClick}
       onKeyUp={handleKeyPress}
       data-image-name={name}
