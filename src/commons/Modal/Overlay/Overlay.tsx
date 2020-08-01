@@ -21,18 +21,12 @@ const Overlay: React.FC<OverlayProps> = ({
   <>
     <div
       data-testid="overlay"
-      className={cn(bem())}
+      className={cn(bem("", { fullScreen: fullScreenOverlay }), className)}
+      style={style}
       onClick={(): void => onOutsideAction && onOutsideAction()}
     />
-    <div
-      className={cn(
-        bem("content", { fullScreen: fullScreenOverlay }),
-        className
-      )}
-      style={style}
-    >
-      {children}
-    </div>
+
+    {children}
   </>
 );
 

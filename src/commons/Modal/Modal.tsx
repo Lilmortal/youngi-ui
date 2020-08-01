@@ -5,6 +5,8 @@ import Overlay from "./Overlay";
 import CloseButton from "./CloseButton/CloseButton";
 import EscapePress from "./EscapePress";
 import FocusTrap from "./FocusTrap";
+import { cn, createBem } from "../../../utils";
+import styles from "./Modal.module.scss";
 
 export interface ModalProps extends Styleable {
   open?: boolean;
@@ -14,6 +16,8 @@ export interface ModalProps extends Styleable {
   onClose?(): void;
   children?: React.ReactNode;
 }
+
+const bem = createBem(styles);
 
 const Modal: React.FC<ModalProps> = ({
   open = false,
@@ -42,9 +46,11 @@ const Modal: React.FC<ModalProps> = ({
       onOutsideAction={onOutsideAction}
     >
       <FocusTrap>
-        {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
-        {onClose && <CloseButton onClose={onClose} />}
-        {children}
+        <div className={cn(bem(""))}>
+          {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
+          {onClose && <CloseButton onClose={onClose} />}
+          {children}
+        </div>
       </FocusTrap>
     </Overlay>
   );

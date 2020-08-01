@@ -17,7 +17,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({
   style,
 }) => (
   <div className={cn(bem(), className)} style={style}>
-    <AspectRatio>
+    <AspectRatio ratio="3:2">
       <Img className={bem("icon")} {...icon} width={50} height={50} />
     </AspectRatio>
     <span className={bem("name")}>{children}</span>

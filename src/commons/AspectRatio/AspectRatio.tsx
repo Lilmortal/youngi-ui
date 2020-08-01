@@ -1,14 +1,15 @@
 import React, { useRef, useEffect, useState } from "react";
 
+export type Ratio = "3:2" | "4:3" | "16:9";
+
 export interface AspectRatioProps {
-  parentRef?: React.RefObject<HTMLDivElement>;
+  ratio: Ratio;
   children: React.ReactElement;
 }
 
 interface AspectRatioFitProps {
+  ratio: Ratio;
   srcWidth: number;
-  srcHeight: number;
-  parentWidth: number;
 }
 
 interface CalculatedAspectRatio {
@@ -16,57 +17,56 @@ interface CalculatedAspectRatio {
   height: number;
 }
 
+const getRatioFormula = (width: number, ratio: Ratio): number => {
+  switch (ratio) {
+    case "3:2":
+      return (width * 3) / 2;
+    case "4:3":
+      return (width * 4) / 3;
+    case "16:9":
+      return (width * 16) / 9;
+    default:
+      return width;
+  }
+};
+
 const calculateAspectRatioFit = ({
   srcWidth,
-  srcHeight,
-  parentWidth,
+  ratio,
 }: AspectRatioFitProps): CalculatedAspectRatio => {
-  // const ratio = Math.min(parentWidth / srcWidth, parentHeight / srcHeight);
-  const ratio = srcWidth / srcHeight;
-
   return {
-    width: parentWidth,
-    height: parentWidth * ratio,
+    width: getRatioFormula(srcWidth, ratio),
+    height: srcWidth,
   };
 };
 
-//TODO: As of now, don't need this... but might need it for images grid; if not, removed in next release.
-const AspectRatio: React.FC<AspectRatioProps> = ({ parentRef, children }) => {
+const AspectRatio: React.FC<AspectRatioProps> = ({ ratio, children }) => {
   const [aspectRatioFit, setAspectRatioFit] = useState<
     CalculatedAspectRatio | undefined
   >(undefined);
-  const childrenRef = useRef<HTMLDivElement>(null);
+  const componentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let parentWidth = 1,
-      srcWidth = 1,
-      srcHeight = 1;
+    let srcWidth = 1;
 
-    // TODO: Throw error if does not exist
-    if (childrenRef.current) {
-      const child = childrenRef.current.children[0];
+    if (componentRef.current && componentRef.current.children) {
+      const child = componentRef.current.children[0];
 
-      parentWidth = childrenRef.current.offsetWidth;
       srcWidth = child.clientWidth;
-      srcHeight = child.clientHeight;
-    }
-
-    if (parentRef && parentRef.current) {
-      parentWidth = parentRef.current.offsetWidth;
+    } else {
+      throw new Error("aspect ratio children does not exist.");
     }
 
     setAspectRatioFit(
       calculateAspectRatioFit({
-        parentWidth,
         srcWidth,
-        srcHeight,
+        ratio,
       })
     );
-  }, [parentRef, childrenRef]);
+  }, [ratio, componentRef]);
 
-  // TODO: Throw error if multiple childrens
   return (
-    <div ref={childrenRef}>
+    <div ref={componentRef}>
       {React.cloneElement(children, {
         style: { width: aspectRatioFit?.width, height: aspectRatioFit?.height },
       })}

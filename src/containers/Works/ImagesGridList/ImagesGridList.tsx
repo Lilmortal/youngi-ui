@@ -67,7 +67,6 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({ images, onImageClick }) => {
 };
 
 const ImageGridList: React.FC<ImagesGridProps> = ({ images, onImageClick }) => {
-  console.log(images);
   const imagesGridChunks = chunk(images, MAX_IMAGES_GRID_SIZE);
 
   return (
@@ -79,4 +78,4 @@ const ImageGridList: React.FC<ImagesGridProps> = ({ images, onImageClick }) => {
   );
 };
 
-export default React.memo(ImageGridList);
+export default ImageGridList;

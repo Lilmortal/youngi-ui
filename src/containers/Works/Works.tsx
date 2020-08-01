@@ -87,13 +87,11 @@ const Works: React.FC<WorkProps> = ({
           />
         )}
 
-        {selectedImage && (
-          <ImageModal
-            images={getSubImages()}
-            onClose={(): void => setSelectedImage(undefined)}
-            open={!!selectedImage}
-          />
-        )}
+        <ImageModal
+          images={getSubImages()}
+          onClose={(): void => setSelectedImage(undefined)}
+          open={!!selectedImage}
+        />
       </div>
     </div>
   );

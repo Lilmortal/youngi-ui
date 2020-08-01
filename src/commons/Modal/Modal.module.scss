@@ -1,0 +1,23 @@
+@import "../../../styles";
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  margin: 1em 0 0 0;
+  background-color: white;
+  z-index: var(--sm-zIndex);
+  overflow-y: scroll;
+  //   opacity: 0.01;
+  transition: opacity 0.8s;
+
+  @include onLoadAnimation(0.8s);
+
+  //   &--open {
+  //     opacity: 1;
+  //   }
+}

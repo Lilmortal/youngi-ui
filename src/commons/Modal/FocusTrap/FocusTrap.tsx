@@ -36,7 +36,7 @@ const FocusTrap: React.FC<FocusTrapProps> = ({ children }) => {
   // TODO: There is a bug at the moment where if the user is on the address bar and tabs into the web content,
   // it ignores this effect hook only for the first tab. Need to look into it.
   useEffect(() => {
-    window.addEventListener("keydown", (e) => {
+    const focusTrapModal = (e: KeyboardEvent): void => {
       if ((e.key === "Tab" || e.keyCode === 9) && focusableElements.current) {
         const firstFocusableElement = focusableElements.current[0];
         const lastFocusableElement =
@@ -62,8 +62,24 @@ const FocusTrap: React.FC<FocusTrapProps> = ({ children }) => {
           e.preventDefault();
         }
       }
-    });
-  });
+    };
+
+    window.addEventListener("keydown", focusTrapModal);
+
+    return (): void => {
+      window.removeEventListener("keydown", focusTrapModal);
+
+      const outSideElements = document.querySelectorAll(
+        `body > *:not(#${focusTrapId}) > *`
+      );
+
+      Array.from(outSideElements).forEach((el) => {
+        if (el instanceof HTMLElement) {
+          el.removeAttribute("aria-hidden");
+        }
+      });
+    };
+  }, []);
 
   return <div id={focusTrapId}>{children}</div>;
 };
