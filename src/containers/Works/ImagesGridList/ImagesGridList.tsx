@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { cn, createBem } from "../../../../utils";
 import chunk from "lodash.chunk";
 import uuid from "react-uuid";
@@ -39,36 +39,36 @@ const NUMBER_TEXT_LOOKUP: { [key: number]: string } = {
 
 const bem = createBem(styles);
 
-let count = 1;
+const ImagesGrid: React.FC<ImagesGridProps> = ({ images, onImageClick }) => {
+  let count = 0;
 
-const ImagesGrid: React.FC<ImagesGridProps> = ({ images, onImageClick }) => (
-  <div className={cn(bem("imagesGrid"))}>
-    {images.map((image, index) => {
-      count = count + 0.2;
+  return (
+    <div className={cn(bem("imagesGrid"))}>
+      {images.map((image, index) => {
+        count = count + 0.2;
 
-      return (
-        <PortfolioImage
-          {...image}
-          src={image.url}
-          data-testid={image.id}
-          onClick={(): void => onImageClick(image)}
-          className={cn(
-            bem(`position${NUMBER_TEXT_LOOKUP[index + 1]}`),
-            bem("image")
-          )}
-          key={uuid()}
-          style={{ animationDelay: `${count.toString()}s` }}
-        />
-      );
-    })}
-  </div>
-);
+        return (
+          <PortfolioImage
+            {...image}
+            src={image.url}
+            data-testid={image.id}
+            onClick={(): void => onImageClick(image)}
+            className={cn(
+              bem(`position${NUMBER_TEXT_LOOKUP[index + 1]}`),
+              bem("image")
+            )}
+            key={uuid()}
+            style={{ animationDelay: `${count.toString()}s` }}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 const ImageGridList: React.FC<ImagesGridProps> = ({ images, onImageClick }) => {
-  // TODO: need to memoize?
-  const imagesGridChunks = useMemo(() => chunk(images, MAX_IMAGES_GRID_SIZE), [
-    images,
-  ]);
+  console.log(images);
+  const imagesGridChunks = chunk(images, MAX_IMAGES_GRID_SIZE);
 
   return (
     <div className={cn(bem())}>
@@ -79,4 +79,4 @@ const ImageGridList: React.FC<ImagesGridProps> = ({ images, onImageClick }) => {
   );
 };
 
-export default ImageGridList;
+export default React.memo(ImageGridList);

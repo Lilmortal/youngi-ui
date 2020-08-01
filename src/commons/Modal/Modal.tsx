@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
 import noScroll from "no-scroll";
 
-import styles from "./Modal.module.scss";
-import { cn, createBem } from "../../../utils";
 import Overlay from "./Overlay";
 import CloseButton from "./CloseButton/CloseButton";
 import EscapePress from "./EscapePress";
 import FocusTrap from "./FocusTrap";
-
-const bem = createBem(styles);
 
 export interface ModalProps extends Styleable {
   open?: boolean;
@@ -26,8 +22,6 @@ const Modal: React.FC<ModalProps> = ({
   onOutsideAction,
   onEscapePress,
   children,
-  className,
-  style,
 }) => {
   useEffect(() => {
     if (open) {
@@ -48,16 +42,9 @@ const Modal: React.FC<ModalProps> = ({
       onOutsideAction={onOutsideAction}
     >
       <FocusTrap>
-        <div
-          className={cn(bem(), className)}
-          style={style}
-          role="dialog"
-          aria-modal="true"
-        >
-          {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
-          {onClose && <CloseButton onClose={onClose} />}
-          {children}
-        </div>
+        {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
+        {onClose && <CloseButton onClose={onClose} />}
+        {children}
       </FocusTrap>
     </Overlay>
   );

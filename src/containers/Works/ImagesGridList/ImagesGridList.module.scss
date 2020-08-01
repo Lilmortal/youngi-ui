@@ -1,3 +1,5 @@
+@import "../../../../styles";
+
 .imagesGridList {
   display: grid;
 
@@ -8,18 +10,7 @@
   }
 
   &__image {
-    opacity: 0;
-    animation: animation-imageLoad 1.2s forwards;
-  }
-
-  @keyframes animation-imageLoad {
-    from {
-      opacity: 0.01;
-    }
-
-    to {
-      opacity: 1;
-    }
+    @include onLoadAnimation(0.8s);
   }
 
   &__positionOne {
