@@ -41,18 +41,19 @@ const Modal: React.FC<ModalProps> = ({
   }
 
   return (
-    <Overlay
-      fullScreenOverlay={fullScreenOverlay}
-      onOutsideAction={onOutsideAction}
-    >
+    <>
       <FocusTrap>
+        <Overlay
+          fullScreenOverlay={fullScreenOverlay}
+          onOutsideAction={onOutsideAction}
+        />
         <div className={cn(bem(""))}>
           {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
           {onClose && <CloseButton onClose={onClose} />}
           {children}
         </div>
       </FocusTrap>
-    </Overlay>
+    </>
   );
 };
 

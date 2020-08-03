@@ -6,6 +6,7 @@ import uuid from "react-uuid";
 import styles from "./ImagesGridList.module.scss";
 import PortfolioImage from "../PortfolioImage";
 import { ImgProps } from "../../../commons/Img";
+import Fade from "../../../commons/Fade";
 
 export const MAX_IMAGES_GRID_SIZE = 20;
 
@@ -48,18 +49,16 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({ images, onImageClick }) => {
         count = count + 0.2;
 
         return (
-          <PortfolioImage
-            {...image}
-            src={image.url}
-            data-testid={image.id}
-            onClick={(): void => onImageClick(image)}
-            className={cn(
-              bem(`position${NUMBER_TEXT_LOOKUP[index + 1]}`),
-              bem("image")
-            )}
-            key={uuid()}
-            style={{ animationDelay: `${count.toString()}s` }}
-          />
+          <Fade duration={0.3} show key={uuid()}>
+            <PortfolioImage
+              {...image}
+              src={image.url}
+              data-testid={image.id}
+              onClick={(): void => onImageClick(image)}
+              className={cn(bem(`position${NUMBER_TEXT_LOOKUP[index + 1]}`))}
+              style={{ animationDelay: `${count.toString()}s` }}
+            />
+          </Fade>
         );
       })}
     </div>
