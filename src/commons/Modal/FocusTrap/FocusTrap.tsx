@@ -1,14 +1,14 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 
 export interface FocusTrapProps {
-  children: React.ReactNode;
+  children: React.ReactElement | React.ReactElement[];
 }
 
 const focusTrapId = "trapFocus";
 const FocusTrap: React.FC<FocusTrapProps> = ({ children }) => {
   const focusableElements = useRef<NodeListOf<HTMLElement> | null>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const outSideElements = document.querySelectorAll(
       `body > *:not(#${focusTrapId}) > *`
     );
@@ -31,12 +31,12 @@ const FocusTrap: React.FC<FocusTrapProps> = ({ children }) => {
         `a[href], button, textarea, input[type="text"], input[type="radio"], input[type="checkbox"], select, [tabindex]:not([tabindex^="-"])`
       );
     }
-  }, []);
+  }, [children]);
 
   // TODO: There is a bug at the moment where if the user is on the address bar and tabs into the web content,
   // it ignores this effect hook only for the first tab. Need to look into it.
   useEffect(() => {
-    window.addEventListener("keydown", (e) => {
+    const focusTrapModal = (e: KeyboardEvent): void => {
       if ((e.key === "Tab" || e.keyCode === 9) && focusableElements.current) {
         const firstFocusableElement = focusableElements.current[0];
         const lastFocusableElement =
@@ -62,10 +62,32 @@ const FocusTrap: React.FC<FocusTrapProps> = ({ children }) => {
           e.preventDefault();
         }
       }
-    });
-  });
+    };
 
-  return <div id={focusTrapId}>{children}</div>;
+    window.addEventListener("keydown", focusTrapModal);
+
+    return (): void => {
+      window.removeEventListener("keydown", focusTrapModal);
+
+      const outSideElements = document.querySelectorAll(
+        `body > *:not(#${focusTrapId}) > *`
+      );
+
+      Array.from(outSideElements).forEach((el) => {
+        if (el instanceof HTMLElement) {
+          el.removeAttribute("aria-hidden");
+        }
+      });
+    };
+  }, []);
+
+  return (
+    <>
+      {React.Children.map(children, (child: React.ReactElement) =>
+        React.cloneElement(child, { id: focusTrapId })
+      )}
+    </>
+  );
 };
 
 export default FocusTrap;

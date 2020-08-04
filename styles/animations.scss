@@ -1,0 +1,14 @@
+@mixin onLoadAnimation($duration) {
+  opacity: 0;
+  animation: animation-onLoad $duration forwards;
+
+  @keyframes animation-onLoad {
+    from {
+      opacity: 0.01;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}

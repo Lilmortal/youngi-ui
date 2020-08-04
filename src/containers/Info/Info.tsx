@@ -39,28 +39,22 @@ const Info: React.FC<InfoProps> = ({
     <div className={cn(bem("socialIcons"))}>
       <SocialIcon
         icon={{
-          url: "/twitter.svg",
+          url: "/twitter.jpg",
           name: "twitter icon",
         }}
-      >
-        Twitter
-      </SocialIcon>
+      />
       <SocialIcon
         icon={{
-          url: "/facebook.svg",
+          url: "/facebook.jpeg",
           name: "facebook icon",
         }}
-      >
-        Facebook
-      </SocialIcon>
+      />
       <SocialIcon
         icon={{
-          url: "/youtube.svg",
-          name: "youtube icon",
+          url: "/instagram.jpeg",
+          name: "instagram icon",
         }}
-      >
-        Youtube
-      </SocialIcon>
+      />
     </div>
   </div>
 );

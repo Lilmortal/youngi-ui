@@ -7,12 +7,8 @@ import { cn, createBem } from "../../../utils";
 import styles from "./Works.module.scss";
 import ImageModal from "./ImageModal";
 
-import env from "../../config/env";
 import { getPortfolioImages, getWorksResponse } from "./api-client";
-import {
-  appendBaseUrlToPortfolioImages,
-  getPortfolioImagesBySelectedType as getPortfolioImagesByType,
-} from "./Works.util";
+import { getPortfolioImagesBySelectedType } from "./Works.util";
 import {
   WorkProps,
   WorkOwnProps,
@@ -54,9 +50,9 @@ const Works: React.FC<WorkProps> = ({
     undefined
   );
 
-  const portfolioImages = getPortfolioImagesByType(portfolioImagesResponse)(
-    imagesType
-  );
+  const portfolioImages = getPortfolioImagesBySelectedType(
+    portfolioImagesResponse
+  )(imagesType);
 
   const getSubImages = useCallback(
     () =>
@@ -84,20 +80,13 @@ const Works: React.FC<WorkProps> = ({
         </div>
       )}
       <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
-        {portfolioImages && (
-          <ImagesGrid
-            images={portfolioImages}
-            onImageClick={setSelectedImage}
-          />
-        )}
+        <ImagesGrid images={portfolioImages} onImageClick={setSelectedImage} />
 
-        {selectedImage && (
-          <ImageModal
-            images={getSubImages()}
-            onClose={(): void => setSelectedImage(undefined)}
-            open={!!selectedImage}
-          />
-        )}
+        <ImageModal
+          images={getSubImages()}
+          onClose={(): void => setSelectedImage(undefined)}
+          open={!!selectedImage}
+        />
       </div>
     </div>
   );
@@ -111,9 +100,7 @@ const getStaticWorkProps: GetStaticProps = async (): Promise<{
   try {
     worksResponse = await getWorksResponse();
 
-    portfolioImagesResponse = appendBaseUrlToPortfolioImages(env.cmsBaseUrl)(
-      await getPortfolioImages()
-    );
+    portfolioImagesResponse = await getPortfolioImages();
   } catch (e) {
     // TODO: Create an error component
     throw new Error(`Failed to load portfolios. - ${e}`);
