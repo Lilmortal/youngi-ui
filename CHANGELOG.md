@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.25.0](https://github.com/Lilmortal/youngi-ui/compare/v2.24.0...v2.25.0) (2020-08-04)
+
+
+### Features
+
+* added fade component, moved focusTrap to ImageModal ([cefd8e1](https://github.com/Lilmortal/youngi-ui/commit/cefd8e1317fa0714b8ab9fbb87340ecfc9ad9be8))
+* update imagesGridList only if images props are different ([0760e69](https://github.com/Lilmortal/youngi-ui/commit/0760e699b8e604556a801b4352f8f0621b9a8569))
+
+
+### Bug Fixes
+
+* move modal animation from overlay back to modal, add aspect ratio ([73784b0](https://github.com/Lilmortal/youngi-ui/commit/73784b01a49cc216e5e1fac4bad87e5ee2e5c06d))
+* removed appendUrl, and fix modal CSS ([0846852](https://github.com/Lilmortal/youngi-ui/commit/08468526ea7f60c3c29752ff0a3dd510175f809c))
+
 ## [2.24.0](https://github.com/Lilmortal/youngi-ui/compare/v2.23.1...v2.24.0) (2020-07-30)
 
 
