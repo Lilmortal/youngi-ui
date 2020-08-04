@@ -80,12 +80,7 @@ const Works: React.FC<WorkProps> = ({
         </div>
       )}
       <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
-        {portfolioImages && (
-          <ImagesGrid
-            images={portfolioImages}
-            onImageClick={setSelectedImage}
-          />
-        )}
+        <ImagesGrid images={portfolioImages} onImageClick={setSelectedImage} />
 
         <ImageModal
           images={getSubImages()}

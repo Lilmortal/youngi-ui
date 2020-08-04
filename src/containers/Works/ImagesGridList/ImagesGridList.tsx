@@ -1,6 +1,7 @@
 import React from "react";
 import { cn, createBem } from "../../../../utils";
 import chunk from "lodash.chunk";
+import isEqual from "lodash.isequal";
 import uuid from "react-uuid";
 
 import styles from "./ImagesGridList.module.scss";
@@ -11,7 +12,7 @@ import Fade from "../../../commons/Fade";
 export const MAX_IMAGES_GRID_SIZE = 20;
 
 export interface ImagesGridProps {
-  images: ImgProps[];
+  images?: ImgProps[];
   onImageClick(image: ImgProps): void;
 }
 
@@ -42,6 +43,10 @@ const bem = createBem(styles);
 
 const ImagesGrid: React.FC<ImagesGridProps> = ({ images, onImageClick }) => {
   let count = 0;
+
+  if (!images) {
+    return null;
+  }
 
   return (
     <div className={cn(bem("imagesGrid"))}>
@@ -77,4 +82,6 @@ const ImageGridList: React.FC<ImagesGridProps> = ({ images, onImageClick }) => {
   );
 };
 
-export default ImageGridList;
+export default React.memo(ImageGridList, (prevProps, nextProps) =>
+  isEqual(prevProps.images, nextProps.images)
+);
