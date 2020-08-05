@@ -37,7 +37,10 @@ describe("modal", () => {
   });
 
   it("should trigger onClosed function when clicked outside", () => {
-    const { getByTestId } = renderModal({ open: true });
+    const { getByTestId } = renderModal({
+      open: true,
+      overlayDataTestId: "overlay",
+    });
 
     const overlay = getByTestId("overlay");
     fireEvent.click(overlay);
@@ -48,7 +51,7 @@ describe("modal", () => {
   it("should close the modal when esc button is pressed", () => {
     const { container } = renderModal({ open: true });
 
-    fireEvent.keyUp(container, { key: "Escape", code: "Escape" });
+    fireEvent.keyUp(container, { key: "Escape", keyCode: 27 });
 
     expect(onClose).toHaveBeenCalled();
   });

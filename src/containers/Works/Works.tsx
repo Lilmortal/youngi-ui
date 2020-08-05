@@ -71,8 +71,10 @@ const Works: React.FC<WorkProps> = ({
   return (
     <div className={cn(bem(), className)} style={style} data-testid="works">
       <Head>
-        <title>{metaTitle}</title>
-        <meta name="description" content={metaDescription} />
+        {metaTitle && <title>{metaTitle}</title>}
+        {metaDescription && (
+          <meta name="description" content={metaDescription} />
+        )}
       </Head>
       {backgroundText && (
         <div className={cn(bem("backgroundText"))}>

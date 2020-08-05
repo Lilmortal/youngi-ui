@@ -6,7 +6,7 @@ export interface EscapePressProps {
 
 const EscapePress: React.FC<EscapePressProps> = ({ onEscapePress }) => {
   window.addEventListener("keyup", (e) => {
-    if (e.which === 27) {
+    if (e.key === "Escape" || e.keyCode === 27) {
       onEscapePress();
     }
   });

@@ -7,12 +7,14 @@ const bem = createBem(styles);
 
 export interface OverlayProps extends Styleable {
   onOutsideAction?(): void;
+  dataTestId?: string;
   fullScreenOverlay?: boolean;
   children?: React.ReactNode;
 }
 
 const Overlay: React.FC<OverlayProps> = ({
   children,
+  dataTestId,
   onOutsideAction,
   fullScreenOverlay,
   className,
@@ -20,7 +22,7 @@ const Overlay: React.FC<OverlayProps> = ({
 }) => (
   <>
     <div
-      data-testid="overlay"
+      data-testid={dataTestId}
       className={cn(bem("", { fullScreen: fullScreenOverlay }), className)}
       style={style}
       onClick={(): void => onOutsideAction && onOutsideAction()}
