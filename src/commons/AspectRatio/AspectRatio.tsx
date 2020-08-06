@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 
-export type Ratio = "3:2" | "4:3" | "16:9";
+export type Ratio = "1:1" | "3:2" | "4:3" | "16:9";
 
 export interface AspectRatioProps {
   ratio: Ratio;
@@ -9,7 +9,8 @@ export interface AspectRatioProps {
 
 interface AspectRatioFitProps {
   ratio: Ratio;
-  srcWidth: number;
+  width: number;
+  height: number;
 }
 
 interface CalculatedAspectRatio {
@@ -17,26 +18,36 @@ interface CalculatedAspectRatio {
   height: number;
 }
 
-const getRatioFormula = (width: number, ratio: Ratio): number => {
+const roundToTwoDecimalPlaces = (num: number): number =>
+  Math.round((num + Number.EPSILON) * 100) / 100;
+
+const getRatioWidth = (width: number, ratio: Ratio): number => {
+  let result = 0;
   switch (ratio) {
     case "3:2":
-      return (width * 3) / 2;
+      result = (width * 3) / 2;
+      break;
     case "4:3":
-      return (width * 4) / 3;
+      result = (width * 4) / 3;
+      break;
     case "16:9":
-      return (width * 16) / 9;
+      result = (width * 16) / 9;
+      break;
     default:
-      return width;
+      result = width;
   }
+
+  return roundToTwoDecimalPlaces(result);
 };
 
-const calculateAspectRatioFit = ({
-  srcWidth,
+export const calculateAspectRatioFit = ({
+  width,
+  // height,
   ratio,
 }: AspectRatioFitProps): CalculatedAspectRatio => {
   return {
-    width: getRatioFormula(srcWidth, ratio),
-    height: srcWidth,
+    width: getRatioWidth(width, ratio),
+    height: width,
   };
 };
 
@@ -47,28 +58,37 @@ const AspectRatio: React.FC<AspectRatioProps> = ({ ratio, children }) => {
   const componentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let srcWidth = 1;
-
     if (componentRef.current && componentRef.current.children) {
+      // console.log(children.props, componentRef.current.children[0]);
       const child = componentRef.current.children[0];
 
-      srcWidth = child.clientWidth;
+      const width =
+        (children.props.style && children.props.style.width) ||
+        child.clientWidth;
+      const height =
+        (children.props.style && children.props.style.height) ||
+        child.clientHeight;
+
+      setAspectRatioFit(
+        calculateAspectRatioFit({
+          width,
+          height,
+          ratio,
+        })
+      );
     } else {
       throw new Error("aspect ratio children does not exist.");
     }
-
-    setAspectRatioFit(
-      calculateAspectRatioFit({
-        srcWidth,
-        ratio,
-      })
-    );
-  }, [ratio, componentRef]);
+  }, [ratio, componentRef, children.props.style]);
 
   return (
     <div ref={componentRef}>
       {React.cloneElement(children, {
-        style: { width: aspectRatioFit?.width, height: aspectRatioFit?.height },
+        style: {
+          ...children.props.style,
+          width: aspectRatioFit?.width,
+          height: aspectRatioFit?.height,
+        },
       })}
     </div>
   );

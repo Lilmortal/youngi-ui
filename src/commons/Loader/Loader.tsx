@@ -5,14 +5,15 @@ import styles from "./Loader.module.scss";
 const bem = createBem(styles);
 
 export interface LoaderProps {
-  onAnimationEnd: React.AnimationEventHandler;
+  onAnimationEnd?: React.AnimationEventHandler;
+  onTransitionEnd?: React.TransitionEventHandler;
 }
 
-const Loader: React.FC<LoaderProps> = ({ onAnimationEnd }) => (
+const Loader: React.FC<LoaderProps> = ({ onAnimationEnd, onTransitionEnd }) => (
   <div
     className={cn(bem())}
     onAnimationEnd={onAnimationEnd}
-    // onTransitionEnd={onAnimationEnd}
+    onTransitionEnd={onTransitionEnd}
   >
     Loading...
   </div>

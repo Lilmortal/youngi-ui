@@ -81,13 +81,7 @@ const FocusTrap: React.FC<FocusTrapProps> = ({ children }) => {
     };
   }, []);
 
-  return (
-    <>
-      {React.Children.map(children, (child: React.ReactElement) =>
-        React.cloneElement(child, { id: focusTrapId })
-      )}
-    </>
-  );
+  return <div id={focusTrapId}>{children}</div>;
 };
 
 export default FocusTrap;

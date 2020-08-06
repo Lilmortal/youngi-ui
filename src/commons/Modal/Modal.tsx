@@ -15,6 +15,7 @@ export interface ModalProps extends Styleable {
   onEscapePress?(): void;
   onClose?(): void;
   children?: React.ReactNode;
+  overlayDataTestId?: string;
 }
 
 const bem = createBem(styles);
@@ -25,6 +26,7 @@ const Modal: React.FC<ModalProps> = ({
   onClose,
   onOutsideAction,
   onEscapePress,
+  overlayDataTestId,
   children,
 }) => {
   useEffect(() => {
@@ -41,19 +43,17 @@ const Modal: React.FC<ModalProps> = ({
   }
 
   return (
-    <>
-      <FocusTrap>
-        <Overlay
-          fullScreenOverlay={fullScreenOverlay}
-          onOutsideAction={onOutsideAction}
-        />
-        <div className={cn(bem(""))}>
-          {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
-          {onClose && <CloseButton onClose={onClose} />}
-          {children}
-        </div>
-      </FocusTrap>
-    </>
+    <FocusTrap>
+      <Overlay
+        onOutsideAction={onOutsideAction}
+        dataTestId={overlayDataTestId}
+      />
+      <div className={cn(bem("", { fullScreen: fullScreenOverlay }))}>
+        {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
+        {onClose && <CloseButton onClose={onClose} />}
+        {children}
+      </div>
+    </FocusTrap>
   );
 };
 

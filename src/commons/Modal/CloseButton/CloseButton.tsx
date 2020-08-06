@@ -15,7 +15,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({
 }) => {
   const handleKeyPress = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) =>
-      event.key === "Enter" && onClose(),
+      (event.key === "Enter" || event.keyCode === 13) && onClose(),
     [onClose]
   );
 

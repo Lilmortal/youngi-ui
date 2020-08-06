@@ -1,13 +1,28 @@
 import { PortfolioImageResponse } from "./Works.types";
 import { ImgProps } from "../../commons/Img";
 
-export const getPortfolioImagesBySelectedType = (
-  portfolioImages: PortfolioImageResponse[]
-) => (type: string | undefined): ImgProps[] | undefined => {
-  if (type) {
-    return portfolioImages
-      .filter((image) => image.category.type === type)
-      .map((portfolio) => portfolio.image);
+export const getImagesType = (
+  query: string | string[] | undefined
+): string | undefined => {
+  if (Array.isArray(query)) {
+    return query[0];
   }
-  return portfolioImages.map((portfolio) => portfolio.image);
+  return query;
 };
+
+export const getMemoizedSubImages = (
+  portfolioImagesResponse: PortfolioImageResponse[],
+  selectedImage: ImgProps | undefined
+): ImgProps[] | undefined =>
+  portfolioImagesResponse.find((response) => response.image === selectedImage)
+    ?.subImages;
+
+export const getMemoizedPortfolioImagesBySelectedType = (
+  portfolioImagesResponse: PortfolioImageResponse[],
+  imagesType: string | undefined
+): ImgProps[] | undefined =>
+  portfolioImagesResponse
+    .filter((image) =>
+      imagesType ? image.category.type === imagesType : image
+    )
+    .map((portfolio) => portfolio.image);

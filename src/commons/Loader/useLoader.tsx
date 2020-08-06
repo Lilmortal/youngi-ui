@@ -5,20 +5,20 @@ import {
 } from "../../config/storage/loader";
 
 const useLoader = (): [boolean, () => void] => {
-  const [isAnimating, setIsAnimated] = useState(false);
+  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     if (getHasSeenHeaderStorage() !== "true") {
-      setIsAnimated(true);
+      setAnimating(true);
     }
   }, []);
 
   const onAnimationEnd = (): void => {
-    setIsAnimated(false);
+    setAnimating(false);
     setHasSeenLoaderStorage("true");
   };
 
-  return [isAnimating, onAnimationEnd];
+  return [animating, onAnimationEnd];
 };
 
 export default useLoader;

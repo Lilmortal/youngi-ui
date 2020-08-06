@@ -3,15 +3,14 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import Modal, { ModalProps } from "./Modal";
-import LoremIpsum from "../LoremIpsum";
 
 const defaultProps: ModalProps = {
   open: true,
 };
 
-const MockedModal: React.FC<Partial<ModalProps>> = ({ ...props }) => (
+const RenderedModal: React.FC<Partial<ModalProps>> = ({ ...props }) => (
   <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
-    <LoremIpsum />
+    <div>Outside modal</div>
     <div>
       <Modal {...defaultProps} {...props}>
         <div
@@ -30,20 +29,20 @@ const MockedModal: React.FC<Partial<ModalProps>> = ({ ...props }) => (
 );
 
 storiesOf("Modal", module)
-  .add("overlay inheriting parent width by default", () => <MockedModal />)
-  .add("overlay is full screen", () => <MockedModal fullScreenOverlay />)
+  .add("default", () => <RenderedModal />)
+  .add("overlay is full screen", () => <RenderedModal fullScreenOverlay />)
   .add("enable outside action", () => {
     const onOutsideAction = action("onOutsideAction");
 
-    return <MockedModal onOutsideAction={onOutsideAction} />;
+    return <RenderedModal onOutsideAction={onOutsideAction} />;
   })
   .add("display close button", () => {
     const onClose = action("onClose");
 
-    return <MockedModal onClose={onClose} />;
+    return <RenderedModal onClose={onClose} />;
   })
   .add("enable escape keypress to close modal", () => {
     const onEscapePress = action("onEscapePress");
 
-    return <MockedModal onEscapePress={onEscapePress} />;
+    return <RenderedModal onEscapePress={onEscapePress} />;
   });

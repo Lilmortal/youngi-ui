@@ -7,7 +7,7 @@ export interface PortfolioImageProps extends Styleable {
   name: string;
   width?: number | string;
   height?: number | string;
-  "data-testid"?: number | string;
+  dataTestId?: number | string;
   onClick(): void;
 }
 
@@ -20,7 +20,7 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
   name,
   width,
   height,
-  "data-testid": dataTestId,
+  dataTestId,
   onClick,
 }) => {
   const handleKeyPress = useCallback(

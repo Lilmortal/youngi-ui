@@ -8,6 +8,6 @@ const defaultProps: InfoProps = {
   ...mockAboutCmsResponse,
 };
 
-storiesOf("About", module).add("default", () => (
+storiesOf("Info", module).add("default", () => (
   <InfoWithoutNav {...defaultProps} />
 ));

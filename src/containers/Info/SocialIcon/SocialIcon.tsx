@@ -7,21 +7,18 @@ import AspectRatio from "../../../commons/AspectRatio";
 const bem = createBem(styles);
 export interface SocialIconProps extends Styleable {
   icon: ImgProps;
-  children?: React.ReactNode;
 }
 
-const SocialIcon: React.FC<SocialIconProps> = ({
-  icon,
-  children,
-  className,
-  style,
-}) => (
-  <div className={cn(bem(), className)} style={style}>
-    <AspectRatio ratio="3:2">
-      <Img className={bem("icon")} {...icon} width={50} height={50} />
-    </AspectRatio>
-    <span className={bem("name")}>{children}</span>
-  </div>
+const SocialIcon: React.FC<SocialIconProps> = ({ icon, className, style }) => (
+  <AspectRatio ratio="3:2">
+    <Img
+      className={cn(bem(), className)}
+      style={style}
+      {...icon}
+      width={50}
+      height={50}
+    />
+  </AspectRatio>
 );
 
 export default SocialIcon;
