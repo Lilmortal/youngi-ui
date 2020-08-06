@@ -13,7 +13,7 @@ const bem = createBem(styles);
 const Nav: React.FC<NavProps> = ({ links }) => (
   <div className={bem()}>
     {links.map((link) => (
-      <Link {...link} key={uuid()} />
+      <Link {...link} key={uuid()} className={bem("link")} />
     ))}
   </div>
 );

@@ -1,6 +1,6 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { actions } from "@storybook/addon-actions";
+import { action } from "@storybook/addon-actions";
 
 import ImageModal, { ImageModalProps } from "./ImageModal";
 
@@ -10,8 +10,8 @@ const image = [
     name: "facebook",
   },
   {
-    url: "/youtube.jpg",
-    name: "youtube",
+    url: "/twitter.jpg",
+    name: "twitter",
   },
   {
     url: "/instagram.jpg",
@@ -20,7 +20,7 @@ const image = [
 ];
 
 const defaultProps: ImageModalProps = {
-  onClose: () => actions("onClose"),
+  onClose: action("onClose"),
   open: true,
 };
 

@@ -23,6 +23,4 @@ const RenderedFade: React.FC<Partial<FadeProps>> = ({ ...props }) => (
   <Fade {...defaultProps} {...props} />
 );
 
-storiesOf("Fade", module)
-  .add("fade in", () => <RenderedFade show />)
-  .add("fade out", () => <RenderedFade />);
+storiesOf("Fade", module).add("fade in", () => <RenderedFade show />);

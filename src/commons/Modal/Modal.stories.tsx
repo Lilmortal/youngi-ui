@@ -29,7 +29,7 @@ const RenderedModal: React.FC<Partial<ModalProps>> = ({ ...props }) => (
 );
 
 storiesOf("Modal", module)
-  .add("overlay inheriting parent width by default", () => <RenderedModal />)
+  .add("default", () => <RenderedModal />)
   .add("overlay is full screen", () => <RenderedModal fullScreenOverlay />)
   .add("enable outside action", () => {
     const onOutsideAction = action("onOutsideAction");

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useMemo } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { GetStaticProps } from "next";
@@ -8,7 +8,6 @@ import styles from "./Works.module.scss";
 import ImageModal from "./ImageModal";
 
 import { getPortfolioImages, getWorksResponse } from "./api-client";
-import { getPortfolioImagesBySelectedType } from "./Works.util";
 import {
   WorkProps,
   WorkOwnProps,
@@ -20,17 +19,13 @@ import { ImgProps } from "../../commons/Img";
 import { withNav, withNavProps } from "../../templates/withNav";
 import Loader from "../../commons/Loader";
 import useLoader from "../../commons/Loader/useLoader";
+import {
+  getMemoizedSubImages as getSubImages,
+  getMemoizedPortfolioImagesBySelectedType as getPortfolioImagesBySelectedType,
+  getImagesType,
+} from "./Works.util";
 
 const bem = createBem(styles);
-
-const getImagesType = (
-  query: string | string[] | undefined
-): string | undefined => {
-  if (Array.isArray(query)) {
-    return query[0];
-  }
-  return query;
-};
 
 const Works: React.FC<WorkProps> = ({
   metaTitle,
@@ -44,21 +39,19 @@ const Works: React.FC<WorkProps> = ({
     query: { works },
   } = useRouter();
 
-  const imagesType = getImagesType(works);
-
   const [selectedImage, setSelectedImage] = useState<ImgProps | undefined>(
     undefined
   );
 
-  const portfolioImages = getPortfolioImagesBySelectedType(
-    portfolioImagesResponse
-  )(imagesType);
+  const imagesType = getImagesType(works);
 
-  const getSubImages = useCallback(
-    () =>
-      portfolioImagesResponse.find(
-        (response) => response.image === selectedImage
-      )?.subImages,
+  const portfolioImages = useMemo(
+    () => getPortfolioImagesBySelectedType(portfolioImagesResponse, imagesType),
+    [portfolioImagesResponse, imagesType]
+  );
+
+  const subImages = useMemo(
+    () => getSubImages(portfolioImagesResponse, selectedImage),
     [portfolioImagesResponse, selectedImage]
   );
 
@@ -85,7 +78,7 @@ const Works: React.FC<WorkProps> = ({
         <ImagesGrid images={portfolioImages} onImageClick={setSelectedImage} />
 
         <ImageModal
-          images={getSubImages()}
+          images={subImages}
           onClose={(): void => setSelectedImage(undefined)}
           open={!!selectedImage}
         />

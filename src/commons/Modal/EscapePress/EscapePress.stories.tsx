@@ -13,4 +13,9 @@ const RenderedCloseButton: React.FC<Partial<CloseButtonProps>> = ({
   ...props
 }) => <EscapePress {...defaultProps} {...props} />;
 
-storiesOf("EscapePress", module).add("default", () => <RenderedCloseButton />);
+storiesOf("EscapePress", module).add("default", () => (
+  <div>
+    <span>Press Esc to trigger an action</span>
+    <RenderedCloseButton />
+  </div>
+));

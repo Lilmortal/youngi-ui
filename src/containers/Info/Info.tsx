@@ -45,13 +45,13 @@ const Info: React.FC<InfoProps> = ({
       />
       <SocialIcon
         icon={{
-          url: "/facebook.jpeg",
+          url: "/facebook.jpg",
           name: "facebook icon",
         }}
       />
       <SocialIcon
         icon={{
-          url: "/instagram.jpeg",
+          url: "/instagram.jpg",
           name: "instagram icon",
         }}
       />

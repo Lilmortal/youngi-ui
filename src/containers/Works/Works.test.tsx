@@ -1,52 +1,29 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import { WorksWithoutNav } from "./Works";
-import {
-  render,
-  RenderResult,
-  // fireEvent,
-  // Matcher,
-  // SelectorMatcherOptions,
-  // MatcherOptions,
-  // act,
-} from "@testing-library/react";
+import { render, RenderResult, fireEvent } from "@testing-library/react";
 import { mockWorksCmsResponse } from "./mock-data/data";
 
 import { WorkProps } from "./Works.types";
-import IntlProvider from "../../commons/intl/IntlProvider";
-
-interface FakeApiResponse<T = object> {
-  json?(): Promise<T>;
-  ok: boolean;
-}
+import MockRouter from "../../commons/Link/MockRouter";
 
 const defaultProps: WorkProps = {
   ...mockWorksCmsResponse,
 };
 
-const renderWorksPage = (props?: Partial<WorkProps>): RenderResult =>
+const renderWorksPage = (
+  props?: Partial<WorkProps>,
+  query: { works?: string } = {}
+): RenderResult =>
   render(
-    <IntlProvider
-      locale="en"
-      setLocale={jest.fn()}
-      messages={{}}
-      setMessages={jest.fn()}
-    >
+    <MockRouter value={{ query }}>
       <WorksWithoutNav {...defaultProps} {...props} />
-    </IntlProvider>
+    </MockRouter>
   );
 
-jest.mock("next/dist/client/router", () => ({
-  useRouter(): object {
-    return {
-      asPath: "",
-      replace: (): void => undefined,
-      query: "",
-    };
-  },
-}));
-
-// TODO: Fix
-jest.mock("../../commons/Loader/useLoader", () => () => [false, jest.fn()]);
+jest.mock("../../commons/Loader/useLoader", () => (): [
+  boolean,
+  Dispatch<SetStateAction<boolean>>
+] => [false, jest.fn()]);
 
 describe("works", () => {
   afterEach(() => {
@@ -54,71 +31,53 @@ describe("works", () => {
   });
 
   it("should display all images when it is not filtered", () => {
-    const { getAllByRole } = renderWorksPage();
+    const { getAllByRole } = renderWorksPage({});
 
-    expect(getAllByRole("button")).toHaveLength(3);
+    const images = getAllByRole("button");
+    expect(images[0].getAttribute("data-image-name")).toEqual(
+      "architecture image"
+    );
+    expect(images[1].getAttribute("data-image-name")).toEqual(
+      "photography image"
+    );
+    expect(images[2].getAttribute("data-image-name")).toEqual(
+      "illustration image"
+    );
   });
 
   it("should display photography images", () => {
-    // TODO: Figure out how to mock such that it returns photography query
-    // jest.mock("next/dist/client/router", () => ({
-    //   useRouter(): object {
-    //     return {
-    //       asPath: "",
-    //       replace: (): void => undefined,
-    //       query: { works: "photography" },
-    //     };
-    //   },
-    // }));
-    // const { getAllByRole } = renderWorksPage();
-    // expect(getAllByRole("button")).toHaveLength(1);
+    const { getByRole } = renderWorksPage({}, { works: "photography" });
+    expect(getByRole("button").getAttribute("data-image-name")).toEqual(
+      "photography image"
+    );
   });
 
-  // it("should display illustration images", () => {
-  //   const { getByText, getByTestId } = renderWorksPage();
+  it("should display illustration images", () => {
+    const { getByRole } = renderWorksPage({}, { works: "illustration" });
+    expect(getByRole("button").getAttribute("data-image-name")).toEqual(
+      "illustration image"
+    );
+  });
 
-  //   const illustrationNavigation = getByText("Illustration");
+  it("should display photography sub images when main image is clicked", () => {
+    const { getAllByAltText, getByRole } = renderWorksPage(
+      {},
+      { works: "photography" }
+    );
 
-  //   fireEvent.click(illustrationNavigation);
+    fireEvent.click(getByRole("button"));
 
-  //   expect(getByTestId("portfolioImages")).toHaveClass(
-  //     "undefined__illustration"
-  //   );
-  // });
+    expect(getAllByAltText("photography alt text")).toHaveLength(6);
+  });
 
-  // it("should not display illustration images when filtered by photography", () => {
-  //   const { getByText, getByTestId } = renderWorksPage();
+  it("should display illustration sub images when main image is clicked", () => {
+    const { getAllByAltText, getByRole } = renderWorksPage(
+      {},
+      { works: "illustration" }
+    );
 
-  //   const architectureNavigation = getByText("Architecture");
+    fireEvent.click(getByRole("button"));
 
-  //   fireEvent.click(architectureNavigation);
-
-  //   expect(getByTestId("portfolioImages")).toHaveClass(
-  //     "undefined__architecture"
-  //   );
-  // });
-
-  // it("should not highlight architecture navigation if not selected", () => {
-  //   const { getByText } = renderWorksPage();
-
-  //   const illustrationNavigation = getByText("Illustration");
-  //   const architectureNavigation = getByText("Architecture");
-
-  //   fireEvent.click(illustrationNavigation);
-
-  //   expect(architectureNavigation).not.toHaveClass(
-  //     styles["undefined__sidebarCategory--selected"]
-  //   );
-  // });
-
-  // it("should display an architecture modal when an architecture image is selected", async () => {
-  //   const { getByText, getByTestId } = renderWorksPage();
-
-  //   clickOnArchitectureNavigation(getByText, getByTestId);
-
-  //   expect(getByTestId("overlay")).toBeInTheDocument();
-
-  //   // We are going to test image modal descriptions further down...
-  //   await act(() => Promise.resolve());
-  // });
+    expect(getAllByAltText("illustration alt text")).toHaveLength(6);
+  });
 });

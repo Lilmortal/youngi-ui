@@ -10,6 +10,10 @@ const defaultProps: CloseButtonProps = {
 
 const RenderedCloseButton: React.FC<Partial<CloseButtonProps>> = ({
   ...props
-}) => <CloseButton {...defaultProps} {...props} />;
+}) => (
+  <div style={{ backgroundColor: "black", height: "100vh" }}>
+    <CloseButton {...defaultProps} {...props} />
+  </div>
+);
 
 storiesOf("CloseButton", module).add("default", () => <RenderedCloseButton />);

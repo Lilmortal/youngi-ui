@@ -10,6 +10,7 @@ export interface AspectRatioProps {
 interface AspectRatioFitProps {
   ratio: Ratio;
   width: number;
+  height: number;
 }
 
 interface CalculatedAspectRatio {
@@ -41,6 +42,7 @@ const getRatioWidth = (width: number, ratio: Ratio): number => {
 
 export const calculateAspectRatioFit = ({
   width,
+  // height,
   ratio,
 }: AspectRatioFitProps): CalculatedAspectRatio => {
   return {
@@ -60,24 +62,33 @@ const AspectRatio: React.FC<AspectRatioProps> = ({ ratio, children }) => {
       // console.log(children.props, componentRef.current.children[0]);
       const child = componentRef.current.children[0];
 
-      // console.log(child.)
-      const width = child.clientWidth;
+      const width =
+        (children.props.style && children.props.style.width) ||
+        child.clientWidth;
+      const height =
+        (children.props.style && children.props.style.height) ||
+        child.clientHeight;
 
       setAspectRatioFit(
         calculateAspectRatioFit({
           width,
+          height,
           ratio,
         })
       );
     } else {
       throw new Error("aspect ratio children does not exist.");
     }
-  }, [ratio, componentRef]);
+  }, [ratio, componentRef, children.props.style]);
 
   return (
     <div ref={componentRef}>
       {React.cloneElement(children, {
-        style: { width: aspectRatioFit?.width, height: aspectRatioFit?.height },
+        style: {
+          ...children.props.style,
+          width: aspectRatioFit?.width,
+          height: aspectRatioFit?.height,
+        },
       })}
     </div>
   );

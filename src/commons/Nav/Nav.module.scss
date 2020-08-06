@@ -5,4 +5,8 @@
   right: 1rem;
   text-transform: capitalize;
   z-index: var(--xs-zIndex);
+
+  &__link {
+    margin-left: var(--md-spacing);
+  }
 }

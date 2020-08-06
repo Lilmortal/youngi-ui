@@ -43,20 +43,17 @@ const Modal: React.FC<ModalProps> = ({
   }
 
   return (
-    <>
-      <FocusTrap>
-        <Overlay
-          fullScreenOverlay={fullScreenOverlay}
-          onOutsideAction={onOutsideAction}
-          dataTestId={overlayDataTestId}
-        />
-        <div className={cn(bem(""))}>
-          {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
-          {onClose && <CloseButton onClose={onClose} />}
-          {children}
-        </div>
-      </FocusTrap>
-    </>
+    <FocusTrap>
+      <Overlay
+        onOutsideAction={onOutsideAction}
+        dataTestId={overlayDataTestId}
+      />
+      <div className={cn(bem("", { fullScreen: fullScreenOverlay }))}>
+        {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
+        {onClose && <CloseButton onClose={onClose} />}
+        {children}
+      </div>
+    </FocusTrap>
   );
 };
 

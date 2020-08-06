@@ -1,33 +1,16 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { actions } from "@storybook/addon-actions";
+import { action } from "@storybook/addon-actions";
 
 import ImagesGridList, { ImagesGridProps } from "./ImagesGridList";
 
-const images = [
-  {
-    url: "/facebook.jpg",
-    name: "facebook",
-  },
-  {
-    url: "/youtube.jpg",
-    name: "youtube",
-  },
-  {
-    url: "/instagram.jpg",
-    name: "instagram",
-  },
-].fill(
-  {
-    url: "/facebook.jpg",
-    name: "facebook",
-  },
-  3,
-  25
-);
+const images = Array(25).fill({
+  url: "/dog.jpg",
+  name: "dog",
+});
 
 const defaultProps: ImagesGridProps = {
-  onImageClick: (image) => actions(`onImageClick ${image}`),
+  onImageClick: action(`onImageClick`),
 };
 
 storiesOf("ImagesGridList", module).add("with image", () => (

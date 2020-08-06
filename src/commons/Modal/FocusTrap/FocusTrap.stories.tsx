@@ -2,17 +2,16 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import FocusTrap, { FocusTrapProps } from "./FocusTrap";
-import Modal from "../Modal";
 
 const defaultProps: FocusTrapProps = {
-  children: <Modal>Modal</Modal>,
+  children: <button>Modal</button>,
 };
 
 const RenderedFocusTrapModal: React.FC<Partial<FocusTrapProps>> = ({
   ...props
 }) => (
   <>
-    <div>Outside of focus trap</div>
+    <button>Outside of focus trap</button>
     <FocusTrap {...defaultProps} {...props} />
   </>
 );

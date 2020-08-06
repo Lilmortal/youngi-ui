@@ -1,13 +1,15 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
-import { actions } from "@storybook/addon-actions";
+import { action } from "@storybook/addon-actions";
 
 import PortfolioImage, { PortfolioImageProps } from "./PortfolioImage";
 
 const defaultProps: PortfolioImageProps = {
-  src: "image.jpg",
-  name: "image",
-  onClick: () => actions(`onClick`),
+  src: "dog.jpg",
+  name: "dog",
+  onClick: action(`onClick`),
+  width: 50,
+  height: 50,
 };
 
 storiesOf("PortfolioImage", module).add("with image", () => (
