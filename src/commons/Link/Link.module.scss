@@ -1,11 +1,11 @@
 .link {
   text-decoration: none;
-  color: var(--black);
+  color: var(--link-primary);
   border-bottom: 0;
   transition: border-bottom 200ms;
   padding-bottom: 3px;
 
   &:hover {
-    border-bottom: 2px solid var(--black);
+    border-bottom: 2px solid var(--link-border-primary);
   }
 }
