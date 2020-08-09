@@ -8,8 +8,8 @@ const defaultProps: AspectRatioProps = {
   children: (
     <div
       style={{
-        width: 50,
-        height: 50,
+        width: 150,
+        height: 200,
         border: "1px solid black",
       }}
     >
