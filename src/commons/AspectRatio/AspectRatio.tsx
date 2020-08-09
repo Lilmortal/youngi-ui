@@ -21,20 +21,20 @@ interface CalculatedAspectRatio {
 const roundToTwoDecimalPlaces = (num: number): number =>
   Math.round((num + Number.EPSILON) * 100) / 100;
 
-const getRatioWidth = (width: number, ratio: Ratio): number => {
+const getCalcRatioLength = (length: number, ratio: Ratio): number => {
   let result = 0;
   switch (ratio) {
     case "3:2":
-      result = (width * 3) / 2;
+      result = (length * 3) / 2;
       break;
     case "4:3":
-      result = (width * 4) / 3;
+      result = (length * 4) / 3;
       break;
     case "16:9":
-      result = (width * 16) / 9;
+      result = (length * 16) / 9;
       break;
     default:
-      result = width;
+      result = length;
   }
 
   return roundToTwoDecimalPlaces(result);
@@ -42,12 +42,19 @@ const getRatioWidth = (width: number, ratio: Ratio): number => {
 
 export const calculateAspectRatioFit = ({
   width,
-  // height,
+  height,
   ratio,
 }: AspectRatioFitProps): CalculatedAspectRatio => {
+  if (width >= height) {
+    return {
+      width: getCalcRatioLength(width, ratio),
+      height,
+    };
+  }
+
   return {
-    width: getRatioWidth(width, ratio),
-    height: width,
+    width,
+    height: getCalcRatioLength(height, ratio),
   };
 };
 
@@ -59,7 +66,6 @@ const AspectRatio: React.FC<AspectRatioProps> = ({ ratio, children }) => {
 
   useEffect(() => {
     if (componentRef.current && componentRef.current.children) {
-      // console.log(children.props, componentRef.current.children[0]);
       const child = componentRef.current.children[0];
 
       const width =
