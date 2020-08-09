@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.25.3](https://github.com/Lilmortal/youngi-ui/compare/v2.25.2...v2.25.3) (2020-08-09)
+
+
+### Bug Fixes
+
+* fix aspect ratio calc ([9c0152c](https://github.com/Lilmortal/youngi-ui/commit/9c0152c3848e907d7e34b6bb70ba8e72c3fb28d8))
+
 ### [2.25.2](https://github.com/Lilmortal/youngi-ui/compare/v2.25.1...v2.25.2) (2020-08-07)
 
 ### [2.25.1](https://github.com/Lilmortal/youngi-ui/compare/v2.25.0...v2.25.1) (2020-08-06)
