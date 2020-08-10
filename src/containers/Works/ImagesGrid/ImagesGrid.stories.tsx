@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
-import ImagesGridList, { ImagesGridProps } from "./ImagesGridList";
+import ImagesGrid, { ImagesGridProps } from "./ImagesGrid";
 
 const images = Array(25).fill({
   url: "/dog.jpg",
@@ -13,6 +13,6 @@ const defaultProps: ImagesGridProps = {
   onImageClick: action(`onImageClick`),
 };
 
-storiesOf("ImagesGridList", module).add("with image", () => (
-  <ImagesGridList {...defaultProps} images={images} />
+storiesOf("ImagesGrid", module).add("with image", () => (
+  <ImagesGrid {...defaultProps} images={images} />
 ));

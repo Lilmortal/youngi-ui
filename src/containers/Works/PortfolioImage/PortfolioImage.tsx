@@ -1,17 +1,59 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import { cn, createBem } from "../../../../utils";
 import styles from "./PortfolioImage.module.scss";
+import { BreakpointContext, Breakpoints } from "../../../commons/breakpoints";
+
+export interface Positions {
+  smColumn: string;
+  smRow: string;
+  mdColumn: string;
+  mdRow: string;
+  lgColumn: string;
+  lgRow: string;
+}
 
 export interface PortfolioImageProps extends Styleable {
   src: string;
   name: string;
   width?: number | string;
   height?: number | string;
+  positions?: Positions;
   dataTestId?: number | string;
   onClick(): void;
 }
 
 const bem = createBem(styles);
+
+interface GridPositions {
+  column: string;
+  row: string;
+}
+
+const getGridPositions = (
+  positions: Positions,
+  breakpoints: Breakpoints
+): GridPositions => {
+  let gridPositions: GridPositions = {
+    column: positions.smColumn,
+    row: positions.smRow,
+  };
+
+  if (breakpoints.sm) {
+    gridPositions = {
+      column: positions.mdColumn,
+      row: positions.mdRow,
+    };
+  }
+
+  if (breakpoints.md) {
+    gridPositions = {
+      column: positions.lgColumn,
+      row: positions.lgRow,
+    };
+  }
+
+  return gridPositions;
+};
 
 const PortfolioImage: React.FC<PortfolioImageProps> = ({
   className,
@@ -20,6 +62,7 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
   name,
   width,
   height,
+  positions,
   dataTestId,
   onClick,
 }) => {
@@ -28,6 +71,14 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
       event.key === "Enter" && onClick(),
     [onClick]
   );
+
+  const breakpoints = useContext(BreakpointContext);
+
+  let gridPositions: GridPositions = { column: "", row: "" };
+
+  if (positions) {
+    gridPositions = getGridPositions(positions, breakpoints);
+  }
 
   return (
     <div
@@ -38,6 +89,8 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
         backgroundImage: `url(${src})`,
         width: width ? `${width}px` : undefined,
         height: height ? `${height}px` : undefined,
+        gridColumn: gridPositions?.column ? gridPositions.column : undefined,
+        gridRow: gridPositions?.row ? gridPositions.row : undefined,
       }}
       aria-label={`${name} modal opener`}
       onClick={onClick}

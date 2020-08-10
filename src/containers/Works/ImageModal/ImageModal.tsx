@@ -16,6 +16,13 @@ export interface ImageModalProps extends Styleable {
   onClose(): void;
 }
 
+const getDisplayImage = (image: ImgProps): ImgProps =>
+  image.formats?.large ||
+  image.formats?.medium ||
+  image.formats?.small ||
+  image.formats?.thumbnail ||
+  image;
+
 const ImageModal: React.FC<ImageModalProps> = ({
   images,
   open,
@@ -34,7 +41,11 @@ const ImageModal: React.FC<ImageModalProps> = ({
         <div className={cn(bem(), className)} style={style}>
           {images &&
             images.map((image) => (
-              <Img {...image} key={uuid()} className={cn(bem("image"))} />
+              <Img
+                {...getDisplayImage(image)}
+                key={uuid()}
+                className={cn(bem("image"))}
+              />
             ))}
         </div>
       </Fade>

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useContext, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { GetStaticProps } from "next";
@@ -14,7 +14,7 @@ import {
   PortfolioImageResponse,
   WorksResponse,
 } from "./Works.types";
-import ImagesGrid from "./ImagesGridList";
+import ImagesGrid from "./ImagesGrid";
 import { ImgProps } from "../../commons/Img";
 import { withNav, withNavProps } from "../../templates/withNav";
 import Loader from "../../commons/Loader";
@@ -24,6 +24,7 @@ import {
   getMemoizedPortfolioImagesBySelectedType as getPortfolioImagesBySelectedType,
   getImagesType,
 } from "./Works.util";
+import { BreakpointContext } from "../../commons/breakpoints";
 
 const bem = createBem(styles);
 
@@ -32,6 +33,12 @@ const Works: React.FC<WorkProps> = ({
   metaDescription,
   backgroundText,
   portfolioImagesResponse,
+  mobileColumnSize,
+  mobileRowSize,
+  tabletColumnSize,
+  tabletRowSize,
+  desktopColumnSize,
+  desktopRowSize,
   className,
   style,
 }) => {
@@ -39,13 +46,39 @@ const Works: React.FC<WorkProps> = ({
     query: { works },
   } = useRouter();
 
+  const breakpoints = useContext(BreakpointContext);
+
   const [selectedImage, setSelectedImage] = useState<ImgProps | undefined>(
     undefined
   );
 
+  const [columnSize, setColumnSize] = useState(mobileColumnSize);
+  const [rowSize, setRowSize] = useState(mobileRowSize);
+
+  useEffect(() => {
+    if (breakpoints.lg) {
+      setColumnSize(desktopColumnSize);
+      setRowSize(desktopRowSize);
+    } else if (breakpoints.md) {
+      setColumnSize(tabletColumnSize);
+      setRowSize(tabletRowSize);
+    } else {
+      setColumnSize(mobileColumnSize);
+      setRowSize(mobileRowSize);
+    }
+  }, [
+    breakpoints,
+    mobileColumnSize,
+    mobileRowSize,
+    tabletColumnSize,
+    tabletRowSize,
+    desktopColumnSize,
+    desktopRowSize,
+  ]);
+
   const imagesType = getImagesType(works);
 
-  const portfolioImages = useMemo(
+  const portfolioImagesBySelectedType = useMemo(
     () => getPortfolioImagesBySelectedType(portfolioImagesResponse, imagesType),
     [portfolioImagesResponse, imagesType]
   );
@@ -75,7 +108,12 @@ const Works: React.FC<WorkProps> = ({
         </div>
       )}
       <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
-        <ImagesGrid images={portfolioImages} onImageClick={setSelectedImage} />
+        <ImagesGrid
+          images={portfolioImagesBySelectedType}
+          columns={columnSize}
+          rows={rowSize}
+          onImageClick={setSelectedImage}
+        />
 
         <ImageModal
           images={subImages}
