@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.26.0](https://github.com/Lilmortal/youngi-ui/compare/v2.25.3...v2.26.0) (2020-08-11)
+
+
+### Features
+
+* added breakpointsProvider; image row and column decided by CMS ([fbf90fc](https://github.com/Lilmortal/youngi-ui/commit/fbf90fc72b45632ca454d872fa807143ec005f31))
+
 ### [2.25.3](https://github.com/Lilmortal/youngi-ui/compare/v2.25.2...v2.25.3) (2020-08-09)
 
 
