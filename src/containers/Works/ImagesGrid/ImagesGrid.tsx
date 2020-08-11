@@ -9,8 +9,10 @@ import { ImgProps } from "../../../commons/Img";
 import Fade from "../../../commons/Fade";
 import { PortfolioImageResponse } from "../Works.types";
 
+export type ImagesGrid = Omit<PortfolioImageResponse, "subImages" | "category">;
+
 export interface ImagesGridProps {
-  images?: PortfolioImageResponse[];
+  images?: ImagesGrid[];
   columns?: string;
   rows?: string;
   onImageClick(image: ImgProps): void;
@@ -24,7 +26,7 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
   rows,
   onImageClick,
 }) => {
-  let count = 0;
+  let fadeInSeconds = 0;
 
   if (!images) {
     return null;
@@ -51,7 +53,7 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
           lgRow: image.desktopRow,
         };
 
-        count = count + 0.2;
+        fadeInSeconds = fadeInSeconds + 0.2;
 
         return (
           <Fade duration={0.3} show key={uuid()}>
@@ -61,7 +63,7 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
               positions={positions}
               data-testid={image.id}
               onClick={(): void => onImageClick(portfolioImage)}
-              style={{ animationDelay: `${(count + 0.2).toString()}s` }}
+              style={{ animationDelay: `${fadeInSeconds.toString()}s` }}
             />
           </Fade>
         );
@@ -70,6 +72,8 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
   );
 };
 
+// TODO: Create a new ImageGrid component and memoized it, delegate this component
+// to handle the grid layout.
 export default React.memo(
   ImagesGrid,
   (prevProps, nextProps) =>
