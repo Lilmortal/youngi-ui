@@ -6,6 +6,12 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
     category: {
       type: "architecture",
     },
+    mobileColumn: "3px",
+    mobileRow: "3px",
+    tabletColumn: "4px",
+    tabletRow: "4px",
+    desktopColumn: "5px",
+    desktopRow: "5px",
     image: {
       id: "1",
       url: "/facebook.jpg",
@@ -63,6 +69,12 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
     category: {
       type: "photography",
     },
+    mobileColumn: "3px",
+    mobileRow: "3px",
+    tabletColumn: "4px",
+    tabletRow: "4px",
+    desktopColumn: "5px",
+    desktopRow: "5px",
     image: {
       id: "1",
       url: "/twitter.jpg",
@@ -120,6 +132,12 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
     category: {
       type: "illustration",
     },
+    mobileColumn: "3px",
+    mobileRow: "3px",
+    tabletColumn: "4px",
+    tabletRow: "4px",
+    desktopColumn: "5px",
+    desktopRow: "5px",
     image: {
       id: "1",
       url: "/instagram.jpg",
