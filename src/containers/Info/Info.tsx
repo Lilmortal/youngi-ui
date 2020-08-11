@@ -12,9 +12,9 @@ import { withNavProps, withNav } from "../../templates/withNav";
 const bem = createBem(styles);
 
 export interface InfoOwnProps {
-  metaTitle?: string;
-  metaDescription?: string;
-  biography?: string;
+  readonly metaTitle?: string;
+  readonly metaDescription?: string;
+  readonly biography?: string;
 }
 
 export interface InfoProps extends InfoOwnProps, Styleable {}

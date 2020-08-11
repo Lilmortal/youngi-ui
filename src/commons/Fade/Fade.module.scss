@@ -1,5 +1,6 @@
 .fade {
   opacity: 0;
+  will-change: opacity;
 
   &--show {
     animation: animation-onLoad forwards;

@@ -20,9 +20,7 @@ export const getMemoizedSubImages = (
 export const getMemoizedPortfolioImagesBySelectedType = (
   portfolioImagesResponse: PortfolioImageResponse[],
   imagesType: string | undefined
-): ImgProps[] | undefined =>
-  portfolioImagesResponse
-    .filter((image) =>
-      imagesType ? image.category.type === imagesType : image
-    )
-    .map((portfolio) => portfolio.image);
+): PortfolioImageResponse[] | undefined =>
+  portfolioImagesResponse.filter((image) =>
+    imagesType ? image.category.type === imagesType : image
+  );
