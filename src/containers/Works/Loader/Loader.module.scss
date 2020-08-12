@@ -1,0 +1,128 @@
+$containerWidth: 50rem;
+$containerHeight: 10rem;
+$barWidth: 2rem;
+$slideForwardWidth: $containerWidth / $barWidth;
+
+$blinkDuration: 0.5s;
+$blinkIteration: 3;
+
+$slideDuration: 1s;
+$slideIteration: 1;
+$slideDelay: $blinkDuration * $blinkIteration;
+
+$slideBackDuration: 1s;
+$slideBackIteration: 1;
+$slideBackDelay: $slideDelay + ($slideDuration * $slideIteration);
+
+$messageZoomOutDuration: 1s;
+$messageDelayAfterAppear: 1s;
+$messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    width: $containerWidth;
+    height: $containerHeight;
+    position: relative;
+  }
+
+  &__bar {
+    position: absolute;
+    width: $barWidth;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+
+    &--isAnimating {
+      animation-name: animation-blink, animation-slide, animation-slide-back;
+      animation-duration: $blinkDuration, $slideDuration, $slideBackDuration;
+      animation-iteration-count:
+        $blinkIteration,
+        $slideIteration,
+        $slideBackIteration;
+      animation-delay: 0s, $slideDelay, $slideBackDelay;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &__message {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--xl-font);
+    font-weight: bold;
+    font-family: "Josefin_Sans", sans-serif;
+    line-height: 64px;
+
+    &--isAnimating {
+      opacity: 0;
+      font-size: calc(var(--xl-font) * 2);
+      animation-name: animation-appear, animation-zoom-out;
+      animation-duration: 0s, $messageZoomOutDuration;
+      animation-delay: $slideBackDelay, $messageZoomOutDelay;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+@keyframes animation-zoom-out {
+  to {
+    transform: scale(0.5);
+  }
+}
+
+@keyframes animation-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes animation-slide {
+  from {
+    transform-origin: left center;
+  }
+
+  to {
+    transform: scaleX($slideForwardWidth);
+    transform-origin: left center;
+  }
+}
+
+@keyframes animation-slide-back {
+  $slideBackWidth: $containerWidth - $barWidth;
+
+  from {
+    transform: translateX($slideBackWidth) scaleX($slideForwardWidth);
+    transform-origin: right;
+  }
+
+  to {
+    transform: translateX($slideBackWidth) scaleX(0);
+    transform-origin: right;
+  }
+}
+
+@keyframes animation-blink {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

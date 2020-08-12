@@ -17,8 +17,7 @@ import {
 import ImagesGrid from "./ImagesGrid";
 import { ImgProps } from "../../commons/Img";
 import { withNav, withNavProps } from "../../templates/withNav";
-import Loader from "../../commons/Loader";
-import useLoader from "../../commons/Loader/useLoader";
+import Loader, { useLoader } from "./Loader";
 import {
   getMemoizedSubImages as getSubImages,
   getMemoizedPortfolioImagesBySelectedType as getPortfolioImagesBySelectedType,
@@ -56,10 +55,10 @@ const Works: React.FC<WorkProps> = ({
   const [rowSize, setRowSize] = useState(mobileRowSize);
 
   useEffect(() => {
-    if (breakpoints.lg) {
+    if (breakpoints.md) {
       setColumnSize(desktopColumnSize);
       setRowSize(desktopRowSize);
-    } else if (breakpoints.md) {
+    } else if (breakpoints.sm) {
       setColumnSize(tabletColumnSize);
       setRowSize(tabletRowSize);
     } else {
@@ -90,10 +89,6 @@ const Works: React.FC<WorkProps> = ({
 
   const [isLoaderAnimating, onAnimationEnd] = useLoader();
 
-  if (isLoaderAnimating) {
-    return <Loader onAnimationEnd={onAnimationEnd} />;
-  }
-
   return (
     <div className={cn(bem(), className)} style={style} data-testid="works">
       <Head>
@@ -102,25 +97,27 @@ const Works: React.FC<WorkProps> = ({
           <meta name="description" content={metaDescription} />
         )}
       </Head>
-      {backgroundText && (
-        <div className={cn(bem("backgroundText"))}>
-          {backgroundText.toUpperCase()}
-        </div>
-      )}
-      <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
-        <ImagesGrid
-          images={portfolioImagesBySelectedType}
-          columns={columnSize}
-          rows={rowSize}
-          onImageClick={setSelectedImage}
-        />
+      <Loader
+        animate={breakpoints.md && isLoaderAnimating}
+        onAnimationEnd={onAnimationEnd}
+        loaderText={backgroundText?.toUpperCase()}
+      />
+      {!isLoaderAnimating || !breakpoints.md ? (
+        <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
+          <ImagesGrid
+            images={portfolioImagesBySelectedType}
+            columns={columnSize}
+            rows={rowSize}
+            onImageClick={setSelectedImage}
+          />
 
-        <ImageModal
-          images={subImages}
-          onClose={(): void => setSelectedImage(undefined)}
-          open={!!selectedImage}
-        />
-      </div>
+          <ImageModal
+            images={subImages}
+            onClose={(): void => setSelectedImage(undefined)}
+            open={!!selectedImage}
+          />
+        </div>
+      ) : null}
     </div>
   );
 };
@@ -150,4 +147,5 @@ const getStaticWorkProps: GetStaticProps = async (): Promise<{
 export const getStaticProps = withNavProps(getStaticWorkProps);
 
 export const WorksWithoutNav = Works;
+
 export default withNav(Works);
