@@ -1,5 +1,6 @@
 import { PortfolioImageResponse } from "./Works.types";
 import { ImgProps } from "../../commons/Img";
+import { ImagesGrid } from "./ImagesGrid/ImagesGrid";
 
 export const getImagesType = (
   query: string | string[] | undefined
@@ -20,7 +21,7 @@ export const getMemoizedSubImages = (
 export const getMemoizedPortfolioImagesBySelectedType = (
   portfolioImagesResponse: PortfolioImageResponse[],
   imagesType: string | undefined
-): PortfolioImageResponse[] | undefined =>
+): ImagesGrid[] | undefined =>
   portfolioImagesResponse.filter((image) =>
-    imagesType ? image.category.type === imagesType : image
+    imagesType ? image.category?.type === imagesType : image
   );

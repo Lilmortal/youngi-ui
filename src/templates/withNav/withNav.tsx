@@ -3,6 +3,7 @@ import PortfolioNav, { usePortfolioLinks } from "../../commons/PortfolioNav";
 import { NavProps } from "./withNav.types";
 import Nav from "../../commons/Nav";
 import useNav from "../../commons/Nav/useNav";
+import Fade from "../../commons/Fade";
 
 const withNav = <T extends object>(Component: React.FC<T>) => <
   P extends NavProps
@@ -16,11 +17,11 @@ const withNav = <T extends object>(Component: React.FC<T>) => <
   });
 
   return (
-    <>
+    <Fade duration={0.6} show>
       <PortfolioNav links={portfolioLinks} />
       <Nav links={navLinks} />
       <Component {...props} />
-    </>
+    </Fade>
   );
 };
 

@@ -5,17 +5,25 @@ import styles from "./Loader.module.scss";
 const bem = createBem(styles);
 
 export interface LoaderProps {
+  loaderText?: string;
   onAnimationEnd?: React.AnimationEventHandler;
   onTransitionEnd?: React.TransitionEventHandler;
 }
 
-const Loader: React.FC<LoaderProps> = ({ onAnimationEnd, onTransitionEnd }) => (
+const Loader: React.FC<LoaderProps> = ({
+  loaderText,
+  onAnimationEnd,
+  onTransitionEnd,
+}) => (
   <div
     className={cn(bem())}
     onAnimationEnd={onAnimationEnd}
     onTransitionEnd={onTransitionEnd}
   >
-    Loading...
+    <div className={cn(bem("container"))}>
+      <div className={cn(bem("bar"))}></div>
+      {loaderText && <div className={cn(bem("message"))}>{loaderText}</div>}
+    </div>
   </div>
 );
 
