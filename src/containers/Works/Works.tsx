@@ -17,8 +17,7 @@ import {
 import ImagesGrid from "./ImagesGrid";
 import { ImgProps } from "../../commons/Img";
 import { withNav, withNavProps } from "../../templates/withNav";
-import Loader from "../../commons/Loader";
-import useLoader from "../../commons/Loader/useLoader";
+import Loader, { useLoader } from "./Loader";
 import {
   getMemoizedSubImages as getSubImages,
   getMemoizedPortfolioImagesBySelectedType as getPortfolioImagesBySelectedType,
@@ -98,12 +97,11 @@ const Works: React.FC<WorkProps> = ({
           <meta name="description" content={metaDescription} />
         )}
       </Head>
-      {breakpoints.md && (
-        <Loader
-          onAnimationEnd={onAnimationEnd}
-          loaderText={backgroundText?.toUpperCase()}
-        />
-      )}
+      <Loader
+        animate={breakpoints.md && isLoaderAnimating}
+        onAnimationEnd={onAnimationEnd}
+        loaderText={backgroundText?.toUpperCase()}
+      />
       {!isLoaderAnimating || !breakpoints.md ? (
         <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
           <ImagesGrid

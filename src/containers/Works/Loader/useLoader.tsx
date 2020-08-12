@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import {
   setHasSeenLoaderStorage,
   getHasSeenHeaderStorage,
-} from "../../config/storage/loader";
+} from "../../../config/storage/loader";
 
 const useLoader = (): [boolean, (e: React.AnimationEvent) => void] => {
-  const [animating, setAnimating] = useState(true);
+  const [animating, setAnimating] = useState(false);
 
   useEffect(() => {
     if (getHasSeenHeaderStorage() !== "true") {
@@ -16,8 +16,8 @@ const useLoader = (): [boolean, (e: React.AnimationEvent) => void] => {
   const onAnimationEnd = (e: React.AnimationEvent): void => {
     if (e.animationName?.startsWith("Loader_animation-zoom-out")) {
       setAnimating(false);
+      setHasSeenLoaderStorage("true");
     }
-    setHasSeenLoaderStorage("true");
   };
 
   return [animating, onAnimationEnd];

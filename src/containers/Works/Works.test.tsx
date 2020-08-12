@@ -20,7 +20,7 @@ const renderWorksPage = (
     </MockRouter>
   );
 
-jest.mock("../../commons/Loader/useLoader", () => (): [
+jest.mock("./Loader/useLoader", () => (): [
   boolean,
   Dispatch<SetStateAction<boolean>>
 ] => [false, jest.fn()]);
