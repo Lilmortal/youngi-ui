@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.27.0](https://github.com/Lilmortal/youngi-ui/compare/v2.26.0...v2.27.0) (2020-08-12)
+
+
+### Features
+
+* updated loader to spec ([7ea9b99](https://github.com/Lilmortal/youngi-ui/commit/7ea9b9902a1b04e05e008f4dfa0ae2e8c708e748))
+
+
+### Bug Fixes
+
+* migrate loader to works folder and dont animate if on phone ([3311279](https://github.com/Lilmortal/youngi-ui/commit/3311279954e8f3326ac8efd85cc61c1e289c8c4a))
+
 ## [2.26.0](https://github.com/Lilmortal/youngi-ui/compare/v2.25.3...v2.26.0) (2020-08-11)
 
 
