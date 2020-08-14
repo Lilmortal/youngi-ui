@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { IntlProviderContext } from "../intl/IntlProvider";
 import { LinkProps } from "../Link";
-import { PortfolioCategoryResponse } from "../../templates/withNav";
+import { PortfolioCategoryResponse } from "../../containers/Works";
 
 interface PortfolioLinksHooks {
   categories: PortfolioCategoryResponse[];
@@ -18,9 +18,9 @@ const usePortfolioLinks = ({
     links.push({
       link: {
         href: `/[lang]/[works]`,
-        as: `/${context.locale}/${category.type.toLowerCase()}`,
+        as: `/${context.locale}/${category.type?.toLowerCase()}`,
       },
-      name: category.type,
+      name: category.type || "",
     })
   );
 
