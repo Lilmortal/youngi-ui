@@ -1,2 +1,8 @@
 export { default, getStaticProps } from "./Works";
-export * from "./Works.types";
+export type {
+  PortfolioImageResponse,
+  ModalImageProps,
+  PortfolioCategoryResponse,
+  WorksResponse,
+  WorkProps,
+} from "./Works.types";

@@ -1,6 +1,4 @@
-export interface PortfolioCategoryResponse {
-  type: string;
-}
+import { PortfolioCategoryResponse } from "../../containers/Works";
 
 export interface NavResponse {
   url: string;

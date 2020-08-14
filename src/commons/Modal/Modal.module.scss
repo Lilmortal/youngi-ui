@@ -9,10 +9,4 @@
   background-color: white;
   z-index: var(--sm-zIndex);
   overflow-y: scroll;
-
-  &--fullScreen {
-    top: 0;
-    left: 0;
-    right: 0;
-  }
 }

@@ -55,6 +55,10 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
 
         fadeInSeconds = fadeInSeconds + 0.2;
 
+        if (!portfolioImage) {
+          return null;
+        }
+
         return (
           <Fade duration={0.3} show key={uuid()}>
             <PortfolioImage

@@ -1,6 +1,7 @@
 import apiClient from "../../../../utils/apiClient";
 import env from "../../../config/env";
-import { NavResponse, PortfolioCategoryResponse } from "../withNav.types";
+import { NavResponse } from "../withNav.types";
+import { PortfolioCategoryResponse } from "../../../containers/Works";
 
 const client = apiClient(env.cmsBaseUrl);
 

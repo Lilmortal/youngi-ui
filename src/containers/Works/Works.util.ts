@@ -1,4 +1,4 @@
-import { PortfolioImageResponse } from "./Works.types";
+import { PortfolioImageResponse, ModalImageProps } from "./Works.types";
 import { ImgProps } from "../../commons/Img";
 import { ImagesGrid } from "./ImagesGrid/ImagesGrid";
 
@@ -14,9 +14,9 @@ export const getImagesType = (
 export const getMemoizedSubImages = (
   portfolioImagesResponse: PortfolioImageResponse[],
   selectedImage: ImgProps | undefined
-): ImgProps[] | undefined =>
+): ModalImageProps[] | undefined =>
   portfolioImagesResponse.find((response) => response.image === selectedImage)
-    ?.subImages;
+    ?.modalImages;
 
 export const getMemoizedPortfolioImagesBySelectedType = (
   portfolioImagesResponse: PortfolioImageResponse[],
