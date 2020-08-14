@@ -4,12 +4,12 @@ import styles from "./PortfolioImage.module.scss";
 import { BreakpointContext, Breakpoints } from "../../../commons/breakpoints";
 
 export interface Positions {
-  smColumn: string;
-  smRow: string;
-  mdColumn: string;
-  mdRow: string;
-  lgColumn: string;
-  lgRow: string;
+  smColumn?: string;
+  smRow?: string;
+  mdColumn?: string;
+  mdRow?: string;
+  lgColumn?: string;
+  lgRow?: string;
 }
 
 export interface PortfolioImageProps extends Styleable {
@@ -29,23 +29,26 @@ interface GridPositions {
   row: string;
 }
 
+const defaultColumn = "10";
+const defaultRow = "10";
+
 const getGridPositions = (
   positions: Positions,
   breakpoints: Breakpoints
 ): GridPositions => {
   let gridPositions: GridPositions = {
-    column: positions.smColumn,
-    row: positions.smRow,
+    column: positions.smColumn || defaultColumn,
+    row: positions.smRow || defaultRow,
   };
 
-  if (breakpoints.sm) {
+  if (breakpoints.sm && positions.mdColumn && positions.mdRow) {
     gridPositions = {
       column: positions.mdColumn,
       row: positions.mdRow,
     };
   }
 
-  if (breakpoints.md) {
+  if (breakpoints.md && positions.lgColumn && positions.lgRow) {
     gridPositions = {
       column: positions.lgColumn,
       row: positions.lgRow,
