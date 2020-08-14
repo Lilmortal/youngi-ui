@@ -3,15 +3,26 @@ import { PortfolioCategoryResponse } from "../../templates/withNav";
 
 export interface PortfolioImageResponse {
   readonly id: number;
-  readonly image: ImgProps;
-  readonly subImages?: ImgProps[];
-  readonly category: PortfolioCategoryResponse;
-  readonly mobileColumn: string;
-  readonly mobileRow: string;
-  readonly tabletColumn: string;
-  readonly tabletRow: string;
-  readonly desktopColumn: string;
-  readonly desktopRow: string;
+  readonly image?: ImgProps;
+  readonly modalImages?: ModalImageProps[];
+  readonly category?: PortfolioCategoryResponse;
+  readonly mobileColumn?: string;
+  readonly mobileRow?: string;
+  readonly tabletColumn?: string;
+  readonly tabletRow?: string;
+  readonly desktopColumn?: string;
+  readonly desktopRow?: string;
+}
+
+export interface ModalImageProps {
+  readonly id: number;
+  readonly image?: ImgProps;
+  readonly title?: string;
+  readonly description?: string;
+}
+
+export interface PortfolioCategoryResponse {
+  readonly type?: string;
 }
 
 export interface WorksResponse {

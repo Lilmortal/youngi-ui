@@ -1,4 +1,6 @@
 import React from "react";
+import styles from "./Img.module.scss";
+import { createBem, cn } from "../../../utils";
 
 // TODO: Lazy load
 // 404
@@ -23,6 +25,8 @@ export interface ImgProps extends Styleable {
   onHoverOut?(): void;
   "data-testid"?: string;
 }
+
+const bem = createBem(styles);
 
 const Img: React.FC<ImgProps> = ({
   name,
@@ -56,7 +60,7 @@ const Img: React.FC<ImgProps> = ({
       alt={name}
       width={width}
       height={height}
-      className={className}
+      className={cn(bem(), className)}
       style={style}
       onClick={onClick}
       role={onClick ? "button" : undefined}

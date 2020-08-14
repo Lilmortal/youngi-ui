@@ -8,9 +8,9 @@ import FocusTrap from "./FocusTrap";
 import { cn, createBem } from "../../../utils";
 import styles from "./Modal.module.scss";
 
+// TODO: How to use React portal in Next.js
 export interface ModalProps extends Styleable {
   open?: boolean;
-  fullScreenOverlay?: boolean;
   onOutsideAction?(): void;
   onEscapePress?(): void;
   onClose?(): void;
@@ -22,7 +22,6 @@ const bem = createBem(styles);
 
 const Modal: React.FC<ModalProps> = ({
   open = false,
-  fullScreenOverlay = false,
   onClose,
   onOutsideAction,
   onEscapePress,
@@ -48,7 +47,7 @@ const Modal: React.FC<ModalProps> = ({
         onOutsideAction={onOutsideAction}
         dataTestId={overlayDataTestId}
       />
-      <div className={cn(bem("", { fullScreen: fullScreenOverlay }))}>
+      <div className={cn(bem())}>
         {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
         {onClose && <CloseButton onClose={onClose} />}
         {children}

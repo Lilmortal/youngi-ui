@@ -30,7 +30,6 @@ const RenderedModal: React.FC<Partial<ModalProps>> = ({ ...props }) => (
 
 storiesOf("Modal", module)
   .add("default", () => <RenderedModal />)
-  .add("overlay is full screen", () => <RenderedModal fullScreenOverlay />)
   .add("enable outside action", () => {
     const onOutsideAction = action("onOutsideAction");
 

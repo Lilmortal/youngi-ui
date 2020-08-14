@@ -5,7 +5,7 @@ import { GetStaticProps } from "next";
 
 import { cn, createBem } from "../../../utils";
 import styles from "./Works.module.scss";
-import ImageModal from "./ImageModal";
+import PortfolioModal from "./PortfolioModal";
 
 import { getPortfolioImages, getWorksResponse } from "./api-client";
 import {
@@ -111,7 +111,7 @@ const Works: React.FC<WorkProps> = ({
             onImageClick={setSelectedImage}
           />
 
-          <ImageModal
+          <PortfolioModal
             images={subImages}
             onClose={(): void => setSelectedImage(undefined)}
             open={!!selectedImage}
