@@ -1,9 +1,7 @@
 import { GetStaticPaths } from "next";
 import { defaultPaths } from "../../../src/locales";
-import {
-  PortfolioCategoryResponse,
-  getPortfolioCategories,
-} from "../../../src/templates/withNav";
+import { getPortfolioCategories } from "../../../src/templates/withNav";
+import { PortfolioCategoryResponse } from "../../../src/containers/Works";
 
 export { default, getStaticProps } from "../../../src/containers/Works";
 
