@@ -8,8 +8,6 @@ const defaultProps: PortfolioImageProps = {
   src: "dog.jpg",
   name: "dog",
   onClick: action(`onClick`),
-  width: 50,
-  height: 50,
 };
 
 storiesOf("PortfolioImage", module).add("with image", () => (
