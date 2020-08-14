@@ -1,16 +1,15 @@
-.imageModal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.portfolioModal {
   padding: 2rem;
 
   &__modalImageContainer {
     padding: 0 0 3rem 0;
-    width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
   &__image {
     padding-bottom: 1rem;
+    align-self: center;
   }
 
   &__imageTitle {

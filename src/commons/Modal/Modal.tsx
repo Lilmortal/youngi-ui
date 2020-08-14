@@ -31,6 +31,7 @@ const Modal: React.FC<ModalProps> = ({
   useEffect(() => {
     if (open) {
       noScroll.on();
+      (document.activeElement as HTMLElement)?.blur();
     } else {
       noScroll.off();
     }

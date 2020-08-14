@@ -1,6 +1,6 @@
+@import "../../../styles";
+
 .modal {
-  display: flex;
-  flex-direction: column;
   position: fixed;
   top: 1rem;
   bottom: 0;
@@ -9,4 +9,9 @@
   background-color: white;
   z-index: var(--sm-zIndex);
   overflow-y: scroll;
+
+  @include lg {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
