@@ -3,7 +3,7 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import PortfolioModal, { PortfolioModalProps } from "./PortfolioModal";
-import { ModalImageProps } from "../Works.types";
+import { ModalImageProps } from "../Portfolio.types";
 
 const images: ModalImageProps[] = [
   {
@@ -12,8 +12,7 @@ const images: ModalImageProps[] = [
       url: "/facebook.jpg",
       name: "facebook",
     },
-    title: "facebook",
-    description: "facebook description",
+    caption: "facebook caption",
   },
   {
     id: 2,
@@ -21,8 +20,7 @@ const images: ModalImageProps[] = [
       url: "/twitter.jpg",
       name: "twitter",
     },
-    title: "twitter",
-    description: "twitter description",
+    caption: "twitter caption",
   },
   {
     id: 3,
@@ -30,8 +28,7 @@ const images: ModalImageProps[] = [
       url: "/instagram.jpg",
       name: "instagram",
     },
-    title: "instagram",
-    description: "instagram description",
+    caption: "instagram caption",
   },
 ];
 
@@ -39,6 +36,8 @@ const defaultProps: PortfolioModalProps = {
   onClose: action("onClose"),
   open: true,
   images,
+  title: "title",
+  description: "description",
 };
 
 storiesOf("PortfolioModal", module).add("with image", () => (

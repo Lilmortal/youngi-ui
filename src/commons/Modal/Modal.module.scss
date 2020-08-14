@@ -1,4 +1,4 @@
-@import "../../../styles";
+@use "../../../styles/mixins/breakpoints";
 
 .modal {
   position: fixed;
@@ -10,7 +10,7 @@
   z-index: var(--sm-zIndex);
   overflow-y: scroll;
 
-  @include lg {
+  @include breakpoints.lg {
     left: 50%;
     transform: translateX(-50%);
   }

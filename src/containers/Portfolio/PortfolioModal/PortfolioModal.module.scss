@@ -12,11 +12,15 @@
     align-self: center;
   }
 
-  &__imageTitle {
+  &__caption {
+    font-style: italic;
+  }
+
+  &__title {
     padding: 0 0 1rem 0;
   }
 
-  &__imageDescription {
+  &__description {
     display: flex;
   }
 }

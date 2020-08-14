@@ -1,8 +1,9 @@
 .portfolioImage {
   cursor: pointer;
   position: relative;
-  background-size: contain;
-  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  font-size: var(--lg-font);
 
   &:hover {
     &::before {
@@ -12,7 +13,6 @@
       left: 0;
       right: 0;
       bottom: 0;
-      font-size: var(--lg-font);
       content: attr(data-image-name);
       font-family: "Inter", sans-serif;
       font-weight: bold;
@@ -20,6 +20,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow-wrap: anywhere;
     }
   }
 }

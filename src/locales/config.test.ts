@@ -10,12 +10,15 @@ it("should return just the locales", () => {
 });
 
 it("should return params with appended locales", () => {
-  const paths = defaultPaths([{ works: "design" }, { works: "photography" }]);
+  const paths = defaultPaths([
+    { category: "design" },
+    { category: "photography" },
+  ]);
 
   expect(paths).toEqual([
-    { params: { lang: "en", works: "design" } },
-    { params: { lang: "en", works: "photography" } },
-    { params: { lang: "ko", works: "design" } },
-    { params: { lang: "ko", works: "photography" } },
+    { params: { lang: "en", category: "design" } },
+    { params: { lang: "en", category: "photography" } },
+    { params: { lang: "ko", category: "design" } },
+    { params: { lang: "ko", category: "photography" } },
   ]);
 });

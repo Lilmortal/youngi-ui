@@ -1,6 +1,5 @@
-import { PortfolioImageResponse, ModalImageProps } from "./Works.types";
+import { PortfolioImageResponse, ModalImageProps } from "./Portfolio.types";
 import { ImgProps } from "../../commons/Img";
-import { ImagesGrid } from "./ImagesGrid/ImagesGrid";
 
 export const getImagesType = (
   query: string | string[] | undefined
@@ -11,17 +10,17 @@ export const getImagesType = (
   return query;
 };
 
-export const getMemoizedSubImages = (
+export const getModalImages = (
   portfolioImagesResponse: PortfolioImageResponse[],
   selectedImage: ImgProps | undefined
 ): ModalImageProps[] | undefined =>
   portfolioImagesResponse.find((response) => response.image === selectedImage)
     ?.modalImages;
 
-export const getMemoizedPortfolioImagesBySelectedType = (
+export const getCategoryImages = (
   portfolioImagesResponse: PortfolioImageResponse[],
-  imagesType: string | undefined
-): ImagesGrid[] | undefined =>
+  category: string | undefined
+): PortfolioImageResponse[] | undefined =>
   portfolioImagesResponse.filter((image) =>
-    imagesType ? image.category?.type === imagesType : image
+    category ? image.category?.type === category : image
   );

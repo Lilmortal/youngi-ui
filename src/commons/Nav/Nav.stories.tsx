@@ -6,11 +6,11 @@ import Nav, { NavProps } from "./Nav";
 const defaultProps: NavProps = {
   links: [
     {
-      link: { href: `/[lang]/[works]`, as: `/en/works` },
-      name: "works",
+      link: { href: `/[lang]/[category]`, as: `/en/category` },
+      name: "category",
     },
     {
-      link: { href: `/[lang]/[works]`, as: `/en/info` },
+      link: { href: `/[lang]/[category]`, as: `/en/info` },
       name: "info",
     },
   ],

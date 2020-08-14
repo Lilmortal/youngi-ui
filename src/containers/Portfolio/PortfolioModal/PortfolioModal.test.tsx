@@ -2,18 +2,19 @@ import React from "react";
 import ImageModal, { PortfolioModalProps } from "./PortfolioModal";
 import { render, RenderResult } from "@testing-library/react";
 import { mockImage } from "../../../commons/Img/mock-data/data";
-import { ModalImageProps } from "../Works.types";
+import { ModalImageProps } from "../Portfolio.types";
 
 const defaultProps: PortfolioModalProps = {
   onClose: jest.fn(),
   open: true,
+  title: "title",
+  description: "description",
 };
 
 const mockModalImage: ModalImageProps = {
   id: 1,
   image: mockImage,
-  title: "title",
-  description: "description",
+  caption: "caption",
 };
 
 const renderImageModal = (props?: Partial<PortfolioModalProps>): RenderResult =>

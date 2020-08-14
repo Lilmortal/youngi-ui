@@ -7,13 +7,15 @@ import styles from "./PortfolioModal.module.scss";
 import Img, { ImgProps } from "../../../commons/Img";
 import uuid from "react-uuid";
 import Fade from "../../../commons/Fade";
-import { ModalImageProps } from "../Works.types";
+import { ModalImageProps } from "../Portfolio.types";
 
 const bem = createBem(styles);
 
 export interface PortfolioModalProps extends Styleable {
   images?: ModalImageProps[];
   open?: boolean;
+  title?: string;
+  description?: string;
   onClose(): void;
 }
 
@@ -34,6 +36,8 @@ const getDisplayImage = (image: ImgProps): ImgProps =>
 const PortfolioModal: React.FC<PortfolioModalProps> = ({
   images,
   open,
+  title,
+  description,
   onClose,
   className,
   style,
@@ -51,21 +55,24 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
             images.map((modalImage) => (
               <div className={cn(bem("modalImageContainer"))} key={uuid()}>
                 {modalImage.image && (
-                  <Img
-                    {...getDisplayImage(modalImage.image)}
-                    className={cn(bem("image"))}
-                  />
-                )}
-                {modalImage.title && (
-                  <h2 className={cn(bem("imageTitle"))}>{modalImage.title}</h2>
-                )}
-                {modalImage.description && (
-                  <p className={cn(bem("imageDescription"))}>
-                    {modalImage.description}
-                  </p>
+                  <>
+                    <Img
+                      {...getDisplayImage(modalImage.image)}
+                      className={cn(bem("image"))}
+                    />
+                    {modalImage.caption && (
+                      <div className={cn(bem("caption"))}>
+                        {modalImage.caption}
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             ))}
+          {title && <h2 className={cn(bem("title"))}>{title}</h2>}
+          {description && (
+            <p className={cn(bem("description"))}>{description}</p>
+          )}
         </div>
       </Fade>
     </Modal>

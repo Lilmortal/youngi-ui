@@ -1,48 +1,44 @@
-import React, { useState, useMemo, useContext, useEffect } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { GetStaticProps } from "next";
 
 import { cn, createBem } from "../../../utils";
-import styles from "./Works.module.scss";
+import styles from "./Portfolio.module.scss";
 import PortfolioModal from "./PortfolioModal";
 
-import { getPortfolioImages, getWorksResponse } from "./api-client";
+import { getPortfolioImages, getPortfolioResponse } from "./api-client";
 import {
-  WorkProps,
-  WorkOwnProps,
+  PortfolioProps,
+  PortfolioOwnProps,
   PortfolioImageResponse,
-  WorksResponse,
-} from "./Works.types";
+  PortfolioResponse,
+} from "./Portfolio.types";
 import ImagesGrid from "./ImagesGrid";
 import { ImgProps } from "../../commons/Img";
 import { withNav, withNavProps } from "../../templates/withNav";
 import Loader, { useLoader } from "./Loader";
 import {
-  getMemoizedSubImages as getSubImages,
-  getMemoizedPortfolioImagesBySelectedType as getPortfolioImagesBySelectedType,
+  getModalImages as getSubImages,
+  getCategoryImages as getPortfolioImagesBySelectedType,
   getImagesType,
-} from "./Works.util";
+} from "./Portfolio.util";
 import { BreakpointContext } from "../../commons/breakpoints";
 
 const bem = createBem(styles);
 
-const Works: React.FC<WorkProps> = ({
+const Portfolio: React.FC<PortfolioProps> = ({
   metaTitle,
   metaDescription,
-  backgroundText,
+  loaderText,
   portfolioImagesResponse,
-  mobileColumnSize,
-  mobileRowSize,
-  tabletColumnSize,
-  tabletRowSize,
-  desktopColumnSize,
-  desktopRowSize,
+  numberOfColumns,
+  rowPixels,
   className,
   style,
 }) => {
   const {
-    query: { works },
+    query: { category },
   } = useRouter();
 
   const breakpoints = useContext(BreakpointContext);
@@ -51,31 +47,7 @@ const Works: React.FC<WorkProps> = ({
     undefined
   );
 
-  const [columnSize, setColumnSize] = useState(mobileColumnSize);
-  const [rowSize, setRowSize] = useState(mobileRowSize);
-
-  useEffect(() => {
-    if (breakpoints.md) {
-      setColumnSize(desktopColumnSize);
-      setRowSize(desktopRowSize);
-    } else if (breakpoints.sm) {
-      setColumnSize(tabletColumnSize);
-      setRowSize(tabletRowSize);
-    } else {
-      setColumnSize(mobileColumnSize);
-      setRowSize(mobileRowSize);
-    }
-  }, [
-    breakpoints,
-    mobileColumnSize,
-    mobileRowSize,
-    tabletColumnSize,
-    tabletRowSize,
-    desktopColumnSize,
-    desktopRowSize,
-  ]);
-
-  const imagesType = getImagesType(works);
+  const imagesType = getImagesType(category);
 
   const portfolioImagesBySelectedType = useMemo(
     () => getPortfolioImagesBySelectedType(portfolioImagesResponse, imagesType),
@@ -90,7 +62,7 @@ const Works: React.FC<WorkProps> = ({
   const [isLoaderAnimating, onAnimationEnd] = useLoader();
 
   return (
-    <div className={cn(bem(), className)} style={style} data-testid="works">
+    <div className={cn(bem(), className)} style={style} data-testid="portfolio">
       <Head>
         {metaTitle && <title>{metaTitle}</title>}
         {metaDescription && (
@@ -100,14 +72,14 @@ const Works: React.FC<WorkProps> = ({
       <Loader
         animate={breakpoints.md && isLoaderAnimating}
         onAnimationEnd={onAnimationEnd}
-        loaderText={backgroundText?.toUpperCase()}
+        loaderText={loaderText?.toUpperCase()}
       />
       {!isLoaderAnimating || !breakpoints.md ? (
-        <div className={cn(bem("portfolio"))} data-testid="portfolioImages">
+        <div className={cn(bem("images"))} data-testid="portfolioImages">
           <ImagesGrid
             images={portfolioImagesBySelectedType}
-            columns={columnSize}
-            rows={rowSize}
+            numberOfColumns={numberOfColumns}
+            rowPixels={rowPixels}
             onImageClick={setSelectedImage}
           />
 
@@ -123,12 +95,12 @@ const Works: React.FC<WorkProps> = ({
 };
 
 const getStaticWorkProps: GetStaticProps = async (): Promise<{
-  props: WorkOwnProps;
+  props: PortfolioOwnProps;
 }> => {
-  let worksResponse: WorksResponse;
+  let portfolioResponse: PortfolioResponse;
   let portfolioImagesResponse: PortfolioImageResponse[];
   try {
-    worksResponse = await getWorksResponse();
+    portfolioResponse = await getPortfolioResponse();
 
     portfolioImagesResponse = await getPortfolioImages();
   } catch (e) {
@@ -138,7 +110,7 @@ const getStaticWorkProps: GetStaticProps = async (): Promise<{
 
   return {
     props: {
-      ...worksResponse,
+      ...portfolioResponse,
       portfolioImagesResponse,
     },
   };
@@ -146,6 +118,6 @@ const getStaticWorkProps: GetStaticProps = async (): Promise<{
 
 export const getStaticProps = withNavProps(getStaticWorkProps);
 
-export const WorksWithoutNav = Works;
+export const PortfolioWithoutNav = Portfolio;
 
-export default withNav(Works);
+export default withNav(Portfolio);
