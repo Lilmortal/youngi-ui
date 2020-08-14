@@ -15,8 +15,6 @@ export interface Positions {
 export interface PortfolioImageProps extends Styleable {
   src: string;
   name: string;
-  width?: number | string;
-  height?: number | string;
   positions?: Positions;
   dataTestId?: number | string;
   onClick(): void;
@@ -63,8 +61,6 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
   style,
   src,
   name,
-  width,
-  height,
   positions,
   dataTestId,
   onClick,
@@ -90,8 +86,6 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
       style={{
         ...style,
         backgroundImage: `url(${src})`,
-        width: width ? `${width}px` : undefined,
-        height: height ? `${height}px` : undefined,
         gridColumn: gridPositions?.column ? gridPositions.column : undefined,
         gridRow: gridPositions?.row ? gridPositions.row : undefined,
       }}

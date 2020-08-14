@@ -1,9 +1,8 @@
 .portfolioImage {
   cursor: pointer;
   position: relative;
-  background-size: cover;
-  min-width: 200px;
-  min-height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
 
   &:hover {
     &::before {

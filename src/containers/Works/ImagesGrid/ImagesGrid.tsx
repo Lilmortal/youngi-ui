@@ -62,7 +62,7 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
         return (
           <Fade duration={0.3} show key={uuid()}>
             <PortfolioImage
-              {...portfolioImage}
+              name={portfolioImage.name}
               src={portfolioImage.url}
               positions={positions}
               data-testid={image.id}
