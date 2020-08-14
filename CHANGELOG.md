@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.28.0](https://github.com/Lilmortal/youngi-ui/compare/v2.27.0...v2.28.0) (2020-08-14)
+
+
+### Features
+
+* added title and description for portfolio modals ([48c549e](https://github.com/Lilmortal/youngi-ui/commit/48c549e3b9d67ed08dd68576110da0f780548e53))
+
+
+### Bug Fixes
+
+* all portfolio responses are now optional ([12760c7](https://github.com/Lilmortal/youngi-ui/commit/12760c755eca90bd4e012884288261fefa3c6a23))
+* fix PortfolioCategoryResponse being imported incorrectly ([69414b7](https://github.com/Lilmortal/youngi-ui/commit/69414b723c42b154d3c5e18cd64511ff57465162))
+* fix PortfolioCategoryResponse being imported incorrectly ([899420f](https://github.com/Lilmortal/youngi-ui/commit/899420f3b54cb092605d133e5a705f183382105f))
+* fix portfolioCategoryResponse type in incorrect file ([91770d7](https://github.com/Lilmortal/youngi-ui/commit/91770d74c20ac4dec2cbfb58ad26fde35a5f695b))
+
 ## [2.27.0](https://github.com/Lilmortal/youngi-ui/compare/v2.26.0...v2.27.0) (2020-08-12)
 
 
