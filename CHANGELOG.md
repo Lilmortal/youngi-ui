@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.29.0](https://github.com/Lilmortal/youngi-ui/compare/v2.28.0...v2.29.0) (2020-08-14)
+
+
+### Features
+
+* removed portfolio image width and height in replacement of grid ([27a8fb1](https://github.com/Lilmortal/youngi-ui/commit/27a8fb17dd64c76167175740fc2599eccef8d76e))
+
 ## [2.28.0](https://github.com/Lilmortal/youngi-ui/compare/v2.27.0...v2.28.0) (2020-08-14)
 
 
