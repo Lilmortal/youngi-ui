@@ -1,11 +1,8 @@
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import merge from "lodash.merge";
 import { getPortfolioCategories, getNav } from "./api-client";
-import {
-  NavProps,
-  PortfolioCategoryResponse,
-  NavResponse,
-} from "./withNav.types";
+import { NavProps, NavResponse } from "./withNav.types";
+import { PortfolioCategoryResponse } from "../../containers/Works";
 
 const withNavProps = (getStaticProps: GetStaticProps): GetStaticProps => async (
   ctx: GetStaticPropsContext
