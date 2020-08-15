@@ -1,32 +1,41 @@
 :root {
   --xs-font: 0.5rem;
+  --sm-font: 1rem;
+  --md-font: 1.5rem;
   --lg-font: 2.25rem; // 36px
   --xl-font: 3.9rem;
 }
 
 h2 {
-  font-size: 2.2rem;
+  font-size: var(--lg-font);
 }
 
 @font-face {
   font-family: "Josefin_Sans", sans-serif;
-  src: url("./fonts/Josefin_Sans/JosefinSans.woff2") format("woff2");
+  src: local("./fonts/Josefin_Sans/JosefinSans.woff2") format("woff2");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Josefin_Sans", sans-serif;
+  src: local("./fonts/Josefin_Sans/JosefinSans-Bold.woff2") format("woff2");
+  font-weight: bold;
 }
 
 @font-face {
   font-family: "Montserrat", sans-serif;
-  src: url("./fonts/Montserrat/Montserrat-Regular.woff2") format("woff2");
+  src: local("./fonts/Montserrat/Montserrat-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "Inter", sans-serif;
-  src: url("./fonts/Inter/Inter-Regular.woff2") format("woff2");
+  src: local("./fonts/Inter/Inter-Regular.woff2") format("woff2");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "Inter", sans-serif;
-  src: url("./fonts/Inter/Inter-Bold.woff2") format("woff2");
+  src: local("./fonts/Inter/Inter-Bold.woff2") format("woff2");
   font-weight: bold;
 }
 
