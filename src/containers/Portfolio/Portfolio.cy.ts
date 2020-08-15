@@ -11,7 +11,7 @@ it("should display a modal with subimages when an image is selected", () => {
   cy.get('[data-image-name="dog.jpeg"]').click();
 
   cy.get('img[alt="fish.jpeg"]').should("be.visible");
-  cy.get("[data-testid=works").toMatchImageSnapshot();
+  cy.get("[data-testid=portfolio").toMatchImageSnapshot();
 });
 
 it("should display a modal with subimages when an image is selected on iphone 6", () => {
@@ -23,7 +23,7 @@ it("should display a modal with subimages when an image is selected on iphone 6"
   cy.get('[data-image-name="dog.jpeg"]').click();
 
   cy.get('img[alt="fish.jpeg"]').should("be.visible");
-  cy.get("[data-testid=works").toMatchImageSnapshot();
+  cy.get("[data-testid=portfolio").toMatchImageSnapshot();
 });
 
 export default undefined;

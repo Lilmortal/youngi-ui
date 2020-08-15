@@ -6,10 +6,10 @@ import MockRouter from "./MockRouter";
 
 const defaultProps: LinkProps = {
   link: {
-    href: `/[lang]/[works]`,
-    as: `/en/works`,
+    href: `/[lang]/[category]`,
+    as: `/en/category`,
   },
-  name: "works",
+  name: "category",
 };
 
 const RenderedLink: React.FC<Partial<LinkProps>> = ({ ...props }) => (

@@ -1,22 +1,22 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { WorksWithoutNav } from "./Works";
+import { PortfolioWithoutNav } from "./Portfolio";
 import { render, RenderResult, fireEvent } from "@testing-library/react";
-import { mockWorksCmsResponse } from "./mock-data/data";
+import { mockPortfolioCmsResponse } from "./mock-data/data";
 
-import { WorkProps } from "./Works.types";
+import { PortfolioProps } from "./Portfolio.types";
 import MockRouter from "../../commons/Link/MockRouter";
 
-const defaultProps: WorkProps = {
-  ...mockWorksCmsResponse,
+const defaultProps: PortfolioProps = {
+  ...mockPortfolioCmsResponse,
 };
 
-const renderWorksPage = (
-  props?: Partial<WorkProps>,
-  query: { works?: string } = {}
+const renderPortfolioPage = (
+  props?: Partial<PortfolioProps>,
+  query: { category?: string } = {}
 ): RenderResult =>
   render(
     <MockRouter value={{ query }}>
-      <WorksWithoutNav {...defaultProps} {...props} />
+      <PortfolioWithoutNav {...defaultProps} {...props} />
     </MockRouter>
   );
 
@@ -25,13 +25,13 @@ jest.mock("./Loader/useLoader", () => (): [
   Dispatch<SetStateAction<boolean>>
 ] => [false, jest.fn()]);
 
-describe("works", () => {
+describe("portfolio", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
   it("should display all images when it is not filtered", () => {
-    const { getAllByRole } = renderWorksPage({});
+    const { getAllByRole } = renderPortfolioPage({});
 
     const images = getAllByRole("button");
     expect(images[0].getAttribute("data-image-name")).toEqual(
@@ -46,23 +46,23 @@ describe("works", () => {
   });
 
   it("should display photography images", () => {
-    const { getByRole } = renderWorksPage({}, { works: "photography" });
+    const { getByRole } = renderPortfolioPage({}, { category: "photography" });
     expect(getByRole("button").getAttribute("data-image-name")).toEqual(
       "photography image"
     );
   });
 
   it("should display illustration images", () => {
-    const { getByRole } = renderWorksPage({}, { works: "illustration" });
+    const { getByRole } = renderPortfolioPage({}, { category: "illustration" });
     expect(getByRole("button").getAttribute("data-image-name")).toEqual(
       "illustration image"
     );
   });
 
   it("should display photography sub images when main image is clicked", () => {
-    const { getAllByAltText, getByRole } = renderWorksPage(
+    const { getAllByAltText, getByRole } = renderPortfolioPage(
       {},
-      { works: "photography" }
+      { category: "photography" }
     );
 
     fireEvent.click(getByRole("button"));
@@ -71,9 +71,9 @@ describe("works", () => {
   });
 
   it("should display illustration sub images when main image is clicked", () => {
-    const { getAllByAltText, getByRole } = renderWorksPage(
+    const { getAllByAltText, getByRole } = renderPortfolioPage(
       {},
-      { works: "illustration" }
+      { category: "illustration" }
     );
 
     fireEvent.click(getByRole("button"));

@@ -1,4 +1,4 @@
-import { WorkOwnProps, PortfolioImageResponse } from "../Works.types";
+import { PortfolioOwnProps, PortfolioImageResponse } from "../Portfolio.types";
 
 export const mockPortfolioImageProps: PortfolioImageResponse[] = [
   {
@@ -6,12 +6,18 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
     category: {
       type: "architecture",
     },
-    mobileColumn: "3px",
-    mobileRow: "3px",
-    tabletColumn: "4px",
-    tabletRow: "4px",
-    desktopColumn: "5px",
-    desktopRow: "5px",
+    mobileStartingColumnPosition: 3,
+    mobileEndingColumnPosition: 5,
+    tabletStartingColumnPosition: 5,
+    tabletEndingColumnPosition: 7,
+    desktopStartingColumnPosition: 6,
+    desktopEndingColumnPosition: 8,
+    mobileStartingRowPosition: 4,
+    mobileEndingRowPosition: 6,
+    tabletStartingRowPosition: 6,
+    tabletEndingRowPosition: 8,
+    desktopStartingRowPosition: 6,
+    desktopEndingRowPosition: 8,
     image: {
       id: "1",
       url: "/facebook.jpg",
@@ -19,6 +25,8 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
       width: 250,
       height: 250,
     },
+    title: "architecture title",
+    description: "architecture description",
     modalImages: [
       {
         id: 1,
@@ -28,8 +36,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "architecture title",
-        description: "architecture description",
+        caption: "architecture caption",
       },
       {
         id: 2,
@@ -39,8 +46,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "architecture title",
-        description: "architecture description",
+        caption: "architecture caption",
       },
       {
         id: 3,
@@ -50,8 +56,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "architecture title",
-        description: "architecture description",
+        caption: "architecture caption",
       },
       {
         id: 4,
@@ -61,8 +66,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "architecture title",
-        description: "architecture description",
+        caption: "architecture caption",
       },
       {
         id: 5,
@@ -72,8 +76,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "architecture title",
-        description: "architecture description",
+        caption: "architecture caption",
       },
       {
         id: 6,
@@ -83,8 +86,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "architecture title",
-        description: "architecture description",
+        caption: "architecture caption",
       },
     ],
   },
@@ -93,12 +95,18 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
     category: {
       type: "photography",
     },
-    mobileColumn: "3px",
-    mobileRow: "3px",
-    tabletColumn: "4px",
-    tabletRow: "4px",
-    desktopColumn: "5px",
-    desktopRow: "5px",
+    mobileStartingColumnPosition: 3,
+    mobileEndingColumnPosition: 5,
+    tabletStartingColumnPosition: 5,
+    tabletEndingColumnPosition: 7,
+    desktopStartingColumnPosition: 6,
+    desktopEndingColumnPosition: 8,
+    mobileStartingRowPosition: 4,
+    mobileEndingRowPosition: 6,
+    tabletStartingRowPosition: 6,
+    tabletEndingRowPosition: 8,
+    desktopStartingRowPosition: 6,
+    desktopEndingRowPosition: 8,
     image: {
       id: "1",
       url: "/twitter.jpg",
@@ -106,6 +114,8 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
       width: 250,
       height: 250,
     },
+    title: "photography title",
+    description: "photography description",
     modalImages: [
       {
         id: 1,
@@ -115,8 +125,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "photography title",
-        description: "photography description",
+        caption: "photography caption",
       },
       {
         id: 2,
@@ -126,8 +135,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "photography title",
-        description: "photography description",
+        caption: "photography caption",
       },
       {
         id: 3,
@@ -137,8 +145,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "photography title",
-        description: "photography description",
+        caption: "photography caption",
       },
       {
         id: 4,
@@ -148,8 +155,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "photography title",
-        description: "photography description",
+        caption: "photography caption",
       },
       {
         id: 5,
@@ -159,8 +165,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "photography title",
-        description: "photography description",
+        caption: "photography caption",
       },
       {
         id: 6,
@@ -170,8 +175,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "photography title",
-        description: "photography description",
+        caption: "photography caption",
       },
     ],
   },
@@ -180,12 +184,18 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
     category: {
       type: "illustration",
     },
-    mobileColumn: "3px",
-    mobileRow: "3px",
-    tabletColumn: "4px",
-    tabletRow: "4px",
-    desktopColumn: "5px",
-    desktopRow: "5px",
+    mobileStartingColumnPosition: 3,
+    mobileEndingColumnPosition: 5,
+    tabletStartingColumnPosition: 5,
+    tabletEndingColumnPosition: 7,
+    desktopStartingColumnPosition: 6,
+    desktopEndingColumnPosition: 8,
+    mobileStartingRowPosition: 4,
+    mobileEndingRowPosition: 6,
+    tabletStartingRowPosition: 6,
+    tabletEndingRowPosition: 8,
+    desktopStartingRowPosition: 6,
+    desktopEndingRowPosition: 8,
     image: {
       id: "1",
       url: "/instagram.jpg",
@@ -193,6 +203,8 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
       width: 250,
       height: 250,
     },
+    title: "illustration title",
+    description: "illustration description",
     modalImages: [
       {
         id: 1,
@@ -202,8 +214,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "illustration title",
-        description: "illustration description",
+        caption: "illustration caption",
       },
       {
         id: 2,
@@ -213,8 +224,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "illustration title",
-        description: "illustration description",
+        caption: "illustration caption",
       },
       {
         id: 3,
@@ -224,8 +234,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "illustration title",
-        description: "illustration description",
+        caption: "illustration caption",
       },
       {
         id: 4,
@@ -235,8 +244,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "illustration title",
-        description: "illustration description",
+        caption: "illustration caption",
       },
       {
         id: 5,
@@ -246,8 +254,7 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "illustration title",
-        description: "illustration description",
+        caption: "illustration caption",
       },
       {
         id: 6,
@@ -257,16 +264,13 @@ export const mockPortfolioImageProps: PortfolioImageResponse[] = [
           width: 250,
           height: 250,
         },
-        title: "illustration title",
-        description: "illustration description",
+        caption: "illustration caption",
       },
     ],
   },
 ];
 
-export const mockWorksCmsResponse: WorkOwnProps = {
-  metaTitle: "title",
-  metaDescription: "description",
-  backgroundText: "Youngi Kim",
+export const mockPortfolioCmsResponse: PortfolioOwnProps = {
+  loaderText: "Youngi Kim",
   portfolioImagesResponse: [...mockPortfolioImageProps],
 };

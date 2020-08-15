@@ -1,4 +1,4 @@
-import { PortfolioCategoryResponse } from "../../containers/Works";
+import { PortfolioCategoryResponse } from "../../containers/Portfolio";
 
 export interface NavResponse {
   url: string;
