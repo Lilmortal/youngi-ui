@@ -8,13 +8,15 @@ import PortfolioImage from "../PortfolioImage";
 import { ImgProps } from "../../../commons/Img";
 import Fade from "../../../commons/Fade";
 import { PortfolioImageResponse } from "../Portfolio.types";
-import { GridSpaces } from "../PortfolioImage/PortfolioImage";
+import { GridSpaces, GridPosition } from "../PortfolioImage/PortfolioImage";
 import { BreakpointContext, Breakpoints } from "../../../commons/breakpoints";
+
+const DEFAULT_NUMBER_OF_COLUMNS = 10;
 
 export type ImagesGrid = Omit<PortfolioImageResponse, "subImages" | "category">;
 
 export interface ImagesGridProps {
-  images?: ImagesGrid[];
+  imagesGrid?: ImagesGrid[];
   numberOfColumns?: number;
   rowPixels?: number;
   onImageClick(image: ImgProps): void;
@@ -33,7 +35,10 @@ const getPositions = (
     !image.mobileEndingRowPosition
   ) {
     throw new Error(
-      "Response is returning invalid starting and ending mobile positions for columns or row."
+      `Mobile starting or ending position ${
+        image.title ? `for ${image.title} ` : ""
+      }is empty. 
+Tablet and desktop positions are taken from mobile if it is empty, but mobile is compulsory.`
     );
   }
 
@@ -89,9 +94,41 @@ const getPositions = (
   return gridPosition;
 };
 
+// TODO: test
+const validateColumnIsNotOutOfBounds = (
+  column: GridPosition,
+  numberOfColumns: number
+): void => {
+  let error = {
+    position: 0,
+    name: "",
+  };
+
+  if (column.startingPosition > numberOfColumns) {
+    error = {
+      position: column.startingPosition,
+      name: "column starting position",
+    };
+  }
+
+  if (column.endingPosition > numberOfColumns) {
+    error = {
+      position: column.endingPosition,
+      name: "column ending position",
+    };
+  }
+
+  if (error.position) {
+    throw new Error(
+      `${error.name} which is at position ${error.position} must not be greater than the total number
+       of columns available which is currently at ${numberOfColumns}.`
+    );
+  }
+};
+
 const ImagesGrid: React.FC<ImagesGridProps> = ({
-  images,
-  numberOfColumns,
+  imagesGrid,
+  numberOfColumns = DEFAULT_NUMBER_OF_COLUMNS,
   rowPixels,
   onImageClick,
 }) => {
@@ -99,7 +136,7 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
 
   let fadeInSeconds = 0;
 
-  if (!images) {
+  if (!imagesGrid) {
     return null;
   }
 
@@ -113,10 +150,12 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
         gridAutoRows: !!rowPixels ? `${rowPixels}px` : undefined,
       }}
     >
-      {images.map((image) => {
-        const portfolioImage = image.image;
+      {imagesGrid.map((imageGrid) => {
+        const portfolioImage = imageGrid.image;
 
-        const positions = getPositions(image, breakpoints);
+        const positions = getPositions(imageGrid, breakpoints);
+
+        validateColumnIsNotOutOfBounds(positions.column, numberOfColumns);
 
         fadeInSeconds = fadeInSeconds + 0.2;
 
@@ -130,8 +169,8 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
               name={portfolioImage.name}
               src={portfolioImage.url}
               positions={positions}
-              data-testid={image.id}
-              hoveredTextFontSizes={image.hoveredTextFontSizes}
+              data-testid={imageGrid.id}
+              hoveredTextFontSizes={imageGrid.hoveredTextFontSizes}
               onClick={(): void => onImageClick(portfolioImage)}
               style={{ animationDelay: `${fadeInSeconds.toString()}s` }}
             />
@@ -143,5 +182,5 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
 };
 
 export default React.memo(ImagesGrid, (prevProps, nextProps) =>
-  isEqual(prevProps.images, nextProps.images)
+  isEqual(prevProps.imagesGrid, nextProps.imagesGrid)
 );

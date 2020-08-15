@@ -27,14 +27,14 @@ const bem = createBem(styles);
 const getGridColumn = (column: GridPosition): string =>
   `${column.startingPosition} / ${
     column.startingPosition !== column.endingPosition
-      ? column.endingPosition - 1
+      ? column.endingPosition + 1
       : column.endingPosition
   }`;
 
 const getGridRow = (row: GridPosition): string =>
   `${row.startingPosition} / ${
     row.startingPosition !== row.endingPosition
-      ? row.endingPosition - 1
+      ? row.endingPosition + 1
       : row.endingPosition
   }`;
 

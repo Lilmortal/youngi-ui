@@ -14,5 +14,5 @@ const defaultProps: ImagesGridProps = {
 };
 
 storiesOf("ImagesGrid", module).add("with image", () => (
-  <ImagesGrid {...defaultProps} images={images} />
+  <ImagesGrid {...defaultProps} imagesGrid={images} />
 ));
