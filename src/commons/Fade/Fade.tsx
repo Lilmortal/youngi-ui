@@ -35,7 +35,7 @@ const Fade: React.FC<FadeProps> = ({ fadeOut, duration, show, children }) => {
 
   return (
     <>
-      {React.Children.map(children, (child?: React.ReactElement) => {
+      {React.Children.map(children, (child?: React.ReactElement | null) => {
         if (!child) {
           return null;
         }

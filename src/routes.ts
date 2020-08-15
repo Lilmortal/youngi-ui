@@ -7,7 +7,7 @@ export interface RoutesLink {
 
 const getRoutes = (locale: SupportedLocale = "en"): RoutesLink => ({
   home: `/${locale}`,
-  about: `/${locale}/about`,
+  about: `/${locale}/info`,
 });
 
 export default getRoutes;
