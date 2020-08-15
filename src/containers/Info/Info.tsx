@@ -7,7 +7,7 @@ import { cn, createBem } from "../../../utils";
 import styles from "./Info.module.scss";
 import SocialIcon from "./SocialIcon";
 import { getInfoProps } from "./api-client";
-import { withNavProps, withNav } from "../../templates/withNav";
+import withNav, { withNavProps } from "../../templates/withNav";
 
 const bem = createBem(styles);
 

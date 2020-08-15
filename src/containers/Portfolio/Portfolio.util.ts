@@ -1,4 +1,4 @@
-import { PortfolioImageResponse, ModalImageProps } from "./Portfolio.types";
+import { PortfolioImageResponse } from "./Portfolio.types";
 import { ImgProps } from "../../commons/Img";
 
 export const getImagesType = (
@@ -10,12 +10,22 @@ export const getImagesType = (
   return query;
 };
 
-export const getModalImages = (
+export const getPortfolioModalContents = (
   portfolioImagesResponse: PortfolioImageResponse[],
   selectedImage: ImgProps | undefined
-): ModalImageProps[] | undefined =>
-  portfolioImagesResponse.find((response) => response.image === selectedImage)
-    ?.modalImages;
+):
+  | Pick<PortfolioImageResponse, "modalImages" | "title" | "description">
+  | undefined => {
+  const selectedPortfolioImage = portfolioImagesResponse.find(
+    (response) => response.image === selectedImage
+  );
+
+  return {
+    modalImages: selectedPortfolioImage?.modalImages,
+    title: selectedPortfolioImage?.title,
+    description: selectedPortfolioImage?.description,
+  };
+};
 
 export const getCategoryImages = (
   portfolioImagesResponse: PortfolioImageResponse[],

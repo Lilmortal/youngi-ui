@@ -16,11 +16,11 @@ import {
 } from "./Portfolio.types";
 import ImagesGrid from "./ImagesGrid";
 import { ImgProps } from "../../commons/Img";
-import { withNav, withNavProps } from "../../templates/withNav";
+import withNav, { withNavProps } from "../../templates/withNav";
 import Loader, { useLoader } from "./Loader";
 import {
-  getModalImages as getSubImages,
-  getCategoryImages as getPortfolioImagesBySelectedType,
+  getPortfolioModalContents,
+  getCategoryImages,
   getImagesType,
 } from "./Portfolio.util";
 import { BreakpointContext } from "../../commons/breakpoints";
@@ -49,13 +49,13 @@ const Portfolio: React.FC<PortfolioProps> = ({
 
   const imagesType = getImagesType(category);
 
-  const portfolioImagesBySelectedType = useMemo(
-    () => getPortfolioImagesBySelectedType(portfolioImagesResponse, imagesType),
+  const categoryImages = useMemo(
+    () => getCategoryImages(portfolioImagesResponse, imagesType),
     [portfolioImagesResponse, imagesType]
   );
 
-  const subImages = useMemo(
-    () => getSubImages(portfolioImagesResponse, selectedImage),
+  const portfolioModalContents = useMemo(
+    () => getPortfolioModalContents(portfolioImagesResponse, selectedImage),
     [portfolioImagesResponse, selectedImage]
   );
 
@@ -77,14 +77,16 @@ const Portfolio: React.FC<PortfolioProps> = ({
       {!isLoaderAnimating || !breakpoints.md ? (
         <div className={cn(bem("images"))} data-testid="portfolioImages">
           <ImagesGrid
-            images={portfolioImagesBySelectedType}
+            images={categoryImages}
             numberOfColumns={numberOfColumns}
             rowPixels={rowPixels}
             onImageClick={setSelectedImage}
           />
 
           <PortfolioModal
-            images={subImages}
+            images={portfolioModalContents?.modalImages}
+            title={portfolioModalContents?.title}
+            description={portfolioModalContents?.description}
             onClose={(): void => setSelectedImage(undefined)}
             open={!!selectedImage}
           />
