@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/Lilmortal/youngi-ui/compare/v2.29.0...v3.0.0) (2020-08-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Renamed works to portfolio.
+Portfolio can now customize the number of columns, with each image specifying their starting and ending
+positions for grid column and row. Each modal image will have it's own caption, with a title and description
+at the end.
+
+### Features
+
+* restructed portfolio CMS response ([aa142a1](https://github.com/Lilmortal/youngi-ui/commit/aa142a1aaefba06ff737911a85d0f51c21d27594))
+
+
+### Bug Fixes
+
+* ending grid position incremented, added tests for imageGrid ([186201e](https://github.com/Lilmortal/youngi-ui/commit/186201ece2788187206244e448475ff3d26e63c1))
+* image and description not being passed down properly ([b7934fa](https://github.com/Lilmortal/youngi-ui/commit/b7934fa28b9a9be7aedb9812594431feb8017199))
+* modal changes width on screen sizes, fix nav clickable in overlay ([705677e](https://github.com/Lilmortal/youngi-ui/commit/705677eda81bb6b6a0033a0896d595eee7d26db0))
+* portfolio modal uses inter fonts ([bda71ef](https://github.com/Lilmortal/youngi-ui/commit/bda71ef64ac955b4a235a5e34ade894c51af0990))
+* removed padding in links and reduce border size ([ff830c6](https://github.com/Lilmortal/youngi-ui/commit/ff830c6cc4ffbadfa9450808aaa6d1e7d8a9ad38))
+* removed unused imports ([968ae4b](https://github.com/Lilmortal/youngi-ui/commit/968ae4b6e3081852205ffc36f4851882d4681c39))
+
 ## [2.29.0](https://github.com/Lilmortal/youngi-ui/compare/v2.28.0...v2.29.0) (2020-08-14)
 
 
