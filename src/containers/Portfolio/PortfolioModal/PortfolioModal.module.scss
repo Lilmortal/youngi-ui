@@ -1,5 +1,6 @@
 .portfolioModal {
   padding: 2rem;
+  font-family: "Inter", sans-serif;
 
   &__modalImageContainer {
     padding: 0 0 3rem 0;
@@ -13,10 +14,14 @@
   }
 
   &__caption {
+    display: flex;
+    justify-content: center;
     font-style: italic;
   }
 
   &__title {
+    display: inline-block;
+    font-size: var(--lg-font);
     padding: 0 0 1rem 0;
   }
 
