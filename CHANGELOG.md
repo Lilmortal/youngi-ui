@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/Lilmortal/youngi-ui/compare/v3.0.0...v3.1.0) (2020-08-15)
+
+
+### Features
+
+* added contact nav ([0748f19](https://github.com/Lilmortal/youngi-ui/commit/0748f192f9f80f8b9e296aa57243398e5349469f))
+* added copyright mark ([5861bd2](https://github.com/Lilmortal/youngi-ui/commit/5861bd2ae6bd8afd6fa5f46b02d7d15008b6356d))
+
+
+### Bug Fixes
+
+* fix typescript issue with fade not accepting null ([e703ace](https://github.com/Lilmortal/youngi-ui/commit/e703ace642a79497412ade276747aeffe5b95d64))
+
 ## [3.0.0](https://github.com/Lilmortal/youngi-ui/compare/v2.29.0...v3.0.0) (2020-08-15)
 
 
