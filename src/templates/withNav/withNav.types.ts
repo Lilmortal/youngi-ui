@@ -15,3 +15,7 @@ export interface ContactResponse {
   url: string;
   name: string;
 }
+
+export interface LayoutProps {
+  displayCopyrightMark?: boolean;
+}

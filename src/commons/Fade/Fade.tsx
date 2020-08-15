@@ -5,7 +5,7 @@ export interface FadeProps {
   fadeOut?: boolean;
   duration: number;
   show: boolean;
-  children: React.ReactElement | React.ReactElement[];
+  children?: React.ReactElement | (React.ReactElement | undefined | null)[];
 }
 
 const bem = createBem(styles);
@@ -35,8 +35,12 @@ const Fade: React.FC<FadeProps> = ({ fadeOut, duration, show, children }) => {
 
   return (
     <>
-      {React.Children.map(children, (child: React.ReactElement) =>
-        React.cloneElement(child, {
+      {React.Children.map(children, (child?: React.ReactElement) => {
+        if (!child) {
+          return null;
+        }
+
+        return React.cloneElement(child, {
           className: cn(
             child.props.className,
             show ? bem("", "show") : bem("", "hide")
@@ -54,8 +58,8 @@ const Fade: React.FC<FadeProps> = ({ fadeOut, duration, show, children }) => {
             }
             onAnimationEnd();
           },
-        })
-      )}
+        });
+      })}
     </>
   );
 };

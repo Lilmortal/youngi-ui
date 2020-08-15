@@ -57,4 +57,4 @@ export const getStaticProps = withNavProps(getInfoStaticProps);
 
 export const InfoWithoutNav = Info;
 
-export default withNav(Info);
+export default withNav(Info)({ displayCopyrightMark: true });
