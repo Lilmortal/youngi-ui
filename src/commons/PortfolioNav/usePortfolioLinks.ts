@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { IntlProviderContext } from "../intl/IntlProvider";
-import { LinkProps } from "../Link";
+import { NextLinkProps } from "../Link";
 import { PortfolioCategoryResponse } from "../../containers/Portfolio";
 
 interface PortfolioLinksHooks {
@@ -9,10 +9,10 @@ interface PortfolioLinksHooks {
 
 const usePortfolioLinks = ({
   categories,
-}: PortfolioLinksHooks): LinkProps[] => {
+}: PortfolioLinksHooks): NextLinkProps[] => {
   const context = useContext(IntlProviderContext);
 
-  const links: LinkProps[] = [];
+  const links: NextLinkProps[] = [];
 
   categories?.map((category) =>
     links.push({
@@ -20,7 +20,7 @@ const usePortfolioLinks = ({
         href: `/[lang]/[category]`,
         as: `/${context.locale}/${category.type?.toLowerCase()}`,
       },
-      name: category.type || "",
+      children: category.type || "",
     })
   );
 
@@ -29,7 +29,7 @@ const usePortfolioLinks = ({
       href: `/[lang]`,
       as: `/${context.locale}`,
     },
-    name: "all",
+    children: "all",
   });
 
   return links;

@@ -122,4 +122,4 @@ export const getStaticProps = withNavProps(getStaticWorkProps);
 
 export const PortfolioWithoutNav = Portfolio;
 
-export default withNav(Portfolio);
+export default withNav(Portfolio)({ displayCopyrightMark: true });

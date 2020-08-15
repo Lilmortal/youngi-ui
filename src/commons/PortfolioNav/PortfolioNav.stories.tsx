@@ -7,11 +7,11 @@ const defaultProps: PortfolioNavProps = {
   links: [
     {
       link: { href: `/[lang]/[category]`, as: `/en/category` },
-      name: "category",
+      children: "category",
     },
     {
       link: { href: `/[lang]/[category]`, as: `/en/info` },
-      name: "info",
+      children: "info",
     },
   ],
 };

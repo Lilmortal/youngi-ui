@@ -5,7 +5,6 @@ import ReactMarkdown from "react-markdown";
 
 import { cn, createBem } from "../../../utils";
 import styles from "./Info.module.scss";
-import SocialIcon from "./SocialIcon";
 import { getInfoProps } from "./api-client";
 import withNav, { withNavProps } from "../../templates/withNav";
 
@@ -35,27 +34,6 @@ const Info: React.FC<InfoProps> = ({
     <div className={cn(bem("biography"))}>
       {biography && <ReactMarkdown source={biography} />}
     </div>
-
-    <div className={cn(bem("socialIcons"))}>
-      <SocialIcon
-        icon={{
-          url: "/twitter.jpg",
-          name: "twitter icon",
-        }}
-      />
-      <SocialIcon
-        icon={{
-          url: "/facebook.jpg",
-          name: "facebook icon",
-        }}
-      />
-      <SocialIcon
-        icon={{
-          url: "/instagram.jpg",
-          name: "instagram icon",
-        }}
-      />
-    </div>
   </div>
 );
 
@@ -79,4 +57,4 @@ export const getStaticProps = withNavProps(getInfoStaticProps);
 
 export const InfoWithoutNav = Info;
 
-export default withNav(Info);
+export default withNav(Info)({ displayCopyrightMark: true });

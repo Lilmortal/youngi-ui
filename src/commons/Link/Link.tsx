@@ -3,24 +3,32 @@ import Link, { LinkProps } from "next/link";
 import { cn, createBem } from "../../../utils";
 import styles from "./Link.module.scss";
 
-export interface CustomLinkProps extends Styleable {
-  link: LinkProps;
-  name: string;
+export interface NextLinkProps extends Styleable {
+  link?: LinkProps;
+  externalLink?: string;
+  children: React.ReactNode;
 }
 
 const bem = createBem(styles);
 
-const CustomLink: React.FC<CustomLinkProps> = ({
+const NextLink: React.FC<NextLinkProps> = ({
   link,
-  name,
+  children,
+  externalLink,
   className,
   style,
-}) => (
-  <Link {...link}>
-    <a className={cn(bem(), className)} style={style}>
-      {name}
+}) => {
+  const anchor = (
+    <a className={cn(bem(), className)} style={style} href={externalLink}>
+      {children}
     </a>
-  </Link>
-);
+  );
 
-export default CustomLink;
+  if (link) {
+    return <Link {...link}>{anchor}</Link>;
+  }
+
+  return anchor;
+};
+
+export default NextLink;
