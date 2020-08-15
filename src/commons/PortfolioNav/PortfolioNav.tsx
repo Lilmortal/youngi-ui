@@ -2,10 +2,10 @@ import React from "react";
 import { cn, createBem } from "../../../utils";
 import styles from "./PortfolioNav.module.scss";
 import uuid from "react-uuid";
-import Link, { LinkProps } from "../Link";
+import Link, { NextLinkProps } from "../Link";
 
 export interface PortfolioNavProps {
-  links: LinkProps[];
+  links: NextLinkProps[];
 }
 
 const bem = createBem(styles);

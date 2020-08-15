@@ -1,21 +1,7 @@
 .info {
-  display: flex;
-  flex-direction: column;
-  padding: 5rem 0;
-  min-height: 100vh;
-  justify-content: space-between;
-
   &__biography {
-    padding: 0 5rem 5rem;
-  }
-
-  &__socialIcons {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-
-    & div {
-      padding-right: 2rem;
-    }
+    padding: 5rem 5rem 5rem;
+    font-family: "Inter", sans-serif;
+    text-decoration: underline;
   }
 }

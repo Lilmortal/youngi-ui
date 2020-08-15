@@ -1,18 +1,18 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import Link, { LinkProps } from ".";
+import Link, { NextLinkProps } from ".";
 import MockRouter from "./MockRouter";
 
-const defaultProps: LinkProps = {
+const defaultProps: NextLinkProps = {
   link: {
     href: `/[lang]/[category]`,
     as: `/en/category`,
   },
-  name: "category",
+  children: "category",
 };
 
-const RenderedLink: React.FC<Partial<LinkProps>> = ({ ...props }) => (
+const RenderedLink: React.FC<Partial<NextLinkProps>> = ({ ...props }) => (
   <MockRouter>
     <Link {...defaultProps} {...props} />
   </MockRouter>

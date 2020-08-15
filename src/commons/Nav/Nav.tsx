@@ -1,11 +1,11 @@
 import React from "react";
 import { createBem } from "../../../utils";
 import styles from "./Nav.module.scss";
-import Link, { LinkProps } from "../Link";
+import Link, { NextLinkProps } from "../Link";
 import uuid from "react-uuid";
 
 export interface NavProps {
-  links: LinkProps[];
+  links: NextLinkProps[];
 }
 
 const bem = createBem(styles);

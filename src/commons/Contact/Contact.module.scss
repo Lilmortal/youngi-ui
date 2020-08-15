@@ -1,8 +1,7 @@
-.nav {
+.contact {
   position: fixed;
-  top: 1rem;
+  bottom: 1rem;
   right: 1rem;
-  text-transform: capitalize;
   z-index: var(--xs-zIndex);
 
   &__link {

@@ -8,4 +8,10 @@ export interface NavResponse {
 export interface NavProps {
   navResponse: NavResponse[];
   portfolioCategoriesResponse: PortfolioCategoryResponse[];
+  contactResponse: ContactResponse[];
+}
+
+export interface ContactResponse {
+  url: string;
+  name: string;
 }

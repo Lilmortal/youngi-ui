@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { LinkProps } from "../Link";
+import { NextLinkProps } from "../Link";
 import { NavResponse } from "../../templates/withNav";
 import { IntlProviderContext } from "../intl/IntlProvider";
 
@@ -7,9 +7,9 @@ interface NavHooks {
   navigations: NavResponse[];
 }
 
-const useNav = ({ navigations }: NavHooks): LinkProps[] => {
+const useNav = ({ navigations }: NavHooks): NextLinkProps[] => {
   const context = useContext(IntlProviderContext);
-  const links: LinkProps[] = [];
+  const links: NextLinkProps[] = [];
 
   navigations?.map((navigation) =>
     links.push({
@@ -17,7 +17,7 @@ const useNav = ({ navigations }: NavHooks): LinkProps[] => {
         href: `/[lang]/[${navigation.url}]`,
         as: `/${context.locale}/${navigation.url}`,
       },
-      name: navigation.name,
+      children: navigation.name,
     })
   );
 
