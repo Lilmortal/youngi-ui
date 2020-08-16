@@ -6,6 +6,7 @@ import Modal, { ModalProps } from "./Modal";
 
 const defaultProps: ModalProps = {
   open: true,
+  selector: "#modal",
 };
 
 const RenderedModal: React.FC<Partial<ModalProps>> = ({ ...props }) => (

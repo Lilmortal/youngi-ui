@@ -16,6 +16,7 @@ const renderPortfolioPage = (
 ): RenderResult =>
   render(
     <MockRouter value={{ query }}>
+      <div id="modal" />
       <PortfolioWithoutNav {...defaultProps} {...props} />
     </MockRouter>
   );

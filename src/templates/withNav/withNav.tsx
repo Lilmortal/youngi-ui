@@ -13,7 +13,6 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
 }: LayoutProps = {}) => <P extends NavProps>(
   props: T & P
 ): React.ReactElement<{}> => {
-  console.log(displayCopyrightMark);
   const { navResponse, contactResponse, portfolioCategoriesResponse } = props;
 
   const navLinks = useNav({ navigations: navResponse });

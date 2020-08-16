@@ -5,14 +5,22 @@ import Modal, { ModalProps } from "./Modal";
 
 const body = "This is a modal text.";
 
+const selector = "modal";
 const onClose = jest.fn();
 const defaultProps: ModalProps = {
   onClose,
   children: <div>{body}</div>,
+  selector: `#${selector}`,
 };
 
 const renderModal = (props?: Partial<ModalProps>): RenderResult =>
-  render(<Modal {...defaultProps} {...props} />);
+  render(
+    <>
+      <div id={selector}>
+        <Modal {...defaultProps} {...props} />
+      </div>
+    </>
+  );
 
 describe("modal", () => {
   it("should not display modal if closed", () => {

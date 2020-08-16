@@ -19,7 +19,12 @@ const NextLink: React.FC<NextLinkProps> = ({
   style,
 }) => {
   const anchor = (
-    <a className={cn(bem(), className)} style={style} href={externalLink}>
+    <a
+      className={cn(bem(), className)}
+      style={style}
+      href={externalLink}
+      tabIndex={externalLink ? undefined : 0}
+    >
       {children}
     </a>
   );

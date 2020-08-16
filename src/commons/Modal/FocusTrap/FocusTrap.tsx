@@ -33,8 +33,6 @@ const FocusTrap: React.FC<FocusTrapProps> = ({ children }) => {
     }
   }, [children]);
 
-  // TODO: There is a bug at the moment where if the user is on the address bar and tabs into the web content,
-  // it ignores this effect hook only for the first tab. Need to look into it.
   useEffect(() => {
     const focusTrapModal = (e: KeyboardEvent): void => {
       if ((e.key === "Tab" || e.keyCode === 9) && focusableElements.current) {

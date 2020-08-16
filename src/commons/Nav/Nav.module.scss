@@ -6,6 +6,7 @@
   z-index: var(--xs-zIndex);
 
   &__link {
+    display: inline-block;
     margin-left: var(--md-spacing);
   }
 }
