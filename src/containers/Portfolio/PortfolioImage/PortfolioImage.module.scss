@@ -1,9 +1,19 @@
+@use '../../../../styles/mixins/breakpoints';
+
 .portfolioImage {
   cursor: pointer;
   position: relative;
   background-size: cover;
   background-position: center;
-  font-size: var(--lg-font);
+  font-size: var(--sm-font);
+
+  @include breakpoints.sm {
+    font-size: var(--md-font);
+  }
+
+  @include breakpoints.lg {
+    font-size: var(--lg-font);
+  }
 
   &:hover {
     &::before {

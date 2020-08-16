@@ -1,13 +1,21 @@
 :root {
   --xs-font: 0.75rem; // 12px
   --sm-font: 1rem; // 16px
-  --md-font: 1.5rem; // 24px
-  --lg-font: 1.875rem; // 30px
-  --xl-font: 3.875rem; // 62px
+  --md-font: 1.875rem; // 30px
+  --lg-font: 2.5rem; // 40px
+  --xl-font: 3.9375rem; // 63px
+}
+
+h1 {
+  font-size: var(--xl-font);
 }
 
 h2 {
   font-size: var(--lg-font);
+}
+
+h3 {
+  font-size: var(--md-font);
 }
 
 @font-face {

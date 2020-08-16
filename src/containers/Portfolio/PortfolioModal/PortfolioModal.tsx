@@ -69,7 +69,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
               )}
             </div>
           ))}
-        {title && <h2 className={cn(bem("title"))}>{title}</h2>}
+        {title && <h3 className={cn(bem("title"))}>{title}</h3>}
         {description && <p className={cn(bem("description"))}>{description}</p>}
       </div>
     </Fade>

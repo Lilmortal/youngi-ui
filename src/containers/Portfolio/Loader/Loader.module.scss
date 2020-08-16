@@ -1,3 +1,5 @@
+@use '../../../../styles/mixins/breakpoints';
+
 $containerWidth: 50rem;
 $containerHeight: 10rem;
 $barWidth: 2rem;
@@ -44,9 +46,7 @@ $messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
     &--isAnimating {
       animation-name: animation-blink, animation-slide, animation-slide-back;
       animation-duration: $blinkDuration, $slideDuration, $slideBackDuration;
-      animation-iteration-count:
-        $blinkIteration,
-        $slideIteration,
+      animation-iteration-count: $blinkIteration, $slideIteration,
         $slideBackIteration;
       animation-delay: 0s, $slideDelay, $slideBackDelay;
       animation-fill-mode: forwards;
@@ -60,10 +60,14 @@ $messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: var(--xl-font);
     font-weight: bold;
     font-family: "Josefin_Sans", sans-serif;
     line-height: 64px;
+    font-size: var(--lg-font);
+
+    @include breakpoints.sm {
+      font-size: var(--xl-font);
+    }
 
     @media screen and (prefers-reduced-motion: no-preference) {
       &--isAnimating {
