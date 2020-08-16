@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.2](https://github.com/Lilmortal/youngi-ui/compare/v3.1.1...v3.1.2) (2020-08-16)
+
+
+### Bug Fixes
+
+* fix tab order being incorrect ([a917184](https://github.com/Lilmortal/youngi-ui/commit/a9171842474e23572265e4cb18a14f11a5d4c1bf))
+* modal now use react portal ([cbe0d8d](https://github.com/Lilmortal/youngi-ui/commit/cbe0d8d4a2d6ee1ca8be39ac838c91e80a1deea5))
+
 ### [3.1.1](https://github.com/Lilmortal/youngi-ui/compare/v3.1.0...v3.1.1) (2020-08-16)
 
 
