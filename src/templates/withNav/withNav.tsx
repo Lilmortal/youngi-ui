@@ -34,9 +34,9 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
 
   return (
     <Fade duration={0.6} show>
-      <Component {...props} />
       <PortfolioNav links={portfolioLinks} />
       <Nav links={navLinks} />
+      <Component {...props} />
       <Contact {...contactLinks} />
       {displayCopyrightMark ? (
         <Copyright>
