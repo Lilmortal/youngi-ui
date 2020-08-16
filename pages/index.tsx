@@ -1,4 +1,4 @@
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const App = () => null;
+const App = () => <div>Redirecting...</div>;
 
 export default App;

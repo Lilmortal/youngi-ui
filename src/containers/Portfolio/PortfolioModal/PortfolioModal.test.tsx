@@ -1,5 +1,5 @@
 import React from "react";
-import ImageModal, { PortfolioModalProps } from "./PortfolioModal";
+import PortfolioModal, { PortfolioModalProps } from "./PortfolioModal";
 import { render, RenderResult } from "@testing-library/react";
 import { mockImage } from "../../../commons/Img/mock-data/data";
 import { ModalImageProps } from "../Portfolio.types";
@@ -17,12 +17,19 @@ const mockModalImage: ModalImageProps = {
   caption: "caption",
 };
 
-const renderImageModal = (props?: Partial<PortfolioModalProps>): RenderResult =>
-  render(<ImageModal {...defaultProps} {...props} />);
+const renderPortfolioModal = (
+  props?: Partial<PortfolioModalProps>
+): RenderResult =>
+  render(
+    <>
+      <div id="modal" />
+      <PortfolioModal {...defaultProps} {...props} />
+    </>
+  );
 
-describe("ImageModal", () => {
+describe("PortfolioModal", () => {
   it("should not display the modal if not opened", () => {
-    const { queryAllByAltText } = renderImageModal({
+    const { queryAllByAltText } = renderPortfolioModal({
       open: false,
       images: [{ ...mockModalImage }],
     });
@@ -31,13 +38,13 @@ describe("ImageModal", () => {
   });
 
   it("should not render any images", () => {
-    const { queryAllByAltText } = renderImageModal({});
+    const { queryAllByAltText } = renderPortfolioModal({});
 
     expect(queryAllByAltText("image").length).toEqual(0);
   });
 
   it("should render the images", () => {
-    const { queryAllByAltText } = renderImageModal({
+    const { queryAllByAltText } = renderPortfolioModal({
       images: [{ ...mockModalImage }],
     });
 

@@ -13,7 +13,6 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
 }: LayoutProps = {}) => <P extends NavProps>(
   props: T & P
 ): React.ReactElement<{}> => {
-  console.log(displayCopyrightMark);
   const { navResponse, contactResponse, portfolioCategoriesResponse } = props;
 
   const navLinks = useNav({ navigations: navResponse });
@@ -35,9 +34,9 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
 
   return (
     <Fade duration={0.6} show>
+      <Component {...props} />
       <PortfolioNav links={portfolioLinks} />
       <Nav links={navLinks} />
-      <Component {...props} />
       <Contact {...contactLinks} />
       {displayCopyrightMark ? (
         <Copyright>

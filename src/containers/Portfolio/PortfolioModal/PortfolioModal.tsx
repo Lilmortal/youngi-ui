@@ -47,6 +47,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
     onOutsideAction={onClose}
     onEscapePress={onClose}
     open={open}
+    selector="#modal"
   >
     <Fade duration={0.3} show={!!open}>
       <div className={cn(bem(), className)} style={style}>

@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import noScroll from "no-scroll";
+import { createPortal } from "react-dom";
 
 import Overlay from "./Overlay";
 import CloseButton from "./CloseButton/CloseButton";
@@ -8,9 +9,9 @@ import FocusTrap from "./FocusTrap";
 import { cn, createBem } from "../../../utils";
 import styles from "./Modal.module.scss";
 
-// TODO: How to use React portal in Next.js
 export interface ModalProps extends Styleable {
   open?: boolean;
+  selector: string;
   onOutsideAction?(): void;
   onEscapePress?(): void;
   onClose?(): void;
@@ -21,13 +22,22 @@ export interface ModalProps extends Styleable {
 const bem = createBem(styles);
 
 const Modal: React.FC<ModalProps> = ({
-  open = false,
+  open,
+  selector,
   onClose,
   onOutsideAction,
   onEscapePress,
   overlayDataTestId,
   children,
 }) => {
+  const portalRef = useRef<Element | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    portalRef.current = document.querySelector(selector);
+    setMounted(true);
+  }, [selector]);
+
   useEffect(() => {
     if (open) {
       noScroll.on();
@@ -42,19 +52,22 @@ const Modal: React.FC<ModalProps> = ({
     return null;
   }
 
-  return (
-    <FocusTrap>
-      <Overlay
-        onOutsideAction={onOutsideAction}
-        dataTestId={overlayDataTestId}
-      />
-      <div className={cn(bem())}>
-        {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
-        {onClose && <CloseButton onClose={onClose} />}
-        {children}
-      </div>
-    </FocusTrap>
-  );
+  return mounted && portalRef.current
+    ? createPortal(
+        <FocusTrap>
+          <Overlay
+            onOutsideAction={onOutsideAction}
+            dataTestId={overlayDataTestId}
+          />
+          <div className={cn(bem())}>
+            {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
+            {onClose && <CloseButton onClose={onClose} />}
+            {children}
+          </div>
+        </FocusTrap>,
+        portalRef.current
+      )
+    : null;
 };
 
 export default Modal;
