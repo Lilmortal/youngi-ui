@@ -46,7 +46,9 @@ $messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
     &--isAnimating {
       animation-name: animation-blink, animation-slide, animation-slide-back;
       animation-duration: $blinkDuration, $slideDuration, $slideBackDuration;
-      animation-iteration-count: $blinkIteration, $slideIteration,
+      animation-iteration-count:
+        $blinkIteration,
+        $slideIteration,
         $slideBackIteration;
       animation-delay: 0s, $slideDelay, $slideBackDelay;
       animation-fill-mode: forwards;

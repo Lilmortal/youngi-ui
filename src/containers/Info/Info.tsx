@@ -7,6 +7,7 @@ import { cn, createBem } from "../../../utils";
 import styles from "./Info.module.scss";
 import { getInfoProps } from "./api-client";
 import withNav, { withNavProps } from "../../templates/withNav";
+import Main from "../../templates/Main";
 
 const bem = createBem(styles);
 
@@ -25,16 +26,20 @@ const Info: React.FC<InfoProps> = ({
   className,
   style,
 }) => (
-  <div className={cn(bem(), className)} style={style}>
-    <Head>
-      {metaTitle && <title>{metaTitle}</title>}
-      {metaDescription && <meta name="description" content={metaDescription} />}
-    </Head>
+  <Main>
+    <div className={cn(bem(), className)} style={style}>
+      <Head>
+        {metaTitle && <title>{metaTitle}</title>}
+        {metaDescription && (
+          <meta name="description" content={metaDescription} />
+        )}
+      </Head>
 
-    <div className={cn(bem("biography"))}>
-      {biography && <ReactMarkdown source={biography} />}
+      <div className={cn(bem("biography"))}>
+        {biography && <ReactMarkdown source={biography} />}
+      </div>
     </div>
-  </div>
+  </Main>
 );
 
 const getInfoStaticProps: GetStaticProps = async () => {
