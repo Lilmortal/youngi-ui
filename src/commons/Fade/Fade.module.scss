@@ -3,11 +3,15 @@
   will-change: opacity;
 
   &--show {
-    animation: animation-onLoad forwards;
+    @media screen and (prefers-reduced-motion: no-preference) {
+      animation: animation-onLoad forwards;
+    }
   }
 
   &--hide {
-    animation: animation-onLeave forwards;
+    @media screen and (prefers-reduced-motion: no-preference) {
+      animation: animation-onLeave forwards;
+    }
   }
 
   @keyframes animation-onLoad {

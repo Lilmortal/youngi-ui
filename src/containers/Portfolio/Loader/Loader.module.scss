@@ -44,9 +44,7 @@ $messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
     &--isAnimating {
       animation-name: animation-blink, animation-slide, animation-slide-back;
       animation-duration: $blinkDuration, $slideDuration, $slideBackDuration;
-      animation-iteration-count:
-        $blinkIteration,
-        $slideIteration,
+      animation-iteration-count: $blinkIteration, $slideIteration,
         $slideBackIteration;
       animation-delay: 0s, $slideDelay, $slideBackDelay;
       animation-fill-mode: forwards;
@@ -65,20 +63,22 @@ $messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
     font-family: "Josefin_Sans", sans-serif;
     line-height: 64px;
 
-    &--isAnimating {
-      opacity: 0;
-      font-size: calc(var(--xl-font) * 2);
-      animation-name: animation-appear, animation-zoom-out;
-      animation-duration: 0s, $messageZoomOutDuration;
-      animation-delay: $slideBackDelay, $messageZoomOutDelay;
-      animation-fill-mode: forwards;
+    @media screen and (prefers-reduced-motion: no-preference) {
+      &--isAnimating {
+        opacity: 0;
+        font-size: calc(var(--xl-font) * 2);
+        animation-name: animation-appear, animation-zoom-out;
+        animation-duration: 0s, $messageZoomOutDuration;
+        animation-delay: $slideBackDelay, $messageZoomOutDelay;
+        animation-fill-mode: forwards;
+      }
     }
   }
 }
 
 @keyframes animation-zoom-out {
   to {
-    transform: scale(0.5);
+    font-size: var(--xl-font);
   }
 }
 
