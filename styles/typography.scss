@@ -1,3 +1,5 @@
+@use './mixins/breakpoints';
+
 :root {
   --xs-font: 0.75rem; // 12px
   --sm-font: 1rem; // 16px
@@ -7,15 +9,34 @@
 }
 
 h1 {
-  font-size: var(--xl-font);
+  font-size: var(--lg-font);
+  padding-bottom: 3rem;
 }
 
 h2 {
-  font-size: var(--lg-font);
+  font-size: var(--md-font);
+  padding-bottom: 2rem;
 }
 
 h3 {
-  font-size: var(--md-font);
+  font-size: var(--sm-font);
+  padding-bottom: 1rem;
+}
+
+@include breakpoints.sm {
+  h1 {
+    font-size: var(--xl-font);
+    padding-bottom: 4rem;
+  }
+
+  h2 {
+    font-size: var(--lg-font);
+    padding-bottom: 3rem;
+  }
+
+  h3 {
+    font-size: var(--md-font);
+  }
 }
 
 @font-face {
