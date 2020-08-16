@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PortfolioNav, { usePortfolioLinks } from "../../commons/PortfolioNav";
 import { NavProps, LayoutProps } from "./withNav.types";
 import Nav from "../../commons/Nav";
@@ -7,12 +7,14 @@ import Fade from "../../commons/Fade";
 import Contact from "../../commons/Contact";
 import { ContactProps } from "../../commons/Contact";
 import Copyright from "../../commons/Copyright";
+import { BreakpointContext } from "../../commons/breakpoints";
 
 const withNav = <T extends object>(Component: React.FC<T>) => ({
   displayCopyrightMark,
 }: LayoutProps = {}) => <P extends NavProps>(
   props: T & P
 ): React.ReactElement<{}> => {
+  const breakpoints = useContext(BreakpointContext);
   const { navResponse, contactResponse, portfolioCategoriesResponse } = props;
 
   const navLinks = useNav({ navigations: navResponse });
@@ -40,8 +42,11 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
       <Contact {...contactLinks} />
       {displayCopyrightMark ? (
         <Copyright>
-          {/* Put this in <FormattedMessage />  */}
-          ALL RIGHTS RESERVED {currentYear} (C) YOUNGI KIM AND JACK TAN
+          {/* TODO: Put this in <FormattedMessage />  */}
+          {!breakpoints.sm ? `JT&YK (C) ${currentYear}` : null}
+          {breakpoints.sm
+            ? `ALL RIGHTS RESERVED ${currentYear} (C) YOUNGI KIM AND JACK TAN`
+            : null}
         </Copyright>
       ) : null}
     </Fade>
