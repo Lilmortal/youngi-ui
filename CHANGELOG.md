@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/Lilmortal/youngi-ui/compare/v3.1.0...v3.1.1) (2020-08-16)
+
+
+### Bug Fixes
+
+* fix loader animation jiggle, removed social icons ([9e9fd9d](https://github.com/Lilmortal/youngi-ui/commit/9e9fd9d00805ad7554d8b7da55ab1a084a6f6a33))
+
 ## [3.1.0](https://github.com/Lilmortal/youngi-ui/compare/v3.0.0...v3.1.0) (2020-08-15)
 
 
