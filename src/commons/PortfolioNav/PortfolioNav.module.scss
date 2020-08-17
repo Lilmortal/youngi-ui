@@ -1,3 +1,5 @@
+@use '../../../styles/mixins/breakpoints';
+
 .portfolioNav {
   position: fixed;
   transform: rotate(-90deg) translateX(-100%);
@@ -6,6 +8,14 @@
   top: 2rem;
   left: 1rem;
   z-index: var(--xs-zIndex);
+
+  // If in the future we decided to have more categories, we will need to design
+  // a hamburger menu or something to accommodate the fact that this navigation
+  // will soon overflow.
+  @include breakpoints.smLandscape {
+    transform: none;
+    top: 1rem;
+  }
 
   &__link {
     display: inline-block;
