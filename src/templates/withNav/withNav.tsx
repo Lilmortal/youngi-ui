@@ -43,9 +43,9 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
       {displayCopyrightMark ? (
         <Copyright>
           {/* TODO: Put this in <FormattedMessage />  */}
-          {!breakpoints.sm ? `JT&YK (C) ${currentYear}` : null}
+          {!breakpoints.sm ? `JT&YK © ${currentYear}` : null}
           {breakpoints.sm
-            ? `ALL RIGHTS RESERVED ${currentYear} (C) YOUNGI KIM AND JACK TAN`
+            ? `ALL RIGHTS RESERVED ${currentYear} © YOUNGI KIM AND JACK TAN`
             : null}
         </Copyright>
       ) : null}
