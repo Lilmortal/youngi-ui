@@ -11,6 +11,10 @@ import { BreakpointContext } from "../../commons/breakpoints";
 import PageBody from "../PageBody";
 import { FormattedMessage } from "react-intl";
 import messages from "./withNav.messages";
+import { cn, createBem } from "../../../utils";
+import styles from "./withNav.module.scss";
+
+const bem = createBem(styles);
 
 const withNav = <T extends object>(Component: React.FC<T>) => ({
   displayCopyrightMark,
@@ -43,23 +47,25 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
         <CategoriesNav links={categoriesLinks} />
         <Nav links={navLinks} />
         <Component {...props} />
-        <Contact {...contactLinks} />
-        {displayCopyrightMark ? (
-          <Copyright>
-            {!breakpoints.sm ? (
-              <FormattedMessage
-                {...messages.copyrightMobile}
-                values={{ currentYear }}
-              />
-            ) : null}
-            {breakpoints.sm ? (
-              <FormattedMessage
-                {...messages.copyright}
-                values={{ currentYear }}
-              />
-            ) : null}
-          </Copyright>
-        ) : null}
+        <div className={cn(bem())}>
+          {displayCopyrightMark ? (
+            <Copyright>
+              {!breakpoints.sm ? (
+                <FormattedMessage
+                  {...messages.copyrightMobile}
+                  values={{ currentYear }}
+                />
+              ) : null}
+              {breakpoints.sm ? (
+                <FormattedMessage
+                  {...messages.copyright}
+                  values={{ currentYear }}
+                />
+              ) : null}
+            </Copyright>
+          ) : null}
+          <Contact {...contactLinks} />
+        </div>
       </Fade>
     </PageBody>
   );

@@ -2,8 +2,6 @@
 
 .main {
   margin: 3.5rem 4rem 0;
-  max-height: calc(100vh - 6rem);
-  overflow-y: scroll;
 
   @include breakpoints.smLandscape {
     margin-left: 2rem;

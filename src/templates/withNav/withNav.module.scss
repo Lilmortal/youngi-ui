@@ -1,0 +1,9 @@
+@use '../../../styles/mixins/breakpoints';
+
+.withNav {
+  @include breakpoints.smLandscape {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem 0;
+  }
+}

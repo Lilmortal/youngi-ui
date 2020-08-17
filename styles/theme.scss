@@ -5,6 +5,7 @@
   --body-primary: var(--black);
   --body-background-primary: var(--white);
   --loader-bar-primary: var(--black);
+  --categoriesNav-primary: var(--white);
   --hovered-portfolio-image-primary: var(--black);
 
   @media (prefers-color-scheme: dark) {
@@ -12,6 +13,7 @@
     --link-border-primary: var(--white);
     --body-primary: var(--white);
     --body-background-primary: var(--black);
+    --categoriesNav-primary: var(--black);
     --loader-bar-primary: var(--white);
   }
 }
