@@ -50,7 +50,14 @@ const BreakpointProvider: React.FC<BreakpointProviderProps> = ({
             [breakpoint]: media.matches,
           }));
 
-          media.addEventListener("change", breakpointsListener);
+          if (media.addEventListener) {
+            media.addEventListener("change", breakpointsListener);
+          }
+
+          // This is to support older browsers and most notably Safari.
+          if (media.addListener) {
+            media.addListener(breakpointsListener);
+          }
 
           return (): void =>
             media.removeEventListener("change", breakpointsListener);
