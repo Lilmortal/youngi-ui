@@ -9,6 +9,8 @@ import { ContactProps } from "../../commons/Contact";
 import Copyright from "../../commons/Copyright";
 import { BreakpointContext } from "../../commons/breakpoints";
 import PageBody from "../PageBody";
+import { FormattedMessage } from "react-intl";
+import messages from "./withNav.messages";
 
 const withNav = <T extends object>(Component: React.FC<T>) => ({
   displayCopyrightMark,
@@ -44,11 +46,18 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
         <Contact {...contactLinks} />
         {displayCopyrightMark ? (
           <Copyright>
-            {/* TODO: Put this in <FormattedMessage />  */}
-            {!breakpoints.sm ? `JT&YK © ${currentYear}` : null}
-            {breakpoints.sm
-              ? `ALL RIGHTS RESERVED ${currentYear} © YOUNGI KIM AND JACK TAN`
-              : null}
+            {!breakpoints.sm ? (
+              <FormattedMessage
+                {...messages.copyrightMobile}
+                values={{ currentYear }}
+              />
+            ) : null}
+            {breakpoints.sm ? (
+              <FormattedMessage
+                {...messages.copyright}
+                values={{ currentYear }}
+              />
+            ) : null}
           </Copyright>
         ) : null}
       </Fade>
