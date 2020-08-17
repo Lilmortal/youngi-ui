@@ -1,11 +1,15 @@
 @use '../../../styles/mixins/breakpoints';
 
 .main {
-  padding: 2rem 1rem 0 4rem;
-  max-height: 93vh;
+  margin: 3.5rem 2rem 0 4rem;
+  max-height: calc(100vh - 6rem);
   overflow-y: scroll;
 
   @include breakpoints.sm {
-    padding: 5rem 5rem 0;
+    margin-top: 2rem;
+  }
+
+  @include breakpoints.smLandscape {
+    margin-left: 2rem;
   }
 }

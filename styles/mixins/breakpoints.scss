@@ -15,3 +15,9 @@
     @content;
   }
 }
+
+@mixin smLandscape {
+  @media screen and (max-height: 460px) {
+    @content;
+  }
+}
