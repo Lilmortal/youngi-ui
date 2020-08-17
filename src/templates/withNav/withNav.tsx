@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PortfolioNav, { usePortfolioLinks } from "../../commons/PortfolioNav";
+import CategoriesNav, { useCategoriesLinks } from "../../commons/CategoriesNav";
 import { NavProps, LayoutProps } from "./withNav.types";
 import Nav from "../../commons/Nav";
 import useNav from "../../commons/Nav/useNav";
@@ -8,6 +8,9 @@ import Contact from "../../commons/Contact";
 import { ContactProps } from "../../commons/Contact";
 import Copyright from "../../commons/Copyright";
 import { BreakpointContext } from "../../commons/breakpoints";
+import PageBody from "../PageBody";
+import { FormattedMessage } from "react-intl";
+import messages from "./withNav.messages";
 
 const withNav = <T extends object>(Component: React.FC<T>) => ({
   displayCopyrightMark,
@@ -19,7 +22,7 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
 
   const navLinks = useNav({ navigations: navResponse });
 
-  const portfolioLinks = usePortfolioLinks({
+  const categoriesLinks = useCategoriesLinks({
     categories: portfolioCategoriesResponse,
   });
 
@@ -35,21 +38,30 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
   const currentYear = new Date().getFullYear();
 
   return (
-    <Fade duration={0.6} show>
-      <PortfolioNav links={portfolioLinks} />
-      <Nav links={navLinks} />
-      <Component {...props} />
-      <Contact {...contactLinks} />
-      {displayCopyrightMark ? (
-        <Copyright>
-          {/* TODO: Put this in <FormattedMessage />  */}
-          {!breakpoints.sm ? `JT&YK (C) ${currentYear}` : null}
-          {breakpoints.sm
-            ? `ALL RIGHTS RESERVED ${currentYear} (C) YOUNGI KIM AND JACK TAN`
-            : null}
-        </Copyright>
-      ) : null}
-    </Fade>
+    <PageBody>
+      <Fade duration={0.6} show>
+        <CategoriesNav links={categoriesLinks} />
+        <Nav links={navLinks} />
+        <Component {...props} />
+        <Contact {...contactLinks} />
+        {displayCopyrightMark ? (
+          <Copyright>
+            {!breakpoints.sm ? (
+              <FormattedMessage
+                {...messages.copyrightMobile}
+                values={{ currentYear }}
+              />
+            ) : null}
+            {breakpoints.sm ? (
+              <FormattedMessage
+                {...messages.copyright}
+                values={{ currentYear }}
+              />
+            ) : null}
+          </Copyright>
+        ) : null}
+      </Fade>
+    </PageBody>
   );
 };
 

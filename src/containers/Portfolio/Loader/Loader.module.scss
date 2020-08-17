@@ -40,7 +40,7 @@ $messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
     position: absolute;
     width: $barWidth;
     height: 100%;
-    background-color: black;
+    background-color: var(--loader-bar-primary);
     opacity: 0;
 
     &--isAnimating {
@@ -50,10 +50,6 @@ $messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
         $slideBackIteration;
       animation-delay: 0s, $slideDelay, $slideBackDelay;
       animation-fill-mode: forwards;
-
-      @media (prefers-color-scheme: dark) {
-        background-color: white;
-      }
     }
   }
 

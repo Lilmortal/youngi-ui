@@ -94,7 +94,6 @@ Tablet and desktop positions are taken from mobile if it is empty, but mobile is
   return gridPosition;
 };
 
-// TODO: test
 const validateColumnIsNotOutOfBounds = (
   column: GridPosition,
   numberOfColumns: number

@@ -2,4 +2,16 @@
 [data-theme="default"] {
   --link-primary: var(--black);
   --link-border-primary: var(--black);
+  --body-primary: var(--black);
+  --body-background-primary: var(--white);
+  --loader-bar-primary: var(--black);
+  --hovered-portfolio-image-primary: var(--black);
+
+  @media (prefers-color-scheme: dark) {
+    --link-primary: var(--white);
+    --link-border-primary: var(--white);
+    --body-primary: var(--white);
+    --body-background-primary: var(--black);
+    --loader-bar-primary: var(--white);
+  }
 }

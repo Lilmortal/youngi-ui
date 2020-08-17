@@ -6,6 +6,7 @@
   background-size: cover;
   background-position: center;
   font-size: var(--sm-font);
+  color: var(--hovered-portfolio-image-primary);
 
   @include breakpoints.sm {
     font-size: var(--md-font);

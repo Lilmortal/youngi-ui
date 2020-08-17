@@ -3,13 +3,13 @@ import { IntlProviderContext } from "../intl/IntlProvider";
 import { NextLinkProps } from "../Link";
 import { PortfolioCategoryResponse } from "../../containers/Portfolio";
 
-interface PortfolioLinksHooks {
+interface CategoriesLinksHooks {
   categories: PortfolioCategoryResponse[];
 }
 
-const usePortfolioLinks = ({
+const useCategoriesLinks = ({
   categories,
-}: PortfolioLinksHooks): NextLinkProps[] => {
+}: CategoriesLinksHooks): NextLinkProps[] => {
   const context = useContext(IntlProviderContext);
 
   const links: NextLinkProps[] = [];
@@ -35,4 +35,4 @@ const usePortfolioLinks = ({
   return links;
 };
 
-export default usePortfolioLinks;
+export default useCategoriesLinks;
