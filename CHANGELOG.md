@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.5](https://github.com/Lilmortal/youngi-ui/compare/v3.1.4...v3.1.5) (2020-08-17)
+
+
+### Bug Fixes
+
+* fix broken info landscape ([06f3bf6](https://github.com/Lilmortal/youngi-ui/commit/06f3bf6209b4e37d4242db07007dc6183cbf77f4))
+
 ### [3.1.4](https://github.com/Lilmortal/youngi-ui/compare/v3.1.3...v3.1.4) (2020-08-16)
 
 
