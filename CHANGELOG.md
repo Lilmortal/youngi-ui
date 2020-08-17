@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.7](https://github.com/Lilmortal/youngi-ui/compare/v3.1.6...v3.1.7) (2020-08-17)
+
+
+### Bug Fixes
+
+* copyright messages uses FormattedMessage ([ef748ba](https://github.com/Lilmortal/youngi-ui/commit/ef748bad64d596cdf72c49def96847bf7f916562))
+* hovered portfolio image font color is black ([e960914](https://github.com/Lilmortal/youngi-ui/commit/e96091418cfdf3adfeece9baebd6f38436758d1c))
+* josefin sans can be set to bold correctly ([f8a4f56](https://github.com/Lilmortal/youngi-ui/commit/f8a4f567bb8dfad12d3e4784b181d69bdcd0f876))
+* migrate global styles to PageBody, move fonts to /public ([e0fcc18](https://github.com/Lilmortal/youngi-ui/commit/e0fcc18905716b132eb5e4554a1b77abe4ff80b0))
+* support dark mode, move 'All' text to front on landscape ([b929391](https://github.com/Lilmortal/youngi-ui/commit/b92939164cc56eaf109e6fb88b4aaceec9e10cff))
+
 ### [3.1.6](https://github.com/Lilmortal/youngi-ui/compare/v3.1.5...v3.1.6) (2020-08-17)
 
 
