@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PortfolioNav, { usePortfolioLinks } from "../../commons/PortfolioNav";
+import CategoriesNav, { useCategoriesLinks } from "../../commons/CategoriesNav";
 import { NavProps, LayoutProps } from "./withNav.types";
 import Nav from "../../commons/Nav";
 import useNav from "../../commons/Nav/useNav";
@@ -20,7 +20,7 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
 
   const navLinks = useNav({ navigations: navResponse });
 
-  const portfolioLinks = usePortfolioLinks({
+  const categoriesLinks = useCategoriesLinks({
     categories: portfolioCategoriesResponse,
   });
 
@@ -38,7 +38,7 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
   return (
     <PageBody>
       <Fade duration={0.6} show>
-        <PortfolioNav links={portfolioLinks} />
+        <CategoriesNav links={categoriesLinks} />
         <Nav links={navLinks} />
         <Component {...props} />
         <Contact {...contactLinks} />

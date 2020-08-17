@@ -1,16 +1,16 @@
 import React from "react";
 import { cn, createBem } from "../../../utils";
-import styles from "./PortfolioNav.module.scss";
+import styles from "./CategoriesNav.module.scss";
 import uuid from "react-uuid";
 import Link, { NextLinkProps } from "../Link";
 
-export interface PortfolioNavProps {
+export interface CategoriesNavProps {
   links: NextLinkProps[];
 }
 
 const bem = createBem(styles);
 
-const PortfolioNav: React.FC<PortfolioNavProps> = ({ links }) => (
+const CategoriesNav: React.FC<CategoriesNavProps> = ({ links }) => (
   <div className={cn(bem())}>
     {links.map((link) => (
       <Link {...link} key={uuid()} className={cn(bem("link"))} />
@@ -18,4 +18,4 @@ const PortfolioNav: React.FC<PortfolioNavProps> = ({ links }) => (
   </div>
 );
 
-export default PortfolioNav;
+export default CategoriesNav;

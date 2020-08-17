@@ -1,6 +1,7 @@
 @use '../../../styles/mixins/breakpoints';
 
-.portfolioNav {
+.categoriesNav {
+  display: flex;
   position: fixed;
   transform: rotate(-90deg) translateX(-100%);
   transform-origin: top left;
@@ -20,5 +21,11 @@
   &__link {
     display: inline-block;
     margin-left: var(--md-spacing);
+
+    @include breakpoints.smLandscape {
+      &:last-child {
+        order: -1;
+      }
+    }
   }
 }
