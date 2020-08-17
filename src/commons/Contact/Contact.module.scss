@@ -1,3 +1,5 @@
+@use '../../../styles/mixins/breakpoints';
+
 .contact {
   position: fixed;
   bottom: 1rem;
@@ -5,5 +7,9 @@
 
   &__link {
     margin-left: var(--md-spacing);
+  }
+
+  @include breakpoints.smLandscape {
+    position: static;
   }
 }
