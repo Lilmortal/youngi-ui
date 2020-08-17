@@ -8,6 +8,7 @@ import Contact from "../../commons/Contact";
 import { ContactProps } from "../../commons/Contact";
 import Copyright from "../../commons/Copyright";
 import { BreakpointContext } from "../../commons/breakpoints";
+import PageBody from "../PageBody";
 
 const withNav = <T extends object>(Component: React.FC<T>) => ({
   displayCopyrightMark,
@@ -35,21 +36,23 @@ const withNav = <T extends object>(Component: React.FC<T>) => ({
   const currentYear = new Date().getFullYear();
 
   return (
-    <Fade duration={0.6} show>
-      <PortfolioNav links={portfolioLinks} />
-      <Nav links={navLinks} />
-      <Component {...props} />
-      <Contact {...contactLinks} />
-      {displayCopyrightMark ? (
-        <Copyright>
-          {/* TODO: Put this in <FormattedMessage />  */}
-          {!breakpoints.sm ? `JT&YK © ${currentYear}` : null}
-          {breakpoints.sm
-            ? `ALL RIGHTS RESERVED ${currentYear} © YOUNGI KIM AND JACK TAN`
-            : null}
-        </Copyright>
-      ) : null}
-    </Fade>
+    <PageBody>
+      <Fade duration={0.6} show>
+        <PortfolioNav links={portfolioLinks} />
+        <Nav links={navLinks} />
+        <Component {...props} />
+        <Contact {...contactLinks} />
+        {displayCopyrightMark ? (
+          <Copyright>
+            {/* TODO: Put this in <FormattedMessage />  */}
+            {!breakpoints.sm ? `JT&YK © ${currentYear}` : null}
+            {breakpoints.sm
+              ? `ALL RIGHTS RESERVED ${currentYear} © YOUNGI KIM AND JACK TAN`
+              : null}
+          </Copyright>
+        ) : null}
+      </Fade>
+    </PageBody>
   );
 };
 
