@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.8](https://github.com/Lilmortal/youngi-ui/compare/v3.1.7...v3.1.8) (2020-08-17)
+
+
+### Bug Fixes
+
+* remove scrolling on main landscape view ([c33e099](https://github.com/Lilmortal/youngi-ui/commit/c33e099c00691aa5d50b5ba5dbb966b87aa919a9))
+
 ### [3.1.7](https://github.com/Lilmortal/youngi-ui/compare/v3.1.6...v3.1.7) (2020-08-17)
 
 
