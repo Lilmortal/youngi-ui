@@ -32,7 +32,7 @@ describe("portfolio", () => {
   });
 
   it("should display all images when it is not filtered", () => {
-    const { getAllByRole } = renderPortfolioPage({});
+    const { getAllByRole } = renderPortfolioPage();
 
     const images = getAllByRole("button");
     expect(images[0].getAttribute("data-image-name")).toEqual(

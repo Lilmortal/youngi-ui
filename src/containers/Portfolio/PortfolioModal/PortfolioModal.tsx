@@ -51,24 +51,21 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
   >
     <Fade duration={0.3} show={!!open}>
       <div className={cn(bem(), className)} style={style}>
-        {images &&
-          images.map((modalImage) => (
-            <div className={cn(bem("modalImageContainer"))} key={uuid()}>
-              {modalImage.image && (
-                <>
-                  <Img
-                    {...getDisplayImage(modalImage.image)}
-                    className={cn(bem("image"))}
-                  />
-                  {modalImage.caption && (
-                    <div className={cn(bem("caption"))}>
-                      {modalImage.caption}
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-          ))}
+        {images?.map((modalImage) => (
+          <div className={cn(bem("modalImageContainer"))} key={uuid()}>
+            {modalImage.image && (
+              <>
+                <Img
+                  {...getDisplayImage(modalImage.image)}
+                  className={cn(bem("image"))}
+                />
+                {modalImage.caption && (
+                  <div className={cn(bem("caption"))}>{modalImage.caption}</div>
+                )}
+              </>
+            )}
+          </div>
+        ))}
         {title && <h3 className={cn(bem("title"))}>{title}</h3>}
         {description && <p className={cn(bem("description"))}>{description}</p>}
       </div>

@@ -78,6 +78,7 @@ const Portfolio: React.FC<PortfolioProps> = ({
         <div className={cn(bem("images"))} data-testid="portfolioImages">
           <ImagesGrid
             imagesGrid={categoryImages}
+            isCategory={!!imagesType}
             numberOfColumns={numberOfColumns}
             rowPixels={rowPixels}
             onImageClick={setSelectedImage}

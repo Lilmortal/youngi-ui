@@ -17,6 +17,7 @@ export type ImagesGrid = Omit<PortfolioImageResponse, "subImages" | "category">;
 
 export interface ImagesGridProps {
   imagesGrid?: ImagesGrid[];
+  isCategory?: boolean;
   numberOfColumns?: number;
   rowPixels?: number;
   onImageClick(image: ImgProps): void;
@@ -24,69 +25,87 @@ export interface ImagesGridProps {
 
 const bem = createBem(styles);
 
-const getPositions = (
-  image: ImagesGrid,
-  breakpoints: Breakpoints
-): GridSpaces => {
+interface MapGridSpacesParams {
+  image: ImagesGrid;
+  isCategory?: boolean;
+  breakpoints: Breakpoints;
+}
+
+const getPositions = ({
+  image,
+  isCategory,
+  breakpoints,
+}: MapGridSpacesParams): GridSpaces => {
+  const imagePosition = isCategory
+    ? image.categoryPositions
+    : image.mainPositions;
+
   if (
-    !image.mobileStartingColumnPosition ||
-    !image.mobileEndingColumnPosition ||
-    !image.mobileStartingRowPosition ||
-    !image.mobileEndingRowPosition
+    !imagePosition?.mobileColumnStartPosition ||
+    !imagePosition?.mobileColumnEndPosition ||
+    !imagePosition?.mobileRowStartPosition ||
+    !imagePosition?.mobileRowEndPosition
   ) {
     throw new Error(
       `Mobile starting or ending position ${
         image.title ? `for ${image.title} ` : ""
       }is empty. 
-Tablet and desktop positions are taken from mobile if it is empty, but mobile is compulsory.`
+Tablet and desktop positions are taken from mobile if it is empty, but mobile is compulsory.
+
+${
+  image.title
+    ? ""
+    : `It looks like you did not provide a title for your image. Add a title to all
+your images if you want to figure out which image is causing this issue.`
+}`
     );
   }
 
   let gridPosition: GridSpaces = {
     column: {
-      startingPosition: image.mobileStartingColumnPosition,
-      endingPosition: image.mobileEndingColumnPosition,
+      startingPosition: imagePosition?.mobileColumnStartPosition,
+      endingPosition: imagePosition?.mobileColumnEndPosition,
     },
     row: {
-      startingPosition: image.mobileStartingRowPosition,
-      endingPosition: image.mobileEndingRowPosition,
+      startingPosition: imagePosition?.mobileRowStartPosition,
+      endingPosition: imagePosition?.mobileRowEndPosition,
     },
   };
 
   if (
     breakpoints.sm &&
-    image.tabletStartingColumnPosition &&
-    image.tabletEndingColumnPosition &&
-    image.tabletStartingRowPosition &&
-    image.tabletEndingRowPosition
+    imagePosition?.tabletColumnStartPosition &&
+    imagePosition?.tabletColumnEndPosition &&
+    imagePosition?.tabletRowStartPosition &&
+    imagePosition?.tabletRowEndPosition
   ) {
     gridPosition = {
       column: {
-        startingPosition: image.tabletStartingColumnPosition,
-        endingPosition: image.tabletEndingColumnPosition,
+        startingPosition: imagePosition?.tabletColumnStartPosition,
+        endingPosition: imagePosition?.tabletColumnEndPosition,
       },
       row: {
-        startingPosition: image.tabletStartingRowPosition,
-        endingPosition: image.tabletEndingRowPosition,
+        startingPosition: imagePosition?.tabletRowStartPosition,
+        endingPosition: imagePosition?.tabletRowEndPosition,
       },
     };
   }
 
   if (
     breakpoints.md &&
-    image.desktopStartingColumnPosition &&
-    image.desktopEndingColumnPosition &&
-    image.desktopStartingRowPosition &&
-    image.desktopEndingRowPosition
+    imagePosition?.desktopColumnStartPosition &&
+    imagePosition?.desktopColumnEndPosition &&
+    imagePosition?.desktopRowStartPosition &&
+    imagePosition?.desktopRowEndPosition
   ) {
     gridPosition = {
       column: {
-        startingPosition: image.desktopStartingColumnPosition,
-        endingPosition: image.desktopEndingColumnPosition,
+        startingPosition: imagePosition?.desktopColumnStartPosition,
+        endingPosition: imagePosition?.desktopColumnEndPosition,
       },
       row: {
-        startingPosition: image.desktopStartingRowPosition,
-        endingPosition: image.desktopEndingRowPosition,
+        startingPosition: imagePosition?.desktopRowStartPosition,
+        endingPosition: imagePosition?.desktopRowEndPosition,
       },
     };
   }
@@ -128,6 +147,7 @@ const validateColumnIsNotOutOfBounds = (
 const ImagesGrid: React.FC<ImagesGridProps> = ({
   imagesGrid,
   numberOfColumns = DEFAULT_NUMBER_OF_COLUMNS,
+  isCategory,
   rowPixels,
   onImageClick,
 }) => {
@@ -152,7 +172,11 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
       {imagesGrid.map((imageGrid) => {
         const portfolioImage = imageGrid.image;
 
-        const positions = getPositions(imageGrid, breakpoints);
+        const positions = getPositions({
+          image: imageGrid,
+          breakpoints,
+          isCategory,
+        });
 
         validateColumnIsNotOutOfBounds(positions.column, numberOfColumns);
 

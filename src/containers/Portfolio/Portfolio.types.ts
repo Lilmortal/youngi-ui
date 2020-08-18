@@ -7,21 +7,26 @@ export interface PortfolioImageResponse {
   readonly category?: PortfolioCategoryResponse;
   readonly image?: ImgProps;
   readonly modalImages?: ModalImageProps[];
-  readonly mobileStartingColumnPosition?: number;
-  readonly mobileEndingColumnPosition?: number;
-  readonly tabletStartingColumnPosition?: number;
-  readonly tabletEndingColumnPosition?: number;
-  readonly desktopStartingColumnPosition?: number;
-  readonly desktopEndingColumnPosition?: number;
-  readonly mobileStartingRowPosition?: number;
-  readonly mobileEndingRowPosition?: number;
-  readonly tabletStartingRowPosition?: number;
-  readonly tabletEndingRowPosition?: number;
-  readonly desktopStartingRowPosition?: number;
-  readonly desktopEndingRowPosition?: number;
+  readonly mainPositions?: ImagePositionsResponse;
+  readonly categoryPositions?: ImagePositionsResponse;
   readonly title?: string;
   readonly description?: string;
   readonly hoveredTextFontSizes?: HoveredTextFontSizes;
+}
+
+export interface ImagePositionsResponse {
+  readonly mobileColumnStartPosition?: number;
+  readonly mobileColumnEndPosition?: number;
+  readonly tabletColumnStartPosition?: number;
+  readonly tabletColumnEndPosition?: number;
+  readonly desktopColumnStartPosition?: number;
+  readonly desktopColumnEndPosition?: number;
+  readonly mobileRowStartPosition?: number;
+  readonly mobileRowEndPosition?: number;
+  readonly tabletRowStartPosition?: number;
+  readonly tabletRowEndPosition?: number;
+  readonly desktopRowStartPosition?: number;
+  readonly desktopRowEndPosition?: number;
 }
 
 export interface ModalImageProps {
