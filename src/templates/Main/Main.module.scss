@@ -1,9 +1,10 @@
 @use '../../../styles/mixins/breakpoints';
 
 .main {
-  margin: 3.5rem 4rem 0;
+  margin: 3.5rem 9rem 0;
 
   @include breakpoints.smLandscape {
     margin-left: 2rem;
+    margin-right: 2rem;
   }
 }
