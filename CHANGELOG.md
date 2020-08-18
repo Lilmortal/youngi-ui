@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.9](https://github.com/Lilmortal/youngi-ui/compare/v3.1.8...v3.1.9) (2020-08-18)
+
+
+### Bug Fixes
+
+* always show a scrollbar to not push the content left when it appear ([f990d57](https://github.com/Lilmortal/youngi-ui/commit/f990d576089a0ce32a9069e2d71e1a7acd2fd4a8))
+* scrollbar pushes content to the left on windows ([930a720](https://github.com/Lilmortal/youngi-ui/commit/930a720ec8020a9284539d293de341f600168021))
+
 ### [3.1.8](https://github.com/Lilmortal/youngi-ui/compare/v3.1.7...v3.1.8) (2020-08-17)
 
 
