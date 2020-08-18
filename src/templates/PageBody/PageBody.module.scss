@@ -7,7 +7,9 @@ html {
 
 body {
   font-family: "Montserrat", sans-serif;
+  width: 100vw;
   letter-spacing: 0.04rem;
   color: var(--body-primary);
   background-color: var(--body-background-primary);
+  overflow-y: scroll;
 }
