@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/Lilmortal/youngi-ui/compare/v3.1.10...v3.2.0) (2020-08-18)
+
+
+### Features
+
+* added main/category positions ([af95819](https://github.com/Lilmortal/youngi-ui/commit/af958190d1693ddd977d72e658e9a4a5f5ae83b0))
+
 ### [3.1.10](https://github.com/Lilmortal/youngi-ui/compare/v3.1.9...v3.1.10) (2020-08-18)
 
 
