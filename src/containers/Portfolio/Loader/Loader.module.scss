@@ -44,7 +44,7 @@ $messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
     opacity: 0;
 
     &--isAnimating {
-      animation-name: animation-blink, animation-slide, animation-slide-back;
+      animation-name: animation-appear, animation-slide, animation-slide-back;
       animation-duration: $blinkDuration, $slideDuration, $slideBackDuration;
       animation-iteration-count: $blinkIteration, $slideIteration,
         $slideBackIteration;
@@ -120,15 +120,5 @@ $messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
   to {
     transform: translateX($slideBackWidth) scaleX(0);
     transform-origin: right;
-  }
-}
-
-@keyframes animation-blink {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
