@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.10](https://github.com/Lilmortal/youngi-ui/compare/v3.1.9...v3.1.10) (2020-08-18)
+
+
+### Bug Fixes
+
+* removed body 100vw width ([74dd186](https://github.com/Lilmortal/youngi-ui/commit/74dd1862dbefab0788bb0c762a6bb737ca8fbca3))
+
 ### [3.1.9](https://github.com/Lilmortal/youngi-ui/compare/v3.1.8...v3.1.9) (2020-08-18)
 
 
