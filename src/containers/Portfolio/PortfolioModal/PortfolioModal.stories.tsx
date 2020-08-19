@@ -4,31 +4,23 @@ import { action } from "@storybook/addon-actions";
 
 import PortfolioModal, { PortfolioModalProps } from "./PortfolioModal";
 import { ModalImageProps } from "../Portfolio.types";
+import { randomGeneratedImage } from "../mock-data/data";
 
 const images: ModalImageProps[] = [
   {
     id: 1,
-    image: {
-      url: "/facebook.jpg",
-      name: "facebook",
-    },
-    caption: "facebook caption",
+    image: randomGeneratedImage,
+    caption: "image 1 caption",
   },
   {
     id: 2,
-    image: {
-      url: "/twitter.jpg",
-      name: "twitter",
-    },
-    caption: "twitter caption",
+    image: randomGeneratedImage,
+    caption: "image 2 caption",
   },
   {
     id: 3,
-    image: {
-      url: "/instagram.jpg",
-      name: "instagram",
-    },
-    caption: "instagram caption",
+    image: randomGeneratedImage,
+    caption: "image 3 caption",
   },
 ];
 
@@ -40,6 +32,16 @@ const defaultProps: PortfolioModalProps = {
   description: "description",
 };
 
+const RenderedPortolioModal: React.FC<Partial<PortfolioModalProps>> = (
+  props?: Partial<PortfolioModalProps>
+) => (
+  <>
+    <div id="modal">
+      <PortfolioModal {...defaultProps} {...props} />
+    </div>
+  </>
+);
+
 storiesOf("PortfolioModal", module).add("with image", () => (
-  <PortfolioModal {...defaultProps} />
+  <RenderedPortolioModal />
 ));

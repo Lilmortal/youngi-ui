@@ -14,6 +14,7 @@ const bem = createBem(styles);
 export interface PortfolioModalProps extends Styleable {
   images?: ModalImageProps[];
   open?: boolean;
+  selector?: string;
   title?: string;
   description?: string;
   onClose(): void;
@@ -37,6 +38,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
   images,
   open,
   title,
+  selector = "#modal",
   description,
   onClose,
   className,
@@ -47,7 +49,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
     onOutsideAction={onClose}
     onEscapePress={onClose}
     open={open}
-    selector="#modal"
+    selector={selector}
   >
     <Fade duration={0.3} show={!!open}>
       <div className={cn(bem(), className)} style={style}>

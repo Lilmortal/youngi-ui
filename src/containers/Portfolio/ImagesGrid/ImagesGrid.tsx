@@ -13,10 +13,13 @@ import { BreakpointContext, Breakpoints } from "../../../commons/breakpoints";
 
 const DEFAULT_NUMBER_OF_COLUMNS = 10;
 
-export type ImagesGrid = Omit<PortfolioImageResponse, "subImages" | "category">;
+export type MainImagesGrid = Omit<
+  PortfolioImageResponse,
+  "subImages" | "category"
+>;
 
 export interface ImagesGridProps {
-  imagesGrid?: ImagesGrid[];
+  imagesGrid?: MainImagesGrid[];
   isCategory?: boolean;
   numberOfColumns?: number;
   rowPixels?: number;
@@ -26,7 +29,7 @@ export interface ImagesGridProps {
 const bem = createBem(styles);
 
 interface MapGridSpacesParams {
-  image: ImagesGrid;
+  image: MainImagesGrid;
   isCategory?: boolean;
   breakpoints: Breakpoints;
 }
