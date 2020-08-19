@@ -16,6 +16,51 @@ const breakpoints: Record<BreakpointTypes, string> = {
   lg: "screen and (min-width: 992px)",
 };
 
+const Favicons: React.FC<{}> = () => (
+  <>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicons/favicon-16x16.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="/favicons/favicon-48x48.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/favicons/favicon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="/favicons/favicon-512x512.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="mask-icon"
+      href="/favicons/pinned-tab-ixon.svg"
+      color="#5bbad5"
+    />
+  </>
+);
+
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   const [locale, setLocale] = useState<SupportedLocale>();
   const [messages, setMessages] = useState<Record<string, string>>({});
@@ -30,46 +75,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicons/favicon-16x16.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicons/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="48x48"
-          href="/favicons/favicon-48x48.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="192x192"
-          href="/favicons/favicon-192x192.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="512x512"
-          href="/favicons/favicon-512x512.png"
-        />
-        <link
-          rel="apple-touch-icon"
-          sizes="120x120"
-          href="/favicons/apple-touch-icon.png"
-        />
-        <link
-          rel="mask-icon"
-          href="/favicons/pinned-tab-ixon.svg"
-          color="#5bbad5"
-        />
+        <Favicons />
       </Head>
       <BreakpointProvider queries={breakpoints}>
         <IntlProvider

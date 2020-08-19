@@ -41,29 +41,36 @@ h3 {
 
 @font-face {
   font-family: "Josefin_Sans";
+  font-display: swap;
   src: url("/fonts/Josefin_Sans/JosefinSans.woff2") format("woff2");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "Josefin_Sans";
+  font-display: swap;
   src: url("/fonts/Josefin_Sans/JosefinSans-Bold.woff2") format("woff2");
   font-weight: bold;
 }
 
 @font-face {
   font-family: "Montserrat";
-  src: url("/fonts/Montserrat/Montserrat-Regular.woff2") format("woff2");
+  font-display: swap;
+  src: local("Montserrat Regular"),
+    url("/fonts/Montserrat/Montserrat-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/Inter-Regular.woff2") format("woff2");
+  font-display: swap;
+  src: local("Inter Regular"),
+    url("/fonts/Inter/Inter-Regular.woff2") format("woff2");
   font-weight: normal;
 }
 
 @font-face {
   font-family: "Inter";
-  src: url("/fonts/Inter/Inter-Bold.woff2") format("woff2");
+  font-display: swap;
+  src: local("Inter Bold"), url("/fonts/Inter/Inter-Bold.woff2") format("woff2");
   font-weight: bold;
 }
