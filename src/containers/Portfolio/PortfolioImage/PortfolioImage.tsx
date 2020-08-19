@@ -63,14 +63,13 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
         backgroundImage: `url(${src})`,
         gridColumn: positions ? getGridColumn(positions.column) : undefined,
         gridRow: positions ? getGridRow(positions.row) : undefined,
-        // fontSizes will default to lg in scss file if not provided
         fontSize: hoveredTextFontSizes && `var(--${hoveredTextFontSizes}-font)`,
       }}
       aria-label={`${name} modal opener`}
       onClick={onClick}
       onKeyUp={handleKeyPress}
       data-image-name={name}
-      data-testid={dataTestId}
+      data-testid={dataTestId || "portfolio-image"}
       role="button"
     />
   );

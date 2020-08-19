@@ -60,6 +60,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
                 <Img
                   {...getDisplayImage(modalImage.image)}
                   className={cn(bem("image"))}
+                  data-testid="modal-image"
                 />
                 {modalImage.caption && (
                   <div className={cn(bem("caption"))}>{modalImage.caption}</div>
