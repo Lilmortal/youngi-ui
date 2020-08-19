@@ -195,6 +195,15 @@ have global type conflicts.
 We used the free tier for all our products, thus we are very limited on resources, and I'm on poverty mode at the moment.
 Cypress will not be run on commit as it takes some time to start up the server, using up valuable resources; thus, Cypress is not going to be run on our CI server. Hence, it is best practice to run Cypress locally and manually to see if anything breaks if you wish to do so.
 
+## Deployment
+
+### Development and Production environment
+
+This project uses [CircleCI](https://circleci.com/) as our CI tool to run our tests and update our CHANGELOGS if need be.
+We deploy our project using [Vercel](https://vercel.com), using `master` branch as our production environment.
+
+If you want to have access to either products, please contact <jacktan165@gmail.com>.
+
 ## Known issues
 
 ### IE11
