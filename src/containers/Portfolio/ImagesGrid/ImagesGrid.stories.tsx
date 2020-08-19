@@ -3,16 +3,14 @@ import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 
 import ImagesGrid, { ImagesGridProps } from "./ImagesGrid";
-
-const images = Array(25).fill({
-  url: "/dog.jpg",
-  name: "dog",
-});
+import { mockMainImagesGrid } from "../mock-data/data";
 
 const defaultProps: ImagesGridProps = {
   onImageClick: action(`onImageClick`),
+  numberOfColumns: 20,
+  rowPixels: 50,
 };
 
 storiesOf("ImagesGrid", module).add("with image", () => (
-  <ImagesGrid {...defaultProps} imagesGrid={images} />
+  <ImagesGrid {...defaultProps} imagesGrid={mockMainImagesGrid} />
 ));

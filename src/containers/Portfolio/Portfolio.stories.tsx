@@ -2,12 +2,25 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 
 import { PortfolioWithoutNav } from "./Portfolio";
-import { mockPortfolioCmsResponse } from "./mock-data/data";
+import {
+  mockPortfolioCmsResponse,
+  mockRandomGeneratedImageResponse,
+} from "./mock-data/data";
 import { PortfolioProps } from "./Portfolio.types";
 import MockRouter from "../../commons/Link/MockRouter";
 
-const defaultProps: PortfolioProps = {
+const mockPortfolioCmsResponseWithRandomImg = {
   ...mockPortfolioCmsResponse,
+  portfolioImagesResponse: [
+    ...mockPortfolioCmsResponse.portfolioImagesResponse.map((res) => ({
+      ...res,
+      ...mockRandomGeneratedImageResponse,
+    })),
+  ],
+};
+
+const defaultProps: PortfolioProps = {
+  ...mockPortfolioCmsResponseWithRandomImg,
 };
 
 const RenderedPortfolio: React.FC<
