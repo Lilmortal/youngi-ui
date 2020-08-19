@@ -3,6 +3,13 @@
 A portfolio website dedicated to showcasing Youngi Kim's photographs taken
 over the course of his backpacking trips around South-east Asia, and more.
 
+The website content is being updated by headless CMS, most notably what and where
+each images are placed in the DOM.
+
+This website supports dark mode (with an odd case of a bug with the loading bar being black in Android phones).
+In the future, when Strapi, the headless CMS supports internationalization, we will add it in, if the demand
+for Korean translation is still there.
+
 ## Requirements
 
 - [Node](https://nodejs.org/en/) version 10.13+
@@ -10,7 +17,7 @@ over the course of his backpacking trips around South-east Asia, and more.
 
 ## Documentation
 
-If you want to contribute this project, please read [CONTRIBUTING.md](CONTRIBUTING.md)
+If you want to contribute to this project, please read [CONTRIBUTING.md](CONTRIBUTING.md)
 before doing so, as it has some guidelines around how this project is structured.
 
 Components demos can be seen in [Storybook](https://youngi-storybook.netlify.app/). Feel free to raise a pull

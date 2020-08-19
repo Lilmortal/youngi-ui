@@ -335,7 +335,7 @@ export const mockMainImagesGrid: MainImagesGrid[] = mockPortfolioImageProps.map(
   (res) =>
     ({
       ...res,
-      randomGeneratedImage: mockRandomGeneratedImageResponse,
+      ...mockRandomGeneratedImageResponse,
     } as MainImagesGrid)
 );
 
