@@ -3,10 +3,11 @@
 ## Quick Start
 
 - You will need to clone this [CMS project](https://github.com/Lilmortal/youngi-cms) to get it's data.
-- On that project, run `yarn develop`
+- Rename `.env.overwrite` file to `.env` and update the values if required.
+- Contact <jacktan165@gmail.com> for the development environment variables to put in `.env` if you need to.
+- Run `yarn develop` in that CMS project
 - `yarn` to install the project dependencies
-- `yarn start` to run the project on `localhost:3000`
-- contact <jacktan165@gmail.com> for the development environment variables to put in `.env`.
+- `yarn start` to run this project on `localhost:3000`
 
 ## Useful Commands
 
@@ -132,6 +133,10 @@ To export scss variables, you can do so via:
 
 Note that all CSS variables being exported must be under `global`.
 
+### CSS Keyframes
+
+All CSS keyframes must start with `animation-`.
+
 ### Inline SVG
 
 `Next.js` do not support inline SVG by default. This project is able to get around it by adding its own custom loader to handle it.
@@ -164,6 +169,8 @@ general overview over how this project is structured:
 - `/styles` are where all global CSS variables are located. They are referenced in `/pages/_app.tsx`, which is the only file
   `Next.js` allows to have global imports or variables.
 - `/types` stores all global typescript definitions.
+- `/templates` stores all general templates that will be used by containers.
+- `/locales` stores all i18n related files.
 
 ### File Naming Conventions
 
@@ -183,11 +190,10 @@ All Cypress test files must begin with `/// <reference types="cypress" />` or yo
 It is a known [Github issue](https://github.com/cypress-io/cypress/issues/1319) where Jest and Cypress (which uses Chai underneath)
 have global type conflicts.
 
-### Run locally before you make a deployment
+### Run Cypress locally before you make a deployment if you want to do E2E testing
 
 We used the free tier for all our products, thus we are very limited on resources, and I'm on poverty mode at the moment.
-Thus, Cypress is not going to be run on our CI server. Cypress will not be run on commit as it takes some time to start up the server,
-as well as the CMS. Hence, it is best practice to run Cypress locally and manually to see if anything breaks.
+Cypress will not be run on commit as it takes some time to start up the server, using up valuable resources; thus, Cypress is not going to be run on our CI server. Hence, it is best practice to run Cypress locally and manually to see if anything breaks if you wish to do so.
 
 ## Known issues
 
@@ -195,14 +201,9 @@ as well as the CMS. Hence, it is best practice to run Cypress locally and manual
 
 This project currently does not support IE11 and [have no intention of doing so](https://death-to-ie11.com/).
 
-## CMS update should automatically deploy this project
-
-Will need to look into it. As of now, here is a (suggestion)[https://github.com/zeit/next.js/discussions/12473#discussioncomment-8690] on how
-to achieve this, but it is currently in an unreleased state and are subject to change...
-
 ## Potential issue
 
 ## Heroku idle time
 
 Strapi CMS is currently hosted on a free Heroku account. By default, it will go on hibernation after 30 minutes of idle activities.
-This project might timed out when it calls Strapi API, will need to look into retries/exponential-backup solutions.
+Just something to be aware of.
