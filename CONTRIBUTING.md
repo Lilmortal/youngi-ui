@@ -212,7 +212,17 @@ This project currently does not support IE11 and [have no intention of doing so]
 
 ## Potential issue
 
-## Heroku idle time
+### Heroku idle time
 
 Strapi CMS is currently hosted on a free Heroku account. By default, it will go on hibernation after 30 minutes of idle activities.
 Just something to be aware of.
+
+## TODO
+
+### data-testid
+
+Someone figure out a way or just import a library to strip out data-testid on production!
+
+### webP
+
+Strapi should be able to convert images uploaded to S3 as webP format.

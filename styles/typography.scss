@@ -61,6 +61,13 @@ h3 {
 }
 
 @font-face {
+  font-family: "Montserrat";
+  font-display: swap;
+  src: local("Montserrat Bold"),
+    url("/fonts/Montserrat/Montserrat-Bold.woff2") format("woff2");
+}
+
+@font-face {
   font-family: "Inter";
   font-display: swap;
   src: local("Inter Regular"),
