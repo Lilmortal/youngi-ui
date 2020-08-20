@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/Lilmortal/youngi-ui/compare/v3.2.5...v3.3.0) (2020-08-20)
+
+
+### Features
+
+* selected links are now bold ([4e6d6d4](https://github.com/Lilmortal/youngi-ui/commit/4e6d6d476847e0319ce08fab69500add2852b60c))
+
 ### [3.2.5](https://github.com/Lilmortal/youngi-ui/compare/v3.2.4...v3.2.5) (2020-08-19)
 
 ### [3.2.4](https://github.com/Lilmortal/youngi-ui/compare/v3.2.3...v3.2.4) (2020-08-19)
