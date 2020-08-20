@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.1](https://github.com/Lilmortal/youngi-ui/compare/v3.3.0...v3.3.1) (2020-08-20)
+
+
+### Bug Fixes
+
+* main template margin too big ([2798e29](https://github.com/Lilmortal/youngi-ui/commit/2798e29377fc6695db97019beb6ab14be464d872))
+
 ## [3.3.0](https://github.com/Lilmortal/youngi-ui/compare/v3.2.5...v3.3.0) (2020-08-20)
 
 
