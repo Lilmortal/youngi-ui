@@ -5,6 +5,7 @@ import styles from "./Link.module.scss";
 
 export interface NextLinkProps extends Styleable {
   link?: LinkProps;
+  selected?: boolean;
   externalLink?: string;
   children: React.ReactNode;
 }
@@ -13,6 +14,7 @@ const bem = createBem(styles);
 
 const NextLink: React.FC<NextLinkProps> = ({
   link,
+  selected,
   children,
   externalLink,
   className,
@@ -20,7 +22,7 @@ const NextLink: React.FC<NextLinkProps> = ({
 }) => {
   const anchor = (
     <a
-      className={cn(bem(), className)}
+      className={cn(bem("", { selected }), className)}
       style={style}
       href={externalLink}
       tabIndex={externalLink ? undefined : 0}

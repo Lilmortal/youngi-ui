@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { IntlProviderContext } from "../intl/IntlProvider";
 import { NextLinkProps } from "../Link";
 import { PortfolioCategoryResponse } from "../../containers/Portfolio";
+import { useRouter } from "next/router";
 
 interface CategoriesLinksHooks {
   categories: PortfolioCategoryResponse[];
@@ -10,25 +11,33 @@ interface CategoriesLinksHooks {
 const useCategoriesLinks = ({
   categories,
 }: CategoriesLinksHooks): NextLinkProps[] => {
+  const router = useRouter();
   const context = useContext(IntlProviderContext);
 
   const links: NextLinkProps[] = [];
 
-  categories?.map((category) =>
+  const categoriesHref = `/[lang]/[category]`;
+
+  categories?.forEach((category) =>
     links.push({
       link: {
-        href: `/[lang]/[category]`,
+        href: categoriesHref,
         as: `/${context.locale}/${category.type?.toLowerCase()}`,
       },
+      selected:
+        router.pathname === categoriesHref &&
+        router.query?.category === category.type?.toLowerCase(),
       children: category.type || "",
     })
   );
 
+  const href = `/[lang]`;
   links.push({
     link: {
-      href: `/[lang]`,
+      href,
       as: `/${context.locale}`,
     },
+    selected: router.pathname === href && router.query?.category === undefined,
     children: "all",
   });
 
