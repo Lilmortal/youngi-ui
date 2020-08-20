@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.2](https://github.com/Lilmortal/youngi-ui/compare/v3.3.1...v3.3.2) (2020-08-20)
+
+
+### Bug Fixes
+
+* locale redirects are shallow and removed 'redirect' text ([a2dea18](https://github.com/Lilmortal/youngi-ui/commit/a2dea1811bb79f455871acfe52f20bf5e3e8c4ee))
+
 ### [3.3.1](https://github.com/Lilmortal/youngi-ui/compare/v3.3.0...v3.3.1) (2020-08-20)
 
 
