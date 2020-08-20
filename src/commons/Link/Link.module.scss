@@ -7,4 +7,8 @@
   &:hover {
     border-bottom: 1px solid var(--link-border-primary);
   }
+
+  &--selected {
+    font-weight: bold;
+  }
 }
