@@ -64,9 +64,13 @@ const IntlProvider: React.FC<IntlProviderProps> = ({
           context.locale &&
           isPathnameValid(pathnameWithLocaleAppended, context.locale)
         ) {
-          router.replace({
-            pathname: pathnameWithLocaleAppended,
-          });
+          router.push(
+            {
+              pathname: pathnameWithLocaleAppended,
+            },
+            undefined,
+            { shallow: true }
+          );
         }
       }
 
