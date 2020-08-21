@@ -100,6 +100,7 @@ export default class MyDocument extends Document {
         <Head>
           <PreloadedFonts />
           <Favicons />
+          <style>{`#__next { height: 100% }`}</style>
         </Head>
         <body>
           <Main />
