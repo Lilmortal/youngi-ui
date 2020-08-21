@@ -54,7 +54,7 @@ const getPositions = ({
     throw new Error(
       `Mobile starting or ending position ${
         image.title ? `for ${image.title} ` : ""
-      }is empty. 
+      }is either empty or is 0. 
 Tablet and desktop positions are taken from mobile if it is empty, but mobile is compulsory.
 
 ${
