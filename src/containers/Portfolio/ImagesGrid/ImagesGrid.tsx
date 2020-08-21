@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { cn, createBem } from "../../../../utils";
 import isEqual from "lodash.isequal";
 import uuid from "react-uuid";
@@ -9,7 +9,8 @@ import { ImgProps } from "../../../commons/Img";
 import Fade from "../../../commons/Fade";
 import { PortfolioImageResponse } from "../Portfolio.types";
 import { GridSpaces, GridPosition } from "../PortfolioImage/PortfolioImage";
-import { BreakpointContext, Breakpoints } from "../../../commons/breakpoints";
+import { Breakpoints } from "../../../commons/breakpoints";
+import usePrevious from "../../../commons/usePrevious";
 
 const DEFAULT_NUMBER_OF_COLUMNS = 10;
 
@@ -19,6 +20,7 @@ export type MainImagesGrid = Omit<
 >;
 
 export interface ImagesGridProps {
+  breakpoints: Breakpoints;
   imagesGrid?: MainImagesGrid[];
   isCategory?: boolean;
   numberOfColumns?: number;
@@ -148,13 +150,24 @@ const validateColumnIsNotOutOfBounds = (
 };
 
 const ImagesGrid: React.FC<ImagesGridProps> = ({
+  breakpoints,
   imagesGrid,
   numberOfColumns = DEFAULT_NUMBER_OF_COLUMNS,
   isCategory,
   rowPixels,
   onImageClick,
 }) => {
-  const breakpoints = useContext(BreakpointContext);
+  const [loaded, setLoaded] = useState(false);
+
+  const prevBreakpoints = usePrevious(breakpoints);
+
+  useEffect(() => {
+    if (breakpoints !== prevBreakpoints) {
+      setLoaded(true);
+    } else {
+      setLoaded(false);
+    }
+  }, [breakpoints, prevBreakpoints]);
 
   let fadeInSeconds = 0;
 
@@ -183,14 +196,14 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
 
         validateColumnIsNotOutOfBounds(positions.column, numberOfColumns);
 
-        fadeInSeconds = fadeInSeconds + 0.2;
+        fadeInSeconds = fadeInSeconds + 0.05;
 
         if (!portfolioImage) {
           return null;
         }
 
         return (
-          <Fade duration={0.3} show key={uuid()}>
+          <Fade duration={loaded ? 0 : 0.3} show key={uuid()}>
             <PortfolioImage
               name={portfolioImage.name}
               src={portfolioImage.url}
@@ -198,7 +211,11 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
               data-testid={imageGrid.id}
               hoveredTextFontSizes={imageGrid.hoveredTextFontSizes}
               onClick={(): void => onImageClick(portfolioImage)}
-              style={{ animationDelay: `${fadeInSeconds.toString()}s` }}
+              style={{
+                animationDelay: loaded
+                  ? undefined
+                  : `${fadeInSeconds.toString()}s`,
+              }}
             />
           </Fade>
         );

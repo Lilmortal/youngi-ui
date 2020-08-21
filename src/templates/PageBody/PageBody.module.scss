@@ -5,10 +5,21 @@ html {
   margin: 0;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.04rem;
   color: var(--body-primary);
   background-color: var(--body-background-primary);
   overflow-y: scroll;
+  height: 100%;
+}
+
+.pageBody {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
