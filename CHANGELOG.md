@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.3](https://github.com/Lilmortal/youngi-ui/compare/v3.3.2...v3.3.3) (2020-08-21)
+
+
+### Bug Fixes
+
+* added mockBreakpoints ([1ce32a0](https://github.com/Lilmortal/youngi-ui/commit/1ce32a0dd753c63da53e3b1588009c9889b42511))
+* center text align hovered portfolio image description ([6797fa8](https://github.com/Lilmortal/youngi-ui/commit/6797fa8bc607327ef290be0c391434e57f895312))
+* fade image only on first load ([99ac66a](https://github.com/Lilmortal/youngi-ui/commit/99ac66aed3b08133777cdf96f81c0de2ecd447e7))
+* flex grow withNav, move loader text slightly down ([9cdad49](https://github.com/Lilmortal/youngi-ui/commit/9cdad49ec126c07d1b53374b18ab02da9b12e2a9))
+
 ### [3.3.2](https://github.com/Lilmortal/youngi-ui/compare/v3.3.1...v3.3.2) (2020-08-20)
 
 
