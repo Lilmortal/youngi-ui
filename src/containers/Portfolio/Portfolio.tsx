@@ -77,6 +77,7 @@ const Portfolio: React.FC<PortfolioProps> = ({
       {!isLoaderAnimating || !breakpoints.md ? (
         <div className={cn(bem("images"))} data-testid="portfolioImages">
           <ImagesGrid
+            breakpoints={breakpoints}
             imagesGrid={categoryImages}
             isCategory={!!imagesType}
             numberOfColumns={numberOfColumns}

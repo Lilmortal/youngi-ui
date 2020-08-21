@@ -3,10 +3,12 @@ import React from "react";
 import { render, RenderResult } from "@testing-library/react";
 import ImagesGrid, { ImagesGridProps } from "./ImagesGrid";
 import { mockPortfolioImageProps } from "../mock-data/data";
+import { mockBreakpoints } from "../../../commons/breakpoints/mock-data/data";
 
 const onImageClick = jest.fn();
 
 const defaultProps: ImagesGridProps = {
+  breakpoints: mockBreakpoints,
   imagesGrid: [...mockPortfolioImageProps],
   numberOfColumns: 10,
   rowPixels: 100,
