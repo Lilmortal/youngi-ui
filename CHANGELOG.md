@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.4](https://github.com/Lilmortal/youngi-ui/compare/v3.3.3...v3.3.4) (2020-08-21)
+
+
+### Bug Fixes
+
+* portfolio modal to use h2 ([1e38796](https://github.com/Lilmortal/youngi-ui/commit/1e3879634ab38dbd65801c41e00e31b4629659a5))
+
 ### [3.3.3](https://github.com/Lilmortal/youngi-ui/compare/v3.3.2...v3.3.3) (2020-08-21)
 
 
