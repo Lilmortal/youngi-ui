@@ -44,7 +44,7 @@ describe("images grid", () => {
     }));
 
     expect(() => renderImagesGrid({ imagesGrid: updatedImages }))
-      .toThrowError(`Mobile starting or ending position for architecture title is empty. 
+      .toThrowError(`Mobile starting or ending position for architecture title is either empty or is 0. 
 Tablet and desktop positions are taken from mobile if it is empty, but mobile is compulsory.`);
   });
 
@@ -74,7 +74,7 @@ Tablet and desktop positions are taken from mobile if it is empty, but mobile is
     expect(() =>
       renderImagesGrid({ imagesGrid: updatedImages, isCategory: true })
     )
-      .toThrowError(`Mobile starting or ending position for architecture title is empty. 
+      .toThrowError(`Mobile starting or ending position for architecture title is either empty or is 0. 
 Tablet and desktop positions are taken from mobile if it is empty, but mobile is compulsory.`);
   });
 
