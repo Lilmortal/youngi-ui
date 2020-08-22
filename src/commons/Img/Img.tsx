@@ -42,16 +42,27 @@ const Img: React.FC<ImgProps> = ({
   "data-testid": dataTestId,
 }) => {
   const srcSet = [];
+  const sizes = [];
+
   if (formats?.large?.url) {
     srcSet.push(`${formats.large.url} ${formats.large.width}w`);
+    sizes.push(
+      `(min-width: ${formats.large.width}px) ${formats.large.width}px`
+    );
   }
 
   if (formats?.medium?.url) {
     srcSet.push(`${formats.medium.url} ${formats.medium.width}w`);
+    sizes.push(
+      `(min-width: ${formats.medium.width}px) ${formats.medium.width}px`
+    );
   }
 
   if (formats?.small?.url) {
     srcSet.push(`${formats.small.url} ${formats.small.width}w`);
+    sizes.push(
+      `(min-width: ${formats.small.width}px) ${formats.small.width}px`
+    );
   }
 
   return (
@@ -87,6 +98,7 @@ const Img: React.FC<ImgProps> = ({
         onMouseEnter={onHover}
         onMouseOut={onHoverOut}
         data-testid={dataTestId}
+        sizes={sizes.join(",") || undefined}
       />
     </picture>
   );
