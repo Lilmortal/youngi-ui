@@ -11,11 +11,11 @@ export interface NavProps {
 const bem = createBem(styles);
 
 const Nav: React.FC<NavProps> = ({ links }) => (
-  <div className={bem()}>
+  <nav className={bem()}>
     {links.map((link) => (
       <Link {...link} key={uuid()} className={bem("link")} />
     ))}
-  </div>
+  </nav>
 );
 
 export default Nav;

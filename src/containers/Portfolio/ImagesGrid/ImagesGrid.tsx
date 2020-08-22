@@ -224,6 +224,9 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
   );
 };
 
-export default React.memo(ImagesGrid, (prevProps, nextProps) =>
-  isEqual(prevProps.imagesGrid, nextProps.imagesGrid)
+export default React.memo(
+  ImagesGrid,
+  (prevProps, nextProps) =>
+    isEqual(prevProps.imagesGrid, nextProps.imagesGrid) &&
+    isEqual(prevProps.breakpoints, nextProps.breakpoints)
 );
