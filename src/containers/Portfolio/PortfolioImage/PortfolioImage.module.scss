@@ -7,6 +7,7 @@
   background-position: center;
   font-size: var(--sm-font);
   color: var(--hovered-portfolio-image-primary);
+  box-shadow: 10px 10px 19px -7px rgba(0, 0, 0, 0.75);
 
   @include breakpoints.sm {
     font-size: var(--md-font);
