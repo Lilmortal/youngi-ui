@@ -30,10 +30,10 @@ const bem = createBem(styles);
 
 const Img: React.FC<ImgProps> = ({
   name,
-  url,
   width,
   height,
   formats,
+  url = formats?.large?.url,
   className,
   style,
   onClick,
@@ -43,32 +43,52 @@ const Img: React.FC<ImgProps> = ({
 }) => {
   const srcSet = [];
   if (formats?.large?.url) {
-    srcSet.push(`${formats?.large?.url} 4x`);
+    srcSet.push(`${formats.large.url} ${formats.large.width}w`);
   }
 
   if (formats?.medium?.url) {
-    srcSet.push(`${formats?.medium?.url} 3x`);
+    srcSet.push(`${formats.medium.url} ${formats.medium.width}w`);
   }
 
   if (formats?.small?.url) {
-    srcSet.push(`${formats?.small?.url} 2x`);
+    srcSet.push(`${formats.small.url} ${formats.small.width}w`);
   }
 
   return (
-    <img
-      src={url}
-      alt={name}
-      width={width}
-      height={height}
-      className={cn(bem(), className)}
-      style={style}
-      onClick={onClick}
-      role={onClick ? "button" : undefined}
-      srcSet={srcSet.join(",") || undefined}
-      onMouseEnter={onHover}
-      onMouseOut={onHoverOut}
-      data-testid={dataTestId}
-    />
+    <picture>
+      {formats?.large?.url && (
+        <source
+          media={`(min-width: ${formats?.large?.width}px)`}
+          srcSet={formats?.large?.url}
+        />
+      )}
+      {formats?.medium?.url && (
+        <source
+          media={`(min-width: ${formats?.medium?.width}px)`}
+          srcSet={formats?.medium?.url}
+        />
+      )}
+      {formats?.small?.url && (
+        <source
+          media={`(min-width: ${formats?.small?.width}px)`}
+          srcSet={formats?.small?.url}
+        />
+      )}
+      <img
+        src={url}
+        alt={name}
+        width={width}
+        height={height}
+        className={cn(bem(), className)}
+        style={style}
+        onClick={onClick}
+        role={onClick ? "button" : undefined}
+        srcSet={srcSet.join(",") || undefined}
+        onMouseEnter={onHover}
+        onMouseOut={onHoverOut}
+        data-testid={dataTestId}
+      />
+    </picture>
   );
 };
 
