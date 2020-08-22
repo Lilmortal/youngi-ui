@@ -11,11 +11,11 @@ export interface CategoriesNavProps {
 const bem = createBem(styles);
 
 const CategoriesNav: React.FC<CategoriesNavProps> = ({ links }) => (
-  <div className={cn(bem())}>
+  <nav className={cn(bem())}>
     {links.map((link) => (
       <Link {...link} key={uuid()} className={cn(bem("link"))} />
     ))}
-  </div>
+  </nav>
 );
 
 export default CategoriesNav;

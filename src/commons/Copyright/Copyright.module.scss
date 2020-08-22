@@ -1,9 +1,8 @@
 @use '../../../styles/mixins/breakpoints';
 
 .copyright {
-  opacity: 0.4;
   font-family: "Inter", sans-serif;
-  font-weight: lighter;
+  color: var(--copyright-primary);
   font-style: italic;
   font-size: var(--xs-font);
   position: fixed;

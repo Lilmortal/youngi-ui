@@ -96,7 +96,8 @@ const Favicons: React.FC<{}> = () => (
 export default class MyDocument extends Document {
   render(): React.ReactElement {
     return (
-      <html>
+      // TODO: lang en for now, figure out how to use IntlProvider here
+      <html lang="en">
         <Head>
           <PreloadedFonts />
           <Favicons />

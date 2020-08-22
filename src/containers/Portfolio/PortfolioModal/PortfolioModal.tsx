@@ -27,12 +27,20 @@ const isVerticalImage = (image: ImgProps): boolean => {
   return false;
 };
 
-const getDisplayImage = (image: ImgProps): ImgProps =>
-  (!isVerticalImage(image) && image.formats?.large) ||
-  image.formats?.medium ||
-  image.formats?.small ||
-  image.formats?.thumbnail ||
-  image;
+const getModalImage = (image: ImgProps): ImgProps => ({
+  ...image,
+  url:
+    (!isVerticalImage(image) && image.formats?.large?.url) ||
+    image.formats?.medium?.url ||
+    image.formats?.small?.url ||
+    image.url,
+  formats: {
+    ...image.formats,
+    large: isVerticalImage(image) ? undefined : image.formats?.large,
+  },
+  width: undefined,
+  height: undefined,
+});
 
 const PortfolioModal: React.FC<PortfolioModalProps> = ({
   images,
@@ -58,8 +66,7 @@ const PortfolioModal: React.FC<PortfolioModalProps> = ({
             {modalImage.image && (
               <>
                 <Img
-                  {...getDisplayImage(modalImage.image)}
-                  className={cn(bem("image"))}
+                  {...getModalImage(modalImage.image)}
                   data-testid="modal-image"
                 />
                 {modalImage.caption && (

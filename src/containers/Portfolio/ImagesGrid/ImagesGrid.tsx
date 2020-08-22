@@ -206,7 +206,7 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
           <Fade duration={loaded ? 0 : 0.3} show key={uuid()}>
             <PortfolioImage
               name={portfolioImage.name}
-              src={portfolioImage.url}
+              src={portfolioImage.formats?.large?.url || portfolioImage.url}
               positions={positions}
               data-testid={imageGrid.id}
               hoveredTextFontSizes={imageGrid.hoveredTextFontSizes}
@@ -224,6 +224,9 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
   );
 };
 
-export default React.memo(ImagesGrid, (prevProps, nextProps) =>
-  isEqual(prevProps.imagesGrid, nextProps.imagesGrid)
+export default React.memo(
+  ImagesGrid,
+  (prevProps, nextProps) =>
+    isEqual(prevProps.imagesGrid, nextProps.imagesGrid) &&
+    isEqual(prevProps.breakpoints, nextProps.breakpoints)
 );
