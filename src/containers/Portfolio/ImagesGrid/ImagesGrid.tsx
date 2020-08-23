@@ -14,6 +14,7 @@ import {
   getPositions,
   validateColumnIsNotOutOfBounds,
 } from "./ImagesGrid.util";
+import useLazyLoad from "../../../commons/useLazyLoad";
 
 const DEFAULT_NUMBER_OF_COLUMNS = 10;
 
@@ -44,6 +45,10 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
   const [loaded, setLoaded] = useState(false);
 
   const prevBreakpoints = usePrevious(breakpoints);
+
+  const imageClassName = bem("image");
+
+  useLazyLoad(imageClassName);
 
   useEffect(() => {
     if (prevBreakpoints && breakpoints !== prevBreakpoints) {
@@ -88,6 +93,8 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
           <Fade duration={loaded ? 0 : 0.3} show key={uuid()}>
             <PortfolioImage
               name={portfolioImage.name}
+              isLazyLoaded
+              className={imageClassName}
               src={portfolioImage.formats?.large?.url || portfolioImage.url}
               positions={positions}
               data-testid={imageGrid.id}
