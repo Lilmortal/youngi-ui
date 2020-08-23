@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { NextLinkProps } from "../Link";
-import { NavResponse } from "../../templates/withNav";
 import { IntlProviderContext } from "../intl/IntlProvider";
 import { useRouter } from "next/router";
+import { NavResponse } from "../../templates/Main";
 
 interface NavHooks {
   navigations: NavResponse[];
