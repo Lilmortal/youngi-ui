@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.4.0](https://github.com/Lilmortal/youngi-ui/compare/v3.3.7...v3.4.0) (2020-08-23)
+
+
+### Features
+
+* added lazy loading to portfolio image ([4f61667](https://github.com/Lilmortal/youngi-ui/commit/4f61667475a9ea8d96aebeb99c60f12234faa095))
+
 ### [3.3.7](https://github.com/Lilmortal/youngi-ui/compare/v3.3.6...v3.3.7) (2020-08-23)
 
 ### [3.3.6](https://github.com/Lilmortal/youngi-ui/compare/v3.3.5...v3.3.6) (2020-08-23)
