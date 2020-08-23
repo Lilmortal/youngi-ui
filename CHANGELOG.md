@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.6](https://github.com/Lilmortal/youngi-ui/compare/v3.3.5...v3.3.6) (2020-08-23)
+
+
+### Bug Fixes
+
+* categoriesNav is fixed, removed image box-shadow ([7fd4403](https://github.com/Lilmortal/youngi-ui/commit/7fd4403d8c990890f51ed657036173eab9f8a9b3))
+
 ### [3.3.5](https://github.com/Lilmortal/youngi-ui/compare/v3.3.4...v3.3.5) (2020-08-22)
 
 ### [3.3.4](https://github.com/Lilmortal/youngi-ui/compare/v3.3.3...v3.3.4) (2020-08-21)
