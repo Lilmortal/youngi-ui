@@ -16,17 +16,32 @@
   @include breakpoints.smLandscape {
     transform: none;
     background-color: var(--categoriesNav-primary);
-    top: 0;
+    top: auto;
     left: 0;
     right: 0;
-    padding-top: 1rem;
+    bottom: 0;
+    height: 3rem;
   }
 
   &__link {
     display: inline-block;
     margin-left: var(--md-spacing);
 
+    // This is so we can move "All" to the front
     @include breakpoints.smLandscape {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      margin: 0;
+      border: 1px solid #f3f3f3;
+      font-size: var(--xs-font);
+
+      &:hover {
+        border: 1px solid #f3f3f3;
+        background-color: #f3f3f3;
+      }
+
       &:last-child {
         order: -1;
       }
