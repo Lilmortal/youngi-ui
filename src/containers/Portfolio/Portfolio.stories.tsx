@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import { PortfolioWithoutNav } from "./Portfolio";
+import { Portfolio } from "./Portfolio";
 import {
   mockPortfolioCmsResponse,
   mockRandomGeneratedImageResponse,
@@ -27,7 +27,7 @@ const RenderedPortfolio: React.FC<
   Partial<PortfolioProps> & { category?: string }
 > = (props) => (
   <MockRouter value={{ query: { category: props.category } }}>
-    <PortfolioWithoutNav {...defaultProps} {...props} />
+    <Portfolio {...defaultProps} {...props} />
   </MockRouter>
 );
 

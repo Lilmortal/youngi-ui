@@ -8,8 +8,8 @@ export interface PageBodyProps {
 
 const bem = createBem(styles);
 
-const PageBody: React.FC<PageBodyProps> = ({ children }) => (
-  <main className={cn(bem())}>{children}</main>
-);
+const PageBody: React.FC<PageBodyProps> = ({ children }) => {
+  return <main className={cn(bem())}>{children}</main>;
+};
 
 export default PageBody;

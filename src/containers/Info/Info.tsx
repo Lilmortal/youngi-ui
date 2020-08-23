@@ -6,8 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { cn, createBem } from "../../../utils";
 import styles from "./Info.module.scss";
 import { getInfoProps } from "./api-client";
-import withNav, { withNavProps } from "../../templates/withNav";
-import Main from "../../templates/Main";
+import Main, { withMainLayoutProps, MainProps } from "../../templates/Main";
 
 const bem = createBem(styles);
 
@@ -19,27 +18,23 @@ export interface InfoOwnProps {
 
 export interface InfoProps extends InfoOwnProps, Styleable {}
 
-const Info: React.FC<InfoProps> = ({
+export const Info: React.FC<InfoProps> = ({
   metaTitle,
   metaDescription,
   biography,
   className,
   style,
 }) => (
-  <Main>
-    <div className={cn(bem(), className)} style={style}>
-      <Head>
-        {metaTitle && <title>{metaTitle}</title>}
-        {metaDescription && (
-          <meta name="description" content={metaDescription} />
-        )}
-      </Head>
+  <div className={cn(bem(), className)} style={style}>
+    <Head>
+      {metaTitle && <title>{metaTitle}</title>}
+      {metaDescription && <meta name="description" content={metaDescription} />}
+    </Head>
 
-      <div className={cn(bem("biography"))}>
-        {biography && <ReactMarkdown source={biography} />}
-      </div>
+    <div className={cn(bem("biography"))}>
+      {biography && <ReactMarkdown source={biography} />}
     </div>
-  </Main>
+  </div>
 );
 
 const getInfoStaticProps: GetStaticProps = async () => {
@@ -58,8 +53,12 @@ const getInfoStaticProps: GetStaticProps = async () => {
   };
 };
 
-export const getStaticProps = withNavProps(getInfoStaticProps);
+export const getStaticProps = withMainLayoutProps(getInfoStaticProps);
 
-export const InfoWithoutNav = Info;
+const InfoLayout: React.FC<InfoProps & MainProps> = (props) => (
+  <Main {...props}>
+    <Info {...props} />
+  </Main>
+);
 
-export default withNav(Info)({ displayCopyrightMark: true });
+export default InfoLayout;

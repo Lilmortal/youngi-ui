@@ -162,12 +162,10 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
   const prevBreakpoints = usePrevious(breakpoints);
 
   useEffect(() => {
-    if (breakpoints !== prevBreakpoints) {
+    if (prevBreakpoints && breakpoints !== prevBreakpoints) {
       setLoaded(true);
-    } else {
-      setLoaded(false);
     }
-  }, [breakpoints, prevBreakpoints]);
+  }, [prevBreakpoints, breakpoints]);
 
   let fadeInSeconds = 0;
 

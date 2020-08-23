@@ -8,6 +8,7 @@ import {
   BreakpointProvider,
   BreakpointTypes,
 } from "../src/commons/breakpoints";
+import PageBody from "../src/templates/PageBody";
 
 const breakpoints: Record<BreakpointTypes, string> = {
   sm: "screen and (min-width: 544px)",
@@ -34,7 +35,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         setLocale={setLocale}
         setMessages={setMessages}
       >
-        {isAppReady ? <Component {...pageProps} /> : null}
+        <PageBody>{isAppReady ? <Component {...pageProps} /> : null}</PageBody>
       </IntlProvider>
     </BreakpointProvider>
   );

@@ -1,10 +1,12 @@
 import { GetStaticProps, GetStaticPropsContext } from "next";
 import merge from "lodash.merge";
 import { getPortfolioCategories, getNav, getContacts } from "./api-client";
-import { NavProps, NavResponse, ContactResponse } from "./withNav.types";
+import { NavProps, NavResponse, ContactResponse } from "./Main.types";
 import { PortfolioCategoryResponse } from "../../containers/Portfolio";
 
-const withNavProps = (getStaticProps: GetStaticProps): GetStaticProps => async (
+const withMainLayoutProps = (
+  getStaticProps: GetStaticProps
+): GetStaticProps => async (
   ctx: GetStaticPropsContext
 ): Promise<{
   props: NavProps & { [key: string]: unknown };
@@ -29,4 +31,4 @@ const withNavProps = (getStaticProps: GetStaticProps): GetStaticProps => async (
   };
 };
 
-export default withNavProps;
+export default withMainLayoutProps;
