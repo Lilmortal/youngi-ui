@@ -40,7 +40,7 @@ $messageZoomOutDelay: $slideBackDelay + $messageDelayAfterAppear;
     position: absolute;
     width: $barWidth;
     height: 100%;
-    background-color: var(--loader-bar-primary);
+    background-color: var(--background-color-inverted-primary);
     opacity: 0;
 
     &--isAnimating {

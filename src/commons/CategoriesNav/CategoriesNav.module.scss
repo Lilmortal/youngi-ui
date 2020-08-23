@@ -10,12 +10,9 @@
   left: 1rem;
   z-index: var(--xs-zIndex);
 
-  // If in the future we decided to have more categories, we will need to design
-  // a hamburger menu or something to accommodate the fact that this navigation
-  // will soon overflow.
   @include breakpoints.smLandscape {
     transform: none;
-    background-color: var(--categoriesNav-primary);
+    background-color: var(--background-color-primary);
     top: auto;
     left: 0;
     right: 0;
@@ -34,12 +31,13 @@
       justify-content: center;
       flex-grow: 1;
       margin: 0;
-      border: 1px solid #f3f3f3;
+      border: 1px solid var(--categoriesNav-border-primary);
       font-size: var(--xs-font);
 
       &:hover {
-        border: 1px solid #f3f3f3;
-        background-color: #f3f3f3;
+        border: 1px solid var(--categoriesNav-border-primary);
+        background-color: var(--categoriesNav-background-primary);
+        color: var(--categoriesNav-color-primary);
       }
 
       &:last-child {

@@ -1,22 +1,22 @@
 :root,
 [data-theme="default"] {
-  --link-primary: var(--black);
+  --color-primary: var(--black);
+  --background-color-primary: var(--white);
+  --background-color-inverted-primary: var(--black);
   --link-border-primary: var(--black);
-  --body-primary: var(--black);
-  --body-background-primary: var(--white);
-  --loader-bar-primary: var(--black);
-  --categoriesNav-primary: var(--white);
+  --categoriesNav-color-primary: var(--black);
+  --categoriesNav-background-primary: var(--gray-secondary);
+  --categoriesNav-border-primary: var(--gray-secondary);
   --copyright-primary: var(--gray);
   --hovered-portfolio-image-primary: var(--black);
 
   // TODO: If Youngi wants more theme options, create a ThemeProvider
   // and inject data-theme into body
   @media (prefers-color-scheme: dark) {
-    --link-primary: var(--white);
+    --color-primary: var(--white);
+    --background-color-primary: var(--black);
+    --background-color-inverted-primary: var(--white);
     --link-border-primary: var(--white);
-    --body-primary: var(--white);
-    --body-background-primary: var(--black);
-    --categoriesNav-primary: var(--black);
-    --loader-bar-primary: var(--white);
+
   }
 }
