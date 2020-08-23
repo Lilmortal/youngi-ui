@@ -45,7 +45,7 @@ describe("images grid", () => {
 
     expect(() => renderImagesGrid({ imagesGrid: updatedImages }))
       .toThrowError(`Mobile starting or ending position for architecture title is either empty or is 0. 
-Tablet and desktop positions are taken from mobile if it is empty, but mobile is compulsory.`);
+  Tablet and desktop positions are taken from mobile if it is empty, but mobile is compulsory.`);
   });
 
   it("should throw an error if one of the image starting position is greater than the number of columns", () => {
@@ -59,7 +59,7 @@ Tablet and desktop positions are taken from mobile if it is empty, but mobile is
 
     expect(() => renderImagesGrid({ imagesGrid: updatedImages }))
       .toThrowError(`column starting position which is at position 99999 must not be greater than the total number
-       of columns available which is currently at 10.`);
+      of columns available which is currently at 10.`);
   });
 
   it("should throw an error if mobile category positions are not provided if category is selected", () => {
@@ -75,7 +75,7 @@ Tablet and desktop positions are taken from mobile if it is empty, but mobile is
       renderImagesGrid({ imagesGrid: updatedImages, isCategory: true })
     )
       .toThrowError(`Mobile starting or ending position for architecture title is either empty or is 0. 
-Tablet and desktop positions are taken from mobile if it is empty, but mobile is compulsory.`);
+  Tablet and desktop positions are taken from mobile if it is empty, but mobile is compulsory.`);
   });
 
   it("should render category images if category is selected", () => {

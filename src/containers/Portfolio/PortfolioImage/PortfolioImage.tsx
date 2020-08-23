@@ -17,6 +17,7 @@ export interface PortfolioImageProps extends Styleable {
   src: string;
   name: string;
   positions?: GridSpaces;
+  isLazyLoaded?: boolean;
   hoveredTextFontSizes?: HoveredTextFontSizes;
   dataTestId?: number | string;
   onClick(): void;
@@ -43,6 +44,7 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
   style,
   src,
   name,
+  isLazyLoaded,
   positions,
   hoveredTextFontSizes,
   dataTestId,
@@ -60,7 +62,7 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
       tabIndex={0}
       style={{
         ...style,
-        backgroundImage: `url(${src})`,
+        backgroundImage: isLazyLoaded ? undefined : `url(${src})`,
         gridColumn: positions ? getGridColumn(positions.column) : undefined,
         gridRow: positions ? getGridRow(positions.row) : undefined,
         fontSize: hoveredTextFontSizes && `var(--${hoveredTextFontSizes}-font)`,
@@ -68,6 +70,7 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
       aria-label={`${name} modal opener`}
       onClick={onClick}
       onKeyUp={handleKeyPress}
+      data-src={isLazyLoaded ? src : undefined}
       data-image-name={name}
       data-testid={dataTestId || "portfolio-image"}
       role="button"
