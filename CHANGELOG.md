@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.3.7](https://github.com/Lilmortal/youngi-ui/compare/v3.3.6...v3.3.7) (2020-08-23)
+
 ### [3.3.6](https://github.com/Lilmortal/youngi-ui/compare/v3.3.5...v3.3.6) (2020-08-23)
 
 
