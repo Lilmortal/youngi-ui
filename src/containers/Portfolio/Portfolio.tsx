@@ -16,7 +16,6 @@ import {
 } from "./Portfolio.types";
 import ImagesGrid from "./ImagesGrid";
 import { ImgProps } from "../../commons/Img";
-import withNav, { withNavProps } from "../../templates/withNav";
 import Loader, { useLoader } from "./Loader";
 import {
   getPortfolioModalContents,
@@ -24,10 +23,11 @@ import {
   getImagesType,
 } from "./Portfolio.util";
 import { BreakpointContext } from "../../commons/breakpoints";
+import Main, { withMainLayoutProps, MainProps } from "../../templates/Main";
 
 const bem = createBem(styles);
 
-const Portfolio: React.FC<PortfolioProps> = ({
+export const Portfolio: React.FC<PortfolioProps> = ({
   metaTitle,
   metaDescription,
   loaderText,
@@ -120,8 +120,12 @@ const getStaticWorkProps: GetStaticProps = async (): Promise<{
   };
 };
 
-export const getStaticProps = withNavProps(getStaticWorkProps);
+export const getStaticProps = withMainLayoutProps(getStaticWorkProps);
 
-export const PortfolioWithoutNav = Portfolio;
+const PortfolioLayout: React.FC<PortfolioProps & MainProps> = (props) => (
+  <Main {...props}>
+    <Portfolio {...props} />
+  </Main>
+);
 
-export default withNav(Portfolio)({ displayCopyrightMark: true });
+export default PortfolioLayout;

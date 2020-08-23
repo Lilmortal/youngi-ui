@@ -1,6 +1,6 @@
 @use '../../../styles/mixins/breakpoints';
 
-.withNav {
+.footer {
   @include breakpoints.smLandscape {
     display: flex;
     justify-content: space-between;

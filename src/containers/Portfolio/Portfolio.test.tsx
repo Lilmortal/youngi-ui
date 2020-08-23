@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { PortfolioWithoutNav } from "./Portfolio";
+import { Portfolio } from "./Portfolio";
 import { render, RenderResult, fireEvent } from "@testing-library/react";
 import { mockPortfolioCmsResponse } from "./mock-data/data";
 
@@ -17,7 +17,7 @@ const renderPortfolioPage = (
   render(
     <MockRouter value={{ query }}>
       <div id="modal" />
-      <PortfolioWithoutNav {...defaultProps} {...props} />
+      <Portfolio {...defaultProps} {...props} />
     </MockRouter>
   );
 

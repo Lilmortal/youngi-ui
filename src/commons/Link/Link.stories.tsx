@@ -1,7 +1,7 @@
 import React from "react";
 import { storiesOf } from "@storybook/react";
 
-import Link, { NextLinkProps } from ".";
+import Link, { NextLinkProps } from "./Link";
 import MockRouter from "./MockRouter";
 
 const defaultProps: NextLinkProps = {
