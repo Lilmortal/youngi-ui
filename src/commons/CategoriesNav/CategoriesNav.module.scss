@@ -14,7 +14,6 @@
   // a hamburger menu or something to accommodate the fact that this navigation
   // will soon overflow.
   @include breakpoints.smLandscape {
-    position: sticky;
     transform: none;
     background-color: var(--categoriesNav-primary);
     top: 0;
