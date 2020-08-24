@@ -3,10 +3,10 @@ import { useEffect } from "react";
 // Placeholder to store the src
 const DATA_SRC = "data-src";
 
-const useLazyLoad = (observedClassName: string): void => {
+const useLazyLoad = (observedRef: React.RefObject<HTMLDivElement>): void => {
   useEffect(() => {
     const elements = document.querySelectorAll(
-      `.${observedClassName.split(" ")[0]}`
+      `.${observedRef.current?.className.split(" ")[0]}`
     );
 
     if (!elements) {
@@ -31,7 +31,7 @@ const useLazyLoad = (observedClassName: string): void => {
         lazyBackgroundObserver.observe(lazyBackground);
       });
     }
-  }, [observedClassName]);
+  }, [observedRef]);
 };
 
 export default useLazyLoad;

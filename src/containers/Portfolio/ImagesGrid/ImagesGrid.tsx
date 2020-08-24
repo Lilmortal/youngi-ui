@@ -46,9 +46,8 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
 
   const prevBreakpoints = usePrevious(breakpoints);
 
-  const imageClassName = bem("image");
-
-  useLazyLoad(imageClassName);
+  const ref = React.createRef<HTMLDivElement>();
+  useLazyLoad(ref);
 
   useEffect(() => {
     if (prevBreakpoints && breakpoints !== prevBreakpoints) {
@@ -93,8 +92,8 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
           <Fade duration={loaded ? 0 : 0.3} show key={uuid()}>
             <PortfolioImage
               name={portfolioImage.name}
+              ref={ref}
               isLazyLoaded
-              className={imageClassName}
               src={portfolioImage.formats?.large?.url || portfolioImage.url}
               positions={positions}
               data-testid={imageGrid.id}

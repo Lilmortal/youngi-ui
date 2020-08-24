@@ -1,10 +1,4 @@
 .imagesGridList {
   display: grid;
   padding-bottom: 3rem;
-
-  // TODO: Needed temporarily to get the PortfolioImage classname
-  // to do lazy loading, or this will cause an error.
-  &__image {
-    display: flex;
-  }
 }
