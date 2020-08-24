@@ -221,8 +221,13 @@ Just something to be aware of.
 
 ### data-testid
 
-Someone figure out a way or just import a library to strip out data-testid on production!
+Need to strip out data-testid on production.
 
 ### webP
 
 Strapi should be able to convert images uploaded to S3 as webP format.
+
+## Cloudfront
+
+When saving images, Strapi images should point to Cloudfront, and only S3 as a backup.
+This and the webP problem can be solved via AWS-SDK.
