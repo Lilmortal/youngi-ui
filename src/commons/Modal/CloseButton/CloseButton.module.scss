@@ -1,8 +1,10 @@
 // TODO: Make this a clickable SVG icon and be adaptable to different colours
 .closeButton {
-  position: absolute;
+  position: sticky;
   top: 1em;
-  right: 1em;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1em;
   font-size: 2em;
   cursor: pointer;
   mix-blend-mode: difference;

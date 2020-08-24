@@ -39,17 +39,23 @@ const getGridRow = (row: GridPosition): string =>
       : row.endingPosition
   }`;
 
-const PortfolioImage: React.FC<PortfolioImageProps> = ({
-  className,
-  style,
-  src,
-  name,
-  isLazyLoaded,
-  positions,
-  hoveredTextFontSizes,
-  dataTestId,
-  onClick,
-}) => {
+const PortfolioImage: React.ForwardRefRenderFunction<
+  HTMLDivElement,
+  PortfolioImageProps
+> = (
+  {
+    className,
+    style,
+    src,
+    name,
+    isLazyLoaded,
+    positions,
+    hoveredTextFontSizes,
+    dataTestId,
+    onClick,
+  },
+  ref
+) => {
   const handleKeyPress = useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) =>
       event.key === "Enter" && onClick(),
@@ -59,6 +65,7 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
   return (
     <div
       className={cn(bem(), className)}
+      ref={ref}
       tabIndex={0}
       style={{
         ...style,
@@ -78,4 +85,4 @@ const PortfolioImage: React.FC<PortfolioImageProps> = ({
   );
 };
 
-export default PortfolioImage;
+export default React.forwardRef(PortfolioImage);
