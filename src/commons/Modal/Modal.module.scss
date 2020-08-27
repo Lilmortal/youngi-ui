@@ -6,7 +6,8 @@
   bottom: 1rem;
   left: 10%;
   right: 10%;
-  background-color: white;
+  background-color: var(--modal-background-primary);
+  color: var(--modal-primary);
   z-index: var(--sm-zIndex);
   overflow-y: scroll;
 
