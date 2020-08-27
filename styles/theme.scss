@@ -9,6 +9,8 @@
   --categoriesNav-border-primary: var(--gray-secondary);
   --copyright-primary: var(--gray);
   --hovered-portfolio-image-primary: var(--black);
+  --modal-background-primary: var(--white);
+  --modal-primary: var(--black);
 
   // TODO: If Youngi wants more theme options, create a ThemeProvider
   // and inject data-theme into body
@@ -17,6 +19,5 @@
     --background-color-primary: var(--black);
     --background-color-inverted-primary: var(--white);
     --link-border-primary: var(--white);
-
   }
 }
