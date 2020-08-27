@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.4.2](https://github.com/Lilmortal/youngi-ui/compare/v3.4.1...v3.4.2) (2020-08-27)
+
+
+### Bug Fixes
+
+* modal font color should always be black ([a95d342](https://github.com/Lilmortal/youngi-ui/commit/a95d3423754ecae4b253aacf6ab1a345e42ff169))
+
 ### [3.4.1](https://github.com/Lilmortal/youngi-ui/compare/v3.4.0...v3.4.1) (2020-08-24)
 
 
