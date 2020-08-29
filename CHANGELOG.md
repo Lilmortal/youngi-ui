@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.4.3](https://github.com/Lilmortal/youngi-ui/compare/v3.4.2...v3.4.3) (2020-08-29)
+
+
+### Bug Fixes
+
+* update  modal close button to position fixed ([352fb66](https://github.com/Lilmortal/youngi-ui/commit/352fb660971a366818807deb0a2510edbe338c65))
+
 ### [3.4.2](https://github.com/Lilmortal/youngi-ui/compare/v3.4.1...v3.4.2) (2020-08-27)
 
 
