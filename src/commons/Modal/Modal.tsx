@@ -60,10 +60,10 @@ const Modal: React.FC<ModalProps> = ({
             dataTestId={overlayDataTestId}
           />
           <div className={cn(bem())}>
-            {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
             {onClose && <CloseButton onClose={onClose} />}
             {children}
           </div>
+          {onEscapePress && <EscapePress onEscapePress={onEscapePress} />}
         </FocusTrap>,
         portalRef.current
       )

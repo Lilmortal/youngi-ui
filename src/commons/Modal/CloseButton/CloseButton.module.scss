@@ -1,13 +1,18 @@
-// TODO: Make this a clickable SVG icon and be adaptable to different colours
+@use "../../../../styles/mixins/breakpoints";
+
+// TODO: Make this a clickable SVG icon
 .closeButton {
-  position: sticky;
-  top: 1em;
+  position: fixed;
+  top: 3rem;
   display: flex;
-  justify-content: flex-end;
-  padding-right: 1em;
-  font-size: 2em;
+  right: 16%;
+  font-size: 2rem;
   cursor: pointer;
   mix-blend-mode: difference;
   color: white;
   z-index: var(--xs-zIndex);
+
+  @include breakpoints.lg {
+    right: 10%;
+  }
 }

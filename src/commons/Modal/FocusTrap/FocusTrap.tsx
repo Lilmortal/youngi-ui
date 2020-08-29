@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 export interface FocusTrapProps {
-  children: React.ReactElement | React.ReactElement[];
+  children: React.ReactElement | (React.ReactElement | undefined | null)[];
 }
 
 const focusTrapId = "trapFocus";
