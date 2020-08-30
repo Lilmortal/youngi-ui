@@ -6,7 +6,7 @@ over the course of his backpacking trips around South-east Asia, and more.
 The website content is being updated by headless CMS, most notably what and where
 each images are placed in the DOM.
 
-This website supports dark mode (with an odd case of a bug with the loading bar being black in Android phones).
+This website supports dark mode (with an odd case of a bug with the loading bar being black in Samsung Internet phones).
 In the future, when Strapi, the headless CMS supports internationalization, we will add it in, if the demand
 for Korean translation is still there.
 
