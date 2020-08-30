@@ -2,10 +2,6 @@ import React from "react";
 import styles from "./Img.module.scss";
 import { createBem, cn } from "../../../utils";
 
-// TODO: Lazy load
-// 404
-// Slow download
-
 export interface Format {
   thumbnail?: ImgProps;
   large?: ImgProps;
