@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.5.0](https://github.com/Lilmortal/youngi-ui/compare/v3.4.3...v3.5.0) (2020-08-30)
+
+
+### Features
+
+* added tab order ([1fe5725](https://github.com/Lilmortal/youngi-ui/commit/1fe57255e3f223001a25c754b4b354d9d543b46d))
+
 ### [3.4.3](https://github.com/Lilmortal/youngi-ui/compare/v3.4.2...v3.4.3) (2020-08-29)
 
 
