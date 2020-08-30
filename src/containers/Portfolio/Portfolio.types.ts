@@ -12,6 +12,7 @@ export interface PortfolioImageResponse {
   readonly title?: string;
   readonly description?: string;
   readonly hoveredTextFontSizes?: HoveredTextFontSizes;
+  readonly tabOrder?: number;
 }
 
 export interface ImagePositionsResponse {

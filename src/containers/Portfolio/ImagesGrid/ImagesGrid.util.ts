@@ -1,6 +1,7 @@
 import { GridSpaces, GridPosition } from "../PortfolioImage/PortfolioImage";
 import { MainImagesGrid } from "./ImagesGrid";
 import { Breakpoints } from "../../../commons/breakpoints";
+import { PortfolioImageResponse } from "../Portfolio.types";
 interface MapGridSpacesParams {
   image: MainImagesGrid;
   isCategory?: boolean;
@@ -119,3 +120,11 @@ export const validateColumnIsNotOutOfBounds = (
     );
   }
 };
+
+export const sortByTabOrder = (
+  firstImage: PortfolioImageResponse,
+  secondImage: PortfolioImageResponse
+): number =>
+  firstImage?.tabOrder && secondImage?.tabOrder
+    ? firstImage.tabOrder - secondImage.tabOrder
+    : 0;
