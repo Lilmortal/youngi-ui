@@ -13,6 +13,7 @@ import usePrevious from "../../../commons/usePrevious";
 import {
   getPositions,
   validateColumnIsNotOutOfBounds,
+  sortByTabOrder,
 } from "./ImagesGrid.util";
 import useLazyLoad from "../../../commons/useLazyLoad";
 
@@ -71,7 +72,7 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({
         gridAutoRows: !!rowPixels ? `${rowPixels}px` : undefined,
       }}
     >
-      {imagesGrid.map((imageGrid) => {
+      {imagesGrid.sort(sortByTabOrder).map((imageGrid) => {
         const portfolioImage = imageGrid.image;
 
         const positions = getPositions({

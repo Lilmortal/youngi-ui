@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-// Placeholder to store the src
-const DATA_SRC = "data-src";
-
-const useLazyLoad = (observedRef: React.RefObject<HTMLDivElement>): void => {
+const useLazyLoad = (
+  observedRef: React.RefObject<HTMLDivElement>,
+  placeholder = "data-src"
+): void => {
   useEffect(() => {
     const elements = document.querySelectorAll(
       `.${observedRef.current?.className.split(" ")[0]}`
@@ -19,7 +19,7 @@ const useLazyLoad = (observedRef: React.RefObject<HTMLDivElement>): void => {
       const lazyBackgroundObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const dataSrc = entry.target.getAttribute(DATA_SRC);
+            const dataSrc = entry.target.getAttribute(placeholder);
             (entry.target as HTMLElement).style.backgroundImage = `url(${dataSrc})`;
 
             lazyBackgroundObserver.unobserve(entry.target);
@@ -31,7 +31,7 @@ const useLazyLoad = (observedRef: React.RefObject<HTMLDivElement>): void => {
         lazyBackgroundObserver.observe(lazyBackground);
       });
     }
-  }, [observedRef]);
+  }, [observedRef, placeholder]);
 };
 
 export default useLazyLoad;

@@ -46,6 +46,27 @@ describe("portfolio", () => {
     );
   });
 
+  it("should order images by tab order", () => {
+    const { getAllByRole } = renderPortfolioPage({
+      portfolioImagesResponse: [
+        { ...defaultProps.portfolioImagesResponse[2], tabOrder: 0 },
+        { ...defaultProps.portfolioImagesResponse[0], tabOrder: 1 },
+        { ...defaultProps.portfolioImagesResponse[1], tabOrder: 2 },
+      ],
+    });
+
+    const images = getAllByRole("button");
+    expect(images[0].getAttribute("data-image-name")).toEqual(
+      "illustration image"
+    );
+    expect(images[1].getAttribute("data-image-name")).toEqual(
+      "architecture image"
+    );
+    expect(images[2].getAttribute("data-image-name")).toEqual(
+      "photography image"
+    );
+  });
+
   it("should display photography images", () => {
     const { getByRole } = renderPortfolioPage({}, { category: "photography" });
     expect(getByRole("button").getAttribute("data-image-name")).toEqual(
